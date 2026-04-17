@@ -2075,13 +2075,30 @@ async function _qrHandleResult(raw) {
     return;
   }
 
-  // Buffet: limit 1 meal per day per visitor
+  // Visitante: bloqueio total no buffet via câmera
+  if (visitor.perfil === 'Visitante' && selectedGate === 'Buffet') {
+    statusEl.textContent = '🚫 ACESSO NÃO PERMITIDO';
+    statusEl.className = 'qr-status err';
+    showAlert('scan-alert', 'error', `
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:15px;font-weight:800;">🚫 ACESSO NÃO PERMITIDO</div>
+        <div><strong>${escHtml(visitor.nome)}</strong> está credenciado como <strong>Visitante</strong>.</div>
+        <div style="background:rgba(239,68,68,.15);border-radius:6px;padding:6px 10px;font-size:12.5px;">
+          ⚠️ O perfil <strong>Visitante</strong> tem acesso <u>somente à feira</u>.<br>
+          Acesso ao Buffet <strong>não autorizado</strong>. Oriente o visitante.
+        </div>
+      </div>`);
+    setTimeout(() => { _qrLast = ''; statusEl.textContent = ''; statusEl.className = 'qr-status'; _qrRaf = requestAnimationFrame(_qrScanFrame); }, 3000);
+    return;
+  }
+
+  // Buffet: limite 1 refeição por dia
   if (selectedGate === 'Buffet') {
     const today = new Date().toDateString();
     const buffetToday = DB.log.filter(e => e.visitorId === id && e.gate === 'Buffet' && new Date(e.ts).toDateString() === today).length;
     if (buffetToday >= 1) {
       statusEl.textContent = `⚠️ Refeição já utilizada hoje`;
-      statusEl.className = 'qr-status error';
+      statusEl.className = 'qr-status err';
       showAlert('scan-alert', 'error', `⚠️ Refeição já utilizada hoje por <strong>${visitor.nome}</strong>.`);
       setTimeout(() => { statusEl.textContent = ''; statusEl.className = 'qr-status'; }, 2500);
       return;
