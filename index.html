@@ -355,11 +355,11 @@
                 <label>CPF *</label>
                 <input type="text" id="f-cpf" placeholder="000.000.000-00" maxlength="14" oninput="maskCPF(this)" required>
               </div>
-              <div class="form-group">
+              <div class="form-group" id="email-group">
                 <label>E-mail *</label>
                 <input type="email" id="f-email" placeholder="email@empresa.com" required>
               </div>
-              <div class="form-group">
+              <div class="form-group" id="fone-group">
                 <label>Telefone / WhatsApp *</label>
                 <input type="tel" id="f-fone" placeholder="(00) 00000-0000"
                   maxlength="16" inputmode="numeric"
@@ -385,7 +385,7 @@
                   <option value="">Selecione o expositor responsável pelo visitante...</option>
                 </select>
               </div>
-              <div class="form-group">
+              <div class="form-group" id="estado-group">
                 <label>Estado *</label>
                 <select id="f-estado" required>
                   <option value="">UF</option>
@@ -398,7 +398,7 @@
                   <option>SP</option><option>SE</option><option>TO</option>
                 </select>
               </div>
-              <div class="form-group">
+              <div class="form-group" id="cidade-group">
                 <label>Cidade *</label>
                 <input type="text" id="f-cidade" placeholder="Digite sua cidade..." autocomplete="off"
                   list="cidades-list" oninput="onCidadeInput(this)" onblur="checkCidadeEstado(this)" required>
@@ -1038,9 +1038,21 @@ function _aplicarPerfil(perfil) {
   document.getElementById('f-empresa').placeholder = soEmpresa ? 'Nome da empresa' : 'Nome da empresa ou loja';
   document.getElementById('f-empresa').required = true;
 
-  // Visitante: email e telefone opcionais; outros: obrigatórios
-  document.getElementById('f-email').required = !isVisitante;
-  document.getElementById('f-fone').required  = !isVisitante;
+  // Visitante: oculta campos desnecessários (email, fone, estado, cidade)
+  const camposOpcionaisVisitante = ['email-group','fone-group','estado-group','cidade-group'];
+  camposOpcionaisVisitante.forEach(id => {
+    document.getElementById(id).style.display = isVisitante ? 'none' : '';
+  });
+  document.getElementById('f-email').required  = !isVisitante;
+  document.getElementById('f-fone').required   = !isVisitante;
+  document.getElementById('f-estado').required = !isVisitante;
+  document.getElementById('f-cidade').required = !isVisitante;
+  if (isVisitante) {
+    document.getElementById('f-email').value  = '';
+    document.getElementById('f-fone').value   = '';
+    document.getElementById('f-estado').value = '';
+    document.getElementById('f-cidade').value = '';
+  }
 
   // Aviso buffet
   document.getElementById('visitante-aviso').style.display = isVisitante ? 'block' : 'none';
@@ -1297,8 +1309,13 @@ function resetForm() {
   document.getElementById('visitante-auth-panel').style.display = 'none';
   document.getElementById('visitante-aviso').style.display = 'none';
   document.getElementById('form-fields-overlay').style.display = 'none';
-  document.getElementById('f-email').required = true;
-  document.getElementById('f-fone').required  = true;
+  document.getElementById('f-email').required  = true;
+  document.getElementById('f-fone').required   = true;
+  document.getElementById('f-estado').required = true;
+  document.getElementById('f-cidade').required = true;
+  ['email-group','fone-group','estado-group','cidade-group'].forEach(id => {
+    document.getElementById(id).style.display = '';
+  });
   _visitanteAutorizado = false;
   const respGroup = document.getElementById('responsavel-group');
   const respSel   = document.getElementById('f-responsavel');
