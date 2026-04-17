@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Scanner · iBrand intelligence systems</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111c40'/%3E%3Cpath d='M32 10C26 10 21 14 20 19C17 19.8 14 22.5 14 26C14 28.5 15.2 30.8 17 32C16.4 33.3 16 34.8 16 36C16 40.4 19.6 44 24 44H40C44.4 44 48 40.4 48 36C48 34.8 47.6 33.3 47 32C48.8 30.8 50 28.5 50 26C50 22.5 47 19.8 44 19C43 14 38 10 32 10Z' stroke='%23e8a000' stroke-width='2.5' fill='none' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.5' fill='%23ffbe30'/%3E%3Ccircle cx='32' cy='22' r='2.5' fill='%23ffbe30'/%3E%3Ccircle cx='40' cy='27' r='2.5' fill='%23ffbe30'/%3E%3Ccircle cx='32' cy='34' r='2.5' fill='%23ffbe30'/%3E%3Cline x1='24' y1='27' x2='32' y2='22' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='32' y1='22' x2='40' y2='27' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='24' y1='27' x2='32' y2='34' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='40' y1='27' x2='32' y2='34' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='24' y1='27' x2='40' y2='27' stroke='%23ffbe30' stroke-width='1.5' opacity='0.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <style>
+  :root {
+    --bg:     #f0f3ff;
+    --navy:   #111c40;
+    --navy2:  #1e3271;
+    --blue:   #3b6cf7;
+    --gold:   #e8a000;
+    --gold2:  #ffbe30;
+    --green:  #0fb981;
+    --red:    #ef4444;
+    --muted:  #64748b;
+    --border: rgba(100,130,220,.13);
+    --shadow: 0 4px 28px rgba(30,50,120,.1);
+    --r:      18px;
+    --r-sm:   12px;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Plus Jakarta Sans',system-ui,sans-serif; background:var(--bg); color:var(--navy); min-height:100vh; display:flex; flex-direction:column; }
+
+  /* HEADER */
+  header { background:var(--navy); padding:16px 20px 14px; position:relative; overflow:hidden; }
+  .hdr-aurora { position:absolute; inset:0; opacity:.6; background:linear-gradient(120deg,#0b1535,#1e2f7a,#0e1d5a,#2d1b69,#0b1535); background-size:400% 400%; animation:aurora 12s ease infinite; }
+  @keyframes aurora { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  .hdr-inner { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .logo { display:flex; align-items:center; gap:11px; }
+  .logo-icon { width:40px; height:40px; background:linear-gradient(135deg,var(--gold),var(--gold2)); border-radius:11px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(232,160,0,.4); flex-shrink:0; }
+  .logo-text strong { display:block; font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; letter-spacing:.8px; background:linear-gradient(90deg,#fff 50%,var(--gold2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .logo-text small { font-size:10px; color:rgba(255,255,255,.4); font-weight:400; }
+  .hdr-badge { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15); border-radius:100px; padding:5px 13px; font-size:11px; font-weight:700; color:rgba(255,255,255,.7); display:flex; align-items:center; gap:5px; }
+  .hdr-badge .dot { width:7px; height:7px; background:var(--green); border-radius:50%; animation:blink 1.8s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+  /* MAIN */
+  main { flex:1; padding:20px 16px; max-width:520px; margin:0 auto; width:100%; }
+
+  /* GATE SELECTOR */
+  .gate-card { background:#fff; border-radius:var(--r); box-shadow:var(--shadow); border:1px solid var(--border); padding:16px 20px; margin-bottom:16px; }
+  .gate-label { font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; }
+  .gate-toggle { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .gate-btn { padding:14px 10px; border-radius:var(--r-sm); font-size:14px; font-weight:700; font-family:inherit; cursor:pointer; border:2px solid var(--border); background:var(--bg); color:var(--muted); transition:all .2s; display:flex; align-items:center; justify-content:center; gap:8px; }
+  .gate-btn.active-feira  { border-color:#1d4ed8; background:#eff6ff; color:#1d4ed8; box-shadow:0 0 0 3px rgba(29,78,216,.1); }
+  .gate-btn.active-buffet { border-color:#9d174d; background:#fdf2f8; color:#9d174d; box-shadow:0 0 0 3px rgba(157,23,77,.1); }
+  .gate-badge { font-size:10px; background:rgba(0,0,0,.07); border-radius:100px; padding:2px 8px; font-weight:700; }
+
+  /* SCANNER CARD */
+  .scan-card { background:#fff; border-radius:var(--r); box-shadow:var(--shadow); border:1px solid var(--border); overflow:hidden; margin-bottom:16px; }
+  .scan-card-title { padding:16px 20px 0; font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:700; color:var(--navy); display:flex; align-items:center; gap:8px; }
+
+  /* CAMERA */
+  .cam-wrap { position:relative; margin:16px; border-radius:14px; overflow:hidden; background:#000; aspect-ratio:1; }
+  #qr-video { width:100%; height:100%; object-fit:cover; display:block; }
+  .cam-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+  .cam-frame { width:62%; aspect-ratio:1; border:3px solid var(--gold2); border-radius:14px; box-shadow:0 0 0 9999px rgba(0,0,0,.45); animation:pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.65} }
+  .cam-label { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.55); backdrop-filter:blur(6px); border-radius:100px; padding:6px 16px; font-size:12px; font-weight:600; color:rgba(255,255,255,.85); white-space:nowrap; }
+  #cam-placeholder { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; background:#0d1630; }
+  #cam-placeholder span { font-size:42px; }
+  #cam-placeholder p { font-size:13px; color:rgba(255,255,255,.45); font-weight:500; }
+
+  /* STATUS */
+  .scan-status { margin:0 16px 16px; padding:13px 16px; border-radius:var(--r-sm); font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:10px; min-height:48px; background:var(--bg); color:var(--muted); transition:all .3s; }
+  .scan-status.ok  { background:#d1fae5; color:#064e3b; }
+  .scan-status.err { background:#fee2e2; color:#7f1d1d; }
+  .scan-status.warn { background:#fef3c7; color:#92400e; }
+
+  /* CAM BUTTON */
+  .cam-btn-wrap { padding:0 16px 16px; }
+  .cam-btn { width:100%; padding:14px; border-radius:100px; font-size:14px; font-weight:700; font-family:inherit; cursor:pointer; border:none; display:flex; align-items:center; justify-content:center; gap:9px; transition:all .25s; }
+  .cam-btn.start { background:linear-gradient(135deg,var(--navy),var(--navy2)); color:#fff; box-shadow:0 4px 18px rgba(17,28,64,.35); }
+  .cam-btn.start:hover { transform:translateY(-1px); }
+  .cam-btn.stop  { background:linear-gradient(135deg,#991b1b,var(--red)); color:#fff; box-shadow:0 4px 18px rgba(239,68,68,.35); }
+
+  /* MANUAL */
+  .manual-card { background:#fff; border-radius:var(--r); box-shadow:var(--shadow); border:1px solid var(--border); padding:18px 20px; margin-bottom:16px; }
+  .manual-card label { display:block; font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:8px; }
+  .manual-row { display:flex; gap:8px; }
+  .manual-row input { flex:1; background:#f4f6ff; border:2px solid transparent; border-radius:var(--r-sm); padding:12px 16px; font-size:14px; font-weight:700; letter-spacing:2px; text-transform:uppercase; font-family:inherit; color:var(--navy); transition:border-color .2s; }
+  .manual-row input:focus { outline:none; border-color:var(--blue); background:#fff; }
+  .manual-row button { background:linear-gradient(135deg,#0ca678,var(--green)); color:#fff; border:none; border-radius:var(--r-sm); padding:0 20px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; white-space:nowrap; transition:all .2s; }
+  .manual-row button:hover { transform:translateY(-1px); }
+
+  /* LOG */
+  .log-card { background:#fff; border-radius:var(--r); box-shadow:var(--shadow); border:1px solid var(--border); }
+  .log-header { padding:16px 20px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); }
+  .log-title { font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:700; color:var(--navy); display:flex; align-items:center; gap:8px; }
+  .log-count { font-size:11px; background:var(--bg); padding:3px 10px; border-radius:100px; font-weight:700; color:var(--muted); font-family:'Plus Jakarta Sans',sans-serif; }
+  .log-list { max-height:340px; overflow-y:auto; }
+  .log-list::-webkit-scrollbar { width:4px; }
+  .log-list::-webkit-scrollbar-thumb { background:rgba(30,50,120,.15); border-radius:99px; }
+  .log-item { padding:13px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px; animation:slideIn .3s ease; }
+  @keyframes slideIn { from{opacity:0;transform:translateX(-8px)} to{opacity:1;transform:translateX(0)} }
+  .log-item:last-child { border-bottom:none; }
+  .log-av { width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--navy),var(--blue)); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:15px; font-family:'Space Grotesk',sans-serif; flex-shrink:0; }
+  .log-av.buffet { background:linear-gradient(135deg,#831843,#9d174d); }
+  .log-info { flex:1; min-width:0; }
+  .log-name { font-size:13.5px; font-weight:700; color:var(--navy); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .log-meta { font-size:11.5px; color:var(--muted); margin-top:2px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .log-time { font-size:11.5px; font-weight:700; color:var(--muted); font-family:'Space Grotesk',monospace; flex-shrink:0; }
+  .tag { padding:2px 9px; border-radius:100px; font-size:10.5px; font-weight:700; white-space:nowrap; }
+  .tag-comprador         { background:#dbeafe; color:#1d4ed8; }
+  .tag-lojista           { background:#d1fae5; color:#065f46; }
+  .tag-gerente-comercial { background:#fef3c7; color:#92400e; }
+  .tag-expositor         { background:#fce7f3; color:#9d174d; }
+  .tag-feira  { background:#dbeafe; color:#1d4ed8; }
+  .tag-buffet { background:#fce7f3; color:#9d174d; }
+  .log-empty { padding:40px 20px; text-align:center; color:var(--muted); }
+  .log-empty span { font-size:32px; display:block; margin-bottom:8px; }
+
+  /* FOOTER */
+  footer { padding:16px; text-align:center; font-size:11px; color:var(--muted); }
+  footer strong { color:var(--navy); }
+
+  canvas { display:none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-aurora"></div>
+  <div class="hdr-inner">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3C9.5 3 7.5 4.5 7 6.5C5.5 6.8 4 8.2 4 10C4 11.2 4.6 12.3 5.5 13C5.2 13.6 5 14.3 5 15C5 17.2 6.8 19 9 19H15C17.2 19 19 17.2 19 15C19 14.3 18.8 13.6 18.5 13C19.4 12.3 20 11.2 20 10C20 8.2 18.5 6.8 17 6.5C16.5 4.5 14.5 3 12 3Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="9" cy="11" r="1.2" fill="white"/>
+          <circle cx="12" cy="9" r="1.2" fill="white"/>
+          <circle cx="15" cy="11" r="1.2" fill="white"/>
+          <circle cx="12" cy="14" r="1.2" fill="white"/>
+          <line x1="9" y1="11" x2="12" y2="9" stroke="white" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="12" y1="9" x2="15" y2="11" stroke="white" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="9" y1="11" x2="12" y2="14" stroke="white" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="15" y1="11" x2="12" y2="14" stroke="white" stroke-width="1" stroke-opacity="0.7"/>
+          <line x1="9" y1="11" x2="15" y2="11" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <strong>iBrand intelligence systems</strong>
+        <small>Controle de Acesso · Operador</small>
+      </div>
+    </div>
+    <div class="hdr-badge"><div class="dot"></div> Online</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- SELETOR DE PORTÃO -->
+  <div class="gate-card">
+    <div class="gate-label">Selecione o ponto de acesso</div>
+    <div class="gate-toggle">
+      <button class="gate-btn active-feira" id="btn-feira" onclick="selectGate('Feira')">
+        🎪 Feira <span class="gate-badge">1ª entrada</span>
+      </button>
+      <button class="gate-btn" id="btn-buffet" onclick="selectGate('Buffet')">
+        🍽️ Buffet <span class="gate-badge">2ª entrada</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- CÂMERA -->
+  <div class="scan-card">
+    <div class="scan-card-title">📷 Leitor de QR Code</div>
+    <div class="cam-wrap">
+      <video id="qr-video" autoplay playsinline muted></video>
+      <div class="cam-overlay"><div class="cam-frame"></div></div>
+      <div id="cam-label" class="cam-label">Aponte para o QR Code</div>
+      <div id="cam-placeholder">
+        <span>📷</span>
+        <p>Câmera inativa</p>
+      </div>
+    </div>
+    <div class="scan-status" id="scan-status">Aguardando leitura...</div>
+    <div class="cam-btn-wrap">
+      <button class="cam-btn start" id="cam-toggle-btn" onclick="toggleCamera()">📷 Iniciar Câmera</button>
+    </div>
+  </div>
+
+  <!-- MANUAL -->
+  <div class="manual-card">
+    <label>Ou digite o ID manualmente</label>
+    <div class="manual-row">
+      <input type="text" id="manual-input" placeholder="Ex: LC3X9A" maxlength="10" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')registerById(this.value)">
+      <button onclick="registerById(document.getElementById('manual-input').value)">✔ Registrar</button>
+    </div>
+  </div>
+
+  <!-- LOG -->
+  <div class="log-card">
+    <div class="log-header">
+      <div class="log-title">📋 Acessos registrados</div>
+      <div class="log-count" id="log-count">0</div>
+    </div>
+    <div class="log-list" id="log-list">
+      <div class="log-empty"><span>📋</span>Nenhum acesso ainda</div>
+    </div>
+  </div>
+
+</main>
+
+<footer><strong>iBrand intelligence systems</strong></footer>
+
+<canvas id="qr-canvas"></canvas>
+
+<script>
+const SUPABASE_URL = 'https://rvehuigjfngtilhmczqs.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2ZWh1aWdqZm5ndGlsaG1jenFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5NjgxNDMsImV4cCI6MjA5MDU0NDE0M30.Q-Ujwh-z3vJnmlOcMIp_mmskk9LwSs9vtd8_Q4hTw8A';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const PERFIL_ICONS = { 'Comprador':'🛒', 'Lojista':'🏪', 'Gerente Comercial':'💼', 'Expositor':'🏢' };
+const PERFIL_TAGS  = { 'Comprador':'tag-comprador', 'Lojista':'tag-lojista', 'Gerente Comercial':'tag-gerente-comercial', 'Expositor':'tag-expositor' };
+
+let selectedGate = 'Feira';
+let _visitors    = [];
+let _logItems    = [];
+let _cameraOn    = false;
+let _stream      = null;
+let _raf         = null;
+let _lastQR      = '';
+
+// Chave: "id:gate" → data (YYYY-MM-DD) — bloqueia mesmo id+portão no dia
+const _usedToday  = new Map();
+// Chave: "id:gate" → timestamp — cooldown de 5s
+const _cooldownMap = new Map();
+
+/* ── GATE SELECTOR ── */
+function selectGate(gate) {
+  selectedGate = gate;
+  document.getElementById('btn-feira').className  = 'gate-btn' + (gate === 'Feira'  ? ' active-feira'  : '');
+  document.getElementById('btn-buffet').className = 'gate-btn' + (gate === 'Buffet' ? ' active-buffet' : '');
+  setStatus('Aguardando leitura...', '');
+}
+
+/* ── INIT ── */
+async function init() {
+  const today = new Date().toLocaleDateString('pt-BR');
+
+  // Início do dia local em UTC — subtrai offset para capturar desde meia-noite local
+  const localMidnight = new Date();
+  localMidnight.setHours(0, 0, 0, 0);
+
+  const [vRes, logRes] = await Promise.all([
+    sb.from('visitors').select('id,nome,perfil,accessed,access_count,last_access').order('registered_at', { ascending: true }),
+    sb.from('access_log').select('visitor_id,gate,ts').gte('ts', localMidnight.toISOString()).order('ts', { ascending: false })
+  ]);
+
+  _visitors = vRes.data || [];
+
+  // Pré-popular quem já usou qual portão hoje + carregar log do dia
+  for (const entry of (logRes.data || [])) {
+    const gate = (entry.gate === 'Principal' || !entry.gate) ? 'Feira' : entry.gate;
+    _usedToday.set(`${entry.visitor_id}:${gate}`, today);
+    const visitor = _visitors.find(v => v.id === entry.visitor_id);
+    if (visitor) _logItems.push({ visitor, ts: entry.ts, gate });
+  }
+  renderLog();
+
+  setStatus('✅ Sistema conectado · ' + _visitors.length + ' credenciais carregadas', 'ok');
+  setTimeout(() => setStatus('Aguardando leitura...', ''), 2500);
+  listenRealtime();
+}
+
+function listenRealtime() {
+  sb.channel('scanner-visitors')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'visitors' }, payload => {
+      if (payload.eventType === 'INSERT') _visitors.push(payload.new);
+      if (payload.eventType === 'UPDATE') {
+        const i = _visitors.findIndex(v => v.id === payload.new.id);
+        if (i >= 0) _visitors[i] = { ..._visitors[i], ...payload.new };
+      }
+      if (payload.eventType === 'DELETE') {
+        const id = payload.old.id;
+        _visitors = _visitors.filter(v => v.id !== id);
+        // Limpa locks — acesso liberado para nova credencial com mesmo ID
+        ['Feira', 'Buffet', 'Principal'].forEach(g => {
+          _usedToday.delete(`${id}:${g}`);
+          _cooldownMap.delete(`${id}:${g}`);
+        });
+      }
+    })
+    .subscribe();
+}
+
+/* ── CAMERA ── */
+function toggleCamera() { _cameraOn ? stopCamera() : startCamera(); }
+
+function startCamera() {
+  navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 1280 } } })
+    .then(stream => {
+      _stream = stream; _cameraOn = true; _lastQR = '';
+      const video = document.getElementById('qr-video');
+      video.srcObject = stream;
+      video.onloadedmetadata = () => {
+        video.play();
+        document.getElementById('cam-placeholder').style.display = 'none';
+        scanLoop();
+      };
+      const btn = document.getElementById('cam-toggle-btn');
+      btn.textContent = '⏹ Parar Câmera';
+      btn.className = 'cam-btn stop';
+    })
+    .catch(() => setStatus('❌ Permissão de câmera negada', 'err'));
+}
+
+function stopCamera() {
+  cancelAnimationFrame(_raf);
+  if (_stream) { _stream.getTracks().forEach(t => t.stop()); _stream = null; }
+  document.getElementById('qr-video').srcObject = null;
+  document.getElementById('cam-placeholder').style.display = 'flex';
+  _cameraOn = false;
+  const btn = document.getElementById('cam-toggle-btn');
+  btn.textContent = '📷 Iniciar Câmera';
+  btn.className = 'cam-btn start';
+  setStatus('Aguardando leitura...', '');
+}
+
+function scanLoop() {
+  if (!_cameraOn) return;
+  const video = document.getElementById('qr-video');
+  const canvas = document.getElementById('qr-canvas');
+  if (video.readyState === video.HAVE_ENOUGH_DATA) {
+    canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0);
+    const img  = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const code = jsQR(img.data, img.width, img.height, { inversionAttempts: 'attemptBoth' });
+    if (code && code.data && code.data !== _lastQR) {
+      _lastQR = code.data;
+      handleQR(code.data);
+      setTimeout(() => { _lastQR = ''; }, 3000);
+    }
+  }
+  _raf = requestAnimationFrame(scanLoop);
+}
+
+async function handleQR(raw) {
+  let id = raw.trim().toUpperCase();
+  try { const obj = JSON.parse(raw); if (obj.id) id = obj.id.trim().toUpperCase(); } catch (_) {}
+  await registerById(id, true);
+}
+
+/* ── REGISTER ── */
+async function registerById(id, fromQR = false) {
+  id = (id || '').trim().toUpperCase();
+  if (!id) { beepErr(); setStatus('⚠️ ID não informado', 'err'); return; }
+
+  let visitor = _visitors.find(v => v.id === id);
+  if (!visitor) {
+    // Não encontrado localmente — tenta buscar direto do banco (novo cadastro ou realtime atrasado)
+    const { data } = await sb.from('visitors').select('id,nome,perfil,accessed,access_count,last_access').eq('id', id).single();
+    if (data) { _visitors.push(data); visitor = data; }
+  }
+  if (!visitor) { beepErr(); setStatus(`❌ ID "${id}" não encontrado`, 'err'); if (!fromQR) document.getElementById('manual-input').value = ''; return; }
+
+  const gate = selectedGate;
+  const key  = `${id}:${gate}`;
+  const today = new Date().toLocaleDateString('pt-BR');
+
+  // Cooldown de 5s para o mesmo id+portão
+  const cooldownTs = _cooldownMap.get(key);
+  if (cooldownTs && (Date.now() - cooldownTs) < 5000) {
+    const s = Math.ceil((5000 - (Date.now() - cooldownTs)) / 1000);
+    setStatus(`⏳ Aguarde ${s}s`, 'err');
+    if (!fromQR) document.getElementById('manual-input').value = '';
+    return;
+  }
+
+  // Bloquear se este portão já foi usado hoje
+  if (_usedToday.get(key) === today) {
+    const otherGate = gate === 'Feira' ? 'Buffet' : 'Feira';
+    const otherUsed = _usedToday.get(`${id}:${otherGate}`) === today;
+    beepErr(); setStatus(`⛔ ${visitor.nome} já usou ${gate} hoje` + (otherUsed ? ' · ambos portões utilizados' : ''), 'err');
+    if (!fromQR) document.getElementById('manual-input').value = '';
+    return;
+  }
+
+  // Visitante: bloqueio total no buffet
+  if (visitor.perfil === 'Visitante' && gate === 'Buffet') {
+    beepErr();
+    setStatus(`🚫 ACESSO NÃO PERMITIDO — ${visitor.nome} é Visitante · Buffet não autorizado`, 'err');
+    if (!fromQR) document.getElementById('manual-input').value = '';
+    return;
+  }
+
+  // Verificar se tentou buffet sem ter passado pela feira primeiro
+  if (gate === 'Buffet' && _usedToday.get(`${id}:Feira`) !== today) {
+    beepErr(); setStatus(`⚠️ ${visitor.nome} ainda não registrou entrada na Feira`, 'warn');
+    if (!fromQR) document.getElementById('manual-input').value = '';
+    return;
+  }
+
+  // Reservar acesso ANTES do await para evitar race condition
+  _usedToday.set(key, today);
+  _cooldownMap.set(key, Date.now());
+
+  const ts = new Date().toISOString();
+  const newCount = (visitor.access_count || 0) + 1;
+
+  try {
+    await sb.from('access_log').insert({ visitor_id: id, gate, ts });
+    await sb.from('visitors').update({ accessed: true, access_count: newCount, last_access: ts }).eq('id', id);
+    visitor.accessed = true;
+    visitor.access_count = newCount;
+    visitor.last_access = ts;
+
+    const icon = PERFIL_ICONS[visitor.perfil] || '👤';
+    setStatus(`✅ ${icon} ${visitor.nome} · ${gate}`, 'ok');
+    beepOk();
+    addLogItem(visitor, ts, gate);
+    document.getElementById('manual-input').value = '';
+  } catch (e) {
+    // Reverter lock se falhou no banco
+    _usedToday.delete(key);
+    _cooldownMap.delete(key);
+    setStatus('❌ Erro ao registrar acesso', 'err');
+    beepErr();
+  }
+}
+
+/* ── UI ── */
+function setStatus(msg, type) {
+  const el = document.getElementById('scan-status');
+  el.textContent = msg;
+  el.className = 'scan-status' + (type ? ' ' + type : '');
+}
+
+function addLogItem(visitor, ts, gate) {
+  _logItems.unshift({ visitor, ts, gate });
+  renderLog();
+}
+
+function renderLog() {
+  const list  = document.getElementById('log-list');
+  const count = document.getElementById('log-count');
+  count.textContent = _logItems.length;
+  if (!_logItems.length) {
+    list.innerHTML = '<div class="log-empty"><span>📋</span>Nenhum acesso ainda</div>';
+    return;
+  }
+  list.innerHTML = _logItems.slice(0, 50).map(({ visitor: v, ts, gate }) => {
+    const t = new Date(ts);
+    const time = t.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+    const initials = v.nome.split(' ').slice(0,2).map(w => w[0]).join('').toUpperCase();
+    const tagClass = PERFIL_TAGS[v.perfil] || 'tag-comprador';
+    const icon = PERFIL_ICONS[v.perfil] || '👤';
+    const isBuffet = gate === 'Buffet';
+    const gateTag = isBuffet ? 'tag-buffet' : 'tag-feira';
+    const gateIcon = isBuffet ? '🍽️' : '🎪';
+    return `<div class="log-item">
+      <div class="log-av${isBuffet ? ' buffet' : ''}">${initials}</div>
+      <div class="log-info">
+        <div class="log-name">${escHtml(v.nome)}</div>
+        <div class="log-meta">
+          <span class="tag ${tagClass}">${icon} ${v.perfil}</span>
+          <span class="tag ${gateTag}">${gateIcon} ${gate}</span>
+        </div>
+      </div>
+      <div class="log-time">${time}</div>
+    </div>`;
+  }).join('');
+}
+
+function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ── BEEP ── */
+let _audioCtx = null;
+function _getAudioCtx() {
+  if (!_audioCtx) {
+    try { _audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(_) {}
+  }
+  if (_audioCtx && _audioCtx.state === 'suspended') _audioCtx.resume();
+  return _audioCtx;
+}
+function beep(freq, duration, delay = 0) {
+  const ctx = _getAudioCtx(); if (!ctx) return;
+  const o = ctx.createOscillator();
+  const g = ctx.createGain();
+  o.connect(g); g.connect(ctx.destination);
+  o.type = 'square';
+  o.frequency.value = freq;
+  g.gain.setValueAtTime(0.18, ctx.currentTime + delay);
+  g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + duration);
+  o.start(ctx.currentTime + delay);
+  o.stop(ctx.currentTime + delay + duration);
+}
+function beepOk()  { beep(1046, 0.12); }
+function beepErr() { beep(320, 0.15, 0); beep(260, 0.18, 0.2); }
+
+init().catch(() => setStatus('❌ Falha ao conectar. Recarregue a página.', 'err'));
+</script>
+</body>
+</html>
