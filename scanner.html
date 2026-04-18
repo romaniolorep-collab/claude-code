@@ -7,7 +7,6 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111c40'/%3E%3Cpath d='M32 10C26 10 21 14 20 19C17 19.8 14 22.5 14 26C14 28.5 15.2 30.8 17 32C16.4 33.3 16 34.8 16 36C16 40.4 19.6 44 24 44H40C44.4 44 48 40.4 48 36C48 34.8 47.6 33.3 47 32C48.8 30.8 50 28.5 50 26C50 22.5 47 19.8 44 19C43 14 38 10 32 10Z' stroke='%23e8a000' stroke-width='2.5' fill='none' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.5' fill='%23ffbe30'/%3E%3Ccircle cx='32' cy='22' r='2.5' fill='%23ffbe30'/%3E%3Ccircle cx='40' cy='27' r='2.5' fill='%23ffbe30'/%3E%3Ccircle cx='32' cy='34' r='2.5' fill='%23ffbe30'/%3E%3Cline x1='24' y1='27' x2='32' y2='22' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='32' y1='22' x2='40' y2='27' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='24' y1='27' x2='32' y2='34' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='40' y1='27' x2='32' y2='34' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='24' y1='27' x2='40' y2='27' stroke='%23ffbe30' stroke-width='1.5' opacity='0.5'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
   <style>
   :root {
@@ -213,19 +212,33 @@
 <canvas id="qr-canvas"></canvas>
 
 <script>
-const SUPABASE_URL = 'https://rvehuigjfngtilhmczqs.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2ZWh1aWdqZm5ndGlsaG1jenFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5NjgxNDMsImV4cCI6MjA5MDU0NDE0M30.Q-Ujwh-z3vJnmlOcMIp_mmskk9LwSs9vtd8_Q4hTw8A';
 
-// Roteia todas as chamadas REST pelo proxy Netlify (/supabase/*) —
-// evita bloqueio de rede como ocorria antes no index.html
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
-  global: {
-    fetch: (url, options) => {
-      const proxied = url.replace(SUPABASE_URL, window.location.origin + '/supabase');
-      return fetch(proxied, options);
-    }
-  }
-});
+// Todas as chamadas passam pelo proxy Netlify (/supabase/*) — sem depender do cliente JS
+function _api() { return window.location.origin + '/supabase/rest/v1'; }
+const _H = {
+  'apikey': SUPABASE_KEY,
+  'Authorization': 'Bearer ' + SUPABASE_KEY,
+  'Content-Type': 'application/json',
+  'Prefer': 'return=minimal'
+};
+
+async function dbGet(table, params) {
+  const qs = params ? '?' + params : '';
+  const r = await fetch(`${_api()}/${table}${qs}`, { headers: _H });
+  if (!r.ok) { const txt = await r.text().catch(()=>''); throw new Error(`GET ${table} → HTTP ${r.status}: ${txt}`); }
+  return r.json();
+}
+
+async function dbPost(table, body) {
+  const r = await fetch(`${_api()}/${table}`, { method: 'POST', headers: _H, body: JSON.stringify(body) });
+  if (!r.ok) { const txt = await r.text().catch(()=>''); throw new Error(`POST ${table} → HTTP ${r.status}: ${txt}`); }
+}
+
+async function dbPatch(table, filter, body) {
+  const r = await fetch(`${_api()}/${table}?${filter}`, { method: 'PATCH', headers: _H, body: JSON.stringify(body) });
+  if (!r.ok) { const txt = await r.text().catch(()=>''); throw new Error(`PATCH ${table} → HTTP ${r.status}: ${txt}`); }
+}
 
 const PERFIL_ICONS = { 'Comprador':'🛒', 'Lojista':'🏪', 'Gerente Comercial':'💼', 'Expositor':'🏢' };
 const PERFIL_TAGS  = { 'Comprador':'tag-comprador', 'Lojista':'tag-lojista', 'Gerente Comercial':'tag-gerente-comercial', 'Expositor':'tag-expositor' };
@@ -254,20 +267,19 @@ function selectGate(gate) {
 /* ── INIT ── */
 async function init() {
   const today = new Date().toLocaleDateString('pt-BR');
-
-  // Início do dia local em UTC — subtrai offset para capturar desde meia-noite local
   const localMidnight = new Date();
   localMidnight.setHours(0, 0, 0, 0);
+  const midnight = localMidnight.toISOString();
 
-  const [vRes, logRes] = await Promise.all([
-    sb.from('visitors').select('id,nome,perfil,accessed,access_count,last_access').order('registered_at', { ascending: true }),
-    sb.from('access_log').select('visitor_id,gate,ts').gte('ts', localMidnight.toISOString()).order('ts', { ascending: false })
+  const [vData, logData] = await Promise.all([
+    dbGet('visitors', 'select=id,nome,perfil,accessed,access_count,last_access&order=registered_at.asc'),
+    dbGet('access_log', `select=visitor_id,gate,ts&ts=gte.${encodeURIComponent(midnight)}&order=ts.desc`)
   ]);
 
-  _visitors = vRes.data || [];
+  _visitors = Array.isArray(vData) ? vData : [];
 
   // Pré-popular quem já usou qual portão hoje + carregar log do dia
-  for (const entry of (logRes.data || [])) {
+  for (const entry of (Array.isArray(logData) ? logData : [])) {
     const gate = (entry.gate === 'Principal' || !entry.gate) ? 'Feira' : entry.gate;
     _usedToday.set(`${entry.visitor_id}:${gate}`, today);
     const visitor = _visitors.find(v => v.id === entry.visitor_id);
@@ -277,28 +289,14 @@ async function init() {
 
   setStatus('✅ Sistema conectado · ' + _visitors.length + ' credenciais carregadas', 'ok');
   setTimeout(() => setStatus('Aguardando leitura...', ''), 2500);
-  listenRealtime();
-}
 
-function listenRealtime() {
-  sb.channel('scanner-visitors')
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'visitors' }, payload => {
-      if (payload.eventType === 'INSERT') _visitors.push(payload.new);
-      if (payload.eventType === 'UPDATE') {
-        const i = _visitors.findIndex(v => v.id === payload.new.id);
-        if (i >= 0) _visitors[i] = { ..._visitors[i], ...payload.new };
-      }
-      if (payload.eventType === 'DELETE') {
-        const id = payload.old.id;
-        _visitors = _visitors.filter(v => v.id !== id);
-        // Limpa locks — acesso liberado para nova credencial com mesmo ID
-        ['Feira', 'Buffet', 'Principal'].forEach(g => {
-          _usedToday.delete(`${id}:${g}`);
-          _cooldownMap.delete(`${id}:${g}`);
-        });
-      }
-    })
-    .subscribe();
+  // Polling a cada 60s para capturar novos credenciados sem depender de WebSocket
+  setInterval(async () => {
+    try {
+      const fresh = await dbGet('visitors', 'select=id,nome,perfil,accessed,access_count,last_access&order=registered_at.asc');
+      if (Array.isArray(fresh)) _visitors = fresh;
+    } catch(_) {}
+  }, 60000);
 }
 
 /* ── CAMERA ── */
@@ -366,9 +364,11 @@ async function registerById(id, fromQR = false) {
 
   let visitor = _visitors.find(v => v.id === id);
   if (!visitor) {
-    // Não encontrado localmente — tenta buscar direto do banco (novo cadastro ou realtime atrasado)
-    const { data } = await sb.from('visitors').select('id,nome,perfil,accessed,access_count,last_access').eq('id', id).single();
-    if (data) { _visitors.push(data); visitor = data; }
+    // Não encontrado localmente — tenta buscar direto do banco (novo cadastro ou polling atrasado)
+    try {
+      const arr = await dbGet('visitors', `select=id,nome,perfil,accessed,access_count,last_access&id=eq.${encodeURIComponent(id)}`);
+      if (Array.isArray(arr) && arr.length > 0) { _visitors.push(arr[0]); visitor = arr[0]; }
+    } catch(_) {}
   }
   if (!visitor) { beepErr(); setStatus(`❌ ID "${id}" não encontrado`, 'err'); if (!fromQR) document.getElementById('manual-input').value = ''; return; }
 
@@ -417,8 +417,8 @@ async function registerById(id, fromQR = false) {
   const newCount = (visitor.access_count || 0) + 1;
 
   try {
-    await sb.from('access_log').insert({ visitor_id: id, gate, ts });
-    await sb.from('visitors').update({ accessed: true, access_count: newCount, last_access: ts }).eq('id', id);
+    await dbPost('access_log', { visitor_id: id, gate, ts });
+    await dbPatch('visitors', `id=eq.${encodeURIComponent(id)}`, { accessed: true, access_count: newCount, last_access: ts });
     visitor.accessed = true;
     visitor.access_count = newCount;
     visitor.last_access = ts;
@@ -506,7 +506,7 @@ function beep(freq, duration, delay = 0) {
 function beepOk()  { beep(1046, 0.12); }
 function beepErr() { beep(320, 0.15, 0); beep(260, 0.18, 0.2); }
 
-init().catch(() => setStatus('❌ Falha ao conectar. Recarregue a página.', 'err'));
+init().catch(err => setStatus('❌ Falha ao conectar: ' + (err?.message || String(err)), 'err'));
 </script>
 </body>
 </html>
