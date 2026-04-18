@@ -679,6 +679,7 @@
       <button class="btn btn-ghost btn-sm" onclick="filterDash('Lojista')" id="f-loj">🏪 Lojista</button>
       <button class="btn btn-ghost btn-sm" onclick="filterDash('Gerente Comercial')" id="f-ger">💼 Gerente</button>
       <button class="btn btn-ghost btn-sm" onclick="filterDash('Expositor')" id="f-exp">🏢 Expositor</button>
+      <button class="btn btn-ghost btn-sm" onclick="filterDash('Visitante')" id="f-vis">👤 Visitante</button>
       <button class="btn btn-ghost btn-sm" onclick="filterDash('pendente')" id="f-pend">⏳ Pendentes</button>
     </div>
     <div class="tbl-wrap">
@@ -2223,7 +2224,7 @@ async function deleteLogEntry(entryId) {
 }
 
 function refreshRealtimeStats() {
-  const vs = DB.visitors.filter(v => v.perfil !== 'Visitante'), log = DB.log, today = new Date().toDateString();
+  const vs = DB.visitors, log = DB.log, today = new Date().toDateString();
   const todayEntries = log.filter(e => new Date(e.ts).toDateString() === today);
   const todayHits    = todayEntries.filter(e => e.gate !== 'Buffet').length;
   const buffetToday  = todayEntries.filter(e => e.gate === 'Buffet').length;
@@ -2237,11 +2238,11 @@ function refreshRealtimeStats() {
 let _dashFilter = '';
 function filterDash(f) {
   _dashFilter = f;
-  const filterIds = ['f-all','f-comp','f-loj','f-ger','f-exp','f-pend'];
+  const filterIds = ['f-all','f-comp','f-loj','f-ger','f-exp','f-vis','f-pend'];
   filterIds.forEach(id => { const b = document.getElementById(id); if (b) b.classList.remove('active'); });
-  const map = {'':'f-all','Comprador':'f-comp','Lojista':'f-loj','Gerente Comercial':'f-ger','Expositor':'f-exp','pendente':'f-pend'};
+  const map = {'':'f-all','Comprador':'f-comp','Lojista':'f-loj','Gerente Comercial':'f-ger','Expositor':'f-exp','Visitante':'f-vis','pendente':'f-pend'};
   const btn = document.getElementById(map[f]); if (btn) btn.classList.add('active');
-  const vs = DB.visitors.filter(v => v.perfil !== 'Visitante');
+  const vs = DB.visitors;
   const filtered = f === 'pendente' ? vs.filter(v => !v.accessed)
                  : f ? vs.filter(v => v.perfil === f) : vs;
   renderVisitorsTable(filtered);
@@ -2249,7 +2250,7 @@ function filterDash(f) {
 }
 
 function renderDashboard() {
-  const vs = DB.visitors.filter(v => v.perfil !== 'Visitante'), log = DB.log;
+  const vs = DB.visitors, log = DB.log;
   const today = new Date().toDateString();
   const acc   = vs.filter(v => v.accessed).length;
   const tot   = vs.length;
@@ -2279,7 +2280,7 @@ function renderDashboard() {
   // Resumo por perfil
   const pb = document.getElementById('perfil-breakdown');
   if (pb) {
-    const perfis = ['Comprador','Lojista','Gerente Comercial','Expositor'];
+    const perfis = ['Comprador','Lojista','Gerente Comercial','Expositor','Visitante'];
     pb.innerHTML = perfis.map(p => {
       const cfg   = PERFIL_CFG[p];
       const total = vs.filter(v => v.perfil === p).length;
@@ -2301,7 +2302,7 @@ function renderDashboard() {
   const buffetUsedEmpty = document.getElementById('buffet-used-empty');
   if (buffetPill) buffetPill.textContent = buffetHoje + (buffetHoje === 1 ? ' refeição hoje' : ' refeições hoje');
   if (buffetGrid) {
-    const perfis = ['Comprador','Lojista','Gerente Comercial','Expositor'];
+    const perfis = ['Comprador','Lojista','Gerente Comercial','Expositor','Visitante'];
     buffetGrid.innerHTML = perfis.map(p => {
       const cfg      = PERFIL_CFG[p];
       const checked  = vs.filter(v => v.perfil === p && v.accessed).length;
