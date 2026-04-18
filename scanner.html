@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Scanner · iBrand intelligence systems</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111c40'/%3E%3Cpath d='M32 10C26 10 21 14 20 19C17 19.8 14 22.5 14 26C14 28.5 15.2 30.8 17 32C16.4 33.3 16 34.8 16 36C16 40.4 19.6 44 24 44H40C44.4 44 48 40.4 48 36C48 34.8 47.6 33.3 47 32C48.8 30.8 50 28.5 50 26C50 22.5 47 19.8 44 19C43 14 38 10 32 10Z' stroke='%23e8a000' stroke-width='2.5' fill='none' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.5' fill='%23ffbe30'/%3E%3Ccircle cx='32' cy='22' r='2.5' fill='%23ffbe30'/%3E%3Ccircle cx='40' cy='27' r='2.5' fill='%23ffbe30'/%3E%3Ccircle cx='32' cy='34' r='2.5' fill='%23ffbe30'/%3E%3Cline x1='24' y1='27' x2='32' y2='22' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='32' y1='22' x2='40' y2='27' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='24' y1='27' x2='32' y2='34' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='40' y1='27' x2='32' y2='34' stroke='%23ffbe30' stroke-width='1.5' opacity='0.7'/%3E%3Cline x1='24' y1='27' x2='40' y2='27' stroke='%23ffbe30' stroke-width='1.5' opacity='0.5'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -255,6 +258,8 @@ let _lastQR      = '';
 const _usedToday  = new Map();
 // Chave: "id:gate" → timestamp — cooldown de 5s
 const _cooldownMap = new Map();
+// Anti-concorrência: evita dois processamentos simultâneos
+let _busy = false;
 
 /* ── GATE SELECTOR ── */
 function selectGate(gate) {
@@ -359,6 +364,12 @@ async function handleQR(raw) {
 
 /* ── REGISTER ── */
 async function registerById(id, fromQR = false) {
+  if (_busy) return; // anti-concorrência
+  _busy = true;
+  try { await _doRegister(id, fromQR); } finally { _busy = false; }
+}
+
+async function _doRegister(id, fromQR) {
   id = (id || '').trim().toUpperCase();
   if (!id) { beepErr(); setStatus('⚠️ ID não informado', 'err'); return; }
 
@@ -372,9 +383,17 @@ async function registerById(id, fromQR = false) {
   }
   if (!visitor) { beepErr(); setStatus(`❌ ID "${id}" não encontrado`, 'err'); if (!fromQR) document.getElementById('manual-input').value = ''; return; }
 
-  const gate = selectedGate;
-  const key  = `${id}:${gate}`;
+  const gate  = selectedGate;
+  const key   = `${id}:${gate}`;
   const today = new Date().toLocaleDateString('pt-BR');
+
+  // ── REGRA #1: Visitante NÃO tem acesso ao Buffet — checagem prioritária ──
+  if ((visitor.perfil || '').trim() === 'Visitante' && gate === 'Buffet') {
+    beepErr();
+    setStatus(`🚫 VISITANTE · BUFFET BLOQUEADO — ${visitor.nome}`, 'err');
+    if (!fromQR) document.getElementById('manual-input').value = '';
+    return;
+  }
 
   // Cooldown de 5s para o mesmo id+portão
   const cooldownTs = _cooldownMap.get(key);
@@ -390,14 +409,6 @@ async function registerById(id, fromQR = false) {
     const otherGate = gate === 'Feira' ? 'Buffet' : 'Feira';
     const otherUsed = _usedToday.get(`${id}:${otherGate}`) === today;
     beepErr(); setStatus(`⛔ ${visitor.nome} já usou ${gate} hoje` + (otherUsed ? ' · ambos portões utilizados' : ''), 'err');
-    if (!fromQR) document.getElementById('manual-input').value = '';
-    return;
-  }
-
-  // Visitante: bloqueio total no buffet
-  if (visitor.perfil === 'Visitante' && gate === 'Buffet') {
-    beepErr();
-    setStatus(`🚫 ACESSO NÃO PERMITIDO — ${visitor.nome} é Visitante · Buffet não autorizado`, 'err');
     if (!fromQR) document.getElementById('manual-input').value = '';
     return;
   }
@@ -432,7 +443,7 @@ async function registerById(id, fromQR = false) {
     // Reverter lock se falhou no banco
     _usedToday.delete(key);
     _cooldownMap.delete(key);
-    setStatus('❌ Erro ao registrar acesso', 'err');
+    setStatus(`❌ Erro ao registrar: ${e?.message || e}`, 'err');
     beepErr();
   }
 }

@@ -1980,8 +1980,8 @@ async function _doProcessAccess() {
   if (!id) { showAlert('scan-alert', 'error', '⚠️ Digite ou escaneie o ID do visitante.'); return; }
   const visitor = DB.getVisitor(id);
   if (!visitor) { showAlert('scan-alert', 'error', `❌ ID <strong>${id}</strong> não encontrado no sistema.`); return; }
-  // Visitante: sem acesso ao buffet
-  if (visitor.perfil === 'Visitante' && selectedGate === 'Buffet') {
+  // ── REGRA #1 (prioritária): Visitante NÃO tem acesso ao Buffet ──
+  if ((visitor.perfil || '').trim() === 'Visitante' && selectedGate === 'Buffet') {
     showAlert('scan-alert', 'error', `
       <div style="display:flex;flex-direction:column;gap:6px;">
         <div style="font-size:15px;font-weight:800;">🚫 ACESSO NÃO PERMITIDO</div>
@@ -2075,8 +2075,8 @@ async function _qrHandleResult(raw) {
     return;
   }
 
-  // Visitante: bloqueio total no buffet via câmera
-  if (visitor.perfil === 'Visitante' && selectedGate === 'Buffet') {
+  // ── REGRA #1 (prioritária): Visitante NÃO tem acesso ao Buffet via câmera ──
+  if ((visitor.perfil || '').trim() === 'Visitante' && selectedGate === 'Buffet') {
     statusEl.textContent = '🚫 ACESSO NÃO PERMITIDO';
     statusEl.className = 'qr-status err';
     showAlert('scan-alert', 'error', `
