@@ -573,7 +573,7 @@
                 </div>
               </div>
               <div class="form-group" id="email-group">
-                <label>E-mail *</label>
+                <label id="email-label">E-mail *</label>
                 <input type="email" id="f-email" placeholder="email@empresa.com" required>
               </div>
               <div class="form-group" id="fone-group">
@@ -1367,17 +1367,20 @@ function _aplicarPerfil(perfil) {
   document.getElementById('f-empresa').placeholder = soEmpresa ? 'Nome da empresa' : 'Nome da empresa ou loja';
   document.getElementById('f-empresa').required = true;
 
-  // Visitante: oculta campos desnecessários (email, fone, estado, cidade)
-  const camposOpcionaisVisitante = ['email-group','fone-group','estado-group','cidade-group'];
+  // Visitante: oculta campos não essenciais (fone, estado, cidade) — email OBRIGATÓRIO para envio da credencial
+  const camposOpcionaisVisitante = ['fone-group','estado-group','cidade-group'];
   camposOpcionaisVisitante.forEach(id => {
     document.getElementById(id).style.display = isVisitante ? 'none' : '';
   });
-  document.getElementById('f-email').required  = !isVisitante;
+  document.getElementById('f-email').required  = true; // obrigatório para todos, inclusive Visitante
   document.getElementById('f-fone').required   = !isVisitante;
   document.getElementById('f-estado').required = !isVisitante;
   document.getElementById('f-cidade').required = !isVisitante;
+  // Atualiza label do email conforme perfil
+  document.getElementById('email-label').innerHTML = isVisitante
+    ? 'E-mail * <span style="font-weight:400;font-size:11px;color:var(--accent);">(para envio da credencial digital)</span>'
+    : 'E-mail *';
   if (isVisitante) {
-    document.getElementById('f-email').value  = '';
     document.getElementById('f-fone').value   = '';
     document.getElementById('f-estado').value = '';
     document.getElementById('f-cidade').value = '';
@@ -1502,7 +1505,7 @@ async function handleSubmit(e) {
   const fone  = document.getElementById('f-fone').value.trim();
   const estado = document.getElementById('f-estado').value;
   const isVisitante = perfil === 'Visitante';
-  if (!nome || !cpf || !empresa || !perfil || (!isVisitante && (!fone || !email || !estado || !cidade))) {
+  if (!nome || !cpf || !empresa || !perfil || !email || (!isVisitante && (!fone || !estado || !cidade))) {
     showAlert('form-alert', 'error', '⚠️ Preencha todos os campos obrigatórios.');
     return;
   }
