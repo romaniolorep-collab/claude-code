@@ -1705,11 +1705,12 @@ function perfilAvatarSVG(perfil, nome) {
 <path d="M27,49 L30,53.5 L33,49" fill="white" stroke="black" stroke-width="1.7" stroke-linejoin="round"/>`;
 
   // ── Gênero: cabelo lados ──
+  // Feminino: longo até ombros. Masculino: apenas templo, curto.
   const HAIR_SIDES = F
     ? `<path d="M19,21 Q17,37 18.5,50 L25,43 L23,33 Q21,26 21,21Z" fill="black"/>
 <path d="M41,21 Q43,37 41.5,50 L35,43 L37,33 Q39,26 39,21Z" fill="black"/>`
-    : `<path d="M19.5,22 Q18,26 19,31 L21,30 Q20.5,25 21,22Z" fill="black"/>
-<path d="M40.5,22 Q42,26 41,31 L39,30 Q39.5,25 39,22Z" fill="black"/>`;
+    : `<path d="M19.5,22 Q19,24.5 19.5,27 L21,26 Q20.5,23.5 21,22Z" fill="black"/>
+<path d="M40.5,22 Q41,24.5 40.5,27 L39,26 Q39.5,23.5 39,22Z" fill="black"/>`;
 
   // ── Gênero: cabelo topo (padrão) ──
   const HAIR_TOP_STD = F
@@ -1726,9 +1727,12 @@ function perfilAvatarSVG(perfil, nome) {
 <line x1="34.8" y1="20.1" x2="34.8" y2="18.6" stroke="black" stroke-width="1" stroke-linecap="round"/>
 <line x1="36.8" y1="20.5" x2="38.2" y2="19.2" stroke="black" stroke-width="1" stroke-linecap="round"/>` : '';
 
-  // ── Sobranhelhas e olhos padrão ──
-  const BROW = `<path d="M22.5,19 Q25.5,17.5 28.5,19" stroke="black" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-<path d="M31.5,19 Q34.5,17.5 37.5,19" stroke="black" stroke-width="1.6" fill="none" stroke-linecap="round"/>`;
+  // ── Sobrancelhas: arqueadas (F) vs retas/grossas (M) ──
+  const BROW = F
+    ? `<path d="M22.5,19 Q25.5,17.5 28.5,19" stroke="black" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+<path d="M31.5,19 Q34.5,17.5 37.5,19" stroke="black" stroke-width="1.6" fill="none" stroke-linecap="round"/>`
+    : `<line x1="22" y1="19.5" x2="29" y2="18.8" stroke="black" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="31" y1="18.8" x2="38" y2="19.5" stroke="black" stroke-width="2.2" stroke-linecap="round"/>`;
   const EYES = `<ellipse cx="25" cy="22.5" rx="2.3" ry="2.4" fill="black"/>
 <ellipse cx="35" cy="22.5" rx="2.3" ry="2.4" fill="black"/>
 <circle cx="25.8" cy="21.6" r="0.85" fill="white"/>
