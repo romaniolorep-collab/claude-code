@@ -2344,7 +2344,16 @@ function searchVisitors(q) {
         <div style="font-size:12px;color:var(--muted);margin-top:2px;">${escHtml(v.empresa || v.email)}</div>
         <div style="font-size:11px;color:#adb8d0;font-family:monospace;margin-top:1px;">${v.id} · <span class="${tagClass(v.perfil)}">${perfilIcon(v.perfil)} ${v.perfil}</span></div>
       </div>
-      <div style="font-size:18px;flex-shrink:0;">${v.accessed ? '✅' : '⏳'}</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+        <div style="font-size:18px;">${v.accessed ? '✅' : '⏳'}</div>
+        <button onclick="event.stopPropagation();deleteVisitor('${v.id}')" title="Apagar cadastro"
+          style="background:none;border:1.5px solid #fecaca;border-radius:7px;padding:5px 7px;cursor:pointer;color:#ef4444;display:flex;align-items:center;transition:all .15s;"
+          onmouseover="this.style.background='#fef2f2'" onmouseout="this.style.background='none'">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3,4 13,4"/><path d="M5 4V2h6v2"/><path d="M4 4l1 10h6l1-10"/>
+          </svg>
+        </button>
+      </div>
     </div>`).join('');
 }
 function selectBuscaVisitor(id) { const v = DB.getVisitor(id); if (v) displayBadge(v, 'busca-badge-display'); }
