@@ -132,7 +132,7 @@
   nav button {
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.07);
-    border-radius:99px; color:rgba(255,255,255,.45);
+    border-radius:99px; color:rgba(255,255,255,.75);
     padding:7px 16px; cursor:pointer;
     font-size:12px; font-weight:500; font-family:'Inter', sans-serif;
     transition:all .18s ease; display:flex; align-items:center; gap:6px;
@@ -1966,12 +1966,9 @@ function badgeHTML(v) {
       <!-- HEADER -->
       <div style="background:linear-gradient(135deg,${cfg.hdr1} 0%,${cfg.hdr2} 55%,${cfg.hdr3} 100%);padding:0;position:relative;overflow:hidden;">
         <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 88% 10%,${cfg.glow1} 0%,transparent 55%),radial-gradient(ellipse at 12% 90%,${cfg.glow2} 0%,transparent 55%);"></div>
-        <div style="position:relative;z-index:1;padding:18px 22px 14px;display:flex;align-items:center;justify-content:space-between;">
-          <div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:#fff;letter-spacing:1.5px;line-height:1.1;">LONDRICALCE</div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:2px;margin-top:2px;">CREDENCIAMENTO 2026</div>
-          </div>
-          <div style="font-size:28px;opacity:.7;">${icon}</div>
+        <div style="position:relative;z-index:1;padding:18px 22px 14px;text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:#fff;letter-spacing:1.5px;line-height:1.1;">LONDRICALCE</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:2px;margin-top:2px;">CREDENCIAMENTO 2026</div>
         </div>
         <div style="background:${cfg.bar};height:3px;"></div>
         <div style="padding:9px 22px;background:rgba(0,0,0,.18);">
@@ -1980,7 +1977,7 @@ function badgeHTML(v) {
         </div>
       </div>
       <!-- PERFIL STRIP -->
-      <div style="background:${cfg.strip};padding:8px 22px;border-bottom:1px solid rgba(0,0,0,.06);">
+      <div style="background:${cfg.strip};padding:8px 22px;border-bottom:1px solid rgba(0,0,0,.06);text-align:center;">
         <span style="font-size:11px;font-weight:800;color:${cfg.stripTc};letter-spacing:1.2px;text-transform:uppercase;">${escHtml(v.perfil)}</span>
       </div>
       <!-- BODY -->
