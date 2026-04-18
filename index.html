@@ -420,6 +420,12 @@
     #print-win-frame img { max-width: 86mm; height: auto; display: inline-block !important; }
   }
 
+  /* ─── ICON SYSTEM ─────────────────────────────── */
+  .p-ico { width:13px; height:13px; vertical-align:middle; display:inline-block; flex-shrink:0; }
+  .perfil-icon { display:flex; align-items:center; justify-content:center; width:20px; height:20px; flex-shrink:0; }
+  .perfil-icon svg { width:20px; height:20px; }
+  .card-title svg { flex-shrink:0; }
+
   /* ─── RESPONSIVE ─────────────────────────────────── */
   .cred-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
   @media (max-width:900px) {
@@ -457,12 +463,16 @@
   <div class="hdr-content">
     <div class="logo-wrap">
       <div class="logo-icon">
-        <!-- Ícone: crachá / credencial estilizado -->
-        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="2" width="16" height="18" rx="3" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.9)" stroke-width="1.4"/>
-          <circle cx="11" cy="9" r="3" stroke="rgba(255,255,255,.9)" stroke-width="1.3"/>
-          <path d="M5.5 17.5c0-2.5 2.5-4 5.5-4s5.5 1.5 5.5 4" stroke="rgba(255,255,255,.9)" stroke-width="1.3" stroke-linecap="round"/>
-          <rect x="8" y="1" width="6" height="2.5" rx="1.2" fill="rgba(255,255,255,.9)"/>
+        <!-- Logo: "L" lettermark in badge silhouette — Claude design -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Badge card body -->
+          <rect x="3" y="6" width="18" height="16" rx="3.5" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.85)" stroke-width="1.3"/>
+          <!-- Lanyard clip top -->
+          <rect x="9" y="3" width="6" height="4.5" rx="2" fill="rgba(255,255,255,.85)"/>
+          <!-- Geometric bold "L" -->
+          <path d="M8.5 11 L8.5 18.5 L16.5 18.5" stroke="rgba(255,255,255,.95)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Scan line accent -->
+          <line x1="8.5" y1="14.5" x2="12" y2="14.5" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="logo-text">
@@ -495,26 +505,26 @@
       <h1>Bem-vindo ao LONDRICALCE – CREDENCIAMENTO</h1>
       <p>Preencha o formulário para gerar sua credencial digital com QR Code e garantir seu acesso ao maior evento de calçados do Norte do Paraná.</p>
       <div class="fh-chips">
-        <div class="fh-chip">📅 Junho · 2026</div>
-        <div class="fh-chip">📍 Londrina · PR</div>
-        <div class="fh-chip">🎫 Credencial Instantânea</div>
+        <div class="fh-chip"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M5 1v3M11 1v3M2 7h12"/></svg> Junho · 2026</div>
+        <div class="fh-chip"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a5 5 0 0 0-5 5c0 3.5 5 9 5 9s5-5.5 5-9a5 5 0 0 0-5-5z"/><circle cx="8" cy="7" r="2"/></svg> Londrina · PR</div>
+        <div class="fh-chip"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="14" height="9" rx="2"/><path d="M5 8h2M5 11h4"/><rect x="9" y="6.5" width="4" height="4" rx=".7"/></svg> Credencial Instantânea</div>
       </div>
     </div>
   </div>
 
   <div id="form-wrap">
     <div class="card">
-      <div class="card-title">📝 Dados do Visitante</div>
+      <div class="card-title"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2l3 3-7 7H4v-3L11 2z"/><path d="M9 4l3 3"/></svg> Dados do Visitante</div>
       <div id="form-alert"></div>
       <form id="reg-form">
         <div class="form-grid">
           <div class="form-group full">
             <label>Perfil de Visitante *</label>
             <div class="perfil-grid">
-              <label class="perfil-card"><input type="radio" name="perfil" value="Comprador" onchange="selectPerfil(this)"><span class="perfil-icon">🛒</span><span>Comprador</span></label>
-              <label class="perfil-card"><input type="radio" name="perfil" value="Lojista" onchange="selectPerfil(this)"><span class="perfil-icon">🏪</span><span>Lojista</span></label>
-              <label class="perfil-card"><input type="radio" name="perfil" value="Expositor" onchange="selectPerfil(this)"><span class="perfil-icon">🏢</span><span>Expositor</span></label>
-              <label class="perfil-card"><input type="radio" name="perfil" value="Visitante" onchange="selectPerfil(this)"><span class="perfil-icon">👤</span><span>Visitante</span></label>
+              <label class="perfil-card"><input type="radio" name="perfil" value="Comprador" onchange="selectPerfil(this)"><span class="perfil-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2.5h1.8l1.7 7h7.5l1.5-5H6"/><circle cx="7.5" cy="14.5" r="1.2"/><circle cx="13" cy="14.5" r="1.2"/></svg></span><span>Comprador</span></label>
+              <label class="perfil-card"><input type="radio" name="perfil" value="Lojista" onchange="selectPerfil(this)"><span class="perfil-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l1.5-4.5h11L16 8"/><path d="M2 8v8h14V8"/><path d="M7 16v-5h4v5"/><path d="M2 8a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/></svg></span><span>Lojista</span></label>
+              <label class="perfil-card"><input type="radio" name="perfil" value="Expositor" onchange="selectPerfil(this)"><span class="perfil-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="12" height="10" rx="1.2"/><path d="M1 6h16M7 6V4h4v2"/><path d="M7 10h4M7 13h3"/></svg></span><span>Expositor</span></label>
+              <label class="perfil-card"><input type="radio" name="perfil" value="Visitante" onchange="selectPerfil(this)"><span class="perfil-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.5"/><path d="M2 17c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5"/></svg></span><span>Visitante</span></label>
             </div>
 
             <!-- Código de acesso Visitante -->
@@ -614,7 +624,7 @@
         </div>
         <div style="margin-top:26px;display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;">
           <button type="button" class="btn btn-ghost" onclick="resetForm()">↺ Limpar</button>
-          <button type="submit" class="btn btn-primary">✅ Confirmar Cadastro</button>
+          <button type="submit" class="btn btn-primary"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l4 4 8-8"/></svg> Confirmar Cadastro</button>
         </div>
       </form>
     </div>
@@ -622,13 +632,13 @@
 
   <div id="success-wrap" style="display:none;max-width:500px;margin:0 auto;">
     <div class="card" style="text-align:center;padding:44px 36px;">
-      <div class="success-icon">✅</div>
+      <div class="success-icon"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:#065F46"><path d="M6 18l8 8 16-16"/></svg></div>
       <h2 style="font-family:'Space Grotesk',sans-serif;font-size:24px;color:var(--navy);margin-bottom:10px;">Cadastro Realizado!</h2>
       <p style="color:var(--muted);margin-bottom:24px;line-height:1.7;">Credencial digital gerada com sucesso. Apresente o QR Code na entrada do evento.</p>
       <p style="color:var(--muted);font-size:12px;margin-top:-16px;margin-bottom:20px;">⏱️ Formulário reiniciará automaticamente em 20 segundos para novo cadastro.</p>
       <div id="new-id-display" style="background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--r-sm);padding:18px 24px;margin-bottom:28px;font-family:'Space Grotesk',monospace;font-size:26px;color:#fff;font-weight:700;letter-spacing:4px;box-shadow:0 4px 18px rgba(17,28,64,.35);"></div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <button class="btn btn-gold" onclick="goToBadge()">🎫 Ver Credencial e QR Code</button>
+        <button class="btn btn-gold" onclick="goToBadge()"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M4 7h3M4 10h2"/><rect x="9" y="6" width="4" height="4" rx=".6"/></svg> Ver Credencial e QR Code</button>
         <button class="btn btn-ghost" onclick="resetForm()">+ Novo Cadastro</button>
       </div>
     </div>
@@ -640,7 +650,7 @@
 <div id="view-credencial" class="view">
   <div style="max-width:520px;margin:0 auto;">
     <div>
-      <div class="card-title" style="margin-bottom:16px;">🎫 Credencial Digital</div>
+      <div class="card-title" style="margin-bottom:16px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M4 7h3M4 10h2"/><rect x="9" y="6" width="4" height="4" rx=".6"/></svg> Credencial Digital</div>
       <div id="badge-display">
         <div style="background:var(--surface);border-radius:var(--r);padding:56px 24px;text-align:center;color:var(--muted);box-shadow:var(--shadow);border:1px solid var(--border);">
           <div style="font-size:52px;margin-bottom:14px;">🎫</div>
@@ -656,7 +666,7 @@
 <div id="view-busca" class="view">
   <div class="cred-grid">
     <div>
-      <div class="card-title" style="margin-bottom:16px;">🎫 Credencial Encontrada</div>
+      <div class="card-title" style="margin-bottom:16px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M4 7h3M4 10h2"/><rect x="9" y="6" width="4" height="4" rx=".6"/></svg> Credencial Encontrada</div>
       <div id="busca-badge-display">
         <div style="background:var(--surface);border-radius:var(--r);padding:56px 24px;text-align:center;color:var(--muted);box-shadow:var(--shadow);border:1px solid var(--border);">
           <div style="font-size:52px;margin-bottom:14px;">🔍</div>
@@ -665,7 +675,7 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-title">🔍 Buscar Visitante</div>
+      <div class="card-title"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="M13 13l-2-2"/></svg> Buscar Visitante</div>
       <input type="text" id="search-input" placeholder="Nome, e-mail ou ID (LC...)..." style="margin-bottom:18px;" oninput="searchVisitors(this.value)">
       <div id="search-results"></div>
 
@@ -686,23 +696,23 @@
 
           <!-- step 2: formulário -->
           <div id="extra-form-step" style="display:none;margin-top:4px;">
-            <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;">🎫 Nova Credencial Extra</div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M4 7h3M4 10h2"/><rect x="9" y="6" width="4" height="4" rx=".6"/></svg> Nova Credencial Extra</div>
 
             <!-- Seleção de tipo -->
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px;">
               <label id="extra-card-gerente-comercial" onclick="selectExtraTipo('Gerente Comercial')" style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 6px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;text-align:center;">
                 <input type="radio" name="extra-tipo" value="Gerente Comercial" style="display:none;">
-                <span style="font-size:22px;">💼</span>
+                <span class="perfil-icon" style="margin:0 auto;"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="10" rx="2"/><path d="M6 6V4.5a3 3 0 0 1 6 0V6"/><path d="M9 10v2M8 11h2"/></svg></span>
                 <span style="font-size:10.5px;font-weight:700;line-height:1.3;color:var(--text);">Gerente Comercial</span>
               </label>
               <label id="extra-card-preposto" onclick="selectExtraTipo('Preposto')" style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 6px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;text-align:center;">
                 <input type="radio" name="extra-tipo" value="Preposto" style="display:none;">
-                <span style="font-size:22px;">🤝</span>
+                <span class="perfil-icon" style="margin:0 auto;"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="11.5" cy="6.5" r="2.5"/><path d="M1 16c0-2.5 2.5-4 5.5-4"/><path d="M9.5 16c0-2.5 2.5-4 5.5-4"/></svg></span>
                 <span style="font-size:10.5px;font-weight:700;line-height:1.3;color:var(--text);">Preposto</span>
               </label>
               <label id="extra-card-suporte-da-empresa" onclick="selectExtraTipo('Suporte da Empresa')" style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 6px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;text-align:center;">
                 <input type="radio" name="extra-tipo" value="Suporte da Empresa" style="display:none;">
-                <span style="font-size:22px;">🔧</span>
+                <span class="perfil-icon" style="margin:0 auto;"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="2.5"/><path d="M9 1.5V4M9 14v2.5M1.5 9H4M14 9h2.5M3.6 3.6l1.8 1.8M12.6 12.6l1.8 1.8M3.6 14.4l1.8-1.8M12.6 5.4l1.8-1.8"/></svg></span>
                 <span style="font-size:10.5px;font-weight:700;line-height:1.3;color:var(--text);">Suporte da Empresa</span>
               </label>
             </div>
@@ -736,7 +746,7 @@
             </div>
 
             <div id="extra-form-alert" style="margin-bottom:10px;"></div>
-            <button class="btn btn-success" onclick="gerarCredencialExtra(event)" style="width:100%;justify-content:center;">🎫 Gerar Credencial</button>
+            <button class="btn btn-success" onclick="gerarCredencialExtra(event)" style="width:100%;justify-content:center;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l4 4 8-8"/></svg> Gerar Credencial</button>
           </div>
 
           <!-- resultado -->
@@ -754,7 +764,7 @@
 <!-- ════════════════  CONTROLE DE ACESSO  ════════════════ -->
 <div id="view-leitor" class="view">
   <div class="card">
-    <div class="card-title">📱 Registrar Acesso</div>
+    <div class="card-title"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4V2h3M9 2h3v2M12 12v2H9M5 14H2v-2"/><rect x="5" y="5" width="6" height="6" rx="1"/></svg> Registrar Acesso</div>
     <div class="scan-row">
       <div style="flex:2;">
         <label style="display:block;font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">ID do Visitante</label>
@@ -873,12 +883,12 @@
     <div class="card-title">👤 Todos os Visitantes <span class="pill" id="dash-count">0</span></div>
     <div style="margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap;">
       <button class="btn btn-ghost btn-sm" onclick="filterDash('')" id="f-all">Todos</button>
-      <button class="btn btn-ghost btn-sm" onclick="filterDash('Comprador')" id="f-comp">🛒 Comprador</button>
-      <button class="btn btn-ghost btn-sm" onclick="filterDash('Lojista')" id="f-loj">🏪 Lojista</button>
-      <button class="btn btn-ghost btn-sm" onclick="filterDash('Gerente Comercial')" id="f-ger">💼 Gerente</button>
-      <button class="btn btn-ghost btn-sm" onclick="filterDash('Expositor')" id="f-exp">🏢 Expositor</button>
-      <button class="btn btn-ghost btn-sm" onclick="filterDash('Visitante')" id="f-vis">👤 Visitante</button>
-      <button class="btn btn-ghost btn-sm" onclick="filterDash('pendente')" id="f-pend">⏳ Pendentes</button>
+      <button class="btn btn-ghost btn-sm" onclick="filterDash('Comprador')" id="f-comp">Comprador</button>
+      <button class="btn btn-ghost btn-sm" onclick="filterDash('Lojista')" id="f-loj">Lojista</button>
+      <button class="btn btn-ghost btn-sm" onclick="filterDash('Gerente Comercial')" id="f-ger">Gerente</button>
+      <button class="btn btn-ghost btn-sm" onclick="filterDash('Expositor')" id="f-exp">Expositor</button>
+      <button class="btn btn-ghost btn-sm" onclick="filterDash('Visitante')" id="f-vis">Visitante</button>
+      <button class="btn btn-ghost btn-sm" onclick="filterDash('pendente')" id="f-pend">Pendentes</button>
     </div>
     <div class="tbl-wrap">
       <table>
@@ -1662,7 +1672,16 @@ function closeAuthModal() {
 
 /* ─── BADGE ─────────────────────────── */
 function tagClass(p) { const m = {'Comprador':'tag-comprador','Lojista':'tag-lojista','Gerente Comercial':'tag-gerente-comercial','Expositor':'tag-expositor'}; return 'tag ' + (m[p] || 'tag-comprador'); }
-function perfilIcon(p) { return (PERFIL_CFG[p] || {}).icon || '👤'; }
+const _PICO = {
+  'Comprador':          `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2.5h1.5l1.8 6.5h7l1.2-4.5H6"/><circle cx="7.5" cy="13.5" r="1.2"/><circle cx="12.5" cy="13.5" r="1.2"/></svg>`,
+  'Lojista':            `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5l1.2-4h9.6L14 7.5"/><path d="M2 7.5v6.5h12V7.5"/><path d="M6.5 14v-4h3v4"/><path d="M2 7.5a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/></svg>`,
+  'Expositor':          `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="10" height="9" rx="1"/><path d="M1 5.5h14M6.5 5.5V3.5h3v2"/><path d="M6 9.5h4M6 12h3"/></svg>`,
+  'Visitante':          `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="3"/><path d="M2 14c0-2.8 2.7-5 6-5s6 2.2 6 5"/></svg>`,
+  'Gerente Comercial':  `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="12" height="8.5" rx="1.5"/><path d="M5.5 6V4.5A2.5 2.5 0 0 1 13 6"/><path d="M8 9.5v1.5M7.2 10.2h1.6"/></svg>`,
+  'Preposto':           `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="11" cy="6" r="2.5"/><path d="M1 14.5c0-2.2 2.2-3.8 5-3.8"/><path d="M8.5 14.5c0-2.2 2.2-3.8 5-3.8"/></svg>`,
+  'Suporte da Empresa': `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2"/><path d="M8 1.5V3.5M8 12.5v2M1.5 8H3.5M12.5 8H14.5M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4"/></svg>`,
+};
+function perfilIcon(p) { return _PICO[p] || _PICO['Visitante']; }
 
 /* ── AVATAR ── */
 function getGender(nome) {
