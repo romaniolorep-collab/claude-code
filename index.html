@@ -1683,6 +1683,165 @@ const _PICO = {
 };
 function perfilIcon(p) { return _PICO[p] || _PICO['Visitante']; }
 
+/* ── PERFIL AVATARS — B&W portrait, gênero dinâmico pelo nome ── */
+function perfilAvatarSVG(perfil, nome) {
+  const g = (typeof getGender === 'function') ? getGender(nome || '') : 'm';
+  const F = g === 'f';
+
+  // ── Partes compartilhadas ──
+  const BG   = `<circle cx="30" cy="30" r="30" fill="white"/><circle cx="30" cy="30" r="28.5" fill="none" stroke="black" stroke-width="2"/>`;
+  const NECK = `<rect x="26.5" y="37.5" width="7" height="6" rx="2" fill="white" stroke="black" stroke-width="1.5"/>`;
+  const FACE = `<ellipse cx="30" cy="24" rx="11.5" ry="13" fill="white" stroke="black" stroke-width="2"/>`;
+  const NOSE = `<path d="M29,27 Q30,29 31,27" stroke="black" stroke-width="1.1" fill="none" stroke-linecap="round"/>`;
+  const MOUTH= `<path d="M26.5,32 Q30,36 33.5,32" stroke="black" stroke-width="1.6" fill="none" stroke-linecap="round"/>`;
+
+  // ── Gênero: corpo ──
+  const BODY = F
+    ? `<path d="M9,60 Q10,50 18,45 L25,43 L28,50 L28,60Z" fill="white" stroke="black" stroke-width="1.7" stroke-linejoin="round"/>
+<path d="M51,60 Q50,50 42,45 L35,43 L32,50 L32,60Z" fill="white" stroke="black" stroke-width="1.7" stroke-linejoin="round"/>
+<path d="M28,50 L30,54 L32,50" fill="white" stroke="black" stroke-width="1.7" stroke-linejoin="round"/>`
+    : `<path d="M9,60 Q10,50 17,45 L24,43 L27,49 L27,60Z" fill="white" stroke="black" stroke-width="1.7" stroke-linejoin="round"/>
+<path d="M51,60 Q50,50 43,45 L36,43 L33,49 L33,60Z" fill="white" stroke="black" stroke-width="1.7" stroke-linejoin="round"/>
+<path d="M27,49 L30,53.5 L33,49" fill="white" stroke="black" stroke-width="1.7" stroke-linejoin="round"/>`;
+
+  // ── Gênero: cabelo lados ──
+  const HAIR_SIDES = F
+    ? `<path d="M19,21 Q17,37 18.5,50 L25,43 L23,33 Q21,26 21,21Z" fill="black"/>
+<path d="M41,21 Q43,37 41.5,50 L35,43 L37,33 Q39,26 39,21Z" fill="black"/>`
+    : `<path d="M19.5,22 Q18.5,30 20,38 L23,43 L22,35 Q20.5,28 21,22Z" fill="black"/>
+<path d="M40.5,22 Q41.5,30 40,38 L37,43 L38,35 Q39.5,28 39,22Z" fill="black"/>`;
+
+  // ── Gênero: cabelo topo (padrão) ──
+  const HAIR_TOP_STD = F
+    ? `<path d="M19,21 C19,11 22.5,8.5 30,8.5 C37.5,8.5 41,11 41,21 L39,15.5 Q35,9.5 30,9.5 Q25,9.5 21,15.5Z" fill="black"/>`
+    : `<path d="M19.5,22 C19.5,12 23,9.5 30,9.5 C37,9.5 40.5,12 40.5,22 L39,16 Q36,10.5 30,10.5 Q24,10.5 21,16Z" fill="black"/>
+<path d="M22,10.5 Q27,9 32,10" stroke="white" stroke-width="0.9" fill="none" stroke-linecap="round" opacity="0.4"/>`;
+
+  // ── Gênero: cílios (feminino) ──
+  const LASH = F
+    ? `<line x1="23.2" y1="20.5" x2="21.8" y2="19.2" stroke="black" stroke-width="1" stroke-linecap="round"/>
+<line x1="25.2" y1="20.1" x2="25.2" y2="18.6" stroke="black" stroke-width="1" stroke-linecap="round"/>
+<line x1="27" y1="20.3" x2="28.2" y2="19" stroke="black" stroke-width="1" stroke-linecap="round"/>
+<line x1="33" y1="20.3" x2="31.8" y2="19" stroke="black" stroke-width="1" stroke-linecap="round"/>
+<line x1="34.8" y1="20.1" x2="34.8" y2="18.6" stroke="black" stroke-width="1" stroke-linecap="round"/>
+<line x1="36.8" y1="20.5" x2="38.2" y2="19.2" stroke="black" stroke-width="1" stroke-linecap="round"/>` : '';
+
+  // ── Sobranhelhas e olhos padrão ──
+  const BROW = `<path d="M22.5,19 Q25.5,17.5 28.5,19" stroke="black" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+<path d="M31.5,19 Q34.5,17.5 37.5,19" stroke="black" stroke-width="1.6" fill="none" stroke-linecap="round"/>`;
+  const EYES = `<ellipse cx="25" cy="22.5" rx="2.3" ry="2.4" fill="black"/>
+<ellipse cx="35" cy="22.5" rx="2.3" ry="2.4" fill="black"/>
+<circle cx="25.8" cy="21.6" r="0.85" fill="white"/>
+<circle cx="35.8" cy="21.6" r="0.85" fill="white"/>`;
+
+  // ── Acessórios por perfil ──
+  let bodyFinal = BODY;
+  let hairSidesFinal = HAIR_SIDES;
+  let hairTopFinal = HAIR_TOP_STD;
+  let extraArms = '';
+  let faceAcc = '';
+  let browFinal = BROW;
+  let eyesFinal = EYES;
+  let extras = '';
+
+  if (perfil === 'Comprador') {
+    if (F) faceAcc = `<path d="M24.5,10.2 Q30,7.5 35.5,10.2 Q32,12 30,11.5 Q28,12 24.5,10.2Z" fill="black"/>
+<circle cx="30" cy="10" r="2" fill="white" stroke="black" stroke-width="1.2"/>`;
+    extras = `<path d="M21,47 Q23,40 26.5,37" stroke="black" stroke-width="2.3" stroke-linecap="round"/>
+<rect x="13" y="45" width="10" height="9" rx="1.5" fill="white" stroke="black" stroke-width="1.5"/>
+<path d="M15.5,45 Q15.5,42.5 18,42.5 Q20.5,42.5 20.5,45" stroke="black" stroke-width="1.4" fill="none" stroke-linecap="round"/>`;
+  }
+
+  else if (perfil === 'Lojista') {
+    hairSidesFinal = `<path d="M19.5,23 Q18.5,30 20,38 L23,43 L22,35 Q20.5,28 21,23Z" fill="black"/>
+<path d="M40.5,23 Q41.5,30 40,38 L37,43 L38,35 Q39.5,28 39,23Z" fill="black"/>`;
+    hairTopFinal = `<path d="M18.5,21 Q19,13 30,13 Q41,13 41.5,21Z" fill="black"/>
+<rect x="15" y="19" width="30" height="4" rx="2" fill="black"/>
+<path d="M13,22 Q21,24.5 30,24.5 Q39,24.5 47,22" stroke="black" stroke-width="2.8" fill="none" stroke-linecap="round"/>`;
+  }
+
+  else if (perfil === 'Gerente Comercial') {
+    bodyFinal = F
+      ? `<path d="M9,60 Q10,49 18,44 L25,42 L28,48 L28,60Z" fill="black"/>
+<path d="M51,60 Q50,49 42,44 L35,42 L32,48 L32,60Z" fill="black"/>
+<path d="M28,48 L30,52 L32,48 L32,60 L28,60Z" fill="white"/>
+<path d="M29.5,48 L30,54 L30.5,48Z" fill="black"/>`
+      : `<path d="M9,60 Q10,49 18,44 L25,42 L27,47 L27,60Z" fill="black"/>
+<path d="M51,60 Q50,49 42,44 L35,42 L33,47 L33,60Z" fill="black"/>
+<path d="M27,47 L30,51 L33,47 L33,60 L27,60Z" fill="white"/>
+<path d="M29,47 L30,53 L31,47 L30.5,44.5Z" fill="black"/>`;
+    faceAcc = `<circle cx="24.5" cy="23" r="5" fill="none" stroke="black" stroke-width="1.8"/>
+<circle cx="35.5" cy="23" r="5" fill="none" stroke="black" stroke-width="1.8"/>
+<line x1="29.5" y1="23" x2="30.5" y2="23" stroke="black" stroke-width="1.8"/>
+<line x1="14" y1="21.5" x2="19.5" y2="23" stroke="black" stroke-width="1.5"/>
+<line x1="40.5" y1="23" x2="46" y2="21.5" stroke="black" stroke-width="1.5"/>`;
+    browFinal = `<path d="M21,18.5 Q24.5,17 28,18.5" stroke="black" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+<path d="M32,18.5 Q35.5,17 39,18.5" stroke="black" stroke-width="1.5" fill="none" stroke-linecap="round"/>`;
+    eyesFinal = `<ellipse cx="24.5" cy="23" rx="2" ry="2.1" fill="black"/>
+<ellipse cx="35.5" cy="23" rx="2" ry="2.1" fill="black"/>
+<circle cx="25.2" cy="22.2" r="0.75" fill="white"/>
+<circle cx="36.2" cy="22.2" r="0.75" fill="white"/>`;
+  }
+
+  else if (perfil === 'Expositor') {
+    extraArms = `<path d="M25,43 L7,37" stroke="black" stroke-width="4" stroke-linecap="round"/>
+<path d="M35,43 L53,37" stroke="black" stroke-width="4" stroke-linecap="round"/>
+<circle cx="6.5" cy="36.5" r="3.5" fill="white" stroke="black" stroke-width="1.8"/>
+<circle cx="53.5" cy="36.5" r="3.5" fill="white" stroke="black" stroke-width="1.8"/>`;
+    extras = `<polygon points="20,47 21.5,51.5 26.5,51.5 22.5,54.5 24,59 20,56.5 16,59 17.5,54.5 13.5,51.5 18.5,51.5" fill="black"/>`;
+  }
+
+  else if (perfil === 'Visitante') {
+    extras = `<path d="M23,43 Q23,38 30,38 Q37,38 37,43" stroke="black" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+<line x1="30" y1="38" x2="30" y2="51" stroke="black" stroke-width="1.9"/>
+<rect x="24" y="51" width="12" height="8.5" rx="1.5" fill="white" stroke="black" stroke-width="1.6"/>
+<rect x="26" y="53" width="8" height="2" rx="0.5" fill="black" opacity="0.8"/>
+<rect x="26" y="56" width="6" height="1.5" rx="0.5" fill="black" opacity="0.4"/>`;
+  }
+
+  else if (perfil === 'Preposto') {
+    if (F) hairTopFinal = `<path d="M19.5,22 C19.5,13 23,10 30,10 C37,10 40.5,13 40.5,22 L39,16 Q35.5,10.5 30,10.5 Q24.5,10.5 21,16Z" fill="black"/>
+<circle cx="30" cy="10" r="4.5" fill="black"/>
+<path d="M26.5,11 Q30,9 33.5,11" stroke="white" stroke-width="0.9" fill="none" stroke-linecap="round" opacity="0.35"/>`;
+    extras = `<rect x="17" y="19" width="2.8" height="11" rx="1.4" fill="black"/>
+<path d="M18.4,30 L17,33.5" stroke="black" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="18.4" cy="19" r="1.4" fill="white" stroke="black" stroke-width="1.1"/>`;
+  }
+
+  else if (perfil === 'Suporte da Empresa' || perfil === 'Suporte') {
+    hairSidesFinal = `<path d="M19.5,22 Q18.5,30 20,38 L23,43 L22,35 Q20.5,28 21,22Z" fill="black"/>
+<path d="M40.5,22 Q41.5,30 40,38 L37,43 L38,35 Q39.5,28 39,22Z" fill="black"/>`;
+    hairTopFinal = F
+      ? `<path d="M19.5,22 C19.5,12 23,9.5 30,9.5 C37,9.5 40.5,12 40.5,22 L39,16 Q36,10.5 30,10.5 Q24,10.5 21,16Z" fill="black"/>`
+      : `<path d="M19.5,22 C19.5,12 23,9.5 30,9.5 C37,9.5 40.5,12 40.5,22 L39,16 Q36,10.5 30,10.5 Q24,10.5 21,16Z" fill="black"/>
+<path d="M22,10.5 Q27,9 32,10" stroke="white" stroke-width="0.9" fill="none" stroke-linecap="round" opacity="0.4"/>`;
+    faceAcc = `<path d="M18,23 Q18,11 30,11 Q42,11 42,23" stroke="black" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+<ellipse cx="15.5" cy="25" rx="4.5" ry="5.5" fill="white" stroke="black" stroke-width="2"/>
+<ellipse cx="15.5" cy="25" rx="2.3" ry="3" fill="black"/>
+<ellipse cx="44.5" cy="25" rx="4.5" ry="5.5" fill="white" stroke="black" stroke-width="2"/>
+<ellipse cx="44.5" cy="25" rx="2.3" ry="3" fill="black"/>
+<path d="M43,29 Q49,30 48.5,36" stroke="black" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="48.5" cy="37" r="2.2" fill="black"/>`;
+  }
+
+  return `<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+${BG}
+${bodyFinal}
+${NECK}
+${hairSidesFinal}
+${extraArms}
+${FACE}
+${hairTopFinal}
+${faceAcc}
+${LASH}
+${browFinal}
+${eyesFinal}
+${NOSE}
+${MOUTH}
+${extras}
+</svg>`;
+}
+
 /* ── AVATAR ── */
 function getGender(nome) {
   const first = (nome || '').trim().split(' ')[0].toLowerCase();
@@ -1817,7 +1976,7 @@ function badgeHTML(v) {
       </div>
       <!-- BODY -->
       <div style="padding:22px 22px 18px;text-align:center;">
-        <div style="width:72px;height:72px;border-radius:50%;margin:0 auto 14px;overflow:hidden;box-shadow:0 4px 16px ${cfg.avatarShadow};">${avatarSVG(v.nome)}</div>
+        <div style="width:72px;height:72px;border-radius:50%;margin:0 auto 14px;overflow:hidden;box-shadow:0 4px 16px ${cfg.avatarShadow};">${perfilAvatarSVG(v.perfil, v.nome)}</div>
         <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;color:#111827;line-height:1.2;margin-bottom:5px;">${escHtml(v.nome)}</div>
         ${v.empresa ? `<div style="font-size:13px;font-weight:700;color:${cfg.hdr2};margin-bottom:2px;">${escHtml(v.empresa)}</div>` : ''}
         ${cpfLine}
