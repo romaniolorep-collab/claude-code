@@ -626,7 +626,7 @@
             </div>
           </div>
         </div>
-        <div style="margin-top:26px;display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;">
+        <div id="form-submit-btns" style="margin-top:26px;display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;">
           <button type="button" class="btn btn-ghost" onclick="resetForm()">↺ Limpar</button>
           <button type="submit" class="btn btn-primary"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l4 4 8-8"/></svg> Confirmar Cadastro</button>
         </div>
@@ -1300,6 +1300,7 @@ function selectPerfil(radio) {
     radio.checked = false;
     document.getElementById('visitante-auth-panel').style.display = 'block';
     document.getElementById('form-fields-overlay').style.display = 'flex';
+    document.getElementById('form-submit-btns').style.display = 'none';
     setTimeout(() => document.getElementById('visitante-code-input').focus(), 60);
     return;
   }
@@ -1313,6 +1314,7 @@ function confirmarVisitante() {
     document.getElementById('visitante-auth-panel').style.display = 'none';
     document.getElementById('visitante-code-err').style.display = 'none';
     document.getElementById('form-fields-overlay').style.display = 'none';
+    document.getElementById('form-submit-btns').style.display = '';
     input.value = '';
     // Selecionar o radio Visitante agora que está autorizado
     const radio = document.querySelector('input[name=perfil][value=Visitante]');
@@ -1329,6 +1331,7 @@ function cancelarVisitante() {
   document.getElementById('visitante-code-err').style.display = 'none';
   document.getElementById('visitante-code-input').value = '';
   document.getElementById('form-fields-overlay').style.display = 'none';
+  document.getElementById('form-submit-btns').style.display = '';
 }
 
 function _aplicarPerfil(perfil) {
