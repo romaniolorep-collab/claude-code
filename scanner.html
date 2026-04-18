@@ -514,8 +514,8 @@ function beep(freq, duration, delay = 0) {
   o.start(ctx.currentTime + delay);
   o.stop(ctx.currentTime + delay + duration);
 }
-function beepOk()  { beep(1046, 0.12); }
-function beepErr() { beep(320, 0.15, 0); beep(260, 0.18, 0.2); }
+function beepOk()  { beep(2400, 0.08); beep(2800, 0.07, 0.10); }
+function beepErr() { beep(900, 0.12, 0); beep(720, 0.16, 0.18); }
 
 init().catch(err => setStatus('❌ Falha ao conectar: ' + (err?.message || String(err)), 'err'));
 </script>
