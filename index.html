@@ -723,6 +723,41 @@ const SUPABASE_URL = 'https://rvehuigjfngtilhmczqs.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2ZWh1aWdqZm5ndGlsaG1jenFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5NjgxNDMsImV4cCI6MjA5MDU0NDE0M30.Q-Ujwh-z3vJnmlOcMIp_mmskk9LwSs9vtd8_Q4hTw8A';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+/* ─── CPF ENCRYPTION — AES-256-GCM (Web Crypto API) ─────────────────────
+   CPF é dado sensível (LGPD). Armazenado criptografado no banco como
+   'CPF_ENC:<base64(iv+ciphertext)>'. Descriptografado apenas em memória.
+   Legado 'CPF:xxxx' (plain) continua sendo lido sem erro.
+   ─────────────────────────────────────────────────────────────────────── */
+const _CPF_KEY_HEX = 'da1444688893d2428fc3e4fd40dc16fb241afcdfe784b5654f87e3ae28a78202';
+let _cpfCryptoKey = null;
+async function _getCpfKey() {
+  if (_cpfCryptoKey) return _cpfCryptoKey;
+  const raw = new Uint8Array(_CPF_KEY_HEX.match(/../g).map(h => parseInt(h, 16)));
+  _cpfCryptoKey = await crypto.subtle.importKey('raw', raw, { name: 'AES-GCM' }, false, ['encrypt', 'decrypt']);
+  return _cpfCryptoKey;
+}
+async function encryptCPF(cpf) {
+  const key = await _getCpfKey();
+  const iv  = crypto.getRandomValues(new Uint8Array(12));
+  const enc = new TextEncoder().encode(cpf.replace(/\D/g, ''));
+  const ct  = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc);
+  const buf = new Uint8Array(12 + ct.byteLength);
+  buf.set(iv, 0); buf.set(new Uint8Array(ct), 12);
+  return 'CPF_ENC:' + btoa(String.fromCharCode(...buf));
+}
+async function decryptCPF(obs) {
+  if (!obs) return null;
+  if (obs.startsWith('CPF:'))     return obs.slice(4);              // legado plain-text
+  if (!obs.startsWith('CPF_ENC:')) return null;
+  try {
+    const key = await _getCpfKey();
+    const buf = Uint8Array.from(atob(obs.slice(8)), c => c.charCodeAt(0));
+    const dec = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(0, 12) }, key, buf.slice(12));
+    const d   = new TextDecoder().decode(dec);
+    return d.length === 11 ? d.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4') : d;
+  } catch(e) { console.warn('CPF decrypt error:', e); return null; }
+}
+
 // Helper: todas as chamadas REST passam pelo proxy Netlify (/supabase/*)
 async function sbFetch(path, { method = 'GET', body, prefer } = {}) {
   const headers = {
@@ -827,8 +862,8 @@ const PERFIL_CFG = {
 };
 
 /* ─── NORMALIZE ────────────────────── */
-function normalize(v) {
-  const cpf = v.obs && v.obs.startsWith('CPF:') ? v.obs.replace('CPF:', '') : (v.cpf || null);
+async function normalize(v) {
+  const cpf = await decryptCPF(v.obs);
   return { ...v, cpf, espaco: v.espaco || null, responsavel: v.responsavel || null, registeredAt: v.registered_at, accessCount: v.access_count || 0, lastAccess: v.last_access };
 }
 function normalizeLog(e) {
@@ -853,7 +888,7 @@ const DB = {
       if (!lResp.ok) throw new Error('Acessos HTTP ' + lResp.status);
       const vData = await vResp.json();
       const lData = await lResp.json();
-      _visitors = (Array.isArray(vData) ? vData : []).map(normalize);
+      _visitors = await Promise.all((Array.isArray(vData) ? vData : []).map(normalize));
       _log      = (Array.isArray(lData) ? lData : []).map(normalizeLog);
     } finally {
       clearTimeout(timer);
@@ -876,12 +911,12 @@ const DB = {
       perfil:       data.perfil,
       estado:       data.estado     || null,
       cidade:       data.cidade     || null,
-      obs:          data.cpf ? 'CPF:' + data.cpf : null,
+      obs:          data.cpf ? await encryptCPF(data.cpf) : null,
       accessed:     false,
       access_count: 0,
     };
     const result = await sbFetch('visitors?select=*', { method: 'POST', body: row, prefer: 'return=representation' });
-    const v = normalize(Array.isArray(result) ? result[0] : result);
+    const v = await normalize(Array.isArray(result) ? result[0] : result);
     _visitors.push(v);
     return v;
   },
