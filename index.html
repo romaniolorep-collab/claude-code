@@ -630,16 +630,55 @@
     </div>
   </div>
 
-  <div id="success-wrap" style="display:none;max-width:500px;margin:0 auto;">
-    <div class="card" style="text-align:center;padding:44px 36px;">
-      <div class="success-icon"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:#065F46"><path d="M6 18l8 8 16-16"/></svg></div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:24px;color:var(--navy);margin-bottom:10px;">Cadastro Realizado!</h2>
-      <p style="color:var(--muted);margin-bottom:24px;line-height:1.7;">Credencial digital gerada com sucesso. Apresente o QR Code na entrada do evento.</p>
-      <p style="color:var(--muted);font-size:12px;margin-top:-16px;margin-bottom:20px;">⏱️ Formulário reiniciará automaticamente em 20 segundos para novo cadastro.</p>
-      <div id="new-id-display" style="background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--r-sm);padding:18px 24px;margin-bottom:28px;font-family:'Space Grotesk',monospace;font-size:26px;color:#fff;font-weight:700;letter-spacing:4px;box-shadow:0 4px 18px rgba(17,28,64,.35);"></div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <button class="btn btn-gold" onclick="goToBadge()"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M4 7h3M4 10h2"/><rect x="9" y="6" width="4" height="4" rx=".6"/></svg> Ver Credencial e QR Code</button>
-        <button class="btn btn-ghost" onclick="resetForm()">+ Novo Cadastro</button>
+  <div id="success-wrap" style="display:none;max-width:460px;margin:0 auto;">
+    <div class="card" style="padding:0;overflow:hidden;">
+      <!-- Header -->
+      <div style="background:linear-gradient(135deg,var(--navy) 0%,var(--accent) 100%);padding:28px 24px 22px;text-align:center;position:relative;">
+        <div style="width:60px;height:60px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18l8 8 16-16"/></svg>
+        </div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:800;color:#fff;letter-spacing:.3px;">Cadastro Realizado!</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:4px;">Credencial digital gerada com sucesso</div>
+      </div>
+
+      <!-- Body -->
+      <div style="padding:22px 24px 24px;">
+
+        <!-- Visitor card -->
+        <div style="display:flex;align-items:center;gap:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px 16px;margin-bottom:18px;">
+          <div id="success-avatar" style="width:56px;height:56px;flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;">
+            <div id="success-nome" style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#111827;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"></div>
+            <div id="success-empresa" style="font-size:11.5px;color:#6b7280;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"></div>
+            <div id="success-perfil-tag" style="margin-top:7px;"></div>
+          </div>
+        </div>
+
+        <!-- ID -->
+        <div style="background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:10px;padding:12px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 3px 12px rgba(17,28,64,.22);">
+          <div style="font-size:9.5px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:1.5px;text-transform:uppercase;">ID Credencial</div>
+          <div id="new-id-display" style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#fff;font-weight:700;letter-spacing:2.5px;"></div>
+        </div>
+
+        <!-- Countdown -->
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="font-size:11px;color:#9ca3af;">Reiniciando para novo cadastro</span>
+            <span id="success-countdown" style="font-size:12px;font-weight:700;color:var(--accent);font-family:'JetBrains Mono',monospace;"></span>
+          </div>
+          <div style="background:#e5e7eb;border-radius:99px;height:3px;overflow:hidden;">
+            <div id="success-progress" style="background:linear-gradient(90deg,var(--navy),var(--accent));height:3px;width:100%;border-radius:99px;transition:width 1s linear;"></div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div style="display:flex;gap:10px;">
+          <button class="btn btn-gold" style="flex:1;justify-content:center;" onclick="goToBadge()">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M4 7h3M4 10h2"/><rect x="9" y="6" width="4" height="4" rx=".6"/></svg>
+            Ver Credencial & QR
+          </button>
+          <button class="btn btn-ghost" style="white-space:nowrap;" onclick="resetForm()">+ Novo Cadastro</button>
+        </div>
       </div>
     </div>
   </div>
@@ -925,7 +964,8 @@
 const ADMIN_PASS    = 'grupo5';
 const ADMIN_VIEWS   = ['leitor', 'dashboard', 'busca'];
 let   _pendingView  = null;
-let   _resetTimer   = null;
+let   _resetTimer        = null;
+let   _countdownInterval = null;
 
 const SUPABASE_URL = 'https://rvehuigjfngtilhmczqs.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2ZWh1aWdqZm5ndGlsaG1jenFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5NjgxNDMsImV4cCI6MjA5MDU0NDE0M30.Q-Ujwh-z3vJnmlOcMIp_mmskk9LwSs9vtd8_Q4hTw8A';
@@ -1548,11 +1588,33 @@ async function handleSubmit(e) {
       cidade:      isVisitante ? null : cidadeCanonica(cidade, document.getElementById('f-estado').value),
     });
     currentVisitor = visitor;
+    // ── Preencher tela de sucesso ──
     document.getElementById('new-id-display').textContent = visitor.id;
+    document.getElementById('success-nome').textContent   = visitor.nome;
+    document.getElementById('success-empresa').textContent = visitor.empresa || visitor.cidade || '';
+    document.getElementById('success-avatar').innerHTML   = perfilAvatarSVG(visitor.perfil, visitor.nome);
+    const _scfg = PERFIL_CFG[visitor.perfil] || PERFIL_CFG['Comprador'];
+    document.getElementById('success-perfil-tag').innerHTML =
+      `<span style="background:${_scfg.strip};color:${_scfg.stripTc};font-size:9.5px;font-weight:800;padding:3px 10px;border-radius:99px;letter-spacing:1px;text-transform:uppercase;">${visitor.perfil}</span>`;
     document.getElementById('form-wrap').style.display    = 'none';
     document.getElementById('success-wrap').style.display = 'block';
+    // ── Countdown animado ──
+    if (_countdownInterval) clearInterval(_countdownInterval);
+    const TOTAL = 20;
+    let remaining = TOTAL;
+    const cdEl = document.getElementById('success-countdown');
+    const pbEl = document.getElementById('success-progress');
+    const tick = () => {
+      remaining--;
+      if (cdEl) cdEl.textContent = remaining + 's';
+      if (pbEl) pbEl.style.width = (remaining / TOTAL * 100) + '%';
+      if (remaining <= 0) { clearInterval(_countdownInterval); _countdownInterval = null; }
+    };
+    if (cdEl) cdEl.textContent = TOTAL + 's';
+    if (pbEl) pbEl.style.width = '100%';
+    _countdownInterval = setInterval(tick, 1000);
     refreshRealtimeStats();
-    // E-mail de boas-vindas via Edge Function
+    // ── E-mail de boas-vindas via Edge Function ──
     fetch(WELCOME_FN, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1577,7 +1639,8 @@ async function handleSubmit(e) {
 }
 
 function resetForm() {
-  if (_resetTimer) { clearTimeout(_resetTimer); _resetTimer = null; }
+  if (_resetTimer)        { clearTimeout(_resetTimer);        _resetTimer        = null; }
+  if (_countdownInterval) { clearInterval(_countdownInterval); _countdownInterval = null; }
   document.getElementById('reg-form').reset();
   document.querySelectorAll('.perfil-card').forEach(c => c.classList.remove('selected'));
   document.getElementById('cnpj-group').style.display = 'none';
@@ -1619,7 +1682,8 @@ function resetForm() {
 }
 
 function goToBadge() {
-  if (_resetTimer) { clearTimeout(_resetTimer); _resetTimer = null; }
+  if (_resetTimer)        { clearTimeout(_resetTimer);        _resetTimer        = null; }
+  if (_countdownInterval) { clearInterval(_countdownInterval); _countdownInterval = null; }
   if (currentVisitor) { showView('credencial'); }
 }
 
