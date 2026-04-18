@@ -530,6 +530,12 @@
               <label>Espaço * <span style="font-weight:400;font-size:11px;">(pode reutilizar espaço já cadastrado)</span></label>
               <input type="number" id="extra-espaco" placeholder="1" min="1" max="48" step="1" inputmode="numeric" style="width:90px;text-align:center;font-size:18px;font-weight:700;">
             </div>
+            <div class="form-group" id="extra-responsavel-group" style="display:none;">
+              <label>Expositor Responsável *</label>
+              <select id="extra-responsavel">
+                <option value="">Selecione o expositor responsável...</option>
+              </select>
+            </div>
 
             <div id="extra-form-alert" style="margin-bottom:10px;"></div>
             <button class="btn btn-success" onclick="gerarCredencialExtra(event)" style="width:100%;justify-content:center;">🎫 Gerar Credencial</button>
@@ -1898,6 +1904,22 @@ function selectExtraTipo(tipo) {
     card.style.borderColor = sel ? cfg.hdr3 : 'var(--border)';
     card.style.background  = sel ? cfg.bg   : '#fff';
   });
+  // Expositor Responsável — obrigatório para Preposto e Suporte da Empresa
+  const needsResp = tipo === 'Preposto' || tipo === 'Suporte da Empresa';
+  const respGroup = document.getElementById('extra-responsavel-group');
+  const respSel   = document.getElementById('extra-responsavel');
+  if (respGroup && respSel) {
+    respGroup.style.display = needsResp ? '' : 'none';
+    respSel.value = '';
+    if (needsResp) {
+      const expositores = _visitors.filter(v => v.perfil === 'Expositor');
+      respSel.innerHTML = '<option value="">Selecione o expositor responsável...</option>' +
+        expositores.map(v => {
+          const label = v.nome + (v.espaco ? ' — Espaço ' + v.espaco : '') + (v.empresa ? ' · ' + v.empresa : '');
+          return `<option value="${v.id}">${label}</option>`;
+        }).join('');
+    }
+  }
 }
 
 async function gerarCredencialExtra(ev) {
@@ -1909,6 +1931,9 @@ async function gerarCredencialExtra(ev) {
   const cpfRaw    = document.getElementById('extra-cpf').value.trim();
   const email     = document.getElementById('extra-email').value.trim();
 
+  const needsResp  = tipo === 'Preposto' || tipo === 'Suporte da Empresa';
+  const responsavel = needsResp ? (document.getElementById('extra-responsavel').value.trim() || null) : null;
+
   if (!tipo)   { showAlert('extra-form-alert', 'error', '⚠️ Selecione o tipo de credencial.'); return; }
   if (!nome)   { showAlert('extra-form-alert', 'error', '⚠️ Nome é obrigatório.');  return; }
   if (!cpfRaw) { showAlert('extra-form-alert', 'error', '⚠️ CPF é obrigatório.');   return; }
@@ -1916,6 +1941,7 @@ async function gerarCredencialExtra(ev) {
   if (!email)  { showAlert('extra-form-alert', 'error', '⚠️ E-mail é obrigatório.'); return; }
   if (!empresa){ showAlert('extra-form-alert', 'error', '⚠️ Empresa é obrigatória.'); return; }
   if (!espacoVal){ showAlert('extra-form-alert', 'error', '⚠️ Número do espaço é obrigatório.'); return; }
+  if (needsResp && !responsavel){ showAlert('extra-form-alert', 'error', '⚠️ Expositor Responsável é obrigatório.'); return; }
 
   const dupCPF = _visitors.find(v => v.cpf && v.cpf.replace(/\D/g,'') === cpfRaw.replace(/\D/g,''));
   if (dupCPF) { showAlert('extra-form-alert', 'error', `⚠️ CPF já cadastrado (${dupCPF.nome}).`); return; }
@@ -1929,7 +1955,7 @@ async function gerarCredencialExtra(ev) {
   const btn = ev.currentTarget;
   btn.disabled = true; btn.textContent = '⏳ Gerando...';
   try {
-    const visitor = await DB.addVisitor({ nome, cpf: cpfRaw, email: email || null, empresa, perfil: tipo, espaco });
+    const visitor = await DB.addVisitor({ nome, cpf: cpfRaw, email: email || null, empresa, perfil: tipo, espaco, responsavel });
     document.getElementById('extra-result').style.display = 'block';
     renderExtraCredencial(visitor, tipo);
     // E-mail de confirmação
@@ -1940,7 +1966,7 @@ async function gerarCredencialExtra(ev) {
         body: JSON.stringify({ nome: visitor.nome, email, id: visitor.id, perfil: visitor.perfil, empresa: visitor.empresa || '' }),
       }).catch(() => {});
     }
-    ['extra-nome','extra-cpf','extra-email','extra-empresa','extra-espaco'].forEach(id => {
+    ['extra-nome','extra-cpf','extra-email','extra-empresa','extra-espaco','extra-responsavel'].forEach(id => {
       const el = document.getElementById(id); if (el) el.value = '';
     });
     document.getElementById('extra-form-alert').innerHTML = '';
