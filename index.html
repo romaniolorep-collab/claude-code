@@ -1852,8 +1852,13 @@ function getGender(nome) {
     'felipe','vitor','victor','alex','alexis','leandro','leonardo','fabio','marcio','sergio',
     'claudio','flavio','silvio','caio','kaio','davi','levi','eli','rui','lui'];
   if (maleList.includes(first)) return 'm';
+  // Nomes femininos que não encaixam nas terminações padrão
+  const femaleList = ['beatriz','raquel','ruth','ines','inez','mabel','carmen','edith','esther','ester',
+    'miriam','naomi','noemi','nair','flor','luz','danielle','monique','chantal','heloise','heloisa',
+    'clarice','elspeth','gisele','giselle','tamar','yasmin','yara','maristela','marjorie','margot'];
+  if (femaleList.includes(first)) return 'f';
   // Terminações tipicamente femininas
-  if (/a$|ane$|aine$|ine$|eni$|elle$|elly$|ily$|isa$|ita$|ice$|iane$|cia$|nia$|ia$|ine$|osa$/.test(first)) return 'f';
+  if (/a$|ane$|aine$|ine$|eni$|elle$|elly$|ily$|isa$|ita$|ice$|iane$|cia$|nia$|ia$|ose$|osa$|triz$|riz$/.test(first)) return 'f';
   return 'm';
 }
 
