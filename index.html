@@ -523,7 +523,7 @@
             <div class="perfil-grid">
               <label class="perfil-card"><input type="radio" name="perfil" value="Comprador" onchange="selectPerfil(this)"><span class="perfil-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2.5h1.8l1.7 7h7.5l1.5-5H6"/><circle cx="7.5" cy="14.5" r="1.2"/><circle cx="13" cy="14.5" r="1.2"/></svg></span><span>Comprador</span></label>
               <label class="perfil-card"><input type="radio" name="perfil" value="Lojista" onchange="selectPerfil(this)"><span class="perfil-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l1.5-4.5h11L16 8"/><path d="M2 8v8h14V8"/><path d="M7 16v-5h4v5"/><path d="M2 8a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/></svg></span><span>Lojista</span></label>
-              <label class="perfil-card"><input type="radio" name="perfil" value="Expositor" onchange="selectPerfil(this)"><span class="perfil-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="12" height="10" rx="1.2"/><path d="M1 6h16M7 6V4h4v2"/><path d="M7 10h4M7 13h3"/></svg></span><span>Expositor</span></label>
+              <label class="perfil-card"><input type="radio" name="perfil" value="Expositor" onchange="selectPerfil(this)"><span class="perfil-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="5.5" r="3"/><path d="M2.5 17c0-3 2.8-5 6.5-5s6.5 2 6.5 5"/><path d="M8.2 12.2 L9 13.5 L9.8 12.2"/><path d="M8.2 12.2 L7.8 16 L9 15.2 L10.2 16 L9.8 12.2"/></svg></span><span>Expositor</span></label>
               <label class="perfil-card"><input type="radio" name="perfil" value="Visitante" onchange="selectPerfil(this)"><span class="perfil-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.5"/><path d="M2 17c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5"/></svg></span><span>Visitante</span></label>
             </div>
 
@@ -567,6 +567,10 @@
               <div class="form-group">
                 <label>CPF *</label>
                 <input type="text" id="f-cpf" placeholder="000.000.000-00" maxlength="14" oninput="maskCPF(this)" required>
+                <div style="display:flex;align-items:center;gap:5px;margin-top:5px;">
+                  <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="10" height="8" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
+                  <span style="font-size:10.5px;color:#dc2626;font-weight:600;">Informação criptografada — protegida pela LGPD</span>
+                </div>
               </div>
               <div class="form-group" id="email-group">
                 <label>E-mail *</label>
@@ -764,6 +768,10 @@
             <div class="form-group">
               <label>CPF *</label>
               <input type="text" id="extra-cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" oninput="maskCPFExtra(this)">
+              <div style="display:flex;align-items:center;gap:5px;margin-top:5px;">
+                <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="10" height="8" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
+                <span style="font-size:10.5px;color:#dc2626;font-weight:600;">Informação criptografada — protegida pela LGPD</span>
+              </div>
             </div>
             <div class="form-group">
               <label>E-mail * <span style="font-weight:400;font-size:11px;">(para receber confirmação)</span></label>
@@ -1742,7 +1750,7 @@ function tagClass(p) { const m = {'Comprador':'tag-comprador','Lojista':'tag-loj
 const _PICO = {
   'Comprador':          `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2.5h1.5l1.8 6.5h7l1.2-4.5H6"/><circle cx="7.5" cy="13.5" r="1.2"/><circle cx="12.5" cy="13.5" r="1.2"/></svg>`,
   'Lojista':            `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5l1.2-4h9.6L14 7.5"/><path d="M2 7.5v6.5h12V7.5"/><path d="M6.5 14v-4h3v4"/><path d="M2 7.5a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/></svg>`,
-  'Expositor':          `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="10" height="9" rx="1"/><path d="M1 5.5h14M6.5 5.5V3.5h3v2"/><path d="M6 9.5h4M6 12h3"/></svg>`,
+  'Expositor':          `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5" r="2.7"/><path d="M2 15c0-2.7 2.5-4.5 6-4.5s6 1.8 6 4.5"/><path d="M7.3 10.8 L8 12 L8.7 10.8"/><path d="M7.3 10.8 L6.9 14.5 L8 13.7 L9.1 14.5 L8.7 10.8"/></svg>`,
   'Visitante':          `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="3"/><path d="M2 14c0-2.8 2.7-5 6-5s6 2.2 6 5"/></svg>`,
   'Gerente Comercial':  `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="12" height="8.5" rx="1.5"/><path d="M5.5 6V4.5A2.5 2.5 0 0 1 13 6"/><path d="M8 9.5v1.5M7.2 10.2h1.6"/></svg>`,
   'Preposto':           `<svg class="p-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="11" cy="6" r="2.5"/><path d="M1 14.5c0-2.2 2.2-3.8 5-3.8"/><path d="M8.5 14.5c0-2.2 2.2-3.8 5-3.8"/></svg>`,
