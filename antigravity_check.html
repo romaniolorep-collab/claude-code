@@ -1,0 +1,617 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antigravity Wellness Wear &amp; Accessories</title>
+  <meta name="description" content="Antigravity Wellness: roupas e acessórios fitness premium com tecidos eco-tech e compressão profissional. Envio em 24h para todo o Brasil." />
+  <meta property="og:title" content="Antigravity Wellness Wear" />
+  <meta property="og:description" content="Roupas e acessórios fitness premium com tecidos eco-tech. Envio em 24h para todo o Brasil." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#2A2A28" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=1776354582187" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+<!--  NAVBAR  -->
+<nav id="navbar">
+  <div class="nav-left">
+    <a href="#products">Coleções</a>
+    <a href="#about">Sobre</a>
+    <a href="#products">Wellness</a>
+    
+  </div>
+
+  <a class='nav-logo' href='/'>Anti<span>g</span>ravity</a>
+
+  <div class="nav-right">
+    <div class="nav-icons">
+      <button title="Buscar" aria-label="Buscar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <button title="Conta" aria-label="Minha conta">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      </button>
+      <button title="Carrinho" aria-label="Carrinho de compras" onclick="openCart()" style="position:relative;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+      </button>
+    </div>
+    <a href="mailto:contato@antigravity.com" class="btn-nav">Contato</a>
+    <button class="mobile-btn" onclick="toggleMenu()" aria-label="Menu de navegação" aria-expanded="false" id="mob-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mob-menu">
+  <a href="#products">Coleções</a>
+  <a href="#categories">Feminino</a>
+  <a href="#categories">Masculino</a>
+  <a href="#categories">Acessórios</a>
+  <a href="#about">Sobre</a>
+  
+  <a href="mailto:contato@antigravity.com">Contato</a>
+</div>
+
+<!--  HERO  -->
+<section id="hero" class="hero-image-style">
+  <video class="hi-video" autoplay loop muted playsinline width="1920" height="1080"><source src="hero_video.mp4" type="video/mp4"></video><div class="hi-bg"></div>
+  <div class="hi-content">
+    <p class="hero-eyebrow">A essência do movimento</p>
+    <h1 class="hi-title">A leveza de estar<br><em>presente</em></h1>
+    <p class="hi-desc">Descubra uma nova forma de habitar o seu corpo. Peças projetadas não apenas para a performance, mas para abraçar sua alma e trazer serenidade a cada respiração.</p>
+    <div class="hero-ctas">
+      <a class='btn-primary' href='/colecao'>Ver Coleção</a>
+      <a href="#products" class="btn-ghost">Mais Vendidos</a>
+    </div>
+  </div>
+</section>
+
+<!--  TICKER  -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Wellness Wear</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Compressão Profissional</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Tecidos Eco-Tech</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Movimento Consciente</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Feita para Atletas</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Envio em 24h</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Design Exclusivo</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Wellness Wear</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Compressão Profissional</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Tecidos Eco-Tech</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Movimento Consciente</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Feita para Atletas</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Envio em 24h</span>
+    <span class="ticker-item"><span class="ticker-leaf">S</span> Design Exclusivo</span>
+  </div>
+</div>
+
+<!--  ABOUT  -->
+<section id="about" style="background:var(--white)">
+    <!-- Photographic Visual -->
+    <div class="about-img-box" style="position:relative; width:100%; height:600px; border-radius:16px; overflow:hidden; box-shadow: 0 20px 40px rgba(42,42,40,0.08);">
+      <img src="about_wellness.png" alt="Mulher praticando yoga com roupa Antigravity Wellness" style="width:100%; height:100%; object-fit:cover;" loading="lazy" />
+    </div>
+
+    <!-- Text -->
+    <div class="about-body">
+      <p class="eyebrow">Health &amp; Wellness Wear</p>
+      <h2 class="about-heading">
+        <span class="ah-tech">Tecnologia</span>
+        <span class="ah-move">que move</span>
+        <span class="ah-beyond">você além</span>
+      </h2>
+      <p>Na Antigravity, cada peça nasce da convicção de que a roupa certa transforma o treino. Desenvolvemos nossa linha junto com atletas e especialistas em bem-estar para garantir mobilidade total, compressão ideal e conforto duradouro.</p>
+      <p>Tecidos eco-responsáveis, cortes estudados e paleta de cores pensada para inspirar calma e foco  porque wellness começa no que você veste.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">50<sup>+</sup></div>
+          <div class="stat-label">Produtos</div>
+        </div>
+        <div>
+          <div class="stat-num">12K<sup>+</sup></div>
+          <div class="stat-label">Clientes</div>
+        </div>
+        <div>
+          <div class="stat-num">4.9<sup>★</sup></div>
+          <div class="stat-label">Avaliação</div>
+        </div>
+      </div>
+      <a href="#products" class="btn-outline-sage">Ver Produtos</a>
+    </div>
+</section>
+
+<!--  CATEGORIES  -->
+<section id="categories">
+  <div class="section-header-c">
+    <p class="eyebrow" style="justify-content:center">Explorar</p>
+    <h2 class="section-title">Nossas <em>Categorias</em></h2>
+  </div>
+  <div class="cat-grid cat-grid--padded">
+    <!-- Feminino -->
+    <div class="cat-card">
+      <div class="cat-visual cat-vis-fem">
+        <div class="cat-glow"></div>
+        <div class="cat-fig">
+          <div class="fig-head"></div>
+          <div class="fig-body"></div>
+        </div>
+        <div class="cat-item-1"></div>
+        <div class="cat-item-2"></div>
+      </div>
+      <div class="cat-overlay">
+        <p class="cat-tag">Coleção</p>
+        <h3 class="cat-name">Roupas<br>Femininas</h3>
+        <a href="#products" class="cat-btn">Ver Coleção &rarr;</a>
+      </div>
+    </div>
+    <!-- Masculino -->
+    <div class="cat-card">
+      <div class="cat-visual cat-vis-masc">
+        <div class="cat-glow"></div>
+        <div class="cat-fig">
+          <div class="fig-head"></div>
+          <div class="fig-body"></div>
+        </div>
+      </div>
+      <div class="cat-overlay">
+        <p class="cat-tag">Coleção</p>
+        <h3 class="cat-name">Roupas<br>Masculinas</h3>
+        <a href="#products" class="cat-btn">Ver Coleção &rarr;</a>
+      </div>
+    </div>
+    <!-- Acessórios -->
+    <div class="cat-card">
+      <div class="cat-visual cat-vis-acess">
+        <div class="cat-glow"></div>
+        <div class="cat-fig">
+          <div class="fig-head"></div>
+          <div class="fig-body"></div>
+        </div>
+      </div>
+      <div class="cat-overlay">
+        <p class="cat-tag">Novidades</p>
+        <h3 class="cat-name">Acessórios<br>Fitness</h3>
+        <a href="#products" class="cat-btn">Ver Coleção &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--  PRODUCTS  -->
+<section id="products">
+  <div class="section-header-c">
+    <p class="eyebrow" style="justify-content:center">Destaque</p>
+    <h2 class="section-title">Mais <em>Vendidos</em></h2>
+    <p class="section-sub">Peças desenvolvidas para cada tipo de movimento  do yoga intenso ao treino funcional.</p>
+  </div>
+  <div class="products-grid">
+    
+    <!-- ============================================== -->
+    <!--            ðŸ›’ PRODUTO 1 (EXEMPLO COPIÃVEL)       -->
+    <!-- ============================================== -->
+    <div class="product-card">
+      <div class="prod-visual" style="border-radius:12px; overflow:hidden; position:relative; background:#f5f5f5;">
+        
+        <img src="leg_sculpt.png" alt="Legging Sculpt Pro — cor Onyx" style="width:100%; height:100%; object-fit:cover; position:absolute;" loading="lazy" />
+        
+        <span class="prod-badge badge-hot">Best Seller</span>
+        <button class="prod-wish"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+      </div>
+      
+      <div class="prod-info">
+        <p class="prod-name">Legging Sculpt Pro</p>
+        <p class="prod-sub">Feminino · Onyx · 4 cores</p>
+        
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 219</span>
+          <button class="btn-add" onclick="addToCart('Legging Sculpt Pro', 219, this)">+ Bag</button>
+        </div>
+      </div>
+    </div> <!-- /FIM DO PRODUTO 1 -->
+
+    <!-- ============================================== -->
+    <!--            ðŸ›’ PRODUTO 2                      -->
+    <!-- ============================================== -->
+    <div class="product-card">
+      <div class="prod-visual" style="border-radius:12px; overflow:hidden; position:relative; background:#e6e3df;">
+        <img src="top_impact.png" alt="Top Impact Ultra — suporte alto" style="width:100%; height:100%; object-fit:cover; position:absolute;" loading="lazy" />
+        <span class="prod-badge badge-new">Novo</span>
+        <button class="prod-wish"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Top Impact Ultra</p>
+        <p class="prod-sub">Suporte Alto · Terra · 6 cores</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 149</span>
+          <button class="btn-add" onclick="addToCart('Top Impact Ultra', 149, this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!--            ðŸ›’ PRODUTO 3                      -->
+    <!-- ============================================== -->
+    <div class="product-card">
+      <div class="prod-visual" style="border-radius:12px; overflow:hidden; position:relative; background:#dde2df;">
+        <img src="shorts_perf.png" alt="Shorts Performance — masculino Slate" style="width:100%; height:100%; object-fit:cover; position:absolute;" loading="lazy" />
+        <button class="prod-wish"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Shorts Performance</p>
+        <p class="prod-sub">Masculino · Slate · 3 cores</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 129</span>
+          <button class="btn-add" onclick="addToCart('Shorts Performance', 129, this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!--            ðŸ›’ PRODUTO 4                      -->
+    <!-- ============================================== -->
+    <div class="product-card">
+      <div class="prod-visual" style="border-radius:12px; overflow:hidden; position:relative; background:#f7f3ee;">
+        <img src="camis_dry.png" alt="Camiseta Dry Fit unissex — cor Stone" style="width:100%; height:100%; object-fit:cover; position:absolute;" loading="lazy" />
+        <span class="prod-badge badge-sale">Sale</span>
+        <button class="prod-wish"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Camiseta Dry Fit</p>
+        <p class="prod-sub">Unissex · Stone · 8 cores</p>
+        <div class="prod-bottom">
+          <div><span class="prod-price">R$ 89</span><span class="prod-price-old">R$ 120</span></div>
+          <button class="btn-add" onclick="addToCart('Camiseta Dry Fit', 89, this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!--            ðŸ›’ PRODUTO 5                      -->
+    <!-- ============================================== -->
+    <div class="product-card">
+      <div class="prod-visual" style="border-radius:12px; overflow:hidden; position:relative; background:#f0eeec;">
+        <img src="squeeze.png" alt="Squeeze Antigravity — térmica minimal" style="width:100%; height:100%; object-fit:cover; position:absolute;" loading="lazy" />
+        <span class="prod-badge badge-new">Novo</span>
+        <button class="prod-wish"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Squeeze Antigravity</p>
+        <p class="prod-sub">Acessório · Minimal · Térmica</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 119</span>
+          <button class="btn-add" onclick="addToCart('Squeeze Antigravity', 119, this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!--            ðŸ›’ PRODUTO 6                      -->
+    <!-- ============================================== -->
+    <div class="product-card">
+      <div class="prod-visual" style="border-radius:12px; overflow:hidden; position:relative; background:#f9f9f9;">
+        <img src="fones_antigravity.png" alt="Fones Pro Antigravity — wireless Pure White" style="width:100%; height:100%; object-fit:cover; position:absolute;" loading="lazy" />
+        <button class="prod-wish"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Fones Pro Antigravity</p>
+        <p class="prod-sub">Acessório · Wireless · Pure White</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 299</span>
+          <button class="btn-add" onclick="addToCart('Fones Pro Antigravity', 299, this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+      <div class="product-card"><div class="prod-visual" style="border-radius:12px; overflow:hidden; position:relative; background:#f9f9f9;">
+          <img src="liquidz.jpg" alt="Hidratação Liquidz — suplemento zero açúcar" style="width:100%; height:100%; object-fit:cover; position:absolute;" loading="lazy" />
+          <button class="prod-wish"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="nav-ico"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+        </div>
+        <div class="prod-info">
+          <p class="prod-name">Hidratação Liquidz</p>
+          <p class="prod-sub">Suplemento · Zero Açúcar · 14 Sachês</p>
+          
+          <div class="prod-bottom">
+            <span class="prod-price">R$ 149</span>
+            <button class="btn-add" onclick="addToCart('Hidratação Liquidz', 149, this)">+ Bag</button>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  <div class="products-cta">
+    <a class='btn-outline-sage' href='/colecao'>Ver Todos os Produtos</a>
+  </div>
+</section>
+
+<!--    â BRAND STORY    â -->
+<section id="brand-story">
+  <div class="story-left">
+    <p class="eyebrow" style="color:var(--sage);">Engenharia</p>
+    <h2 class="section-title"><em>Precisão</em> Técnica<br>em cada <strong>fibra</strong></h2>
+    <p style="color:var(--stone); margin-bottom:24px;">Nossa equipe de engenheiros biomecânicos e especialistas têxteis testa cada protótipo até o limite. Sem peças desnecessárias, apenas performance pura. Do corte a laser à solda invisível.</p>
+    <a href="#" onclick="openTechModal(event)" class="btn-sage">Nossa Tecnologia</a>
+  </div>
+  <div class="story-right clinical-grid">
+    <div class="cg-stats-row">
+      <div class="cg-stat">
+        <h2 class="cg-num">0.1<span>g</span></h2>
+        <p class="cg-lbl">Corte a Laser</p>
+      </div>
+      <div class="cg-stat">
+        <h2 class="cg-num">3D</h2>
+        <p class="cg-lbl">Modelagem</p>
+      </div>
+      <div class="cg-stat">
+        <h2 class="cg-num">ISO</h2>
+        <p class="cg-lbl">Qualidade</p>
+      </div>
+    </div>
+    <div class="cg-quote">
+        <p>"O equipamento atinge sua utilidade máxima quando desaparece durante o uso."</p>
+        <p class="author">— ENG. DEPT.</p>
+      </div>
+  </div>
+</section>
+<!--  FEATURES  -->
+<section id="features">
+  <div class="section-header-c">
+    <p class="eyebrow" style="justify-content:center">Por que Antigravity</p>
+    <h2 class="section-title">Nossa <em>Essência</em></h2>
+    <p class="section-sub">Cada detalhe é pensado para que você treine melhor, se sinta mais leve e viva com mais presença.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></div>
+      <h3 class="feat-title">Tecido Eco-Tech</h3>
+      <p class="feat-desc">70% de fibras recicladas com UV50+, compressão graduada e secagem ultrarrápida. Performance sem impacto ambiental.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"></path><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"></path><path d="M9.8 4.4A2 2 0 1 1 11 8H2"></path></svg></div>
+      <h3 class="feat-title">Movimento Livre</h3>
+      <p class="feat-desc">Cortes desenvolvidos com especialistas em movimento para garantir mobilidade total em qualquer ângulo.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 21 11 18 20 6 20 3 11"></polygon><path d="M21 11 12 4 3 11"></path><circle cx="12" cy="15" r="2"></circle></svg></div>
+      <h3 class="feat-title">Entrega Rápida</h3>
+      <p class="feat-desc">Frete grátis acima de R$299 em todo o Brasil. Envio expresso em até 24h para todas as capitais.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 14 5-5-5-5"></path><path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"></path></svg></div>
+      <h3 class="feat-title">Troca Simples</h3>
+      <p class="feat-desc">30 dias para troca ou devolução sem burocracia. Sua satisfação é a nossa única prioridade.</p>
+    </div>
+  </div>
+</section>
+
+<!--  TESTIMONIALS  -->
+<!--     TESTIMONIALS     -->
+<section id="testimonials">
+  <div class="section-header-c">
+    <p class="eyebrow" style="justify-content:center">Depoimentos</p>
+    <h2 class="section-title">Client <em>Love</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"A legging Sculpt é inacreditável! Usei em três treinos seguidos e a compressão não cedeu. O tecido abraça o corpo sem prender os movimentos."</p>
+      <div class="test-author">
+        <div class="test-avatar tav-1"><div class="tav-h"></div><div class="tav-b"></div></div>
+        <div>
+          <p class="test-name">Ana Carolina</p>
+          <p class="test-role">Personal Trainer · São Paulo</p>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"Os shorts Performance têm o comprimento perfeito. Finalmente uma peça onde o bolso estabiliza totalmente o celular durante a corrida."</p>
+      <div class="test-author">
+        <div class="test-avatar tav-2"><div class="tav-h"></div><div class="tav-b"></div></div>
+        <div>
+          <p class="test-name">Rafael Mota</p>
+          <p class="test-role">CrossFitter · Curitiba</p>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"A Squeeze térmica mantém minha água gelada o dia inteiro no estúdio! Design super clean, fechamento forte e não vaza nada na bolsa."</p>
+      <div class="test-author">
+        <div class="test-avatar tav-3"><div class="tav-h"></div><div class="tav-b"></div></div>
+        <div>
+          <p class="test-name">Fernanda Lima</p>
+          <p class="test-role">Instrutora de Pilates · Rio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--  NEWSLETTER  -->
+<section id="newsletter">
+  <p class="eyebrow" style="justify-content:center">Fique por dentro</p>
+  <h2 class="section-title">Receba <em>Novidades</em><br>em Primeira Mão</h2>
+  <p>Lançamentos exclusivos, promoções e dicas de wellness direto no seu email.</p>
+  <form class="nl-form" onsubmit="handleNL(event)">
+    <input type="email" placeholder="seu@email.com" required />
+    <button type="submit">Quero Receber</button>
+  </form>
+</section>
+
+<!--  FOOTER  -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#products" class="footer-logo">Anti<span>g</span>ravity</a>
+      <p>Roupas e acessórios fitness para quem treina com propósito. Do aquecimento à conquista.</p>
+      <div class="social-row">
+        <a href="#products" class="soc-link" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="#products" class="soc-link" title="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a href="#products" class="soc-link" title="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+        </a>
+        <a href="#products" class="soc-link" title="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Loja</h4>
+      <ul>
+        <li><a href="#products">Nova Coleção</a></li>
+        <li><a href="#categories">Feminino</a></li>
+        <li><a href="#categories">Masculino</a></li>
+        <li><a href="#categories">Acessórios</a></li>
+        <li><a href="#products">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informações</h4>
+      <ul>
+        <li><a href="#products">Sobre Nós</a></li>
+        <li><a href="#products">Sustentabilidade</a></li>
+        <li><a href="#products">Parceiros</a></li>
+        <li><a href="#products">Trabalhe Conosco</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ajuda</h4>
+      <ul>
+        <li><a href="#products">Guia de Tamanhos</a></li>
+        <li><a href="#products">Trocas e Devoluções</a></li>
+        <li><a href="#products">Rastrear Pedido</a></li>
+        <li><a href="#products">Frete e Prazos</a></li>
+        <li><a href="mailto:contato@antigravity.com">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Antigravity. Todos os direitos reservados.</p>
+    <div class="pay-row">
+
+      <!-- VISA -->
+      <svg class="pay-card" viewBox="0 0 46 30" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visa">
+        <rect width="46" height="30" rx="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <text x="23" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="900" font-style="italic" fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="1">VISA</text>
+      </svg>
+
+      <!-- Mastercard -->
+      <svg class="pay-card" viewBox="0 0 46 30" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mastercard">
+        <rect width="46" height="30" rx="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <circle cx="18" cy="15" r="9" fill="rgba(255,255,255,0.75)"/>
+        <circle cx="28" cy="15" r="9" fill="rgba(255,255,255,0.45)"/>
+        <path d="M23 7.52 A9 9 0 0 1 23 22.48 A9 9 0 0 0 23 7.52Z" fill="rgba(255,255,255,0.60)"/>
+      </svg>
+
+      <!-- Amex -->
+      <svg class="pay-card" viewBox="0 0 46 30" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="American Express">
+        <rect width="46" height="30" rx="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <text x="23" y="20" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="800" fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="2">AMEX</text>
+      </svg>
+
+      <!-- PIX -->
+      <svg class="pay-card" viewBox="0 0 46 30" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PIX">
+        <rect width="46" height="30" rx="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <g transform="translate(13,15)">
+          <path d="M0-8.5 L5.5-3 L0 0 L-5.5-3Z" fill="rgba(255,255,255,0.85)"/>
+          <path d="M8.5 0 L3 5.5 L0 0 L3-5.5Z" fill="rgba(255,255,255,0.55)"/>
+          <path d="M0 8.5 L-5.5 3 L0 0 L5.5 3Z" fill="rgba(255,255,255,0.85)"/>
+          <path d="M-8.5 0 L-3-5.5 L0 0 L-3 5.5Z" fill="rgba(255,255,255,0.55)"/>
+        </g>
+        <text x="33" y="19" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="1">PIX</text>
+      </svg>
+
+      <!-- Boleto -->
+      <svg class="pay-card" viewBox="0 0 46 30" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boleto Bancário">
+        <rect width="46" height="30" rx="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <g fill="rgba(255,255,255,0.80)">
+          <rect x="5"  y="7" width="2"   height="16"/>
+          <rect x="9"  y="7" width="1"   height="16"/>
+          <rect x="12" y="7" width="3"   height="16"/>
+          <rect x="17" y="7" width="1"   height="16"/>
+          <rect x="20" y="7" width="2"   height="16"/>
+          <rect x="24" y="7" width="1.5" height="16"/>
+          <rect x="27" y="7" width="3"   height="16"/>
+          <rect x="32" y="7" width="1"   height="16"/>
+          <rect x="35" y="7" width="2"   height="16"/>
+          <rect x="39" y="7" width="2"   height="16"/>
+        </g>
+      </svg>
+
+    </div>
+  </div>
+</footer>
+
+<!--  CART SIDEBAR  -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-hdr">
+    <h3>Sacola (<span id="cart-count-sb">0</span>)</h3>
+    <button class="cart-close" onclick="closeCart()" aria-label="Fechar sacola">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty-msg" id="cart-empty">
+      <div class="ei"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></div>
+      <p>Sua sacola está vazia</p>
+    </div>
+  </div>
+  <div class="cart-ftr" id="cart-ftr" style="display:none">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart-total-val">R$ 0</span>
+    </div>
+    <button class="btn-checkout" onclick="window.location.href='checkout.html'">Finalizar Compra</button>
+  </div>
+</div>
+
+<!--  TOAST  -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js?v=1776354582187"></script>
+
+  <!-- TECH MODAL -->
+  <div id="tech-overlay" class="tech-overlay" onclick="document.getElementById('tech-overlay').classList.remove('open'); document.getElementById('tech-modal').classList.remove('open');"></div>
+  <div id="tech-modal" class="tech-modal">
+    <div class="tech-head">
+      <span class="tech-title">Antigravity Lab // Tecnologias Estruturais</span>
+      <button class="close-btn" onclick="document.getElementById('tech-overlay').classList.remove('open'); document.getElementById('tech-modal').classList.remove('open');">✕</button>
+    </div>
+    <div class="tech-content">
+      <div class="tech-item">
+        <h4>AeroKnit™ Framework</h4>
+        <p>Malha tátil de ultra-respiração projetada para dissipação térmica imediata. Fios cortados a laser reduzem o peso da peça em 32% garantindo fôlego de maratona.</p>
+      </div>
+      <div class="tech-item">
+        <h4>Zero-Friction Welding</h4>
+        <p>A costura analógica foi abolida. Utilizamos fusão sônica de alta frequência para montar nossas peças. Zero saliências. Zero atrito com a pele. Apenas você e o movimento.</p>
+      </div>
+      <div class="tech-item">
+        <h4>Climate-Response Fibers</h4>
+        <p>Uma malha que respira como você. Em temperaturas abaixo de 10°C as fibras trancam o microclima. Sob suor e radiação, os micro-poros reagem e se expandem ativamente.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

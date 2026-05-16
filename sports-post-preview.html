@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview — Post Esportivo Instagram</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; font-family: 'Arial', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 20px; }
+  h1 { color: #fff; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.4; margin-bottom: 10px; }
+
+  .carousel { display: flex; gap: 16px; overflow-x: auto; padding: 10px 4px 20px; max-width: 100%; scrollbar-width: thin; scrollbar-color: #333 transparent; }
+
+  .card {
+    min-width: 320px; height: 320px;
+    border-radius: 12px;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: scale(1.02); }
+
+  /* Slide 1 — Hook */
+  .card-1 { background: linear-gradient(145deg, #111 0%, #1a1a2e 100%); border: 1px solid #222; }
+  .card-1::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 70% 30%, rgba(255,120,0,0.15), transparent 60%); }
+
+  /* Slide 2 — Hoka */
+  .card-2 { background: linear-gradient(145deg, #0d1b2a 0%, #1b2838 100%); border: 1px solid #1a2a3a; }
+  .card-2::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 20%, rgba(0,180,255,0.12), transparent 60%); }
+
+  /* Slide 3 — Brooks */
+  .card-3 { background: linear-gradient(145deg, #0f1a0f 0%, #1a2e1a 100%); border: 1px solid #1a2a1a; }
+  .card-3::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 70% 70%, rgba(100,220,100,0.1), transparent 60%); }
+
+  /* Slide 4 — Reebok */
+  .card-4 { background: linear-gradient(145deg, #1a0a0a 0%, #2e1010 100%); border: 1px solid #2a1a1a; }
+  .card-4::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 10%, rgba(220,50,50,0.12), transparent 60%); }
+
+  /* Slide 5 — CTA */
+  .card-5 { background: linear-gradient(145deg, #111 0%, #1a1a1a 100%); border: 1px solid #2a2a2a; }
+
+  .tag {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 12px; font-weight: 600;
+  }
+  .brand { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 6px; line-height: 1.1; }
+  .model { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 16px; letter-spacing: 1px; }
+  .quote { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; font-style: italic; margin-bottom: 14px; border-left: 2px solid rgba(255,255,255,0.2); padding-left: 12px; }
+  .debate { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+  /* Hook card */
+  .hook-number { font-size: 72px; font-weight: 900; color: rgba(255,255,255,0.04); position: absolute; top: 10px; left: 20px; line-height: 1; }
+  .hook-text { font-size: 18px; font-weight: 800; color: #fff; line-height: 1.4; margin-bottom: 8px; }
+  .hook-sub { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
+
+  /* CTA card */
+  .cta-text { font-size: 20px; font-weight: 900; color: #fff; line-height: 1.4; margin-bottom: 12px; }
+  .cta-sub { font-size: 13px; color: rgba(255,255,255,0.4); }
+  .arrow { font-size: 24px; margin-top: 8px; }
+
+  /* Dot indicator */
+  .dots { display: flex; gap: 6px; margin-top: 4px; }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+  .dot.active { background: #fff; width: 16px; border-radius: 3px; }
+
+  .badge {
+    position: absolute; top: 24px; right: 24px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* Legenda */
+  .legenda-box {
+    background: #111; border: 1px solid #222; border-radius: 12px;
+    padding: 28px; max-width: 600px; width: 100%;
+  }
+  .legenda-title { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 16px; }
+  .legenda-text { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.8; }
+  .hashtags { margin-top: 12px; font-size: 13px; color: #4a9eff; opacity: 0.7; }
+
+  /* Horário */
+  .info-row { display: flex; gap: 12px; max-width: 600px; width: 100%; }
+  .info-box { flex: 1; background: #111; border: 1px solid #1a1a1a; border-radius: 10px; padding: 18px; }
+  .info-label { font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .info-value { font-size: 15px; color: #fff; font-weight: 700; }
+  .info-sub { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+
+  /* Hoka accent */
+  .card-2 .brand { color: #00b4ff; }
+  .card-3 .brand { color: #64dc64; }
+  .card-4 .brand { color: #ff4444; }
+</style>
+</head>
+<body>
+
+<h1>Preview · Cards Instagram</h1>
+
+<div class="carousel">
+
+  <!-- Slide 1 — Hook -->
+  <div class="card card-1">
+    <div class="hook-number">01</div>
+    <div class="badge">Hook</div>
+    <div class="hook-text">3 marcas fizeram apostas diferentes em 2025. Uma delas acertou em cheio.</div>
+    <div class="hook-sub">Hoka · Brooks · Reebok</div>
+    <div class="dots" style="margin-top:16px">
+      <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- Slide 2 — Hoka -->
+  <div class="card card-2">
+    <div class="badge">Hoka</div>
+    <div class="tag">Trilha · Maximalismo</div>
+    <div class="brand">Speedgoat 7</div>
+    <div class="model">Lançamento 2025</div>
+    <div class="quote">"Mais stack, mais grip, mesma leveza — mas quem já usou o 6 tá em dúvida se valeu a troca"</div>
+    <div class="debate">↳ Você trocaria de versão só pela sola nova?</div>
+    <div class="dots" style="margin-top:14px">
+      <div class="dot"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- Slide 3 — Brooks -->
+  <div class="card card-3">
+    <div class="badge">Brooks</div>
+    <div class="tag">Neutro · Urbano</div>
+    <div class="brand">Ghost 18</div>
+    <div class="model">Lançamento 2025</div>
+    <div class="quote">"Neutro, confiável, sem drama — a comunidade chama de 'o tênis que não decepciona nunca'"</div>
+    <div class="debate">↳ Isso é elogio ou é chato demais pra você?</div>
+    <div class="dots" style="margin-top:14px">
+      <div class="dot"></div><div class="dot"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- Slide 4 — Reebok -->
+  <div class="card card-4">
+    <div class="badge">Reebok</div>
+    <div class="tag">Performance · Custo-benefício</div>
+    <div class="brand">Floatride Energy 5</div>
+    <div class="model">Lançamento 2025</div>
+    <div class="quote">"Reebok voltou querendo brigar com os grandes — e a galera tá surpresa com o custo-benefício"</div>
+    <div class="debate">↳ Você daria uma chance pra Reebok em 2025?</div>
+    <div class="dots" style="margin-top:14px">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot active"></div><div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- Slide 5 — CTA -->
+  <div class="card card-5">
+    <div class="badge">CTA</div>
+    <div class="cta-text">Fiel à marca ou vai atrás da tecnologia?</div>
+    <div class="cta-sub">Me conta nos comentários</div>
+    <div class="arrow">👇</div>
+    <div class="dots" style="margin-top:16px">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot active"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Legenda -->
+<div class="legenda-box">
+  <div class="legenda-title">Legenda</div>
+  <div class="legenda-text">
+    Três marcas, três filosofias — qual faz mais sentido pro seu treino?<br><br>
+    Hoka vai pesado no conforto. Brooks não erra. Reebok quer reconquistar.<br><br>
+    Qual você escolheria? 👇
+  </div>
+  <div class="hashtags">#vidadecorredor &nbsp;#runnersdobrasil &nbsp;#trailbr &nbsp;#hoka &nbsp;#brooksrunning</div>
+</div>
+
+<!-- Info -->
+<div class="info-row">
+  <div class="info-box">
+    <div class="info-label">Agendamento</div>
+    <div class="info-value">Terça e Quinta</div>
+    <div class="info-sub">08h00 — geração automática</div>
+  </div>
+  <div class="info-box">
+    <div class="info-label">Melhor horário para postar</div>
+    <div class="info-value">19h – 21h</div>
+    <div class="info-sub">Nicho running BR · maior alcance</div>
+  </div>
+  <div class="info-box">
+    <div class="info-label">Formato</div>
+    <div class="info-value">5 slides</div>
+    <div class="info-sub">Hook · 3 marcas · CTA</div>
+  </div>
+</div>
+
+</body>
+</html>

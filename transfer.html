@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Transfer</title></head>
+<body>
+<p>Transferring data...</p>
+<script>
+fetch('/full_b64.txt')
+  .then(r => r.text())
+  .then(b64 => {
+    const data = b64.trim();
+    if (window.opener) {
+      window.opener.postMessage({type:'b64data', payload: data}, '*');
+      document.body.innerHTML = '<p>Done! Data sent (' + data.length + ' chars). You can close this tab.</p>';
+    } else {
+      document.body.innerHTML = '<p>Error: no opener.</p>';
+    }
+  })
+  .catch(e => { document.body.innerHTML = '<p>Error: ' + e + '</p>'; });
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "londricalce",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "8765", "C:/Users/roman/code claude"],
+      "port": 8765
+    }
+  ]
+}

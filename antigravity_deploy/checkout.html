@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" /><title>Antigravity — Wellness Wear & Accessories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<style>
+  .checkout-sec { padding: 120px 80px 80px; background: var(--white); display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; }
+  .ck-form h3 { font-family: var(--serif); font-size: 28px; margin-bottom: 24px; color: var(--char); }
+  .ck-group { margin-bottom: 24px; }
+  .ck-group label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--stone); margin-bottom: 8px; }
+  .ck-group input { width: 100%; padding: 16px; border: 1.5px solid rgba(42,42,40,0.15); border-radius: var(--r); font-family: var(--sans); font-size: 14px; outline: none; transition: border .2s; }
+  .ck-group input:focus { border-color: var(--sage); }
+  .ck-row { display: flex; gap: 16px; margin-bottom: 24px; }
+  .ck-row .ck-group { margin-bottom: 0; flex: 1; }
+  .ck-summary { background: var(--cream); padding: 40px; border-radius: 12px; height: fit-content; }
+  .ck-summary h3 { font-family: var(--serif); font-size: 24px; margin-bottom: 24px; color: var(--char); }
+  .ck-totals { border-top: 1px solid rgba(42,42,40,0.1); padding-top: 24px; margin-top: 24px; }
+  .ck-tot-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: var(--mid); }
+  .ck-tot-row.grand { font-size: 18px; font-weight: 700; color: var(--char); margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(42,42,40,0.1); border-bottom: none; }
+  .btn-pay { width: 100%; background: var(--char); color: var(--white); padding: 18px; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border: none; border-radius: var(--r); cursor: pointer; margin-top: 24px; transition: background .2s; }
+  .btn-pay:hover { background: var(--sage); }
+  @media (max-width: 900px) { .checkout-sec { grid-template-columns: 1fr; padding: 100px 40px 40px; } }
+</style>
+<body>
+<nav id="navbar">
+  <div class="nav-left">
+    <a href='/colecao'>Coleções</a>
+    <a href="#about">Sobre</a>
+    <a href="#">Wellness</a>
+    <a href="#">Blog</a>
+  </div>
+
+  <a class='nav-logo' href='/'>Anti<span>g</span>ravity</a>
+
+  <div class="nav-right">
+    <div class="nav-icons">
+      <button title="Buscar">⌕</button>
+      <button title="Conta">◯</button>
+      <button title="Carrinho" onclick="openCart()" style="position:relative;">
+        ◎
+        <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+      </button>
+    </div>
+    <a href="#" class="btn-nav">Contato</a>
+    <button class="mobile-btn" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mob-menu">
+  <a href='/colecao'>Coleções</a>
+  <a href="#">Feminino</a>
+  <a href="#">Masculino</a>
+  <a href="#">Acessórios</a>
+  <a href="#about">Sobre</a>
+  <a href="#">Blog</a>
+  <a href="#">Contato</a>
+</div>
+<section class="checkout-sec">
+  <div class="ck-form">
+    <h3>Dados de Entrega</h3>
+    <div class="ck-row">
+      <div class="ck-group"><label>Nome</label><input type="text" placeholder="Nome completo" /></div>
+      <div class="ck-group"><label>Sobrenome</label><input type="text" placeholder="Sobrenome" /></div>
+    </div>
+    <div class="ck-group"><label>Endereço</label><input type="text" placeholder="Rua, número, complemento" /></div>
+    <div class="ck-row">
+      <div class="ck-group"><label>Cidade</label><input type="text" placeholder="Sua cidade" /></div>
+      <div class="ck-group"><label>CEP</label><input type="text" placeholder="00000-000" /></div>
+    </div>
+    <h3 style="margin-top: 40px;">Pagamento</h3>
+    <div class="ck-group"><label>Número do Cartão</label><input type="text" placeholder="0000 0000 0000 0000" /></div>
+    <div class="ck-row">
+      <div class="ck-group"><label>Validade</label><input type="text" placeholder="MM/AA" /></div>
+      <div class="ck-group"><label>CVV</label><input type="text" placeholder="123" /></div>
+    </div>
+  </div>
+  <div class="ck-summary">
+    <h3>Resumo do Pedido</h3>
+    <div id="cart-body" style="margin-bottom: 24px;"></div>
+    <div class="ck-totals">
+      <div class="ck-tot-row"><span>Subtotal</span><span id="checkout-subtotal">R$ 0</span></div>
+      <div class="ck-tot-row"><span>Frete</span><span>Grátis</span></div>
+      <div class="ck-tot-row grand"><span>Total</span><span id="checkout-total">R$ 0</span></div>
+    </div>
+    <button class="btn-pay" onclick="showToast('Finalizando pedido...'); setTimeout(() => { localStorage.removeItem('antigravity_cart'); window.location.href='index.html'; }, 2000)">Confirmar Pedido</button>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">Anti<span>g</span>ravity</a>
+      <p>Roupas e acessórios fitness para quem treina com propósito. Do aquecimento à conquista.</p>
+      <div class="social-row">
+        <a href="#" class="soc-link" title="Instagram">ig</a>
+        <a href="#" class="soc-link" title="Facebook">fb</a>
+        <a href="#" class="soc-link" title="TikTok">tk</a>
+        <a href="#" class="soc-link" title="YouTube">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Loja</h4>
+      <ul>
+        <li><a href="#">Nova Coleção</a></li>
+        <li><a href="#">Feminino</a></li>
+        <li><a href="#">Masculino</a></li>
+        <li><a href="#">Acessórios</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informações</h4>
+      <ul>
+        <li><a href="#">Sobre Nós</a></li>
+        <li><a href="#">Sustentabilidade</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Parceiros</a></li>
+        <li><a href="#">Trabalhe Conosco</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ajuda</h4>
+      <ul>
+        <li><a href="#">Guia de Tamanhos</a></li>
+        <li><a href="#">Trocas e Devoluções</a></li>
+        <li><a href="#">Rastrear Pedido</a></li>
+        <li><a href="#">Frete e Prazos</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Antigravity. Todos os direitos reservados.</p>
+    <div class="pay-row">
+      <span class="pay-chip">PIX</span>
+      <span class="pay-chip">VISA</span>
+      <span class="pay-chip">MC</span>
+      <span class="pay-chip">AMEX</span>
+      <span class="pay-chip">BOLETO</span>
+    </div>
+  </div>
+</footer>
+<!-- ─── CART SIDEBAR ─── -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-hdr">
+    <h3>Sacola (<span id="cart-count-sb">0</span>)</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty-msg" id="cart-empty">
+      <div class="ei">◎</div>
+      <p>Sua sacola está vazia</p>
+    </div>
+  </div>
+  <div class="cart-ftr" id="cart-ftr" style="display:none">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart-total-val">R$ 0</span>
+    </div>
+    <button class="btn-checkout" onclick="window.location.href='checkout.html'">Finalizar Compra</button>
+  </div>
+</div>
+
+<!-- ─── TOAST ─── -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

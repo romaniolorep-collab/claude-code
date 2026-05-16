@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" /><title>Antigravity — Wellness Wear & Accessories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-left">
+    <a href='/colecao'>Coleções</a>
+    <a href="#about">Sobre</a>
+    <a href="#">Wellness</a>
+    <a href="#">Blog</a>
+  </div>
+
+  <a class='nav-logo' href='/'>Anti<span>g</span>ravity</a>
+
+  <div class="nav-right">
+    <div class="nav-icons">
+      <button title="Buscar">⌕</button>
+      <button title="Conta">◯</button>
+      <button title="Carrinho" onclick="openCart()" style="position:relative;">
+        ◎
+        <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+      </button>
+    </div>
+    <a href="#" class="btn-nav">Contato</a>
+    <button class="mobile-btn" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mob-menu">
+  <a href='/colecao'>Coleções</a>
+  <a href="#">Feminino</a>
+  <a href="#">Masculino</a>
+  <a href="#">Acessórios</a>
+  <a href="#about">Sobre</a>
+  <a href="#">Blog</a>
+  <a href="#">Contato</a>
+</div>
+<div style="padding: 120px 80px 40px; background: var(--cream); text-align: center;">
+  <p class="eyebrow" style="justify-content:center">Catálogo</p>
+  <h1 class="section-title">Coleção <em>Completa</em></h1>
+</div>
+<section id="products">
+  <div class="section-header-c">
+    <p class="eyebrow" style="justify-content:center">Destaque</p>
+    <h2 class="section-title">Mais <em>Vendidos</em></h2>
+    <p class="section-sub">Peças desenvolvidas para cada tipo de movimento — do yoga intenso ao treino funcional.</p>
+  </div>
+  <div class="products-grid">
+
+    <!-- 1 -->
+    <div class="product-card">
+      <div class="prod-visual pv-1">
+        <div class="prod-sil"><div class="ps-bottom"></div></div>
+        <div class="prod-shine"></div>
+        <span class="prod-badge badge-hot">Best Seller</span>
+        <button class="prod-wish">♡</button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Legging Compress Pro</p>
+        <p class="prod-sub">Cintura Alta · Sage · 4 cores</p>
+        <div class="prod-bottom">
+          <div><span class="prod-price">R$ 189</span><span class="prod-price-old">R$ 240</span></div>
+          <button class="btn-add" onclick="addToCart('Legging Compress Pro',189,this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="product-card">
+      <div class="prod-visual pv-2">
+        <div class="prod-sil"><div class="ps-top"></div><div style="width:60px;height:30px;background:rgba(255,255,255,0.20)"></div></div>
+        <div class="prod-shine"></div>
+        <span class="prod-badge badge-new">Novo</span>
+        <button class="prod-wish">♡</button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Top Impact Ultra</p>
+        <p class="prod-sub">Suporte Alto · Terra · 6 cores</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 149</span>
+          <button class="btn-add" onclick="addToCart('Top Impact Ultra',149,this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="product-card">
+      <div class="prod-visual pv-3">
+        <div class="prod-sil" style="transform:translateX(-50%);bottom:0;left:50%;position:absolute;"><div class="ps-shorts"></div></div>
+        <div class="prod-shine"></div>
+        <button class="prod-wish">♡</button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Shorts Performance</p>
+        <p class="prod-sub">Masculino · Slate · 3 cores</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 129</span>
+          <button class="btn-add" onclick="addToCart('Shorts Performance',129,this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="product-card">
+      <div class="prod-visual pv-4">
+        <div class="prod-sil"><div class="ps-full"></div></div>
+        <div class="prod-shine"></div>
+        <span class="prod-badge badge-sale">Sale</span>
+        <button class="prod-wish">♡</button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Camiseta Dry Fit</p>
+        <p class="prod-sub">Unissex · Stone · 8 cores</p>
+        <div class="prod-bottom">
+          <div><span class="prod-price">R$ 89</span><span class="prod-price-old">R$ 120</span></div>
+          <button class="btn-add" onclick="addToCart('Camiseta Dry Fit',89,this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="product-card">
+      <div class="prod-visual pv-5">
+        <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);"><div class="ps-round"></div></div>
+        <div class="prod-shine"></div>
+        <span class="prod-badge badge-new">Novo</span>
+        <button class="prod-wish">♡</button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Garrafa Térmica 900ml</p>
+        <p class="prod-sub">Acessório · Sage · 4 cores</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 99</span>
+          <button class="btn-add" onclick="addToCart('Garrafa Térmica 900ml',99,this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="product-card">
+      <div class="prod-visual pv-6">
+        <div class="prod-sil"><div class="ps-full" style="width:90px;height:200px;background:rgba(255,255,255,0.25);border-radius:10px 10px 0 0"></div></div>
+        <div class="prod-shine"></div>
+        <button class="prod-wish">♡</button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Moletom Zip Up</p>
+        <p class="prod-sub">Feminino · Cream · 3 cores</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 219</span>
+          <button class="btn-add" onclick="addToCart('Moletom Zip Up',219,this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="product-card">
+      <div class="prod-visual pv-7">
+        <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);"><div class="ps-shoe"></div></div>
+        <div class="prod-shine"></div>
+        <span class="prod-badge badge-hot">Best Seller</span>
+        <button class="prod-wish">♡</button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Tênis Training Pro</p>
+        <p class="prod-sub">Unissex · Olive · 5 cores</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 349</span>
+          <button class="btn-add" onclick="addToCart('Tênis Training Pro',349,this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="product-card">
+      <div class="prod-visual pv-8">
+        <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);"><div class="ps-bag"><div class="ps-handle"></div></div></div>
+        <div class="prod-shine"></div>
+        <span class="prod-badge badge-new">Novo</span>
+        <button class="prod-wish">♡</button>
+      </div>
+      <div class="prod-info">
+        <p class="prod-name">Mochila Fitness 30L</p>
+        <p class="prod-sub">Acessório · Mauve · 2 cores</p>
+        <div class="prod-bottom">
+          <span class="prod-price">R$ 279</span>
+          <button class="btn-add" onclick="addToCart('Mochila Fitness 30L',279,this)">+ Bag</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+</section>
+<section id="newsletter">
+  <p class="eyebrow" style="justify-content:center">Fique por dentro</p>
+  <h2 class="section-title">Receba <em>Novidades</em><br>em Primeira Mão</h2>
+  <p>Lançamentos exclusivos, promoções e dicas de wellness direto no seu email.</p>
+  <form class="nl-form" onsubmit="handleNL(event)">
+    <input type="email" placeholder="seu@email.com" required />
+    <button type="submit">Quero Receber</button>
+  </form>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">Anti<span>g</span>ravity</a>
+      <p>Roupas e acessórios fitness para quem treina com propósito. Do aquecimento à conquista.</p>
+      <div class="social-row">
+        <a href="#" class="soc-link" title="Instagram">ig</a>
+        <a href="#" class="soc-link" title="Facebook">fb</a>
+        <a href="#" class="soc-link" title="TikTok">tk</a>
+        <a href="#" class="soc-link" title="YouTube">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Loja</h4>
+      <ul>
+        <li><a href="#">Nova Coleção</a></li>
+        <li><a href="#">Feminino</a></li>
+        <li><a href="#">Masculino</a></li>
+        <li><a href="#">Acessórios</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informações</h4>
+      <ul>
+        <li><a href="#">Sobre Nós</a></li>
+        <li><a href="#">Sustentabilidade</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Parceiros</a></li>
+        <li><a href="#">Trabalhe Conosco</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ajuda</h4>
+      <ul>
+        <li><a href="#">Guia de Tamanhos</a></li>
+        <li><a href="#">Trocas e Devoluções</a></li>
+        <li><a href="#">Rastrear Pedido</a></li>
+        <li><a href="#">Frete e Prazos</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Antigravity. Todos os direitos reservados.</p>
+    <div class="pay-row">
+      <span class="pay-chip">PIX</span>
+      <span class="pay-chip">VISA</span>
+      <span class="pay-chip">MC</span>
+      <span class="pay-chip">AMEX</span>
+      <span class="pay-chip">BOLETO</span>
+    </div>
+  </div>
+</footer>
+<!-- ─── CART SIDEBAR ─── -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-hdr">
+    <h3>Sacola (<span id="cart-count-sb">0</span>)</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty-msg" id="cart-empty">
+      <div class="ei">◎</div>
+      <p>Sua sacola está vazia</p>
+    </div>
+  </div>
+  <div class="cart-ftr" id="cart-ftr" style="display:none">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart-total-val">R$ 0</span>
+    </div>
+    <button class="btn-checkout" onclick="window.location.href='checkout.html'">Finalizar Compra</button>
+  </div>
+</div>
+
+<!-- ─── TOAST ─── -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
