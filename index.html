@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cavalera Sandals</title>
+
+  <link rel="icon" type="image/png" sizes="512x512" href="uploads/cavalera-favicon.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="uploads/cavalera-favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:       #a3d800;
+      --bg:           #131313;
+      --surface-low:  #181818;
+      --surface:      #1c1b1b;
+      --surface-high: #2a2a2a;
+      --text:         #e5e2e1;
+      --text-dim:     #c3caac;
+      --border:       #434933;
+      --muted:        #8d9479;
+
+      --font-display: 'Anton', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+      --font-label:   'Space Mono', monospace;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    #root { display: flex; flex-direction: column; }
+
+    /* Scroll-reveal classes */
+    .rv {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.16,1,0.3,1);
+    }
+    .rv.rv-in { opacity: 1; transform: translateY(0); }
+    .rv.delay-0 { transition-delay: 0s;    }
+    .rv.delay-1 { transition-delay: 0.1s;  }
+    .rv.delay-2 { transition-delay: 0.2s;  }
+    .rv.delay-3 { transition-delay: 0.3s;  }
+    .rv.delay-4 { transition-delay: 0.42s; }
+
+    /* Animations */
+    @keyframes heroScan {
+      0%   { top: -2px;               }
+      100% { top: calc(100% + 2px);   }
+    }
+    @keyframes pulseLen {
+      0%, 100% { opacity: 0.35; transform: scaleY(0.75); }
+      50%       { opacity: 1;   transform: scaleY(1.2);  }
+    }
+    @keyframes tickerMove {
+      from { transform: translateX(0);    }
+      to   { transform: translateX(-25%); }
+    }
+    @keyframes logoBreath {
+      0%, 100% { transform: scale(1);     opacity: 0.55; }
+      50%       { transform: scale(1.03); opacity: 0.70; }
+    }
+    @keyframes glitchTxt {
+      0%, 78%, 100% { text-shadow: none; transform: none; filter: none; }
+      80% { text-shadow: -5px 0 rgba(255,0,60,0.65), 5px 0 rgba(0,212,255,0.65); transform: skewX(-4deg) translateX(3px); filter: brightness(1.15); }
+      82% { text-shadow: 5px 0 rgba(255,0,60,0.5), -5px 0 rgba(0,212,255,0.5); transform: skewX(2deg) translateX(-3px); filter: none; }
+      84% { text-shadow: -2px 0 rgba(163,216,0,0.6); transform: translateX(2px); }
+      86% { text-shadow: none; transform: none; filter: none; }
+    }
+    @keyframes bracketIn {
+      from { width: 0; height: 0; opacity: 0; }
+      to   { width: 38px; height: 38px; opacity: 0.5; }
+    }
+    @keyframes cursorBlink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes dataFlow {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-50%); }
+    }
+    @keyframes ringRotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes ringRotateRev {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(-360deg); }
+    }
+    @keyframes scanPulse {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50%       { opacity: 0.5;  transform: scale(2.2); }
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0; transform: scaleX(0.7) scaleY(0.85); }
+      50%       { opacity: 1; transform: scaleX(1)   scaleY(1);    }
+    }
+    @keyframes depthFloat {
+      0%, 100% { transform: translateY(0px)   translateX(0px);   }
+      33%       { transform: translateY(-8px)  translateX(4px);   }
+      66%       { transform: translateY(5px)   translateX(-3px);  }
+    }
+    @keyframes cinemaIn {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+    @keyframes imgParallax {
+      from { transform: translateY(0);    }
+      to   { transform: translateY(-60px); }
+    }
+
+    @keyframes hudIn {
+      from { opacity: 0; transform: translateX(-12px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes hudInR {
+      from { opacity: 0; transform: translateX(12px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes alertBlink {
+      0%, 49% { opacity: 0.75; }
+      50%, 100%{ opacity: 0.12; }
+    }
+    @keyframes targetFlash {
+      0%   { opacity: 0; letter-spacing: 0.6em; }
+      12%  { opacity: 1; letter-spacing: 0.32em; }
+      72%  { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    @keyframes traceH {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+    @keyframes warningScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes targetBlink {
+      0%, 48%  { opacity: 1;    }
+      50%, 98% { opacity: 0;    }
+      100%     { opacity: 1;    }
+    }
+    @keyframes redEyeBlink {
+      0%, 35%  { opacity: 1;   transform: scale(1);    }
+      40%, 46% { opacity: 0.02; transform: scale(0.6); }
+      50%      { opacity: 1;   transform: scale(1.15); }
+      55%      { opacity: 1;   transform: scale(1);    }
+      100%     { opacity: 1;   transform: scale(1);    }
+    }
+    @keyframes redEyePulse {
+      0%, 100% { box-shadow: 0 0 6px 3px rgba(220,0,0,0.85), 0 0 18px 8px rgba(180,0,0,0.4); }
+      50%      { box-shadow: 0 0 10px 5px rgba(255,20,0,1),   0 0 28px 14px rgba(200,0,0,0.6); }
+    }
+
+    ::-webkit-scrollbar       { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="cavalera/data.js"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="cavalera/components.jsx"></script>
+  <script type="text/babel" src="cavalera/hero.jsx"></script>
+  <script type="text/babel" src="cavalera/sections.jsx"></script>
+  <script type="text/babel" src="cavalera/app.jsx"></script>
+</body>
+</html>

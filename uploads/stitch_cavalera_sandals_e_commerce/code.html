@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Space+Mono:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#ffffff",
+                    "inverse-primary": "#4c6700",
+                    "surface-container-highest": "#353534",
+                    "on-primary-fixed-variant": "#394e00",
+                    "surface": "#131313",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "surface-container-low": "#1c1b1b",
+                    "secondary-container": "#454747",
+                    "error-container": "#93000a",
+                    "on-primary": "#263500",
+                    "on-background": "#e5e2e1",
+                    "inverse-surface": "#e5e2e1",
+                    "inverse-on-surface": "#313030",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "surface-container-lowest": "#0e0e0e",
+                    "outline": "#8d9479",
+                    "on-secondary": "#2f3131",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "surface-tint": "#a3d800",
+                    "primary-container": "#baf600",
+                    "on-primary-container": "#516e00",
+                    "primary": "#ffffff",
+                    "surface-variant": "#353534",
+                    "surface-bright": "#3a3939",
+                    "surface-dim": "#131313",
+                    "on-tertiary": "#303030",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a2a",
+                    "primary-fixed": "#baf600",
+                    "outline-variant": "#434933",
+                    "surface-container": "#201f1f",
+                    "on-surface-variant": "#c3caac",
+                    "on-primary-fixed": "#151f00",
+                    "background": "#131313",
+                    "on-surface": "#e5e2e1",
+                    "tertiary-fixed": "#e4e2e1",
+                    "primary-fixed-dim": "#a3d800",
+                    "on-error": "#690005",
+                    "secondary-fixed": "#e2e2e2",
+                    "tertiary-container": "#e4e2e1",
+                    "on-secondary-fixed-variant": "#454747",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-tertiary-container": "#656464",
+                    "on-secondary-container": "#b5b5b5",
+                    "secondary": "#c6c6c6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin": "32px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Space Mono"],
+                    "headline-xl-mobile": ["Anton"],
+                    "display-lg": ["Anton"],
+                    "headline-xl": ["Anton"],
+                    "technical-code": ["JetBrains Mono"],
+                    "body-md": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "headline-xl-mobile": ["36px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "display-lg": ["84px", {"lineHeight": "90px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "52px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "technical-code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>body {
+    background-color: #131313;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDRvT4bBDebMTT9iKEk4BqijAF_mQQOpdFOD4oyjyPDCDtPByFj2yKLbQZCSgr2GF11UV13AhdMDb2NxUY9nn2umIb7Zs7ZOg654CRZJEDZBSYKdo1L3_fn8EiUxv0lT8Hg0a2G5DvcaG2TFD-PrRSepbVbfk_K-qVbKIROFQJSTweGLWrAVoeoVskU3DqcALugl6AS_LtgxUq-POS6R4SnHc9p4NBLrLSlGYAncvzXbGPRDQH1e60KZqmFzY-szSJGAUfx1NQl0C0);
+    background-attachment: fixed
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.hatch-pattern {
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(163, 216, 0, 0.05) 10px, rgba(163, 216, 0, 0.05) 11px)
+    }
+.grain-overlay {
+    position: relative
+    }
+.grain-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDNUq5O2EJ5egayvXFJUb05ie19aLZbo8VMf69CIYmeT0iilGZhyAhXsMyeOccJT8zS6HOyiMM6crMjS0SSQ1-1Gp25niFI1jtoGjRCHX_BZ6zVee6oI57dVChuBLiJXznSkZxb-zbgmnJn3sFrFWT6DQK1eyJlaTG0pZXgon55DuUlPi5L2qrTC9_i4dd0aGD3ISTZLdATFCTYFk6xcGlimHtz4nxB1zrCnzlhXVmj6fLR9A85u9gJZZKTp4djb5RtHpAosulvs14);
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 1
+    }</style>
+</head>
+<body class="text-on-surface font-body-md bg-background">
+<!-- Predicted SideNavBar from JSON -->
+<nav class="fixed left-0 top-0 h-full w-64 border-r-2 border-outline dark:border-outline-variant bg-surface-container-lowest flex flex-col h-screen overflow-y-auto pt-margin pb-margin px-4 z-50">
+<div class="mb-10 flex flex-col items-start">
+<h1 class="font-display-lg text-display-lg text-primary dark:text-primary tracking-tighter uppercase mb-1">CAVALERA</h1>
+<p class="font-technical-code text-technical-code opacity-70">EST. 1995 / URBAN REBELLION</p>
+</div>
+<div class="flex-grow flex flex-col gap-2">
+<!-- The Story - Inactive -->
+<a class="text-on-surface-variant dark:text-on-surface-variant p-4 flex items-center gap-3 opacity-70 hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-label-sm text-label-sm">The Story</span>
+</a>
+<!-- Archives - Active (Mapping technical detail to Archives context) -->
+<a class="text-primary dark:text-primary font-bold bg-surface-container-highest dark:bg-surface-container-highest border-l-4 border-surface-tint p-4 flex items-center gap-3 transition-all active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="folder_zip">folder_zip</span>
+<span class="font-label-sm text-label-sm">Archives</span>
+</a>
+<!-- Collaborations - Inactive -->
+<a class="text-on-surface-variant dark:text-on-surface-variant p-4 flex items-center gap-3 opacity-70 hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span class="font-label-sm text-label-sm">Collaborations</span>
+</a>
+<!-- Manifesto - Inactive -->
+<a class="text-on-surface-variant dark:text-on-surface-variant p-4 flex items-center gap-3 opacity-70 hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-label-sm text-label-sm">Manifesto</span>
+</a>
+</div>
+<button class="mt-8 mb-12 bg-primary-container text-on-primary-container py-3 px-4 font-label-sm text-label-sm tracking-widest hover:opacity-80 transition-opacity flex items-center justify-center gap-2">
+            JOIN THE RESISTANCE
+        </button>
+<div class="mt-auto border-t border-outline-variant pt-4 flex flex-col gap-2">
+<a class="text-on-surface-variant opacity-70 hover:opacity-100 flex items-center gap-3 p-2" href="#">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm">Security</span>
+</a>
+<a class="text-on-surface-variant opacity-70 hover:opacity-100 flex items-center gap-3 p-2" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-label-sm text-label-sm">System Log</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Shell -->
+<main class="ml-64 min-h-screen">
+<!-- Hero Section: Macro Industrial View -->
+<header class="relative w-full h-[716px] flex flex-col justify-end p-margin overflow-hidden border-b-2 border-outline-variant">
+<img alt="Technical Hardware View" class="absolute inset-0 w-full h-full object-cover grayscale brightness-50" data-alt="A hyper-detailed macro photograph of a heavy-duty tactical sandal's buckle mechanism. The metal shows visible industrial wear and brushed texture, set against a background of thick, coarse recycled rubber treads. The lighting is harsh and dramatic, casting deep shadows that emphasize the Cyber-Folk aesthetic. The color palette is dominated by deep charcoal, metallic silver, and a sharp hit of neon acid green in the stitching." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAemEymbhfajmS0pec1kwRcAeQ_YpM1vR8KYKZ8cUQdS5ywvnsVpRucnpX97PUtOaLtxdtOc2RWHKonHDItyTlm3E-nrwwM3KixvRRi0RsHXNgD2bZBoJ3DjzDeaUewz7e_356FJZd1xC2FzzK_9D3qclt9XIAW9zcF9SDG22kynU0mZlzGaC4nHRseMkM1M80QBpMx17gO4blmzzAlgeuiVZdKFQLxRu7pV8qXgMl8CfsMJYb_PkmAbJyjSrDarpII1stKUkUZrhw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="relative z-10 max-w-4xl">
+<span class="font-technical-code text-technical-code text-surface-tint border border-surface-tint px-2 py-1 mb-4 inline-block">UNIT ID: BR-2995-URBAN</span>
+<h2 class="font-headline-xl text-headline-xl text-white uppercase mb-2">Industrial Craft: The Rubber Soul</h2>
+<p class="font-body-md text-secondary max-w-2xl">A technical analysis of the intersection between Brazilian artisanal leatherwork and the brutalist necessity of the urban sprawl.</p>
+</div>
+</header>
+<!-- Technical Bento Grid -->
+<section class="p-margin grid grid-cols-12 gap-gutter">
+<!-- Narrative Column -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container p-6 border border-outline-variant relative grain-overlay">
+<h3 class="font-label-sm text-label-sm text-surface-tint uppercase mb-4 tracking-widest">// THE NARRATIVE</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                        Cavalera’s "Industrial Craft" series is a manifesto written in recycled rubber and heavy-gauge nylon. It honors the <span class="text-white font-bold italic">sertão</span> artisan—whose hands transform raw materials—while engineering for the high-friction environment of the concrete jungle. Each piece is a technical rebellion against planned obsolescence.
+                    </p>
+<div class="mt-6 h-[1px] w-full bg-outline-variant"></div>
+<div class="mt-4 flex justify-between font-technical-code text-technical-code opacity-60">
+<span>ORIGIN: SÃO PAULO</span>
+<span>LAT: -23.5505</span>
+</div>
+</div>
+<div class="bg-surface-container-high border-2 border-surface-tint p-6 flex flex-col gap-4">
+<h3 class="font-label-sm text-label-sm text-white uppercase tracking-widest">PROTOCOL: MATERIAL SPECS</h3>
+<ul class="font-technical-code text-technical-code text-on-surface-variant space-y-4">
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span>BASE LAYER</span>
+<span class="text-white">ECO-LEATHER (85% RECYCLED)</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span>OUTSOLE</span>
+<span class="text-white">VULCANIZED TIRE TREAD</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span>HARDWARE</span>
+<span class="text-white">AERONAUTIC ALUMINUM</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-2">
+<span>FASTENER</span>
+<span class="text-white">FIDLOCK MAGNETIC CLIP</span>
+</li>
+</ul>
+<button class="w-full mt-2 bg-transparent border-2 border-white text-white py-3 font-label-sm text-label-sm tracking-widest hover:bg-white hover:text-black transition-all uppercase">
+                        View Schematics
+                    </button>
+</div>
+</div>
+<!-- Schematic/Imagery Column -->
+<div class="col-span-12 lg:col-span-8 grid grid-cols-2 gap-gutter">
+<!-- Macro Detail 1: The Buckle -->
+<div class="col-span-2 md:col-span-1 aspect-square bg-surface-container border border-outline-variant overflow-hidden relative group">
+<img alt="Buckle Detail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A close-up shot of heavy metallic garment hardware, specifically a tactical carabiner attached to thick, grain-textured recycled leather. The lighting is moody with high contrast, showing every scratch and industrial patina on the silver metal. The aesthetic is raw and brutalist, with neon green highlights reflecting off the metallic surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAINN_TpDP26tphjEFOzUEzXRz5eSz2R5v_yjXR2CzN1JZc9C66FWJVRIVaai3qNB9bnQwk41ezulI79iOyAXdhXxAYfdsNS9FLDVS9OKTQMsYVk9OdXA1KPAoxgqzqpegBiNM9hahrXWnoh0myOR1tQQgMMxCKRge72-aFEJQyOkwlw9IlClzVLK-eTMc98nZLijKe4wuEplJyBMFAHdL3IVWSUS7t26QknBtTx1wDCQx0u9-KSb38GChvZ_nhGr2hyECoTLfFDF4"/>
+<div class="absolute top-4 left-4 z-10 bg-black/80 px-2 py-1 font-technical-code text-[10px] border border-surface-tint text-surface-tint">
+                        HD_MACRO_01 // HARDWARE_STRESS_TEST
+                    </div>
+<!-- Callouts -->
+<div class="absolute bottom-10 right-10 flex flex-col items-end">
+<div class="w-16 h-[2px] bg-surface-tint"></div>
+<span class="font-technical-code text-[10px] text-surface-tint mt-1">REINFORCED PIVOT POINT</span>
+</div>
+</div>
+<!-- Macro Detail 2: The Tread -->
+<div class="col-span-2 md:col-span-1 aspect-square bg-surface-container border border-outline-variant overflow-hidden relative group">
+<img alt="Tread Detail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A macro photography view of deep, heavy tread patterns on a shoe sole made from recycled tire rubber. The texture is gritty and industrial, with fine dust particles visible in the grooves. The color is a matte charcoal gray, with sharp, directional lighting from the side creating dramatic ridges and valleys. The atmosphere is functional and rebellious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrMeEh1mmLJZUc4XmKmg9y4MefKq--IXJjto_ZtmGcWSMwSCN18Dodra0R5KtyEg9wz4_7ZVIO5yEh8KwGN08lnj-OLdxijMvnA9nWgPi45LXWSg-vl6h3qIuk5VVRVGypInZLSyX7rs_CRpNCN0LqUujbQvwf32J6JFQp9eacKpIWRkcGxD-MmgNy4HtkPZIxJet3o0QaWulqp-unFlBKlnY_X8YNMyxIm7hhswgQt0gma6DMGYi2h31gnGCte7H9utnQVE_K7gg"/>
+<div class="absolute top-4 left-4 z-10 bg-black/80 px-2 py-1 font-technical-code text-[10px] border border-outline-variant text-surface-tint">
+                        HD_MACRO_02 // GRIP_COEFFICIENT
+                    </div>
+</div>
+<!-- Large Schematic View -->
+<div class="col-span-2 h-[400px] bg-surface-container-low border border-outline-variant relative hatch-pattern flex items-center justify-center overflow-hidden">
+<img alt="Product Schematic" class="w-2/3 h-auto grayscale opacity-50 contrast-125" data-alt="A full product profile of a high-tech sneaker presented as a technical blueprint. The shoe is entirely desaturated into shades of gray and black, with digital grid lines and coordinate markers overlaid on the image. Green laser-like lines point to various design features. The background is a dark, industrial charcoal with a subtle carbon fiber texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTA4mjMq0TpFw-MUrwpvoGYRoKsMsuy2elfptK3dwsB_Y1KMr9US7TauOy1wB7BhhFgTmb7QsfulWHvfrk1YXnaE3ItYHcwTNbpNBWzF-BoMXSPjpigO9bLeBgcVShvHigkFRqp2rudYkfp2zKYyxpIcFXCjr8NYQUAodxa62YBH-dix9ZGfaYU9ZTGhH34ntOMAsFEC5J893--ZsZZSs_Vlwwnm2YUfTScfnXVSQ1QgL7xAIqrn1uXf4LovbHPamM1exhqQYkJCE"/>
+<!-- Schematic UI Elements -->
+<div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-between">
+<div class="flex justify-between font-technical-code text-[10px] text-surface-tint opacity-50">
+<span>X-AXIS_LOCK [49.201]</span>
+<span>Y-AXIS_LOCK [12.883]</span>
+</div>
+<div class="flex justify-between items-end font-technical-code text-[10px] text-surface-tint opacity-50">
+<div class="flex flex-col gap-1">
+<span>SCANNING... 100%</span>
+<div class="w-32 h-1 bg-surface-tint/20">
+<div class="w-2/3 h-full bg-surface-tint"></div>
+</div>
+</div>
+<span>REF: CAV_SECTOR_07</span>
+</div>
+</div>
+<!-- Branding Watermark -->
+<div class="absolute bottom-4 right-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">Table</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Callout Section -->
+<section class="px-margin py-12 border-t-2 border-outline-variant bg-surface-container-lowest">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="p-6 border border-outline-variant hover:border-surface-tint transition-colors">
+<span class="material-symbols-outlined text-surface-tint mb-4" data-icon="terminal">terminal</span>
+<h4 class="font-label-sm text-label-sm text-white mb-2 uppercase">Cyber-Folk Methodology</h4>
+<p class="font-technical-code text-[12px] text-on-surface-variant">We merge the tactile wisdom of the hand with the precision of the machine. Every stitch is a line of code in our physical reality.</p>
+</div>
+<div class="p-6 border border-outline-variant hover:border-surface-tint transition-colors">
+<span class="material-symbols-outlined text-surface-tint mb-4" data-icon="recycling">recycling</span>
+<h4 class="font-label-sm text-label-sm text-white mb-2 uppercase">Eco-Industrial Cycle</h4>
+<p class="font-technical-code text-[12px] text-on-surface-variant">Materials are scavenged from the city's excess. Recycled tires, industrial scraps, and plant-based polymers form our armor.</p>
+</div>
+<div class="p-6 border border-outline-variant hover:border-surface-tint transition-colors">
+<span class="material-symbols-outlined text-surface-tint mb-4" data-icon="precision_manufacturing">precision_manufacturing</span>
+<h4 class="font-label-sm text-label-sm text-white mb-2 uppercase">Hardware Integrity</h4>
+<p class="font-technical-code text-[12px] text-on-surface-variant">Tested against the asphalt of the megalopolis. Our components are over-engineered to survive the collapse of the grid.</p>
+</div>
+</div>
+</section>
+<!-- Footer from JSON -->
+<footer class="w-full border-t-2 border-outline dark:border-outline-variant bg-surface-container-lowest flex flex-col md:flex-row justify-between items-center px-margin py-gutter">
+<div class="flex flex-col gap-1 items-center md:items-start mb-6 md:mb-0">
+<p class="font-label-sm text-label-sm text-on-surface opacity-50 uppercase tracking-widest">CAVALERA INDUSTRIAL SECTOR</p>
+<p class="font-technical-code text-[10px] text-secondary opacity-40">© 1995-2025 ALL RIGHTS RESERVED</p>
+</div>
+<div class="flex gap-8">
+<a class="font-technical-code text-technical-code text-secondary-fixed-dim hover:text-primary transition-colors underline" href="#">Hardware Specs</a>
+<a class="font-technical-code text-technical-code text-secondary-fixed-dim hover:text-primary transition-colors" href="#">Source Code</a>
+<a class="font-technical-code text-technical-code text-secondary-fixed-dim hover:text-primary transition-colors" href="#">Protocol</a>
+</div>
+<div class="mt-6 md:mt-0 opacity-20">
+<span class="material-symbols-outlined text-4xl">settings_input_component</span>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB - Restricted according to shell rules -->
+<!-- FAB is suppressed for this Detail/Technical page as per "Contextual FAB Suppression" rule. -->
+</body></html>
