@@ -1,0 +1,440 @@
+[
+ {
+  "ref": "1204431B184",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco/cinza claro com entressola magenta/rosa vibrante e calcanhar verde-limão, detalhes escuros",
+  "notes": "O PDF mostra o Silver Anniversary Edition totalmente prata/monocromático; a foto do site tem rosa e verde fortes, claramente outro colorway."
+ },
+ {
+  "ref": "1104421D048",
+  "verdict": "mismatch",
+  "site_desc": "Tênis de cabedal preto com logo branco e entressola branca/cinza, sem laranja",
+  "notes": "O PDF mostra cabedal cinza-claro (oyster mushroom) com acentos laranja e detalhes ebony; a foto do site é preto/branco (parece o colorway Black/Grey/White)."
+ },
+ {
+  "ref": "1104421D090",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco com acentos coral/vermelho e toques de verde-limão e azul na entressola",
+  "notes": "O PDF mostra tênis predominantemente preto com entressola branca; a foto do site é branca com coral/verde (parece o colorway White/Pink Clay/Gecko)."
+ },
+ {
+  "ref": "1104421D112",
+  "verdict": "mismatch",
+  "site_desc": "Tênis azul-marinho escuro (navy) com acento azul-claro e entressola branca/cinza",
+  "notes": "O PDF mostra tênis branco com acentos pink clay/laranja e verde gecko; a foto do site é navy escuro (parece o colorway Peacoat/Blue)."
+ },
+ {
+  "ref": "1104421D414",
+  "verdict": "mismatch",
+  "site_desc": "Tênis cinza-claro com entressola em degradê laranja/rosa e detalhes escuros",
+  "notes": "Sem célula no PDF, mas a cor declarada é Peacoat/Lime/Blue (navy escuro com verde-limão e azul); a foto do site é cinza com laranja/rosa, incoerente com a cor declarada."
+ },
+ {
+  "ref": "1104541D033",
+  "verdict": "mismatch",
+  "site_desc": "Tênis de cabedal preto com logo turquesa e entressola azul/verde-água escura",
+  "notes": "PDF mostra colorway Oyster (cinza-claro/branco) com entressola verde gecko e azul; a foto do site é de um tênis predominantemente preto — parece o colorway Black/Ipanema/Mint (ref D055)."
+ },
+ {
+  "ref": "1104541D055",
+  "verdict": "mismatch",
+  "site_desc": "Tênis todo cinza-claro/prata com entressola prateada metálica",
+  "notes": "PDF mostra tênis preto com detalhes verde-água/menta (Black/Ipanema/Mint); a foto do site é claramente a Silver Anniversary Edition (ref D184)."
+ },
+ {
+  "ref": "1104541D184",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco/cinza-claro com entressola em degradê rosa-pink e verde",
+  "notes": "PDF mostra a Silver Anniversary Edition, toda prata/cinza sem cores vivas; a foto do site tem pink e verde vibrantes — parece o colorway Oyster/Pink/Green (ref B053)."
+ },
+ {
+  "ref": "1204431B053",
+  "verdict": "mismatch",
+  "site_desc": "Tênis preto com entressola pink/magenta e verde-água (iced aqua)",
+  "notes": "PDF mostra colorway Oyster/Pink/Green (cabedal cinza-claro); a foto do site é de um tênis preto com pink/aqua — parece o colorway Black/Cyber Pink/Iced Aqua (ref B064)."
+ },
+ {
+  "ref": "1204431B064",
+  "verdict": "mismatch",
+  "site_desc": "Tênis cinza com detalhes laranja/vermelho e entressola cinza/preta, silhueta mais baixa",
+  "notes": "PDF mostra tênis preto com pink e iced aqua (Black/Cyber Pink/Iced Aqua); a foto do site é cinza/laranja e aparenta ser outro modelo de perfil mais baixo — cores e silhueta não batem."
+ },
+ {
+  "ref": "1204311B070",
+  "verdict": "mismatch",
+  "site_desc": "Tênis de cabedal preto com detalhes coral/vermelho, logo Brooks rosa/lavanda e entressola branca com degradê coral e roxo",
+  "notes": "PDF mostra colorway Oyster/Apricot/Pink (branco com laranja/rosa); a foto do site mostra claramente o colorway Black/Purple/Coral (o da ref B080)."
+ },
+ {
+  "ref": "1204311B080",
+  "verdict": "mismatch",
+  "site_desc": "Tênis todo preto com logo Brooks branco e entressola branca/cinza, sem acentos coloridos",
+  "notes": "PDF mostra Black/Purple/Coral (acentos coral e lavanda visíveis); a foto do site é o colorway Black/Grey/White (o da ref B090), sem roxo nem coral."
+ },
+ {
+  "ref": "1204311B090",
+  "verdict": "mismatch",
+  "site_desc": "Ghost em azul-claro (blue heron) com logo azul-marinho, detalhes água/turquesa e entressola creme/lilás com verde-menta",
+  "notes": "PDF mostra Black/Grey/White (preto com sola branca); a foto do site é um colorway azul-claro totalmente diferente (igual à foto da célula da ref B412)."
+ },
+ {
+  "ref": "1204311B412",
+  "verdict": "mismatch",
+  "site_desc": "Tênis azul-acinzentado (periwinkle) com logo e detalhes laranja na entressola",
+  "notes": "A foto oficial da célula do PDF mostra um tênis azul-claro com logo marinho e sola creme/lilás; a foto do site (azul com laranja) corresponde ao colorway Blue Heron/White/Orange da ref B443, não à foto da célula nem ao nome Burgundy/Pink/Green."
+ },
+ {
+  "ref": "1204311B443",
+  "verdict": "mismatch",
+  "site_desc": "Tênis preto/escuro com logo Brooks azul-claro e entressola branca/cinza com faixa azul-claro",
+  "notes": "PDF mostra Blue Heron/White/Orange (azul-claro com laranja); a foto do site é um colorway preto com azul-claro, sem qualquer laranja — outro colorway."
+ },
+ {
+  "ref": "1104451D063",
+  "verdict": "mismatch",
+  "site_desc": "Tênis com cabedal cinza médio, detalhe cinza-escuro/prata no logo e entressola/solado pretos",
+  "notes": "PDF mostra colorway Black/Atomizer/Blazing Orange (cabedal preto, entressola azul-clara, detalhe laranja). A foto do site é claramente cinza/preto — corresponde ao colorway Primer Gray/Ebony do ref D078, não ao esperado."
+ },
+ {
+  "ref": "1104451D078",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco com entressola/solado pretos, detalhe cobre no cadarço e solado gum",
+  "notes": "PDF mostra colorway Primer Gray/Ebony/Bluewash (cabedal cinza médio, sola preta). A foto do site é branca com sola preta e detalhes cobre/gum — corresponde ao colorway White/Grey/Black do ref D135."
+ },
+ {
+  "ref": "1104451D135",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco brilhante com detalhes azul-claro (winter sky), cadarços/língua pretos, entressola branca e solado gum",
+  "notes": "PDF mostra White/Grey/Black com entressola PRETA proeminente e detalhes cobre. A foto do site tem entressola branca e detalhes azul-claro — corresponde ao colorway Bright White/Winter Sky/Black do ref D175."
+ },
+ {
+  "ref": "1104451D175",
+  "verdict": "mismatch",
+  "site_desc": "Tênis cinza-esverdeado claro (sage/smoke) com logo dourado/laranja, cadarços azul-acinzentados e entressola branca",
+  "notes": "PDF mostra Bright White/Winter Sky/Black (branco com detalhes azul-claro e pretos). A foto do site é cinza-sage com dourado — corresponde ao colorway Smoke/Stormy/Orange do ref D415."
+ },
+ {
+  "ref": "1104451D415",
+  "verdict": "mismatch",
+  "site_desc": "Tênis com cabedal totalmente laranja, logo laranja/cinza e entressola branca/creme",
+  "notes": "PDF mostra Smoke/Stormy/Orange (cabedal cinza-claro sage com detalhes dourados, laranja apenas em acentos). A foto do site é laranja dominante — outro colorway do Glycerin, não o esperado. Padrão geral: as imagens do site parecem deslocadas uma posição na sequência de refs."
+ },
+ {
+  "ref": "1104451D821",
+  "verdict": "mismatch",
+  "site_desc": "Tênis preto com logo branco/prata e entressola branca (colorway preto/branco).",
+  "notes": "A célula do PDF mostra colorway laranja (Orange/Nightlife/White) com cabedal e logo laranja; a foto do site é claramente um tênis preto/branco — parece o colorway Black/Grey/White, não o laranja."
+ },
+ {
+  "ref": "1204341B088",
+  "verdict": "match",
+  "site_desc": "Tênis de cabedal preto, logo azul-claro (blue heron), entressola branca com rosa e detalhe laranja no solado.",
+  "notes": "Mesmas cores dominantes da foto oficial do PDF (Black/Blue Heron/Orange): preto com logo periwinkle, midsole branca/rosa e outsole laranja. Mesmo modelo Glycerin 22."
+ },
+ {
+  "ref": "1204341B090",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco com acentos lavanda/azul-claro e detalhe apricot no logo.",
+  "notes": "O PDF mostra colorway Black/Grey/White (tênis preto com logo branco); a foto do site é um tênis branco com azul heron/apricot — corresponde ao colorway do ref 1204341B137, não a este."
+ },
+ {
+  "ref": "1204341B137",
+  "verdict": "mismatch",
+  "site_desc": "Tênis amarelo-claro/areia com cadarços laranja e logo rosa/laranja.",
+  "notes": "O PDF mostra colorway White/Blue Heron/Apricot (tênis branco com acentos azul-claro); a foto do site é amarela com rosa — corresponde ao colorway Sherbert/Apricot/Pink (ref 1204341B897), não a este."
+ },
+ {
+  "ref": "1204341B897",
+  "verdict": "mismatch",
+  "site_desc": "Tênis preto/azul-marinho com acentos azul royal e amarelo-lima, entressola branca.",
+  "notes": "O PDF mostra colorway Sherbert/Apricot/Pink (tênis amarelo com logo rosa); a foto do site é um tênis escuro preto/azul com detalhes lima — colorway completamente diferente."
+ },
+ {
+  "ref": "1104471D303",
+  "verdict": "mismatch",
+  "site_desc": "Tênis maximalista branco/off-white com detalhes cinza e logo/texto laranja na entressola; nenhum elemento lima ou azul-marinho visível.",
+  "notes": "Cor esperada LIME/NAVY PEONY/WHITE exigiria verde-lima e azul-marinho dominantes; a foto mostra um calçado quase todo branco/creme com cinza. Colorway claramente diferente do declarado."
+ },
+ {
+  "ref": "1204361B115",
+  "verdict": "mismatch",
+  "site_desc": "Tênis com cabedal branco, painel lateral preto bem marcado e entressola rosa/coral com branco.",
+  "notes": "Cor esperada COCONUT/ALLOY/ROSE (off-white/cinza/rosa) não teria painel preto dominante; a foto aparenta ser o colorway White/Black/Diva Pink (o declarado para a ref 1204361B118)."
+ },
+ {
+  "ref": "1204361B118",
+  "verdict": "mismatch",
+  "site_desc": "Tênis azul-claro/lavanda com detalhes rosa (logo e faixas) e entressola azul/branca.",
+  "notes": "Cor esperada WHITE/BLACK/DIVA PINK exigiria base branca com preto; a foto mostra um tênis predominantemente azul com rosa, coerente com Blue Heron/Diva Pink/White (o declarado para a ref 1204361B447)."
+ },
+ {
+  "ref": "1204361B447",
+  "verdict": "mismatch",
+  "site_desc": "Tênis preto com logo verde-limão (green gecko) e entressola verde-menta/branca com preto.",
+  "notes": "Cor esperada BLUE HERON/DIVA PINK/WHITE (azul/rosa/branco) não bate; a foto mostra colorway preto/verde, coerente com Phantom/White/Green Gecko (o declarado para a ref 1104791D091)."
+ },
+ {
+  "ref": "1104791D091",
+  "verdict": "mismatch",
+  "site_desc": "Tênis laranja vibrante com detalhes azul-marinho e entressola creme/off-white.",
+  "notes": "A célula do PDF (fonte de verdade) mostra o Glycerin Max Phantom/White/Green Gecko: preto com verde-limão e entressola verde-menta. A foto do site é laranja/marinho — colorway claramente diferente."
+ },
+ {
+  "ref": "1104461D002",
+  "verdict": "mismatch",
+  "site_desc": "Tênis preto com logo e colarinho azul-claro (atomizer), detalhe laranja junto aos cadarços, entressola branca/azul-claro",
+  "notes": "PDF (Black/Cobalt/Neo Yellow) mostra logo amarelo-neon e detalhes cobalto com solado amarelo; a foto do site não tem amarelo e corresponde ao colorway Black/Atomizer/Blazing Orange (célula do D063)."
+ },
+ {
+  "ref": "1104461D063",
+  "verdict": "mismatch",
+  "site_desc": "Tênis de cabedal branco/mescla claro com entressola preta e detalhes cobre/laranja",
+  "notes": "PDF do D063 mostra cabedal preto mesclado com entressola azul-claro (atomizer); a foto do site é branca com entressola preta e corresponde à foto da célula do D135."
+ },
+ {
+  "ref": "1104461D135",
+  "verdict": "mismatch",
+  "site_desc": "Tênis preto com logo periwinkle/azul-claro, detalhe laranja, entressola branca com degradê rosa e solado gum",
+  "notes": "A foto oficial da célula do D135 mostra tênis branco/mescla com entressola preta e detalhes cobre; a foto do site é preta e corresponde à foto da célula do 1204351B088 (Black/Blue Heron/Orange)."
+ },
+ {
+  "ref": "1204351B088",
+  "verdict": "mismatch",
+  "site_desc": "Tênis todo branco com logo lavanda/periwinkle e entressola branca com toques azul-claro",
+  "notes": "PDF do B088 (Black/Blue Heron/Orange) mostra cabedal preto; a foto do site é branca e corresponde ao colorway White/Blue Heron/Apricot (célula do B137)."
+ },
+ {
+  "ref": "1204351B137",
+  "verdict": "mismatch",
+  "site_desc": "Tênis amarelo-neon/verde-limão com logo verde-escuro e entressola branca, silhueta de tênis de performance (placa)",
+  "notes": "PDF do B137 (White/Blue Heron/Apricot) mostra tênis branco com detalhes lavanda e apricot; a foto do site é um calçado verde-limão de outro modelo/colorway, sem relação com a célula."
+ },
+ {
+  "ref": "1104791D811",
+  "verdict": "mismatch",
+  "site_desc": "Tênis cinza claro com detalhes rosa/magenta no logo e midsole rosa/branca (perfil de Glycerin Max)",
+  "notes": "PDF mostra colorway laranja vibrante com detalhes azul-marinho/beacon blue; a foto do site é cinza/rosa (parece o colorway Oyster/Argile/Cyber Pink do item seguinte). Cores dominantes totalmente diferentes."
+ },
+ {
+  "ref": "1204681B048",
+  "verdict": "mismatch",
+  "site_desc": "Tênis off-white/creme com logo dourado/caramelo e midsole branca, sem nenhum rosa",
+  "notes": "PDF mostra colorway cinza/branco com logo e midsole rosa choque (Cyber Pink); a foto do site é creme/dourado (parece o colorway Coconut/Starfish/White do item seguinte). Falta completamente o rosa."
+ },
+ {
+  "ref": "1204681B110",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco com logo preto e painel lateral verde-oliva/sálvia, midsole branca",
+  "notes": "PDF mostra colorway creme/coconut com logo dourado (Starfish), sem preto; a foto do site é branco/preto/oliva (parece o Bright White/Tea/Black do Ghost Max 3). Acentos dominantes não batem."
+ },
+ {
+  "ref": "1104641D162",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco/cinza claro com logo e detalhes azul-lavanda (periwinkle), sem preto",
+  "notes": "PDF mostra branco com logo/calcanhar pretos e acentos tea (cáqui claro); a foto do site tem acentos azuis e nenhum preto (parece o Coconut/Blue Heron/Orange do item seguinte)."
+ },
+ {
+  "ref": "1204571B151",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco com midsole e detalhes verde-neon/lima, silhueta de tênis de performance (tipo Hyperion)",
+  "notes": "PDF mostra colorway branco/azul-claro (Blue Heron) com detalhes laranja; a foto do site é branco/verde-neon e aparenta ser outro modelo (placa de corrida), não o Ghost Max 3 azul/laranja."
+ },
+ {
+  "ref": "1104651D179",
+  "verdict": "mismatch",
+  "site_desc": "Tênis com cabedal em malha cinza/branco, cadarço e detalhe do calcanhar azuis, logo Brooks verde-neon com contorno azul, entressola branca/clara volumosa",
+  "notes": "A célula do PDF (Bluewash/Green/Black) mostra cabedal branco degradê para verde-neon com entressola TODA verde-neon e logo preto. A foto do site não tem verde dominante na entressola — na verdade corresponde ao colorway Bluewash/Blazing Bell/Green da ref 1204531B102. Foto trocada."
+ },
+ {
+  "ref": "1204531B102",
+  "verdict": "mismatch",
+  "site_desc": "Tênis de competição coral/vermelho mesclado com 'BROOKS' em letras pretas grandes, entressola/calcanhar azul-água (aqua), estilo Hyperion Elite",
+  "notes": "A célula do PDF (Bluewash/Blazing Bell/Green) mostra tênis branco/cinza com logo verde/azul e entressola branca. A foto do site é claramente outro produto/colorway — corresponde ao Hyperion Elite 5 Pink Clay/Atomizer Blue (ref 1000491D681). Foto trocada."
+ },
+ {
+  "ref": "1000491D681",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco/cinza com cadarço e detalhes verde-acinzentado (sage), logo Brooks verde-neon, entressola branca com faixa cinza-esverdeada e texto 'HYPERION MAX' visível",
+  "notes": "A célula do PDF (Pink Clay/Atomizer Blue, Hyperion Elite 5) mostra tênis coral/laranja com traseira aqua. A foto do site mostra outro modelo (Hyperion Max, escrito na entressola) e outro colorway — corresponde ao White/Gray Mist/Green da ref 1104671D164. Foto trocada."
+ },
+ {
+  "ref": "1104671D164",
+  "verdict": "mismatch",
+  "site_desc": "Tênis off-white/coco com logo multicolorido (azul-claro/teal, vermelho-coral e laranja), aba do calcanhar verde e solado com detalhes verde-neon",
+  "notes": "A célula do PDF (White/Gray Mist/Green) mostra tênis branco/cinza com logo verde e detalhes sage, sem acentos coral/laranja/azul. A foto do site corresponde ao colorway Coconut/Green Gecko/Pink Clay da ref 1104671D182. Foto trocada."
+ },
+ {
+  "ref": "1104671D182",
+  "verdict": "mismatch",
+  "site_desc": "Tênis coral/vermelho vivo com cadarço e ilhoses pretos, logo Brooks teal/azul-água, entressola branca com detalhes azuis no calcanhar",
+  "notes": "As duas células do PDF (Coconut/Green Gecko/Pink Clay) mostram tênis off-white (coco) com acentos discretos laranja/teal e verde-neon no solado. A foto do site é dominantemente coral/vermelha — colorway completamente diferente. Foto errada no site."
+ },
+ {
+  "ref": "1104671D670",
+  "verdict": "mismatch",
+  "site_desc": "Tênis de corrida branco/off-white com detalhes verdes no calcanhar e solado, logo em azul/vermelho/laranja, entressola branca esculpida",
+  "notes": "PDF mostra colorway Fiery Coral dominante (laranja-avermelhado) com detalhes pretos; foto do site é de um tênis branco com acentos verdes — colorway completamente diferente."
+ },
+ {
+  "ref": "1204551B659",
+  "verdict": "mismatch",
+  "site_desc": "Tênis branco/cinza com calcanhar e cabedal traseiro verde-oliva escuro, acentos acid lime, logo azul, entressola creme",
+  "notes": "PDF mostra Coconut/Fiery Coral (off-white com grande painel coral); foto do site não tem coral algum e corresponde ao colorway PYNRS Blanc/Acid Lime/Blue — foto trocada."
+ },
+ {
+  "ref": "1105201D163",
+  "verdict": "match",
+  "site_desc": "Tênis branco com colarinho/calcanhar verde-oliva escuro, acentos acid lime, logo azul, entressola creme alta",
+  "notes": "Cores dominantes e modelo (Hyperion Max 3 PYNRS) idênticos à célula do PDF Blanc/Acid Lime/Blue; apenas ângulo/tamanho diferem."
+ },
+ {
+  "ref": "1205091B163",
+  "verdict": "mismatch",
+  "site_desc": "Tênis de TRILHA com solado cravejado, cabedal branco/oyster com sobreposições oliva, logo BROOKS laranja e acentos lime (silhueta Caldera)",
+  "notes": "PDF mostra o Hyperion Max 3 PYNRS (racer de estrada branco/oliva/lime/azul); foto do site é de outro modelo — parece o Caldera 8 Dusty Olive/Lime/Oyster."
+ },
+ {
+  "ref": "1104401D314",
+  "verdict": "mismatch",
+  "site_desc": "Tênis de trilha com cabedal azul e calcanhar preto, logo amarelo, entressola/solado amarelo vibrante",
+  "notes": "PDF mostra Caldera 8 em Dusty Olive/Lime/Oyster (branco/oliva com logo laranja); foto do site é um Caldera em colorway azul/amarelo — cores dominantes totalmente diferentes."
+ },
+ {
+  "ref": "280495189",
+  "verdict": "mismatch",
+  "site_desc": "Meia crew (cano médio) azul (steel blue) com logo BROOKS vertical",
+  "notes": "PDF (White/Brooks) mostra meia branca com detalhes pretos; a foto do site mostra meia azul — parece o colorway Steel Blue, não o branco."
+ },
+ {
+  "ref": "280495462",
+  "verdict": "mismatch",
+  "site_desc": "Meia crew preta com pequeno logo BROOKS claro na lateral",
+  "notes": "PDF (Steel Blue/Brooks) mostra meia azul; a foto do site mostra meia preta — colorway claramente diferente."
+ },
+ {
+  "ref": "280538006",
+  "verdict": "mismatch",
+  "site_desc": "Meias crew brancas com logo BROOKS preto na lateral",
+  "notes": "PDF (Black/Brooks) mostra meias pretas; a foto do site mostra meias brancas — colorway oposto ao esperado."
+ },
+ {
+  "ref": "280538189",
+  "verdict": "mismatch",
+  "site_desc": "Meias brancas de cano baixo (ankle/no-show) com logo BROOKS no punho",
+  "notes": "A cor branca bate, mas o PDF mostra meia crew de cano médio e a foto do site mostra meia de cano baixo — modelo/produto diferente do Run-In Crew."
+ },
+ {
+  "ref": "280542189",
+  "verdict": "mismatch",
+  "site_desc": "Meias de cano médio pretas com logo Brooks branco, vestidas nos pés",
+  "notes": "PDF (White/Brooks) mostra meias brancas de cano médio; a foto do site mostra meias pretas — colorway errado (parece a foto do Black/Brooks)."
+ },
+ {
+  "ref": "280542006",
+  "verdict": "mismatch",
+  "site_desc": "Três meias invisíveis (no-show) pretas em fundo claro",
+  "notes": "PDF (Black/Brooks) mostra meias pretas de CANO MÉDIO vestidas; o site mostra meias INVISÍVEIS pretas — modelo errado (parece a foto da Run-In Invisíveis Black)."
+ },
+ {
+  "ref": "280493001",
+  "verdict": "mismatch",
+  "site_desc": "Três meias invisíveis brancas/cinza-claro",
+  "notes": "PDF (Black) mostra meias invisíveis pretas; o site mostra meias brancas — colorway errado (parece a foto da versão White)."
+ },
+ {
+  "ref": "280493100",
+  "verdict": "mismatch",
+  "site_desc": "Três meias invisíveis: amarelo neon, branca e rosa/vermelha",
+  "notes": "PDF (White) mostra meias invisíveis brancas; o site mostra o trio colorido Neo Cayenne/White/Nightlife — colorway errado."
+ },
+ {
+  "ref": "280493938",
+  "verdict": "mismatch",
+  "site_desc": "Homem usando boné preto Brooks (retrato aproximado)",
+  "notes": "PDF mostra meias invisíveis Neo Cayenne/White/Nightlife; o site mostra um boné — produto completamente diferente."
+ },
+ {
+  "ref": "1104401D403",
+  "verdict": "mismatch",
+  "site_desc": "Tênis trail com cabedal preto, logo BROOKS rosa/magenta, entressola lima-pálido com calcanhar branco e travas magenta (Caldera 8 preto/lima/rosa)",
+  "notes": "O PDF mostra o Caldera 8 Regatta/Ebony/Nightlife com cabedal AZUL e detalhes lima; a foto do site mostra o colorway preto/lima/rosa (corresponde à célula do 1204291B031, Grey/Black/Lime). Cor dominante errada."
+ },
+ {
+  "ref": "1204291B031",
+  "verdict": "mismatch",
+  "site_desc": "Tênis trail com cabedal verde-lima, entressola cinza-escuro/preta e detalhes AZUIS (cadarço e travas azuis) — aparenta ser Cascadia 19 Sunny Lime/Black/Blue",
+  "notes": "O PDF mostra o Caldera 8 Grey/Black/Lime com cabedal PRETO, entressola amarelo-lima e logo rosa; a foto do site mostra um Cascadia predominantemente lima com detalhes azuis (corresponde à célula do 1104571D722). Modelo e colorway errados."
+ },
+ {
+  "ref": "1104571D722",
+  "verdict": "mismatch",
+  "site_desc": "Tênis trail com cabedal verde-lima, entressola cinza-escuro e detalhes MAGENTA/rosa (travas e acentos rosa) — Cascadia 19 Sunny Lime/Black/Magenta",
+  "notes": "O PDF mostra o Cascadia 19 Sunny Lime/Black/BLUE com detalhes azuis; a foto do site mostra o colorway com acentos MAGENTA (corresponde à célula do 1204461B711). Cor de destaque errada."
+ },
+ {
+  "ref": "1204461B711",
+  "verdict": "mismatch",
+  "site_desc": "Meias crew PRETAS com logo BROOKS branco, vestidas em pés de modelo",
+  "notes": "O PDF mostra o tênis Cascadia 19 Sunny Lime/Black/Magenta; a foto do site mostra MEIAS pretas (corresponde à célula do 280495006, Meia Ghost Crew Black/Brooks). Produto totalmente diferente."
+ },
+ {
+  "ref": "280495006",
+  "verdict": "mismatch",
+  "site_desc": "Meias crew BRANCAS com texto BROOKS preto, vestidas em pés de modelo",
+  "notes": "O PDF mostra a Meia Ghost Crew na cor PRETA (Black/Brooks) com logo branco; a foto do site mostra meias BRANCAS com logo preto — colorway oposto ao declarado."
+ },
+ {
+  "ref": "280529100",
+  "verdict": "mismatch",
+  "site_desc": "Boné com frente coral/vermelha, painéis laterais off-white e aba burgundy/roxa (logo Brooks)",
+  "notes": "PDF mostra boné totalmente branco (White); a foto do site é claramente o colorway Cosmic Crisp/Burgundy/Luminary."
+ },
+ {
+  "ref": "280529604",
+  "verdict": "mismatch",
+  "site_desc": "Boné inteiro verde-claro pálido (Luminary) com logo Brooks preto",
+  "notes": "PDF mostra boné coral/burgundy/off-white (Cosmic Crisp/Burgundy/Luminary); a foto do site é o colorway Luminary."
+ },
+ {
+  "ref": "280529754",
+  "verdict": "mismatch",
+  "site_desc": "Boné preto com logo BROOKS branco bordado na frente",
+  "notes": "PDF mostra boné verde-claro (Luminary); a foto do site mostra um boné preto, parecendo o Heritage Run Black/White."
+ },
+ {
+  "ref": "280417033",
+  "verdict": "mismatch",
+  "site_desc": "Boné azul-marinho/azul com logo circular branco (tipo raios/sol) na frente",
+  "notes": "PDF mostra boné preto com logo BROOKS branco (Black/White); a foto do site é azul com outro logo, colorway/modelo diferente."
+ },
+ {
+  "ref": "280530066",
+  "verdict": "mismatch",
+  "site_desc": "Boné tie-dye pastel (branco/rosa/lilás) com logo BROOKS, usado por modelo loira",
+  "notes": "PDF mostra boné preto (Black/Black); a foto do site é claramente o colorway tie-dye Euphoryc Halogen, não preto."
+ },
+ {
+  "ref": "280530412",
+  "verdict": "mismatch",
+  "site_desc": "Boné vermelho vivo com logo BROOKS, usado por modelo masculino",
+  "notes": "PDF mostra o boné tie-dye pastel (Euphoryc Halogen); a foto do site é um boné vermelho (aparenta ser o colorway Cosmic Crisp)."
+ },
+ {
+  "ref": "280530615",
+  "verdict": "mismatch",
+  "site_desc": "Viseira preta com logo Brooks, foto de produto em fundo claro",
+  "notes": "PDF mostra boné vermelho (Cosmic Crisp); a foto do site é outra categoria de produto (viseira) e outra cor (preta)."
+ },
+ {
+  "ref": "280531001",
+  "verdict": "mismatch",
+  "site_desc": "Viseira branca com logo Brooks, foto de produto em fundo claro",
+  "notes": "PDF mostra viseira preta (Black); a foto do site é a viseira branca — colorway errado."
+ },
+ {
+  "ref": "280531100",
+  "verdict": "mismatch",
+  "site_desc": "Boné branco de copa fechada com escrito BROOKS, usado por modelo",
+  "notes": "PDF mostra viseira branca (topo aberto); a foto do site é um boné de copa fechada — cor coincide, mas o tipo de produto não bate. Padrão consistente de deslocamento de imagens no site."
+ }
+]

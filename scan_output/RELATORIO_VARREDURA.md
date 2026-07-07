@@ -29,7 +29,7 @@ O único caminho correto é `_applyBrkImg` (tenta `.png` e cai para placeholder 
 
 | Ref | Produto | Situação |
 |---|---|---|
-| `280417430` | Boné Heritage Run Unissex — Abyss Blue/Ivory | Sem `.png` nem `.jpg` no servidor. Foto extraída do PDF em `footwearpro_fix/assets/products/280417430.png` — subir para `assets/products/`. |
+| `280417430` | Boné Heritage Run Unissex — Abyss Blue/Ivory | Sem `.png` nem `.jpg` no servidor — consequência do deslocamento do item 4: a foto real estava salva como `280417033.png`. Recuperada em `footwearpro_fix/assets/products/280417430.png`. |
 | `RN0158NWTS48` | Reebok PE | Sem imagem no servidor |
 | `RN0158NWTS4A4` | Reebok PE | Sem imagem no servidor |
 
@@ -101,16 +101,25 @@ Totais impressos no PDF (verificados visualmente nos casos extremos) × soma da 
 
 Totais por modelo: PDF = 3.329 pares (bate com o índice do catálogo); site = 3.386 (sem contar os 60 pares dos 5 SKUs fora do catálogo). O PDF mostra só os 5 primeiros tamanhos de cada grade + total, então **as curvas completas por numeração devem ser refeitas a partir da planilha 25.05.26** — não dá para corrigi-las com segurança só com o PDF. Por isso as grades NÃO foram alteradas em `footwearpro_fix/index.html`.
 
-## 4. Comparação visual das fotos (site × PDF)
+## 4. Comparação visual das fotos (site × PDF): **71 de 73 fotos estão trocadas**
 
-_Resultado do fan-out de verificação visual — ver seção no final e `scan_output/visual_report.json`._
+Verificação visual de todos os 73 arquivos de imagem Brooks contra as fotos oficiais do PDF (`scan_output/visual_report.json`): **71 mismatches**. O padrão é sistemático: **cada arquivo `assets/products/<ref>.png` contém a foto do produto SEGUINTE na ordem do catálogo** (deslocamento de −1 no upload). A cadeia atravessa modelos e até os acessórios:
+
+- `1104541D033.png` (Adrenaline Oyster/Green Gecko) mostra o **Black/Ipanema/Mint** (D055);
+- `1204311B412.png` (Ghost Burgundy) mostra o **Blue Heron/White/Orange** (B443);
+- `1204461B711.png` (Cascadia feminino) mostra **meias pretas** (primeiro acessório);
+- `280417033.png` (Boné Heritage Black/White) mostra o **boné Abyss Blue/Ivory** — por isso a ref `280417430` "não tinha" imagem: a foto dela estava salva na ref anterior.
+
+Exceções verificadas: `1204341B088` (Glycerin 22 fem) está com a foto **correta** (o deslocamento pulou esta ref); `1204431B064.png` contém a foto do Ghost `1104421D048`; `1204431B184.png` é uma duplicata da foto do B053 (a foto real do Silver Anniversary feminino não está no servidor).
+
+**Correção pronta:** `footwearpro_fix/assets/products/` contém as **74 imagens já renomeadas para as refs corretas** (mapa em `scan_output/image_remap.json`). Para `1104541D033` e `1204431B184`, cujas fotos reais não existiam no servidor, foram extraídas as fotos oficiais do PDF. Basta subir a pasta substituindo os `.png` atuais.
 
 ## 5. O que já está corrigido em `footwearpro_fix/`
 
-1. `index.html` — helper `_prodImgSrc()` nos 6 pontos que pediam `.jpg` (conserta todas as imagens Brooks no modal do catálogo, zoom, conferência e exportação) + 12 preços alinhados ao PDF.
-2. `assets/products/280417430.png` — foto do Boné Heritage Run Abyss Blue/Ivory extraída do PDF.
+1. `index.html` — helper `_prodImgSrc()` nos 6 pontos que pediam `.jpg` (conserta a exibição das imagens Brooks no modal do catálogo, zoom, conferência e exportação) + 12 preços alinhados ao PDF.
+2. `assets/products/` — **74 imagens Brooks renomeadas para as refs corretas** (desfaz o deslocamento de −1; mapa em `scan_output/image_remap.json`), incluindo a foto real do boné `280417430` (recuperada do arquivo `280417033.png`) e as fotos do PDF para `1104541D033` e `1204431B184`.
 
-**Deploy:** publicar `footwearpro_fix/index.html` no lugar do `index.html` do site e subir `280417430.png` para `assets/products/`. (O deploy Netlify não pôde ser feito desta sessão — sem acesso ao domínio/API a partir deste ambiente.)
+**Deploy:** publicar `footwearpro_fix/index.html` no lugar do `index.html` do site e subir o conteúdo de `footwearpro_fix/assets/products/` substituindo os `.png` atuais. As duas correções são independentes, mas devem ir juntas para consistência. (O deploy Netlify não pôde ser feito desta sessão — o ambiente não alcança o domínio/API.)
 
 ## 6. Pendências que exigem decisão/planilha
 
@@ -118,4 +127,5 @@ _Resultado do fan-out de verificação visual — ver seção no final e `scan_o
 - Repor a variante masculina do Hyperion Max 3 D182 e corrigir categoria/ref da feminina (item 3.2).
 - Regerar as 17 grades divergentes a partir da planilha real (item 3.4).
 - Subir imagens das 2 refs Reebok sem foto (item 2).
+- Obter a foto oficial do Adrenaline GTS 25 Silver Anniversary feminino (`1204431B184`) — o servidor só tinha uma duplicata da foto do B053; usei a foto do PDF como provisória.
 - Conferir o preço do `1204311B412` (R$ 999,99 vs R$ 849,90 dos demais Ghost 17).
