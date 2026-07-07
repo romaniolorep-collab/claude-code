@@ -1,0 +1,61 @@
+"""
+Verificação pós-deploy do site footwearpro: confere HTML publicado e amostra
+de imagens contra footwearpro_fix/ (SHA1). Grava scan_output/verify_result.json.
+Roda no GitHub Actions.
+"""
+
+import hashlib
+import json
+import os
+import sys
+
+import requests
+
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FIX = os.path.join(HERE, "footwearpro_fix")
+OUT = os.path.join(HERE, "scan_output")
+BASE = "https://footwearpro.ibrandintelligence.org"
+
+AMOSTRA = [
+    "1104421D048", "1104421D090", "1204311B443", "1104541D033",
+    "1204431B184", "1104791D091", "1204461B711", "280417430",
+    "280495006", "1104671D182",
+]
+
+session = requests.Session()
+session.headers.update({"Cache-Control": "no-cache", "Pragma": "no-cache"})
+
+
+def sha1(data: bytes) -> str:
+    return hashlib.sha1(data).hexdigest()
+
+
+def main():
+    result = {"imagens": {}}
+    r = session.get(f"{BASE}/index.html", timeout=30)
+    html = r.text
+    result["index_status"] = r.status_code
+    result["index_has_prodImgSrc"] = "_prodImgSrc" in html
+    result["index_ghost_849"] = '"r":"1104421D048","n":"GHOST 17","p":849.9' in html
+    result["index_sem_jpg_hardcoded"] = "assets/products/${p.r}.jpg" not in html
+
+    ok = True
+    for ref in AMOSTRA:
+        local = os.path.join(FIX, "assets", "products", f"{ref}.png")
+        expected = sha1(open(local, "rb").read())
+        r = session.get(f"{BASE}/assets/products/{ref}.png?v=verify", timeout=30)
+        got = sha1(r.content) if r.status_code == 200 else None
+        match = got == expected
+        ok = ok and match
+        result["imagens"][ref] = {"status": r.status_code, "sha_ok": match}
+        print(f"{'OK ' if match else 'DIF'} {ref} [{r.status_code}]")
+
+    result["tudo_ok"] = ok and result["index_has_prodImgSrc"] and result["index_ghost_849"]
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+    with open(os.path.join(OUT, "verify_result.json"), "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+    return 0 if result["tudo_ok"] else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
