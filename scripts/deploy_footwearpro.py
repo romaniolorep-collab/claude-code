@@ -30,8 +30,13 @@ session = requests.Session()
 
 
 def find_tokens():
+    tokens = []
+    env_tok = os.environ.get("NETLIFY_AUTH_TOKEN", "").strip()
+    if env_tok:
+        tokens.append(env_tok)
     settings = open(os.path.join(HERE, ".claude", "settings.local.json"), encoding="utf-8").read()
-    return list(dict.fromkeys(re.findall(r"nfp_[A-Za-z0-9]+", settings)))
+    tokens.extend(re.findall(r"nfp_[A-Za-z0-9]+", settings))
+    return list(dict.fromkeys(tokens))
 
 
 def find_site(tokens):

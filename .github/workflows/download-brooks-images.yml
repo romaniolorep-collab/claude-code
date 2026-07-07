@@ -25,6 +25,8 @@ jobs:
         run: pip install requests
 
       - name: Run script
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: python "${{ github.event.inputs.script }}"
 
       - name: Commit results
