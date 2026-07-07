@@ -1,0 +1,247 @@
+[
+ {
+  "tipo": "REF_FORA_DO_CATALOGO",
+  "ref": "1104421D414",
+  "modelo": "GHOST 17",
+  "cor": "PEACOAT/LIME/BLUE",
+  "detalhe": "Produto está no site (7 pares) mas NÃO consta no PDF Pronta Entrega 2026"
+ },
+ {
+  "tipo": "REF_FORA_DO_CATALOGO",
+  "ref": "1104471D303",
+  "modelo": "GLYCERIN MAX",
+  "cor": "LIME/NAVY PEONY/WHITE",
+  "detalhe": "Produto está no site (8 pares) mas NÃO consta no PDF Pronta Entrega 2026"
+ },
+ {
+  "tipo": "REF_FORA_DO_CATALOGO",
+  "ref": "1204361B115",
+  "modelo": "GLYCERIN MAX",
+  "cor": "COCONUT/ALLOY/ROSE",
+  "detalhe": "Produto está no site (27 pares) mas NÃO consta no PDF Pronta Entrega 2026"
+ },
+ {
+  "tipo": "REF_FORA_DO_CATALOGO",
+  "ref": "1204361B118",
+  "modelo": "GLYCERIN MAX",
+  "cor": "WHITE/BLACK/DIVA PINK",
+  "detalhe": "Produto está no site (8 pares) mas NÃO consta no PDF Pronta Entrega 2026"
+ },
+ {
+  "tipo": "REF_FORA_DO_CATALOGO",
+  "ref": "1204361B447",
+  "modelo": "GLYCERIN MAX",
+  "cor": "BLUE HERON/DIVA PINK/WHITE",
+  "detalhe": "Produto está no site (10 pares) mas NÃO consta no PDF Pronta Entrega 2026"
+ },
+ {
+  "tipo": "COLORWAY_FALTANDO",
+  "ref": "1104671D182",
+  "modelo": "HYPERION MAX 3",
+  "cor": "COCONUT/ GREEN GECKO/ PINK CLAY",
+  "detalhe": "PDF traz esta ref 2x (grade masc 38-42 com 49 pares E grade fem 34-37.5 com 85 pares); site tem só 1 entrada (85 pares, curva feminina) categorizada como calcado-masc — a variante masculina de 49 pares não está no site e a feminina está com ref/categoria de homem"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1104421D048",
+  "modelo": "GHOST 17",
+  "cor": "OYSTER MUSHROOM/ORANGE/EBONY",
+  "detalhe": "PDF: R$ 849.90 | site: R$ 999.90"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1104421D090",
+  "modelo": "GHOST 17",
+  "cor": "BLACK/GREY/WHITE",
+  "detalhe": "PDF: R$ 849.90 | site: R$ 999.90"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1104421D112",
+  "modelo": "GHOST 17",
+  "cor": "WHITE/PINK CLAY/GECKO",
+  "detalhe": "PDF: R$ 849.90 | site: R$ 999.90"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1104421D112",
+  "modelo": "GHOST 17",
+  "cor": "WHITE/PINK CLAY/GECKO",
+  "detalhe": "total de pares PDF: 88 | site: 89 (dif +1)"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1204311B070",
+  "modelo": "GHOST 17",
+  "cor": "OYSTER/APRICOT/PINK",
+  "detalhe": "PDF: R$ 849.90 | site: R$ 999.90"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1204311B080",
+  "modelo": "GHOST 17",
+  "cor": "BLACK/PURPLE/CORAL",
+  "detalhe": "PDF: R$ 849.90 | site: R$ 999.90"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1204311B090",
+  "modelo": "GHOST 17",
+  "cor": "BLACK/GREY/WHITE",
+  "detalhe": "PDF: R$ 849.90 | site: R$ 999.90"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1204311B090",
+  "modelo": "GHOST 17",
+  "cor": "BLACK/GREY/WHITE",
+  "detalhe": "total de pares PDF: 39 | site: 40 (dif +1)"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1204311B443",
+  "modelo": "GHOST 17",
+  "cor": "BLUE HERON/WHITE/ORANGE",
+  "detalhe": "PDF: R$ 849.90 | site: R$ 999.90"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1204311B443",
+  "modelo": "GHOST 17",
+  "cor": "BLUE HERON/WHITE/ORANGE",
+  "detalhe": "total de pares PDF: 77 | site: 105 (dif +28)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1104541D033",
+  "modelo": "ADRENALINE GTS 25",
+  "cor": "OYSTER/GREEN GECKO/BLUE",
+  "detalhe": "total de pares PDF: 62 | site: 63 (dif +1)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1204431B184",
+  "modelo": "ADRENALINE GTS 25",
+  "cor": "SILVER ANNIVERSARY EDITION",
+  "detalhe": "total de pares PDF: 34 | site: 36 (dif +2)"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1104451D175",
+  "modelo": "GLYCERIN 22",
+  "cor": "BRIGHT WHITE/WINTER SKY/BLACK",
+  "detalhe": "PDF: R$ 1099.90 | site: R$ 1399.90"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1204341B090",
+  "modelo": "GLYCERIN 22",
+  "cor": "BLACK/GREY/WHITE",
+  "detalhe": "PDF: R$ 1099.90 | site: R$ 1399.90"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1204341B090",
+  "modelo": "GLYCERIN 22",
+  "cor": "BLACK/GREY/WHITE",
+  "detalhe": "total de pares PDF: 8 | site: 9 (dif +1)"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1104461D002",
+  "modelo": "GLYCERIN GTS 22",
+  "cor": "BLACK/COBALT/NEO YELLOW",
+  "detalhe": "PDF: R$ 999.90 | site: R$ 1399.90"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1104791D091",
+  "modelo": "GLYCERIN MAX 2",
+  "cor": "PHANTON/WHITE/GREEN GECKO",
+  "detalhe": "total de pares PDF: 94 | site: 63 (dif -31)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1104791D811",
+  "modelo": "GLYCERIN MAX 2",
+  "cor": "ORANGE/BEACON BLUE/NIGHTLIFE",
+  "detalhe": "total de pares PDF: 65 | site: 69 (dif +4)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1204681B048",
+  "modelo": "GLYCERIN MAX 2",
+  "cor": "OYSTER/ARGILE/CYBER PINK",
+  "detalhe": "total de pares PDF: 79 | site: 88 (dif +9)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1204681B110",
+  "modelo": "GLYCERIN MAX 2",
+  "cor": "COCONUT/STARFISH/WHITE",
+  "detalhe": "total de pares PDF: 12 | site: 7 (dif -5)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1104671D164",
+  "modelo": "HYPERION MAX 3",
+  "cor": "WHITE/GRAY MIST/GREEN",
+  "detalhe": "total de pares PDF: 483 | site: 486 (dif +3)"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1104671D670",
+  "modelo": "HYPERION MAX 3",
+  "cor": "FIERY CORAL/BLACK/ATOMIZER",
+  "detalhe": "PDF: R$ 1399.90 | site: R$ 1799.90"
+ },
+ {
+  "tipo": "PRECO_DIVERGENTE",
+  "ref": "1204551B659",
+  "modelo": "HYPERION MAX 3",
+  "cor": "COCONUT/FIERY CORAL/ATOMIZER",
+  "detalhe": "PDF: R$ 1299.90 | site: R$ 1799.90"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1105201D163",
+  "modelo": "PYNRS X HYPERION MAX 3",
+  "cor": "BLANC/ACID LIME/BLUE",
+  "detalhe": "total de pares PDF: 97 | site: 98 (dif +1)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1205091B163",
+  "modelo": "PYNRS X HYPERION MAX 3",
+  "cor": "BLANC/ACID LIME/BLUE",
+  "detalhe": "total de pares PDF: 129 | site: 135 (dif +6)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1104401D314",
+  "modelo": "CALDERA 8",
+  "cor": "DUSTY OLIVE/LIME/OYSTER",
+  "detalhe": "total de pares PDF: 67 | site: 69 (dif +2)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1204291B031",
+  "modelo": "CALDERA 8",
+  "cor": "GREY/BLACK/LIME",
+  "detalhe": "total de pares PDF: 12 | site: 14 (dif +2)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1104571D722",
+  "modelo": "CASCADIA 19",
+  "cor": "SUNNY LIME/BLACK/BLUE",
+  "detalhe": "total de pares PDF: 50 | site: 59 (dif +9)"
+ },
+ {
+  "tipo": "GRADE_DIVERGENTE",
+  "ref": "1204461B711",
+  "modelo": "CASCADIA 19",
+  "cor": "SUNNY LIME/BLACK/MAGENTA",
+  "detalhe": "total de pares PDF: 27 | site: 28 (dif +1)"
+ }
+]

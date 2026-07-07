@@ -1,0 +1,742 @@
+[
+ {
+  "r": "1104541D033",
+  "n": "ADRENALINE GTS 25",
+  "p": 1299.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4541D033"
+  ],
+  "c": "OYSTER/GREEN GECKO/BLUE"
+ },
+ {
+  "r": "1104541D055",
+  "n": "ADRENALINE GTS 25",
+  "p": 1299.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4541D055"
+  ],
+  "c": "BLACK/IPANEMA/ MINT"
+ },
+ {
+  "r": "1104541D184",
+  "n": "ADRENALINE GTS 25",
+  "p": 1299.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4541D184"
+  ],
+  "c": "SILVER ANNIVERSARY EDITION"
+ },
+ {
+  "r": "1204431B053",
+  "n": "ADRENALINE GTS 25",
+  "p": 1299.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4431B053"
+  ],
+  "c": "OYSTER/PINK/GREEN"
+ },
+ {
+  "r": "1204431B064",
+  "n": "ADRENALINE GTS 25",
+  "p": 1299.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4431B064"
+  ],
+  "c": "BLACK/CYBER PINK/ICED AQUA"
+ },
+ {
+  "r": "1204431B184",
+  "n": "ADRENALINE GTS 25",
+  "p": 1299.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4431B184"
+  ],
+  "c": "SILVER ANNIVERSARY EDITION"
+ },
+ {
+  "r": "1104421D048",
+  "n": "GHOST 17",
+  "p": 999.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4421D048"
+  ],
+  "c": "OYSTER MUSHROOM/ORANGE/EBONY"
+ },
+ {
+  "r": "1104421D090",
+  "n": "GHOST 17",
+  "p": 999.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4421D090"
+  ],
+  "c": "BLACK/GREY/WHITE"
+ },
+ {
+  "r": "1104421D112",
+  "n": "GHOST 17",
+  "p": 999.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4421D112"
+  ],
+  "c": "WHITE/PINK CLAY/GECKO"
+ },
+ {
+  "r": "1104421D414",
+  "n": "GHOST 17",
+  "p": 999.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4421D414"
+  ],
+  "c": "PEACOAT/LIME/BLUE"
+ },
+ {
+  "r": "1204311B070",
+  "n": "GHOST 17",
+  "p": 999.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4311B070"
+  ],
+  "c": "OYSTER/APRICOT/PINK"
+ },
+ {
+  "r": "1204311B080",
+  "n": "GHOST 17",
+  "p": 999.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4311B080"
+  ],
+  "c": "BLACK/PURPLE/CORAL"
+ },
+ {
+  "r": "1204311B090",
+  "n": "GHOST 17",
+  "p": 999.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4311B090"
+  ],
+  "c": "BLACK/GREY/WHITE"
+ },
+ {
+  "r": "1204311B412",
+  "n": "GHOST 17",
+  "p": 999.99,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4311B412"
+  ],
+  "c": "BURGUNDY/PINK/GREEN"
+ },
+ {
+  "r": "1204311B443",
+  "n": "GHOST 17",
+  "p": 999.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4311B443"
+  ],
+  "c": "BLUE HERON/WHITE/ORANGE"
+ },
+ {
+  "r": "1104451D063",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4451D063"
+  ],
+  "c": "BLACK/ATOMIZER/BLAZING ORANGE"
+ },
+ {
+  "r": "1104451D078",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4451D078"
+  ],
+  "c": "PRIMER GRAY/EBONY/BLUEWASH"
+ },
+ {
+  "r": "1104451D135",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4451D135"
+  ],
+  "c": "WHITE/GREY/BLACK"
+ },
+ {
+  "r": "1104451D175",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4451D175"
+  ],
+  "c": "BRIGHT WHITE/WINTER SKY/BLACK"
+ },
+ {
+  "r": "1104451D415",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4451D415"
+  ],
+  "c": "SMOKE/STORMY/ ORANGE"
+ },
+ {
+  "r": "1104451D821",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4451D821"
+  ],
+  "c": "ORANGE/NIGHTLIFE/ WHITE"
+ },
+ {
+  "r": "1204341B088",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4341B088"
+  ],
+  "c": "BLACK/BLUE HERON/ORANGE"
+ },
+ {
+  "r": "1204341B090",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4341B090"
+  ],
+  "c": "BLACK/GREY/WHITE"
+ },
+ {
+  "r": "1204341B137",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4341B137"
+  ],
+  "c": "WHITE/BLUE HERON/APRICOT"
+ },
+ {
+  "r": "1204341B897",
+  "n": "GLYCERIN 22",
+  "p": 1399.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4341B897"
+  ],
+  "c": "SHERBERT/APRICOT/ PINK"
+ },
+ {
+  "r": "1104461D002",
+  "n": "GLYCERIN GTS 22",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4461D002"
+  ],
+  "c": "BLACK/COBALT/NEO YELLOW"
+ },
+ {
+  "r": "1104461D063",
+  "n": "GLYCERIN GTS 22",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4461D063"
+  ],
+  "c": "BLACK/ATOMIZER/BLAZING ORANGE"
+ },
+ {
+  "r": "1104461D135",
+  "n": "GLYCERIN GTS 22",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4461D135"
+  ],
+  "c": "BLACK/ATOMIZER/BLAZING ORANGE"
+ },
+ {
+  "r": "1204351B088",
+  "n": "GLYCERIN GTS 22",
+  "p": 1399.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4351B088"
+  ],
+  "c": "BLACK/BLUE HERON/ORANGE"
+ },
+ {
+  "r": "1204351B137",
+  "n": "GLYCERIN GTS 22",
+  "p": 1399.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4351B137"
+  ],
+  "c": "WHITE/BLUE HERON/APRICOT"
+ },
+ {
+  "r": "1104471D303",
+  "n": "GLYCERIN MAX",
+  "p": 1799.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4471D303"
+  ],
+  "c": "LIME/NAVY PEONY/WHITE"
+ },
+ {
+  "r": "1204361B115",
+  "n": "GLYCERIN MAX",
+  "p": 1799.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4361B115"
+  ],
+  "c": "COCONUT/ALLOY/ROSE"
+ },
+ {
+  "r": "1204361B118",
+  "n": "GLYCERIN MAX",
+  "p": 1799.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4361B118"
+  ],
+  "c": "WHITE/BLACK/DIVA PINK"
+ },
+ {
+  "r": "1204361B447",
+  "n": "GLYCERIN MAX",
+  "p": 1799.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4361B447"
+  ],
+  "c": "BLUE HERON/DIVA PINK/WHITE"
+ },
+ {
+  "r": "1104791D091",
+  "n": "GLYCERIN MAX  2",
+  "p": 1799.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4791D091"
+  ],
+  "c": "PHANTON/WHITE/GREEN GECKO"
+ },
+ {
+  "r": "1104791D811",
+  "n": "GLYCERIN MAX  2",
+  "p": 1799.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4791D811"
+  ],
+  "c": "ORANGE/BEACON BLUE/NIGHTLIFE"
+ },
+ {
+  "r": "1204681B048",
+  "n": "GLYCERIN MAX  2",
+  "p": 1799.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4681B048"
+  ],
+  "c": "OYSTER/ARGILE/CYBER PINK"
+ },
+ {
+  "r": "1204681B110",
+  "n": "GLYCERIN MAX  2",
+  "p": 1799.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4681B110"
+  ],
+  "c": "COCONUT/STARFISH/WHITE"
+ },
+ {
+  "r": "1104641D162",
+  "n": "GHOST MAX 3",
+  "p": 1199.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4641D162"
+  ],
+  "c": "BRIGHT WHITE/ TEA/BLACK"
+ },
+ {
+  "r": "1204571B151",
+  "n": "GHOST MAX 3",
+  "p": 1199.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4571B151"
+  ],
+  "c": "COCONUT/BLUE HERON/ORANGE"
+ },
+ {
+  "r": "1104651D179",
+  "n": "HYPERION 3",
+  "p": 999.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4651D179"
+  ],
+  "c": "BLUEWASH/GREEN/BLACK"
+ },
+ {
+  "r": "1204531B102",
+  "n": "HYPERION 3",
+  "p": 999.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4531B102"
+  ],
+  "c": "BLUEWASH/BLAZING BELL/GREEN"
+ },
+ {
+  "r": "1000491D681",
+  "n": "HYPERION ELITE 5",
+  "p": 2399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_0491D681"
+  ],
+  "c": "PINK CLAY/ATOMIZER BLUE"
+ },
+ {
+  "r": "1104671D164",
+  "n": "HYPERION MAX 3",
+  "p": 1799.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4671D164"
+  ],
+  "c": "WHITE/GRAY MIST/GREEN"
+ },
+ {
+  "r": "1104671D182",
+  "n": "HYPERION MAX 3",
+  "p": 1799.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4671D182"
+  ],
+  "c": "COCONUT/ GREEN GECKO/ PINK CLAY"
+ },
+ {
+  "r": "1104671D670",
+  "n": "HYPERION MAX 3",
+  "p": 1799.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4671D670"
+  ],
+  "c": "FIERY CORAL/BLACK/ATOMIZER"
+ },
+ {
+  "r": "1204551B659",
+  "n": "HYPERION MAX 3",
+  "p": 1799.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4551B659"
+  ],
+  "c": "COCONUT/FIERY CORAL/ATOMIZER"
+ },
+ {
+  "r": "1105201D163",
+  "n": "PYNRS X HYPERION MAX 3",
+  "p": 1799.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_5201D163"
+  ],
+  "c": "BLANC/ACID LIME/BLUE"
+ },
+ {
+  "r": "1205091B163",
+  "n": "PYNRS X HYPERION MAX 3",
+  "p": 1799.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_5091B163"
+  ],
+  "c": "BLANC/ACID LIME/BLUE"
+ },
+ {
+  "r": "1104401D314",
+  "n": "CALDERA 8",
+  "p": 1449.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4401D314"
+  ],
+  "c": "DUSTY OLIVE/LIME/OYSTER"
+ },
+ {
+  "r": "1104401D403",
+  "n": "CALDERA 8",
+  "p": 1449.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4401D403"
+  ],
+  "c": "REGATTA/EBONY/NIGHTLIFE"
+ },
+ {
+  "r": "1204291B031",
+  "n": "CALDERA 8",
+  "p": 1449.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4291B031"
+  ],
+  "c": "GREY/BLACK/LIME"
+ },
+ {
+  "r": "1104571D722",
+  "n": "CASCADIA 19",
+  "p": 1399.9,
+  "cat": "calcado-masc",
+  "g": [
+   "bpe_4571D722"
+  ],
+  "c": "SUNNY LIME/BLACK/BLUE"
+ },
+ {
+  "r": "1204461B711",
+  "n": "CASCADIA 19",
+  "p": 1399.9,
+  "cat": "calcado-fem",
+  "g": [
+   "bpe_4461B711"
+  ],
+  "c": "SUNNY LIME/BLACK/MAGENTA"
+ },
+ {
+  "r": "280495006",
+  "n": "MEIA GHOST CREW UNISSEX",
+  "p": 149.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280495006"
+  ],
+  "c": "BLACK/BROOKS"
+ },
+ {
+  "r": "280495189",
+  "n": "MEIA GHOST CREW UNISSEX",
+  "p": 149.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280495189"
+  ],
+  "c": "WHITE/BROOKS"
+ },
+ {
+  "r": "280495462",
+  "n": "MEIA GHOST CREW UNISSEX",
+  "p": 149.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280495462"
+  ],
+  "c": "STEEL BLUE/BROOKS"
+ },
+ {
+  "r": "280538006",
+  "n": "MEIA RUN-IN CREW 3 PARES UNISSEX",
+  "p": 179.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280538006"
+  ],
+  "c": "BLACK/BROOKS"
+ },
+ {
+  "r": "280538189",
+  "n": "MEIA RUN-IN CREW 3 PARES UNISSEX",
+  "p": 179.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280538189"
+  ],
+  "c": "WHITE/BROOKS"
+ },
+ {
+  "r": "280542189",
+  "n": "MEIA RUN-IN CANO MEDIO 3 PARES UNISSEX",
+  "p": 169.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280542189"
+  ],
+  "c": "WHITE/BROOKS"
+ },
+ {
+  "r": "280542006",
+  "n": "MEIA RUN-IN CANO MEDIO 3 PARES UNISSEX",
+  "p": 169.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280542006"
+  ],
+  "c": "BLACK/BROOKS"
+ },
+ {
+  "r": "280493001",
+  "n": "MEIA RUN-IN INVISIVEIS 3 PARES UNISSEX",
+  "p": 159.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280493001"
+  ],
+  "c": "BLACK"
+ },
+ {
+  "r": "280493100",
+  "n": "MEIA RUN-IN INVISIVEIS 3 PARES UNISSEX",
+  "p": 159.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280493100"
+  ],
+  "c": "WHITE"
+ },
+ {
+  "r": "280493938",
+  "n": "MEIA RUN-IN INVISIVEIS 3 PARES UNISSEX",
+  "p": 159.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280493938"
+  ],
+  "c": "NEO CAYENNE/WHITE/NIGHTLIFE"
+ },
+ {
+  "r": "280530066",
+  "n": "BONE JOURNEY UNISSEX",
+  "p": 279.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280530066"
+  ],
+  "c": "BLACK/BLACK"
+ },
+ {
+  "r": "280530412",
+  "n": "BONE JOURNEY UNISSEX",
+  "p": 279.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280530412"
+  ],
+  "c": "EUPHORYC HALOGEN"
+ },
+ {
+  "r": "280530615",
+  "n": "BONE JOURNEY UNISSEX",
+  "p": 279.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280530615"
+  ],
+  "c": "COSMIC CRISP"
+ },
+ {
+  "r": "280531001",
+  "n": "VISEIRA JOURNEY UNISSEX",
+  "p": 199.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280531001"
+  ],
+  "c": "BLACK"
+ },
+ {
+  "r": "280531100",
+  "n": "VISEIRA JOURNEY UNISSEX",
+  "p": 199.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280531100"
+  ],
+  "c": "WHITE"
+ },
+ {
+  "r": "280529100",
+  "n": "BONE PROPEL MESH 2.0 UNISSEX",
+  "p": 299.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280529100"
+  ],
+  "c": "WHITE"
+ },
+ {
+  "r": "280529604",
+  "n": "BONE PROPEL MESH 2.0 UNISSEX",
+  "p": 299.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280529604"
+  ],
+  "c": "COSMIC CRISP/BURGUNDY/LUMINARY"
+ },
+ {
+  "r": "280529754",
+  "n": "BONE PROPEL MESH 2.0 UNISSEX",
+  "p": 299.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280529754"
+  ],
+  "c": "LUMINARY"
+ },
+ {
+  "r": "280417033",
+  "n": "BONE HERITAGE RUN UNISSEX",
+  "p": 199.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280417033"
+  ],
+  "c": "BLACK/WHITE"
+ },
+ {
+  "r": "280417430",
+  "n": "BONE HERITAGE RUN UNISSEX",
+  "p": 199.9,
+  "cat": "acessorio",
+  "g": [
+   "bacc_280417430"
+  ],
+  "c": "ABYSS BLUE/IVORY"
+ }
+]
