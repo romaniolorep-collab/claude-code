@@ -19,8 +19,8 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Scan site
-        run: python scripts/scan_footwearpro.py
+      - name: Check product images
+        run: python scripts/check_product_images.py
 
       - name: Commit results
         run: |
