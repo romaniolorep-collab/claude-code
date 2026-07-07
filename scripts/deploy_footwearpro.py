@@ -84,13 +84,17 @@ def main():
     for name in sorted(os.listdir(os.path.join(FIX, "assets", "products"))):
         local[f"/assets/products/{name}"] = os.path.join(FIX, "assets", "products", name)
 
-    manifest = dict(current)
+    # A API de arquivos da Netlify normaliza caminhos para minúsculas; usar a
+    # mesma forma evita chaves duplicadas no manifesto (maiúscula vs minúscula),
+    # que fazem a entrada antiga prevalecer. O serving é case-insensitive.
+    manifest = {p.lower(): s for p, s in current.items()}
     changed = {}
     for path, fp in local.items():
         digest = sha1(fp)
-        if current.get(path) != digest:
-            changed[path] = (fp, digest)
-        manifest[path] = digest
+        key = path.lower()
+        if manifest.get(key) != digest:
+            changed[key] = (fp, digest)
+        manifest[key] = digest
     print(f"{len(changed)} arquivos a enviar (de {len(local)} do fix)")
 
     r = session.post(
