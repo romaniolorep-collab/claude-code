@@ -1,0 +1,119 @@
+{
+  "base": "https://footwearpro.ibrandintelligence.org/",
+  "images": {
+    "https://footwearpro.ibrandintelligence.org/assets/logo-brooks.svg": {
+      "bytes": 0,
+      "content_type": "image/svg+xml",
+      "status": 200
+    },
+    "https://footwearpro.ibrandintelligence.org/assets/logo-hoka.png": {
+      "bytes": 34534,
+      "content_type": "image/png",
+      "status": 200
+    },
+    "https://footwearpro.ibrandintelligence.org/assets/logo-kipling.png": {
+      "bytes": 40993,
+      "content_type": "image/png",
+      "status": 200
+    },
+    "https://footwearpro.ibrandintelligence.org/assets/logo-reebok.png": {
+      "bytes": 36756,
+      "content_type": "image/png",
+      "status": 200
+    },
+    "https://footwearpro.ibrandintelligence.org/assets/logo-white.png": {
+      "bytes": 247828,
+      "content_type": "image/png",
+      "status": 200
+    },
+    "https://footwearpro.ibrandintelligence.org/assets/products/${p.r}.jpg": {
+      "bytes": 0,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/assets/pwa-icon-180.png": {
+      "bytes": 4646,
+      "content_type": "image/png",
+      "status": 200
+    },
+    "https://footwearpro.ibrandintelligence.org/assets/reebok-touch-icon.png": {
+      "bytes": 0,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    }
+  },
+  "other_assets": {
+    "https://footwearpro.ibrandintelligence.org/${bi.ig}": {
+      "bytes": 0,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/${bi.site}": {
+      "bytes": 0,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/a.href": {
+      "bytes": 0,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    }
+  },
+  "pages": {
+    "https://footwearpro.ibrandintelligence.org": {
+      "bytes": 676368,
+      "content_type": "text/html; charset=UTF-8",
+      "status": 200
+    },
+    "https://footwearpro.ibrandintelligence.org/": {
+      "bytes": 676368,
+      "content_type": "text/html; charset=UTF-8",
+      "status": 200
+    },
+    "https://footwearpro.ibrandintelligence.org/${logoWhite}": {
+      "bytes": 3449,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/${logo}": {
+      "bytes": 3449,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/${thumbSrc}": {
+      "bytes": 3449,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/${thumbUrl}": {
+      "bytes": 3449,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/assets/products/": {
+      "bytes": 3449,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/blob": {
+      "bytes": 3449,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/image/png": {
+      "bytes": 3449,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    },
+    "https://footwearpro.ibrandintelligence.org/manifest.json": {
+      "bytes": 572,
+      "content_type": "application/json",
+      "status": 200
+    },
+    "https://footwearpro.ibrandintelligence.org/url": {
+      "bytes": 3449,
+      "content_type": "text/html; charset=utf-8",
+      "status": 404
+    }
+  }
+}
