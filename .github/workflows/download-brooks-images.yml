@@ -1,4 +1,4 @@
-name: Scan footwearpro site
+name: Download Brooks product images
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  scan:
+  download:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,16 +17,16 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests pillow
 
-      - name: Check other brand images
-        run: python scripts/check_other_brand_images.py
+      - name: Download images
+        run: python scripts/download_brooks_images.py
 
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scan_output
+          git add images/brooks
           git diff --cached --quiet && echo "nothing to commit" && exit 0
-          git commit -m "Adiciona resultados da varredura do site footwearpro"
+          git commit -m "Adiciona imagens de produto Brooks baixadas via Actions"
           git push
