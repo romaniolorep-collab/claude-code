@@ -19,8 +19,8 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Check product images
-        run: python scripts/check_product_images.py
+      - name: Check other brand images
+        run: python scripts/check_other_brand_images.py
 
       - name: Commit results
         run: |
