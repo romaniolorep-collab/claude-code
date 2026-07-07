@@ -1,0 +1,1852 @@
+{
+  "1000491D681": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 89936,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104401D314": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 18314,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104401D403": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 17776,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104421D048": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 12638,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104421D090": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15437,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104421D112": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15799,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104421D414": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 14062,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "1104451D063": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 14806,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104451D078": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15504,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104451D135": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15854,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104451D175": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 13209,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104451D415": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 12283,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104451D821": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 13592,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104461D002": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 14232,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104461D063": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 14160,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104461D135": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15301,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104471D303": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15638,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "1104541D033": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 12900,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104541D055": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 162476,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104541D184": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 13332,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104571D722": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 16628,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104641D162": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 14706,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104651D179": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 20919,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104671D164": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 12556,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104671D182": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 19498,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104671D670": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 12945,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104791D091": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 19469,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1104791D811": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 19485,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1105201D163": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 20775,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204291B031": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15024,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204311B070": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15582,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204311B080": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 13645,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204311B090": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 118972,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204311B412": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 18220,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204311B443": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 18023,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204341B088": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 6673,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204341B090": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 16013,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204341B137": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 12218,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204341B897": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15590,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204351B088": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 14054,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204351B137": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 14782,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204361B115": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15431,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "1204361B118": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 15748,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "1204361B447": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 17336,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "1204431B053": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 13574,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204431B064": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 13233,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204431B184": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 13332,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204461B711": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 27602,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204531B102": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 22359,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204551B659": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 20781,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204571B151": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 17956,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204681B048": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 19238,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1204681B110": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 12338,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "1205091B163": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 16565,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": true,
+    "in_site_catalog": true
+  },
+  "280417033": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 33852,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280417430": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": false,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280493001": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 12893,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280493100": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 25210,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280493938": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 37990,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280495006": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 26926,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280495189": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 28500,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280495462": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 21407,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280529100": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 42160,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280529604": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 38879,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280529754": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 26798,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280530066": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 41752,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280530412": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 40816,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280530615": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 17465,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280531001": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 13846,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280531100": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 37185,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280538006": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 17797,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280538189": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 19381,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280542006": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 14619,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  },
+  "280542189": {
+    "checks": {
+      "jpg": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      },
+      "png": {
+        "bytes": 27127,
+        "content_type": "image/png",
+        "ok": true,
+        "status": 200
+      },
+      "webp": {
+        "bytes": 3449,
+        "content_type": "text/html; charset=utf-8",
+        "ok": false,
+        "status": 404
+      }
+    },
+    "image_exists": true,
+    "in_pdf": false,
+    "in_site_catalog": true
+  }
+}
