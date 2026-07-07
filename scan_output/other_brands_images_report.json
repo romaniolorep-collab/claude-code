@@ -1,0 +1,21 @@
+{
+  "reebok": {
+    "total": 421,
+    "jpg": 419,
+    "png_only": 0,
+    "none": 2,
+    "refs_none": [
+      "RN0158NWTS48",
+      "RN0158NWTS4A4"
+    ],
+    "refs_png_only": []
+  },
+  "kipling": {
+    "total": 60,
+    "jpg": 60,
+    "png_only": 0,
+    "none": 0,
+    "refs_none": [],
+    "refs_png_only": []
+  }
+}
