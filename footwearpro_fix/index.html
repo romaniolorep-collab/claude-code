@@ -8415,11 +8415,13 @@ function salvarNovoCliente() {
   // Calcula a chave: no edit usa a chave original; no cadastro gera nova
   const key = isEdit ? _editingCliKey : (cnpj.replace(/\D/g,'') || razao.slice(0,14));
   const all = JSON.parse(localStorage.getItem('clients') || '{}');
-  all[key] = { ...(all[key] || {}), ...d };
+  const origRazao = isEdit ? ((all[key] || {}).razao || razao) : razao;
+  // _dirty até a nuvem confirmar — o push da sincronização reenvia se falhar
+  all[key] = { ...(all[key] || {}), ...d, _cloud: false, _dirty: true };
   localStorage.setItem('clients', JSON.stringify(all));
 
-  // Salva/atualiza na nuvem
-  _sbSaveCliente(d).catch(() => {});
+  // Salva/atualiza na nuvem (informa a razão original p/ edições de razão)
+  _sbSaveCliente(d, origRazao).catch(() => {});
 
   _ncliClear();
   _ncliSetMode(false);
@@ -9040,7 +9042,7 @@ function _radarGo(key) {
 /* ─── CLIENTES SYNC (Supabase ↔ localStorage) ─── */
 
 /* Salva um cliente individualmente na nuvem (chamado ao cadastrar novo cliente) */
-async function _sbSaveCliente(d) {
+async function _sbSaveCliente(d, origRazao) {
   if (!d.razao) return;
   const payload = {
     razao:     d.razao    || '',
@@ -9056,14 +9058,30 @@ async function _sbSaveCliente(d) {
     segmento:  d.seg      || null,
     fantasia:  d.comp     || null,
   };
+  let error = null;
   try {
-    // Sempre faz upsert por razao — atualiza registro existente mesmo ao adicionar CNPJ
-    await sbData.from('clientes').upsert(payload, { onConflict: 'razao', ignoreDuplicates: false });
-    // Marca como sincronizado na nuvem no localStorage
-    const key = (d.cnpj || '').replace(/\D/g,'') || (d.razao || '').slice(0,14);
-    const all = JSON.parse(localStorage.getItem('clients') || '{}');
-    if (all[key]) { all[key]._cloud = true; localStorage.setItem('clients', JSON.stringify(all)); }
-  } catch(e) { }
+    if (d.cnpj) {
+      // CNPJ é a identidade estável — razão editada atualiza a mesma linha
+      ({ error } = await sbData.from('clientes').upsert(payload, { onConflict: 'cnpj', ignoreDuplicates: false }));
+      if (error) {
+        // cliente antigo sem CNPJ na nuvem: atualiza pela razão
+        ({ error } = await sbData.from('clientes').upsert(payload, { onConflict: 'razao', ignoreDuplicates: false }));
+      }
+    } else if (origRazao && origRazao !== d.razao) {
+      // sem CNPJ e razão editada: atualiza a linha antiga em vez de inserir duplicata
+      ({ error } = await sbData.from('clientes').update(payload).eq('razao', origRazao));
+    } else {
+      ({ error } = await sbData.from('clientes').upsert(payload, { onConflict: 'razao', ignoreDuplicates: false }));
+    }
+  } catch(e) { error = e; }
+  const key = (d.cnpj || '').replace(/\D/g,'') || (d.razao || '').slice(0,14);
+  const all = JSON.parse(localStorage.getItem('clients') || '{}');
+  if (!error) {
+    if (all[key]) { all[key]._cloud = true; delete all[key]._dirty; localStorage.setItem('clients', JSON.stringify(all)); }
+  } else {
+    if (all[key]) { all[key]._cloud = false; all[key]._dirty = true; localStorage.setItem('clients', JSON.stringify(all)); }
+    notify('Salvo no dispositivo, mas falhou na nuvem: ' + ((error && error.message) || error) + ' — Sincronizar reenviará', 'warn');
+  }
 }
 
 /* Sincroniza clientes: push local→nuvem e pull nuvem→local */
@@ -9079,8 +9097,8 @@ async function sbSyncClientes() {
   try {
     // 1. PUSH — envia clientes locais com CNPJ ou recém-cadastrados (sem sobrescrever dados da nuvem)
     const allLocal = JSON.parse(localStorage.getItem('clients') || '{}');
-    const localList = Object.values(allLocal).filter(d => d.razao && !d._cloud); // só os não-vindos da nuvem
-    let pushed = 0;
+    const localList = Object.values(allLocal).filter(d => d.razao && (!d._cloud || d._dirty)); // novos + edições pendentes
+    let pushed = 0, pushFail = 0;
     for (const d of localList) {
       const payload = {
         razao:    d.razao    || '',
@@ -9097,15 +9115,19 @@ async function sbSyncClientes() {
         fantasia: d.comp     || null,
       };
       try {
+        let pe = null;
         if (d.cnpj) {
           // CNPJ: upsert atualiza (dados do app são mais completos)
-          await sbData.from('clientes').upsert(payload, { onConflict: 'cnpj', ignoreDuplicates: false });
+          ({ error: pe } = await sbData.from('clientes').upsert(payload, { onConflict: 'cnpj', ignoreDuplicates: false }));
+        } else if (d._dirty) {
+          // Edição pendente sem CNPJ: atualiza a linha existente
+          ({ error: pe } = await sbData.from('clientes').upsert(payload, { onConflict: 'razao', ignoreDuplicates: false }));
         } else {
           // Sem CNPJ: só insere se não existir (preserva dados da nuvem)
-          await sbData.from('clientes').upsert(payload, { onConflict: 'razao', ignoreDuplicates: true });
+          ({ error: pe } = await sbData.from('clientes').upsert(payload, { onConflict: 'razao', ignoreDuplicates: true }));
         }
-        pushed++;
-      } catch(e) { }
+        if (pe) pushFail++; else pushed++;
+      } catch(e) { pushFail++; }
     }
 
     _syncBar('btn-sync-clientes', 40);
@@ -9136,6 +9158,8 @@ async function sbSyncClientes() {
       const key = (row.cnpj || '').replace(/\D/g,'') || (row.razao || '').slice(0,14);
       if (!key) return;
       const prev = oldLocal[key];
+      // Edição local pendente (falhou na nuvem): NÃO reverter — será reenviada
+      if (prev && prev._dirty) { fresh[key] = prev; return; }
       // Segmento: local tem prioridade se foi ajustado manualmente (não veio da nuvem)
       const seg = prev?.seg || row.segmento || '';
       fresh[key] = {

@@ -52,6 +52,8 @@ def main():
     result["index_ui_dark_grades"] = 'html[data-theme="dark"] [style*="color:#374151"]' in html
     result["index_ui_dark_sweep"] = 'Varredura de contraste 08/07' in html and '#client-suggest-drop{background:#121b30' in html
     result["index_prodimg_brooks_regex"] = "/^\\d{7}[A-Za-z]\\d{3}$/.test(s)" in html
+    result["index_cliente_edit_fix"] = ("onConflict: 'cnpj', ignoreDuplicates: false" in html
+                                        and "prev._dirty" in html and "origRazao" in html)
     result["index_pdf_fixes"] = ("acc: card.dataset.acc === '1'" in html
                                  and "if (it.acc || String(gk).startsWith('bacc_')) div.dataset.acc = '1';" in html
                                  and "Array.from(doc.images).map" in html)
@@ -77,7 +79,8 @@ def main():
                          and result["index_ui_imagens"] and result["index_ui_dark_cliente"]
                          and result["index_ui_dark_busca"] and result["index_ui_dark_grades"]
                          and result["index_ui_dark_sweep"] and result["index_prodimg_brooks_regex"]
-                         and result["index_pdf_fixes"] and result["sw_v3"])
+                         and result["index_pdf_fixes"] and result["index_cliente_edit_fix"]
+                         and result["sw_v3"])
     print(json.dumps(result, indent=2, ensure_ascii=False))
     with open(os.path.join(OUT, "verify_result.json"), "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
