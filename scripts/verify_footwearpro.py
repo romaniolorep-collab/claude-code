@@ -41,6 +41,9 @@ def main():
     result["index_planilha_2206"] = "planilha 22.06.2026" in html
     result["index_sem_d414"] = "1104421D414" not in html
     result["index_d182_fem"] = "bpe_4671D182F" in html
+    result["index_gate_importacao"] = "1782097200000" in html
+    sw = session.get(f"{BASE}/sw.js", timeout=30)
+    result["sw_v3"] = sw.status_code == 200 and "fp-v3-2026-07-08" in sw.text
 
     ok = True
     for ref in AMOSTRA:
@@ -55,7 +58,8 @@ def main():
 
     result["tudo_ok"] = (ok and result["index_has_prodImgSrc"] and result["index_ghost_849"]
                          and result["index_planilha_2206"] and result["index_sem_d414"]
-                         and result["index_d182_fem"])
+                         and result["index_d182_fem"] and result["index_gate_importacao"]
+                         and result["sw_v3"])
     print(json.dumps(result, indent=2, ensure_ascii=False))
     with open(os.path.join(OUT, "verify_result.json"), "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)

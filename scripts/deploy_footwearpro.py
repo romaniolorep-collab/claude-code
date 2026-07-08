@@ -81,6 +81,8 @@ def main():
 
     # substituições locais
     local = {"/index.html": os.path.join(FIX, "index.html")}
+    if os.path.exists(os.path.join(FIX, "sw.js")):
+        local["/sw.js"] = os.path.join(FIX, "sw.js")
     for name in sorted(os.listdir(os.path.join(FIX, "assets", "products"))):
         local[f"/assets/products/{name}"] = os.path.join(FIX, "assets", "products", name)
 
