@@ -46,7 +46,7 @@ def main():
     result["index_import_dedup"] = "while (newGrades[gkey]) gkey += 'F'" in html
     result["index_import_acc_grades"] = "const accGkey = 'bacc_' + sidStr" in html
     result["index_ui_grades"] = "preencha a grade na tela do pedido" in html and "width:52px;height:42px" in html
-    result["index_ui_imagens"] = "width:112px;height:112px" in html and "width:104px;height:104px" in html
+    result["index_ui_imagens"] = html.count("width:112px;height:112px") >= 15 and "width:104px;height:104px" in html
     sw = session.get(f"{BASE}/sw.js", timeout=30)
     result["sw_v3"] = sw.status_code == 200 and "fp-v3-2026-07-08" in sw.text
 
