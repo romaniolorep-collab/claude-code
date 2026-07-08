@@ -3655,7 +3655,9 @@ const GRADES_KIPLING_PE = { ..._GRADES_KIPLING_PE_BUILTIN };
         } else {
           CATALOG_BROOKS_PE_DATA = saved.catalog;
           if (saved.grades && Object.keys(saved.grades).length) {
-            GRADES_BROOKS_PE = { ..._GRADES_BROOKS_PE_BUILTIN, ...saved.grades }; Object.assign(GRADES, GRADES_BROOKS_PE);
+            // GRADES ainda não existe aqui (const declarado depois);
+            // ele é criado logo abaixo já espalhando GRADES_BROOKS_PE atualizado
+            GRADES_BROOKS_PE = { ..._GRADES_BROOKS_PE_BUILTIN, ...saved.grades };
           }
         }
       }
@@ -3824,6 +3826,8 @@ function restoreBrooksBuiltin() {
   CATALOG_BROOKS_PE_DATA = _CATALOG_BROOKS_PE_BUILTIN.slice();
   GRADES_BROOKS_PE = { ..._GRADES_BROOKS_PE_BUILTIN }; Object.assign(GRADES, GRADES_BROOKS_PE);
   updateBrooksCatStatus();
+  const _brkModal = document.getElementById('catalog-brooks-modal');
+  if (_brkModal && !_brkModal.classList.contains('hidden')) { try { renderBrooksCatalog(); } catch(e) {} }
   notify('Catálogo Brooks restaurado ao padrão ✓', 'ok');
 }
 
@@ -3882,7 +3886,7 @@ async function _brooksImportXLSX(file) {
     // Parse size header (row index 2)
     const sizeHdr = ftwRaw[2] || [];
     const sizeCols = {}; // col index → size value
-    for (let c = 6; c <= 24; c++) {
+    for (let c = 6; c < sizeHdr.length; c++) {
       const v = sizeHdr[c];
       if (v !== null && v !== undefined && v !== '') sizeCols[c] = Number(v);
     }
@@ -3908,8 +3912,8 @@ async function _brooksImportXLSX(file) {
       const modelo = row[3];
       const sid    = row[4];
       const cor    = row[5];
-      if (!pdv || !sid || !modelo) continue;
-      if (typeof pdv !== 'number' && isNaN(Number(pdv))) continue;
+      if (!pdv || !sid || !modelo) { if (sid || modelo) errors.push('linha ' + (i+1) + ': dados incompletos'); continue; }
+      if (typeof pdv !== 'number' && isNaN(Number(pdv))) { errors.push('linha ' + (i+1) + ' (' + sid + '): preço inválido'); continue; }
 
       const sidStr    = String(sid).trim();
       const modeloStr = String(modelo).trim().toUpperCase();
@@ -3927,9 +3931,16 @@ async function _brooksImportXLSX(file) {
       }
       if (!sizes.length) continue;
 
-      const cat  = detectCat(sidStr);
+      let cat  = detectCat(sidStr);
+      let gkey = mkGKey(sidStr);
+      if (newGrades[gkey]) {
+        // Ref repetida na planilha (ex.: 1104671D182 masc + fem):
+        // não sobrescrever a grade; a curva identifica o gênero da 2ª entrada
+        while (newGrades[gkey]) gkey += 'F';
+        const minSz = Math.min.apply(null, sizes.map(Number));
+        cat = minSz < 38 ? 'calcado-fem' : 'calcado-masc';
+      }
       const lbl  = cat === 'calcado-fem' ? 'BW FEM' : 'BM MASC';
-      const gkey = mkGKey(sidStr);
 
       newGrades[gkey]  = { l:lbl, s:sizes, q:qty };
       newCatalog.push({ r:sidStr, n:modeloStr, p:pdvNum, cat, g:[gkey], c:corStr });
@@ -3957,7 +3968,15 @@ async function _brooksImportXLSX(file) {
           .replace(/[^\x20-\x7E\xC0-\xFF]/g,'')
           .toUpperCase();
         const c = cor ? String(cor).trim().toUpperCase() : '';
-        newCatalog.push({ r:sidStr, n, p:Math.round(Number(pdv)*100)/100, cat:'acessorio', c });
+        // Grade P/M/G/GG (colunas 7-10) — sem ela o card fica sem estoque e sem "Adicionar"
+        const accS = []; const accQ = {};
+        ['P','M','G','GG'].forEach((sz, k) => {
+          const v = Number(row[7+k]);
+          if (v > 0) { accS.push(sz); accQ[sz] = Math.round(v); }
+        });
+        const accGkey = 'bacc_' + sidStr;
+        if (accS.length) newGrades[accGkey] = { l:'ACESSORIO BROOKS', s:accS, q:accQ };
+        newCatalog.push({ r:sidStr, n, p:Math.round(Number(pdv)*100)/100, cat:'acessorio', g: accS.length ? [accGkey] : [], c });
       }
     }
 
@@ -4272,11 +4291,12 @@ function renderBrooksCatalog() {
     'acessorio'   :'<span style="font-size:9px;font-family:monospace;padding:1px 6px;border-radius:4px;border:1px solid #fde68a;color:#92400e;background:#fffbeb">Acess</span>',
   };
 
-  const rows = filtered.map(p => {
+  const rows = filtered.map((p, _pi) => {
     const badge = BADGE[p.cat] || '';
     const isAcc = p.cat === 'acessorio';
     const gk    = (p.g && p.g[0]) || '';
-    const sid   = p.r.replace(/[^A-Za-z0-9]/g, '_');
+    // Índice no sid: refs podem se repetir no catálogo (ex.: 1104671D182 masc+fem)
+    const sid   = p.r.replace(/[^A-Za-z0-9]/g, '_') + '_' + _pi;
 
     // Imagem: Canvas imediato — sem CDN, funciona sempre
     const imgTag = '<div id="brkimgc-'+sid+'" style="width:100%;height:100%;border-radius:inherit;overflow:hidden"></div>';
@@ -4375,10 +4395,8 @@ function renderBrooksCatalog() {
 
   grid.innerHTML = '<div class="flex flex-col gap-2">' + rows.join('') + '</div>';
   // Proactively load images for ALL products (including accessories)
-  filtered.forEach(p => {
-    const _isAcc = p.cat === 'acessorio';
-    if (false) return; // load all
-    const sid = p.r.replace(/[^A-Za-z0-9]/g,'_');
+  filtered.forEach((p, _pi) => {
+    const sid = p.r.replace(/[^A-Za-z0-9]/g,'_') + '_' + _pi;
     const container = document.getElementById('brkimgc-'+sid);
     if (container && !container.dataset.loaded) {
       container.dataset.loaded = '1';
@@ -5301,7 +5319,7 @@ function showRefSuggest(id, query) {
   drop.style.cssText = `position:fixed;left:${cardRect.left}px;top:${topPos}px;width:${cardRect.width}px;z-index:99999;background:#fff;border:1px solid #d0d5e2;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.14);overflow:hidden;max-height:${maxDropH}px;overflow-y:auto;-webkit-overflow-scrolling:touch`;
 
   const isBrkSuggest = currentBrand === 'brooks';
-  drop.innerHTML = matches.map(p => {
+  drop.innerHTML = matches.map((p, _mi) => {
     const safeRef  = p.r.replace(/'/g,"\\'");
     const safeName = p.n.replace(/'/g,"\\'").replace(/"/g,'&quot;');
     const safeCor  = (p.c||'').replace(/'/g,"\\'");
@@ -5329,7 +5347,7 @@ function showRefSuggest(id, query) {
 
     // Image: generated via Canvas for Brooks, local assets for Reebok
     const imgSrc = isBrkSuggest ? '' : _prodImgSrc(p.r);
-    const _sfSid = p.r.replace(/[^A-Za-z0-9]/g,'_');
+    const _sfSid = p.r.replace(/[^A-Za-z0-9]/g,'_') + '_' + _mi;
 
     return `<div onclick="fillFromSuggest(${id},'${safeRef}','${safeName}',${p.p},'${safeCor}','${safeGrade}')"
       style="display:flex;align-items:center;gap:8px;padding:6px 10px;cursor:pointer;border-bottom:1px solid #f0f2f7;transition:background .12s"
@@ -5352,8 +5370,8 @@ function showRefSuggest(id, query) {
   // Renderizar imagens Canvas para sugestões Brooks
   if (isBrkSuggest) {
     setTimeout(() => {
-      matches.forEach(p => {
-        const sid = p.r.replace(/[^A-Za-z0-9]/g,'_');
+      matches.forEach((p, _mi) => {
+        const sid = p.r.replace(/[^A-Za-z0-9]/g,'_') + '_' + _mi;
         const el  = document.getElementById('drpimg-'+sid);
         if (el) _applyBrkImg(el, p.r, p.n, p.c, 52);
       });
