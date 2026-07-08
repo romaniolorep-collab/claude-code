@@ -1109,6 +1109,54 @@ try{document.documentElement.dataset.theme=localStorage.getItem('fp_theme')||'da
   html[data-theme="dark"] [style*="color:#1A6FD8"]{color:#8fb0ff!important}
   html[data-theme="dark"] [style*="border-color:#1A6FD8"]{border-color:#8fb0ff!important}
   html[data-theme="dark"] #brk-cat-grid .text-on-dim,html[data-theme="dark"] #cat-grid .text-on-dim,html[data-theme="dark"] #kip-cat-grid .text-on-dim{color:#aab6cf}
+  /* ── Varredura de contraste 08/07: telas no escuro (documentos PDF/e-mail permanecem claros) ── */
+  /* Dropdowns de sugestão (produto e cliente) — criados via JS com fundo branco */
+  html[data-theme="dark"] [id^="suggest-"],html[data-theme="dark"] #client-suggest-drop{background:#121b30!important;border-color:rgba(255,255,255,.14)!important}
+  html[data-theme="dark"] [id^="suggest-"]>div:hover,html[data-theme="dark"] #client-suggest-drop>div:hover{background:#1e2a4a!important}
+  html[data-theme="dark"] [style*="solid #f0f2f7"]{border-color:rgba(255,255,255,.08)!important}
+  html[data-theme="dark"] [style*="background:#eef2ff"]{background:rgba(99,102,241,.16)!important}
+  html[data-theme="dark"] [style*="color:#76777d"]{color:#9fabc4!important}
+  /* Chips e badges (Masc/Fem/Acess, segmentos, status) */
+  html[data-theme="dark"] [style*="background:#fdf2f8"]{background:rgba(236,72,153,.14)!important}
+  html[data-theme="dark"] [style*="background:#fdf0f4"]{background:rgba(236,72,153,.14)!important}
+  html[data-theme="dark"] [style*="background:#f5f3ff"]{background:rgba(168,85,247,.14)!important}
+  html[data-theme="dark"] [style*="background:#f0f6ff"]{background:rgba(59,130,246,.14)!important}
+  html[data-theme="dark"] [style*="background:#dcfce7"]{background:rgba(34,197,94,.16)!important}
+  html[data-theme="dark"] [style*="background:#e8f5e9"]{background:rgba(34,197,94,.15)!important}
+  html[data-theme="dark"] [style*="color:#1d4ed8"]{color:#93b4fd!important}
+  html[data-theme="dark"] [style*="color:#1565c0"]{color:#93b4fd!important}
+  html[data-theme="dark"] [style*="color:#3b5bdb"]{color:#93b4fd!important}
+  html[data-theme="dark"] [style*="color:#be185d"]{color:#f9a8d4!important}
+  html[data-theme="dark"] [style*="color:#c2185b"]{color:#f9a8d4!important}
+  html[data-theme="dark"] [style*="color:#6d28d9" i]{color:#c4b5fd!important}
+  html[data-theme="dark"] [style*="color:#16a34a"]{color:#4ade80!important}
+  html[data-theme="dark"] [style*="color:#2e7d32"]{color:#4ade80!important}
+  html[data-theme="dark"] [style*="solid #fbcfe8"]{border-color:rgba(236,72,153,.4)!important}
+  html[data-theme="dark"] [style*="solid #f5c5d5"]{border-color:rgba(236,72,153,.4)!important}
+  html[data-theme="dark"] [style*="solid #fde68a"]{border-color:rgba(251,191,36,.4)!important}
+  html[data-theme="dark"] [style*="solid #bbf7d0"]{border-color:rgba(74,222,128,.4)!important}
+  html[data-theme="dark"] [style*="solid #c8e6c9"]{border-color:rgba(74,222,128,.4)!important}
+  html[data-theme="dark"] [style*="solid #c5d0f5"]{border-color:rgba(96,165,250,.4)!important}
+  html[data-theme="dark"] [style*="solid #c5d9f5"]{border-color:rgba(96,165,250,.4)!important}
+  html[data-theme="dark"] [style*="solid #e2e5ef"]{border-color:rgba(255,255,255,.14)!important}
+  html[data-theme="dark"] [style*="solid #d1d5db"]{border-color:rgba(255,255,255,.22)!important}
+  /* Stepper do pedido */
+  html[data-theme="dark"] #fp-stepper{background:#121b30;border-color:rgba(255,255,255,.09)}
+  html[data-theme="dark"] .fp-step:hover{background:#1e2a4a}
+  html[data-theme="dark"] .fp-step .dot{background:#1a2440;border-color:#3a4a6e;color:#8e99b3}
+  html[data-theme="dark"] .fp-conn{background:#2a3856}
+  /* Grade preenchida e cartões de marca */
+  html[data-theme="dark"] .sz-inp.has-v{background:#24365f!important;color:#dbe6ff!important;border-color:#8fb0ff!important}
+  html[data-theme="dark"] .brand-card.selected{background:#1e2a4a}
+  html[data-theme="dark"] .sync-progress-bar{background:#8fb0ff}
+  /* Divisores e utilitários do tema */
+  html[data-theme="dark"] .divide-border-c>:not([hidden])~:not([hidden]){border-color:rgba(255,255,255,.09)}
+  html[data-theme="dark"] .bg-border-c{background-color:#22304f}
+  html[data-theme="dark"].is-touch .summary-panel,html.is-touch[data-theme="dark"] .summary-panel{border-top-color:rgba(255,255,255,.1)!important}
+  /* Modalidade Programado selecionada */
+  html[data-theme="dark"] #mod-btn-programado.mod-selected{background:rgba(59,130,246,.16);border-color:#60a5fa;color:#93b4fd}
+  html[data-theme="dark"] #mod-btn-programado.mod-selected #mod-icon-programado{color:#93b4fd}
+  html[data-theme="dark"] #mod-btn-programado.mod-selected .font-grotesk{color:#dbeafe}
   /* ── Componentes ── */
   html[data-theme="dark"] .stat-card{box-shadow:none}
   html[data-theme="dark"] .stat-card:hover{border-left-color:#8fb0ff;box-shadow:0 8px 24px -8px rgba(0,0,0,.5)}
