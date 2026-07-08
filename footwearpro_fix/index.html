@@ -1107,8 +1107,12 @@ try{document.documentElement.dataset.theme=localStorage.getItem('fp_theme')||'da
   html[data-theme="dark"] .sk{background:linear-gradient(90deg,#1a2440 25%,#22304f 50%,#1a2440 75%);background-size:200% 100%}
   html[data-theme="dark"] #gs-panel{background:#121b30;border:1px solid rgba(255,255,255,.1)}
   html[data-theme="dark"] #gs-inp{background:#1a2440;color:#e7ecf5;border-color:rgba(255,255,255,.12)}
-  html[data-theme="dark"] .gs-item.sel{background:#1e2a4a}
-  html[data-theme="dark"] #gs-foot{color:#8e99b3}
+  html[data-theme="dark"] .gs-item.sel,html[data-theme="dark"] .gs-item:hover{background:#1e2a4a}
+  html[data-theme="dark"] .gs-item .gt{color:#e7ecf5}
+  html[data-theme="dark"] .gs-item .gs{color:#8e99b3}
+  html[data-theme="dark"] .gs-cat{color:#8e99b3}
+  html[data-theme="dark"] #gs-inp::placeholder{color:#8e99b3}
+  html[data-theme="dark"] #gs-foot{color:#8e99b3;background:#0f1830;border-top-color:rgba(255,255,255,.08)}
   html[data-theme="dark"] #gs-foot kbd{background:#1a2440;border-color:rgba(255,255,255,.15);color:#8e99b3}
   html[data-theme="dark"] .seg-pill.active{background:#8fb0ff!important;border-color:#8fb0ff!important;color:#0b1120!important}
   html[data-theme="dark"] #dash-hero{border-color:rgba(255,255,255,.11)}

@@ -48,6 +48,7 @@ def main():
     result["index_ui_grades"] = "preencha a grade na tela do pedido" in html and "width:52px;height:42px" in html
     result["index_ui_imagens"] = html.count("width:112px;height:112px") >= 15 and "width:104px;height:104px" in html
     result["index_ui_dark_cliente"] = 'html[data-theme="dark"] .bg-\\[\\#f0fdf4\\]' in html
+    result["index_ui_dark_busca"] = 'html[data-theme="dark"] .gs-item .gt{color:#e7ecf5}' in html
     sw = session.get(f"{BASE}/sw.js", timeout=30)
     result["sw_v3"] = sw.status_code == 200 and "fp-v3-2026-07-08" in sw.text
 
@@ -68,7 +69,7 @@ def main():
                          and result["index_sid_unico"] and result["index_import_dedup"]
                          and result["index_import_acc_grades"] and result["index_ui_grades"]
                          and result["index_ui_imagens"] and result["index_ui_dark_cliente"]
-                         and result["sw_v3"])
+                         and result["index_ui_dark_busca"] and result["sw_v3"])
     print(json.dumps(result, indent=2, ensure_ascii=False))
     with open(os.path.join(OUT, "verify_result.json"), "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
