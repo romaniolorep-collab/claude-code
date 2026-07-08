@@ -4311,13 +4311,13 @@ function renderBrooksCatalog() {
         const bg  = stk >= 10 ? '#f0fdf4' : stk >= 3 ? '#fffbeb' : '#fef2f2';
         const bd  = stk >= 10 ? '#86efac' : stk >= 3 ? '#fcd34d' : '#fca5a5';
         const key = String(sz).replace('.','_');
-        return '<div class="flex flex-col items-center gap-0.5" style="min-width:36px">'
-          + '<span style="font-size:8px;font-family:monospace;font-weight:600;color:#374151">'+sz+'</span>'
-          + '<input type="number" min="0" max="'+stk+'" value="0"'
+        return '<div class="flex flex-col items-center gap-1" style="min-width:52px">'
+          + '<span style="font-size:12px;font-family:monospace;font-weight:700;color:#374151">'+sz+'</span>'
+          + '<input type="number" min="0" max="'+stk+'" value="0" inputmode="numeric"'
           +   ' id="bpk-'+sid+'-'+key+'" data-stock="'+stk+'" data-brkref="'+sid+'"'
-          +   ' class="w-10 h-8 text-center font-mono text-xs border rounded-lg focus:outline-none bg-white"'
-          +   ' style="border-color:#d1d5db" oninput="_brkPkUpd(\''+sid+'\','+tot+')" onfocus="this.select()">'
-          + '<span style="font-size:7px;font-family:monospace;color:'+fg+';background:'+bg+';border:1px solid '+bd+';padding:0 3px;border-radius:3px">'+stk+'u</span>'
+          +   ' class="text-center font-mono border rounded-lg focus:outline-none bg-white"'
+          +   ' style="border-color:#d1d5db;width:52px;height:42px;font-size:15px" oninput="_brkPkUpd(\''+sid+'\','+tot+')" onfocus="this.select()">'
+          + '<span style="font-size:10px;font-family:monospace;font-weight:600;color:'+fg+';background:'+bg+';border:1px solid '+bd+';padding:1px 6px;border-radius:4px">'+stk+'u</span>'
           + '</div>';
       }).join('');
 
@@ -4336,9 +4336,9 @@ function renderBrooksCatalog() {
         + '</div>'
         + '<div class="flex items-center gap-3 px-3 pb-2.5">'
         +   '<div class="flex-1">'
-        +     '<span style="font-size:9px;font-family:monospace;color:#64748b">Sel:&nbsp;</span>'
-        +     '<strong id="bpk-tot-'+sid+'" style="font-size:10px;font-family:monospace;color:#94a3b8">0</strong>'
-        +     '<span style="font-size:9px;font-family:monospace;color:#94a3b8">&nbsp;/&nbsp;'+tot+'</span>'
+        +     '<span style="font-size:11px;font-family:monospace;color:#64748b">Sel:&nbsp;</span>'
+        +     '<strong id="bpk-tot-'+sid+'" style="font-size:13px;font-family:monospace;color:#94a3b8">0</strong>'
+        +     '<span style="font-size:11px;font-family:monospace;color:#94a3b8">&nbsp;/&nbsp;'+tot+'</span>'
         +   '</div>'
         +   '<button type="button" onclick="_brkConfirm(\''+sid+'\',\''+p.r+'\',\''+p.n.replace(/'/g,"\\'")+'\',' +p.p+',\''+gk+'\')"'
         +     ' class="h-8 px-3 font-mono text-[10px] rounded-lg border font-semibold transition-all flex items-center gap-1"'
@@ -4358,13 +4358,13 @@ function renderBrooksCatalog() {
       const q   = Number(accGd.q[String(sz)]||0);
       const key = String(sz).replace('/','_');
       const fg  = q>=10?'#15803d':q>=3?'#b45309':'#dc2626';
-      return '<div style="display:flex;flex-direction:column;align-items:center;gap:2px;min-width:38px">'
-        + '<span style="font-size:8px;font-family:monospace;font-weight:700;color:#374151">'+sz+'</span>'
-        + '<input type="number" min="0" max="'+q+'" value="0"'
+      return '<div style="display:flex;flex-direction:column;align-items:center;gap:3px;min-width:52px">'
+        + '<span style="font-size:12px;font-family:monospace;font-weight:700;color:#374151">'+sz+'</span>'
+        + '<input type="number" min="0" max="'+q+'" value="0" inputmode="numeric"'
         +   ' id="bpk-'+sid+'-'+key+'" data-stock="'+q+'" data-brkref="'+sid+'"'
-        +   ' class="w-10 h-7 text-center font-mono text-xs border rounded-lg focus:outline-none bg-white" style="border-color:#d1d5db"'
+        +   ' class="text-center font-mono border rounded-lg focus:outline-none bg-white" style="border-color:#d1d5db;width:52px;height:42px;font-size:15px"'
         +   ' oninput="_brkPkUpd(\''+sid+'\','+accTot+')" onfocus="this.select()">'
-        + '<span style="font-size:7px;font-family:monospace;color:'+fg+';font-weight:600">'+q+'u</span>'
+        + '<span style="font-size:10px;font-family:monospace;color:'+fg+';font-weight:600">'+q+'u</span>'
         + '</div>';
     }).join('') : '<input type="number" min="1" max="999" value="1" style="width:44px;height:32px;text-align:center;font-family:monospace;font-size:12px;border:1px solid #d1d5db;border-radius:8px" onclick="event.stopPropagation()">';
 
@@ -4383,7 +4383,7 @@ function renderBrooksCatalog() {
       + '<div class="flex items-center gap-2 px-3 pb-2.5">'
       +   '<div class="flex flex-wrap gap-1.5 flex-1">'+accSizes+'</div>'
       +   '<div class="flex-shrink-0">'
-      +     '<div style="font-size:9px;font-family:monospace;color:#64748b;margin-bottom:3px">Sel: <strong id="bpk-tot-'+sid+'" style="color:#94a3b8">0</strong></div>'
+      +     '<div style="font-size:11px;font-family:monospace;color:#64748b;margin-bottom:3px">Sel: <strong id="bpk-tot-'+sid+'" style="font-size:13px;color:#94a3b8">0</strong></div>'
       +     '<button type="button" onclick="_brkConfirm(\''+sid+'\',\''+p.r+'\',\''+p.n.replace(/'/g,"\\'")+'\','+p.p+',\''+accGk+'\')"'
       +       ' class="h-8 px-2.5 font-mono text-[10px] rounded-lg border font-semibold whitespace-nowrap transition-all" style="border-color:#1A6FD8;color:#1A6FD8"'
       +       ' onmouseover="this.style.background=\'rgba(26,111,216,.08)\'" onmouseout="this.style.background=\'\'">'
@@ -4564,7 +4564,19 @@ function _brkConfirm(sid, ref, name, pdv, gk) {
     const sz = inp.id.replace('bpk-'+sid+'-','').replace('_','.');
     if (v > 0) { sel[sz]=Math.min(v,m); tot+=sel[sz]; }
   });
-  if (!tot) { notify('Selecione ao menos 1 par antes de adicionar', 'warn'); return; }
+  if (!tot) {
+    // Sem quantidades: adiciona a linha com a grade zerada para preencher na tela do pedido
+    addFromCatalogPE(ref, name, pdv, gk, null, 0, {});
+    _brkCatAddedCount++;
+    const cnt0 = document.getElementById('brk-cat-added-count');
+    if (cnt0) cnt0.textContent = _brkCatAddedCount;
+    const bottom0 = document.getElementById('brk-cat-bottom');
+    if (bottom0) bottom0.classList.remove('hidden');
+    const card0 = document.getElementById('brkcard-'+sid);
+    if (card0) { card0.style.boxShadow='0 0 0 2px #f59e0b'; setTimeout(()=>{ if(card0) card0.style.boxShadow=''; },1400); }
+    notify(name+' adicionado — preencha a grade na tela do pedido', 'ok');
+    return;
+  }
   addFromCatalogPE(ref, name, pdv, gk, null, 0, sel);
   document.querySelectorAll('[data-brkref="'+sid+'"]').forEach(inp => {
     inp.value='0'; inp.style.borderColor='#d1d5db';
