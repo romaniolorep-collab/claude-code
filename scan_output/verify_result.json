@@ -54,6 +54,7 @@
   "index_import_acc_grades": true,
   "index_ui_grades": true,
   "index_ui_imagens": true,
+  "index_ui_dark_cliente": true,
   "sw_v3": true,
   "tudo_ok": true
 }
