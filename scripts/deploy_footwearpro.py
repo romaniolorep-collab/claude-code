@@ -111,7 +111,7 @@ def main():
 
     sent = 0
     for path, (fp, digest) in changed.items():
-        if required and digest not in required:
+        if digest not in required:
             continue
         url = f"{API}/deploys/{deploy_id}/files/{quote(path.lstrip('/'))}"
         with open(fp, "rb") as f:
