@@ -4590,10 +4590,11 @@ function _brkGenImg(ref, modelName, colorStr, size) {
 
 /* Extensão correta por marca: imagens Brooks estão em .png, Reebok/Kipling em .jpg.
    Refs Brooks: calçados = 7 dígitos + letra + 3 dígitos (ex.: 1104421D048);
-   acessórios = 9 dígitos (ex.: 280417033). */
+   acessórios = 9 dígitos iniciando em 280 (ex.: 280417033).
+   Atenção: Reebok também tem refs 9 dígitos, iniciando em 100 (Charge Run). */
 function _prodImgSrc(ref) {
   const s = String(ref).trim();
-  const brooks = /^\d{7}[A-Za-z]\d{3}$/.test(s) || /^\d{9}$/.test(s);
+  const brooks = /^\d{7}[A-Za-z]\d{3}$/.test(s) || /^280\d{6}$/.test(s);
   return 'assets/products/' + s + (brooks ? '.png' : '.jpg');
 }
 

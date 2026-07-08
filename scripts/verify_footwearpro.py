@@ -51,7 +51,8 @@ def main():
     result["index_ui_dark_busca"] = 'html[data-theme="dark"] .gs-item .gt{color:#e7ecf5}' in html
     result["index_ui_dark_grades"] = 'html[data-theme="dark"] [style*="color:#374151"]' in html
     result["index_ui_dark_sweep"] = 'Varredura de contraste 08/07' in html and '#client-suggest-drop{background:#121b30' in html
-    result["index_prodimg_brooks_regex"] = "/^\\d{7}[A-Za-z]\\d{3}$/.test(s)" in html
+    result["index_prodimg_brooks_regex"] = ("/^\\d{7}[A-Za-z]\\d{3}$/.test(s)" in html
+                                            and "/^280\\d{6}$/.test(s)" in html)
     result["index_ui_dark_form"] = ("function _isDarkTheme()" in html
                                     and 'html[data-theme="dark"]{color-scheme:dark}' in html)
     result["index_cliente_edit_fix"] = ("onConflict: 'cnpj', ignoreDuplicates: false" in html
