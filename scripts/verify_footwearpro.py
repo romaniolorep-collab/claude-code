@@ -38,6 +38,9 @@ def main():
     result["index_has_prodImgSrc"] = "_prodImgSrc" in html
     result["index_ghost_849"] = '"r":"1104421D048","n":"GHOST 17","p":849.9' in html
     result["index_sem_jpg_hardcoded"] = "assets/products/${p.r}.jpg" not in html
+    result["index_planilha_2206"] = "planilha 22.06.2026" in html
+    result["index_sem_d414"] = "1104421D414" not in html
+    result["index_d182_fem"] = "bpe_4671D182F" in html
 
     ok = True
     for ref in AMOSTRA:
@@ -50,7 +53,9 @@ def main():
         result["imagens"][ref] = {"status": r.status_code, "sha_ok": match}
         print(f"{'OK ' if match else 'DIF'} {ref} [{r.status_code}]")
 
-    result["tudo_ok"] = ok and result["index_has_prodImgSrc"] and result["index_ghost_849"]
+    result["tudo_ok"] = (ok and result["index_has_prodImgSrc"] and result["index_ghost_849"]
+                         and result["index_planilha_2206"] and result["index_sem_d414"]
+                         and result["index_d182_fem"])
     print(json.dumps(result, indent=2, ensure_ascii=False))
     with open(os.path.join(OUT, "verify_result.json"), "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
