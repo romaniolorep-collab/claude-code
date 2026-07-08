@@ -1,11 +1,11 @@
 {
-  "deploy_id": "6a4d7f84113374851164ef73",
+  "deploy_id": "6a4da89369d872e8a1c89cd0",
   "state": "ready",
-  "uploaded": 3,
+  "uploaded": 1,
   "site": "footwearpro-ibrand",
   "site_id": "aaa0bc54-9c24-4c9b-b890-53c8b0b826db",
   "index_has_prodImgSrc": true,
   "cap_image_status": 200,
   "cap_image_sha_ok": true,
-  "d048_sha_ok": false
+  "d048_sha_ok": true
 }
