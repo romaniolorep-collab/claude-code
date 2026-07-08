@@ -60,6 +60,7 @@
   "index_ui_dark_sweep": true,
   "index_prodimg_brooks_regex": true,
   "index_ui_dark_form": true,
+  "index_cliente_autosync": true,
   "index_cliente_edit_fix": true,
   "index_pdf_fixes": true,
   "sw_v3": true,
