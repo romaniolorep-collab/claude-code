@@ -3190,7 +3190,7 @@ function buildOrderPayload() {
         if (v > 0) sizes[sz] = v;
       });
     }
-    itens.push({ ref, desc, cor, grade, price, sizes, pairs:d.pairs, markup:d.markup, value:d.value, liquido:d.liquido });
+    itens.push({ ref, desc, cor, grade, price, sizes, pairs:d.pairs, markup:d.markup, value:d.value, liquido:d.liquido, acc: card.dataset.acc === '1' });
   });
   let totalPares=0, totalLiq=0, totalPdv=0;
   Object.values(rowData).forEach(r => { totalPares+=r.pairs; totalLiq+=(r.liquido||0); totalPdv+=r.value; });
@@ -6910,72 +6910,30 @@ function buildPDFFromOrder(o, fmt) {
   const bname    = brand.name;
   const logo     = brandKey ? _LOGOS[brandKey] : '';
   const bc       = brand.c;
-  const modalidade = isSB ? (o.modalidade||null) : null;
+  const modalidade = o.modalidade || null;
 
   // ── Dados cliente/pedido ──
   const num     = o.num || '—';
   const razao   = (isSB ? o.cliente_razao   : o.razao)     || '—';
   const cnpj    = (isSB ? o.cliente_cnpj    : o.cnpj)      || '—';
-  const ie      = (isSB ? o.cliente_ie      : null)        || '—';
-  const tel     = (isSB ? o.cliente_tel     : null)        || '—';
+  const ie      = (isSB ? o.cliente_ie      : o.ie)        || '—';
+  const tel     = (isSB ? o.cliente_tel     : o.tel)       || '—';
   const comp    = (isSB ? o.cliente_comprador : o.comprador) || '—';
-  const end     = (isSB ? o.cliente_endereco : null)       || '';
-  const cep     = (isSB ? o.cliente_cep     : null)        || '';
+  const end     = (isSB ? o.cliente_endereco : o.endereco) || '';
+  const cep     = (isSB ? o.cliente_cep     : o.cep)       || '';
   const cidade  = (isSB ? o.cliente_cidade  : o.cidade)    || '';
-  const uf      = (isSB ? o.cliente_uf      : null)        || '';
+  const uf      = (isSB ? o.cliente_uf      : o.uf)        || '';
   const endFull = [end, cep&&`CEP ${cep}`, cidade&&uf?`${cidade} — ${uf}`:cidade||uf].filter(Boolean).join(' · ')||'—';
-  const data    = isSB ? (o.data_emissao||'')    : '';
+  const data    = isSB ? (o.data_emissao||'')    : (o.data||'');
   const entrega = isSB ? (o.entrega_prevista||'') : (o.entrega||'');
   const pgto    = o.pgto || '—';
-  const obs     = (isSB ? o.obs : null) || '';
+  const obs     = o.obs || '';
 
   const fmtD = d => { if (!d) return '—'; const parts=d.split('-'); return parts.length===3?`${parts[2]}/${parts[1]}/${parts[0]}`:'—'; };
 
   // ── Itens ──
   const itens  = isSB ? (o.itens||[]) : (o.items||[]);
-  let rows='', gP=0, gL=0, nRef=0;
-
-  itens.forEach((it, i) => {
-    const gk     = isSB ? (it.grade||'') : (it.gradeKey||'');
-    const price  = isSB ? (it.price||0)  : (it.price||0);
-    const pairs  = it.pairs||0;
-    const markup = it.markup||2.0;
-    const liquido= it.liquido||0;
-    const glbl   = gk&&GRADES[gk] ? GRADES[gk].l : (gk||'—');
-    gP+=pairs; gL+=liquido; nRef++;
-
-    // grade grid
-    let sz='';
-    if (gk&&GRADES[gk]&&it.sizes&&Object.keys(it.sizes).length) {
-      const allSzs=GRADES[gk].s;
-      const bc2='#c7d2fe',hbg='#eef2ff',hcl='#3730a3';
-      const hcss=`min-width:24px;padding:2px 5px;text-align:center;background:${hbg};border:1px solid ${bc2};border-right:none;font-size:8.5px;color:${hcl};font-weight:700`;
-      const hcssL=`min-width:24px;padding:2px 5px;text-align:center;background:${hbg};border:1px solid ${bc2};font-size:8.5px;color:${hcl};font-weight:700`;
-      const qcss =(q)=>`min-width:24px;padding:2px 5px;text-align:center;border:1px solid ${bc2};border-top:none;border-right:none;font-weight:${q>0?800:400};font-size:${q>0?11:9}px;color:${q>0?'#131b2e':'#d0d0d0'}`;
-      const qcssL=(q)=>`min-width:24px;padding:2px 5px;text-align:center;border:1px solid ${bc2};border-top:none;font-weight:${q>0?800:400};font-size:${q>0?11:9}px;color:${q>0?'#131b2e':'#d0d0d0'}`;
-      const last=allSzs.length-1;
-      const hRow=allSzs.map((s,j)=>`<div style="${j<last?hcss:hcssL}">${s}</div>`).join('');
-      const qRow=allSzs.map((s,j)=>{ const q=parseInt(it.sizes[s]||0,10); return`<div style="${j<last?qcss(q):qcssL(q)}">${q>0?q:'–'}</div>`; }).join('');
-      sz=`<div style="display:inline-flex;flex-direction:column;border-radius:5px;overflow:hidden;font-family:'JetBrains Mono',monospace"><div style="display:flex">${hRow}</div><div style="display:flex">${qRow}</div></div>`;
-    }
-
-    const liqUnit = markup > 0 ? price/markup : (pairs > 0 ? liquido/pairs : 0);
-    rows+=`<tr style="background:${i%2===0?'#fff':'#f7f9fb'}">
-      <td style="padding:8px 10px;text-align:center;font-weight:800;color:${bc};font-size:13px;border-bottom:1px solid #ebebef">${i+1}</td>
-      <td style="padding:8px 10px;font-family:monospace;font-size:11px;font-weight:700;color:#131b2e;border-bottom:1px solid #ebebef">${it.ref||'—'}</td>
-      <td style="padding:8px 10px;font-weight:600;font-size:12px;border-bottom:1px solid #ebebef">${it.desc||'—'}</td>
-      <td style="padding:8px 10px;color:#555;font-size:11px;border-bottom:1px solid #ebebef">${it.cor||'—'}</td>
-      <td style="padding:8px 10px;color:#555;font-size:11px;border-bottom:1px solid #ebebef">${glbl}</td>
-      <td style="padding:8px 10px;line-height:1.9;border-bottom:1px solid #ebebef;text-align:center">${sz||'<span style="color:#aaa">—</span>'}</td>
-      <td style="padding:8px 10px;text-align:right;font-family:monospace;font-size:11px;color:#45464d;border-bottom:1px solid #ebebef">R$ ${fBR(price)}</td>
-      <td style="padding:8px 10px;text-align:right;font-family:monospace;font-size:11px;color:#137333;font-weight:700;border-bottom:1px solid #ebebef">R$ ${fBR(liqUnit)}</td>
-      <td style="padding:8px 10px;text-align:center;font-weight:800;font-size:14px;color:${bc};border-bottom:1px solid #ebebef">${pairs}</td>
-      <td style="padding:8px 10px;text-align:right;border-bottom:1px solid #ebebef"><span style="display:inline-block;background:#f0fdf4;border:1px solid #86efac;border-radius:5px;padding:2px 8px;font-family:monospace;font-size:11px;color:#137333;font-weight:700">R$ ${fBR(liquido)}</span></td>
-    </tr>`;
-  });
-
-  const netLiq   = gL;
-  const obsBlock = obs ? `<div style="border:1px solid #fbbf24;background:#fffbeb;border-radius:8px;padding:13px 16px;margin-bottom:22px;font-size:12px"><div style="font-size:8.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.8px;color:#92400e;margin-bottom:7px">Observações</div><div style="color:#78350f;line-height:1.6">${obs.replace(/\n/g,'<br>')}</div></div>` : '';
+  // (a tabela é gerada pelo buildPDF() após a injeção dos itens no formulário)
 
   // Reutiliza o mesmo template HTML do buildPDF substituindo apenas os dados
   // Salva estado atual do formulário, injeta dados, gera PDF, restaura
@@ -7018,6 +6976,8 @@ function buildPDFFromOrder(o, fmt) {
     const div = document.createElement('div');
     div.className = 'item-card'; div.id = 'item-'+id;
     const gk = isSB ? (it.grade||'') : (it.gradeKey||'');
+    // acessório: flag salvo ou grade bacc_ (pedidos antigos da nuvem sem o flag)
+    if (it.acc || String(gk).startsWith('bacc_')) div.dataset.acc = '1';
     // grade sizes inputs
     let szInputs = '';
     if (gk && GRADES[gk]) {
@@ -7171,7 +7131,7 @@ function _ecmGeneratePdf() {
     document.body.appendChild(a); a.click();
     document.body.removeChild(a);
     setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
-  } catch(e) { }
+  } catch(e) { notify('Erro ao gerar o PDF: ' + (e && e.message || e), 'err'); }
 }
 
 let _ecmSending = false; // reentrância: evita duplo clique enviando 2×
@@ -8112,6 +8072,14 @@ async function gerarPdfBase64(pdfHtml) {
     if (!doc || !doc.body) throw new Error('Falha ao renderizar o pedido');
     doc.querySelectorAll('.no-print,.pdf-spacer').forEach(el => el.remove());
     try { await doc.fonts.ready; } catch(e) {}
+    // aguarda thumbs/logos de fato carregarem (o guard de 9s pode vencer o onload)
+    try {
+      await Promise.race([
+        Promise.all(Array.from(doc.images).map(img => img.complete ? Promise.resolve() :
+          new Promise(res => { img.addEventListener('load', res, {once:true}); img.addEventListener('error', res, {once:true}); }))),
+        new Promise(res => setTimeout(res, 4000)),
+      ]);
+    } catch(e) {}
     await new Promise(r => setTimeout(r, 350)); // respiro p/ fontes e logos
     const fullH = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight, 200);
     iframe.style.height = Math.min(fullH + 40, 30000) + 'px';
