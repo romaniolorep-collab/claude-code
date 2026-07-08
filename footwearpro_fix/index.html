@@ -4587,9 +4587,13 @@ function _brkGenImg(ref, modelName, colorStr, size) {
   return dataUrl;
 }
 
-/* Extensão correta por marca: imagens Brooks estão em .png, Reebok/Kipling em .jpg */
+/* Extensão correta por marca: imagens Brooks estão em .png, Reebok/Kipling em .jpg.
+   Refs Brooks: calçados = 7 dígitos + letra + 3 dígitos (ex.: 1104421D048);
+   acessórios = 9 dígitos (ex.: 280417033). */
 function _prodImgSrc(ref) {
-  return 'assets/products/' + ref + (/^[0-9]+$/.test(String(ref)) ? '.png' : '.jpg');
+  const s = String(ref).trim();
+  const brooks = /^\d{7}[A-Za-z]\d{3}$/.test(s) || /^\d{9}$/.test(s);
+  return 'assets/products/' + s + (brooks ? '.png' : '.jpg');
 }
 
 /* Aplica imagem: tenta PNG local, depois Canvas gerado */

@@ -51,6 +51,7 @@ def main():
     result["index_ui_dark_busca"] = 'html[data-theme="dark"] .gs-item .gt{color:#e7ecf5}' in html
     result["index_ui_dark_grades"] = 'html[data-theme="dark"] [style*="color:#374151"]' in html
     result["index_ui_dark_sweep"] = 'Varredura de contraste 08/07' in html and '#client-suggest-drop{background:#121b30' in html
+    result["index_prodimg_brooks_regex"] = "/^\\d{7}[A-Za-z]\\d{3}$/.test(s)" in html
     sw = session.get(f"{BASE}/sw.js", timeout=30)
     result["sw_v3"] = sw.status_code == 200 and "fp-v3-2026-07-08" in sw.text
 
@@ -72,7 +73,8 @@ def main():
                          and result["index_import_acc_grades"] and result["index_ui_grades"]
                          and result["index_ui_imagens"] and result["index_ui_dark_cliente"]
                          and result["index_ui_dark_busca"] and result["index_ui_dark_grades"]
-                         and result["index_ui_dark_sweep"] and result["sw_v3"])
+                         and result["index_ui_dark_sweep"] and result["index_prodimg_brooks_regex"]
+                         and result["sw_v3"])
     print(json.dumps(result, indent=2, ensure_ascii=False))
     with open(os.path.join(OUT, "verify_result.json"), "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
