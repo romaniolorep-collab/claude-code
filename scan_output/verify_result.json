@@ -59,6 +59,7 @@
   "index_ui_dark_grades": true,
   "index_ui_dark_sweep": true,
   "index_prodimg_brooks_regex": true,
+  "index_pdf_fixes": true,
   "sw_v3": true,
   "tudo_ok": true
 }
