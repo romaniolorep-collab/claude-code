@@ -1022,6 +1022,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem('fp_theme')||'da
      Padrão do app. Sol/lua no topbar alterna; escolha salva em fp_theme.
      Login mantém o cartão claro de propósito (painel de vídeo já é escuro). */
   /* ── Tokens semânticos ── */
+  html[data-theme="dark"]{color-scheme:dark}
   html[data-theme="dark"] body{background:#0b1120}
   html[data-theme="dark"] .bg-surface{background-color:#0b1120}
   html[data-theme="dark"] .bg-surface-card{background-color:#121b30}
@@ -5832,6 +5833,8 @@ function adjSz(id, sz, delta) {
   if (stock !== null) _brkStockWarn(inp, stock, id, String(sz));
 }
 
+function _isDarkTheme() { return document.documentElement.dataset.theme === "dark"; }
+
 /* Stock warning for Brooks PE: colors input border and badge when over/at limit */
 function _brkStockWarn(inp, stock, id, sz) {
   const v = parseInt(inp.value||'0',10)||0;
@@ -5839,21 +5842,22 @@ function _brkStockWarn(inp, stock, id, sz) {
   if (v > stock) {
     inp.style.borderColor = '#ef4444';
     inp.style.color = '#dc2626';
-    if (badge) { badge.style.background='#fee2e2'; badge.style.color='#dc2626'; badge.style.borderColor='#fca5a5'; }
+    if (badge) { const dk=_isDarkTheme(); badge.style.background=dk?'rgba(239,68,68,.16)':'#fee2e2'; badge.style.color=dk?'#f87171':'#dc2626'; badge.style.borderColor=dk?'rgba(248,113,113,.45)':'#fca5a5'; }
   } else if (v === stock && stock > 0) {
     inp.style.borderColor = '#f59e0b';
     inp.style.color = '#92400e';
-    if (badge) { badge.style.background='#fef9c3'; badge.style.color='#92400e'; badge.style.borderColor='#fcd34d'; }
+    if (badge) { const dk=_isDarkTheme(); badge.style.background=dk?'rgba(245,158,11,.16)':'#fef9c3'; badge.style.color=dk?'#fbbf24':'#92400e'; badge.style.borderColor=dk?'rgba(251,191,36,.45)':'#fcd34d'; }
   } else if (v > 0) {
     inp.style.borderColor = '#1A6FD8';
     inp.style.color = '';
-    if (badge) { badge.style.background='#dbeafe'; badge.style.color='#1d4ed8'; badge.style.borderColor='#93c5fd'; }
+    if (badge) { const dk=_isDarkTheme(); badge.style.background=dk?'rgba(59,130,246,.16)':'#dbeafe'; badge.style.color=dk?'#93b4fd':'#1d4ed8'; badge.style.borderColor=dk?'rgba(96,165,250,.45)':'#93c5fd'; }
   } else {
     inp.style.borderColor = '';
     inp.style.color = '';
     // Restore badge based on original stock level
     if (badge) {
-      badge.style.background = stock>=10?'#dcfce7':stock>=3?'#fef9c3':'#fee2e2';
+      const dk=_isDarkTheme();
+      badge.style.background = dk?(stock>=10?'rgba(34,197,94,.16)':stock>=3?'rgba(245,158,11,.16)':'rgba(239,68,68,.16)'):(stock>=10?'#dcfce7':stock>=3?'#fef9c3':'#fee2e2');
       badge.style.color       = stock>=10?'#15803d':stock>=3?'#92400e':'#dc2626';
       badge.style.borderColor = stock>=10?'#86efac':stock>=3?'#fcd34d':'#fca5a5';
     }
@@ -6592,10 +6596,10 @@ async function lookupCNPJ(cnpj, prefix) {
     if (d.situacao_cadastral && d.situacao_cadastral !== 'ATIVA') {
       notify(`CNPJ ${d.situacao_cadastral}`, 'err');
       inp.style.borderColor = '#f59e0b';
-      inp.style.background  = '#fffbeb';
+      inp.style.background  = _isDarkTheme() ? 'rgba(245,158,11,.15)' : '#fffbeb';
     } else {
-      inp.style.borderColor = '#137333';
-      inp.style.background  = '#f0fdf4';
+      inp.style.borderColor = _isDarkTheme() ? '#4ade80' : '#137333';
+      inp.style.background  = _isDarkTheme() ? 'rgba(34,197,94,.15)' : '#f0fdf4';
     }
 
     /* Razão Social */
@@ -6618,8 +6622,8 @@ async function lookupCNPJ(cnpj, prefix) {
     if (cepEl && d.cep) {
       const cepNum = d.cep.replace(/\D/g,'');
       cepEl.value = cepNum.length === 8 ? cepNum.replace(/^(\d{5})(\d{3})$/,'$1-$2') : d.cep;
-      cepEl.style.borderColor = '#137333';
-      cepEl.style.background  = '#f0fdf4';
+      cepEl.style.borderColor = _isDarkTheme() ? '#4ade80' : '#137333';
+      cepEl.style.background  = _isDarkTheme() ? 'rgba(34,197,94,.15)' : '#f0fdf4';
     }
 
     /* Cidade e UF */
@@ -6644,7 +6648,7 @@ async function lookupCNPJ(cnpj, prefix) {
     if (status === '404') notify('CNPJ não encontrado na Receita', 'err');
     else notify('Erro ao consultar CNPJ', 'err');
     inp.style.borderColor = '#ef4444';
-    inp.style.background  = '#fef2f2';
+    inp.style.background  = _isDarkTheme() ? 'rgba(239,68,68,.15)' : '#fef2f2';
   }
 }
 function mPhone(inp) {
@@ -6685,8 +6689,8 @@ async function lookupCEP(cep, prefix) {
     if (endEl && rua)          { endEl.value = rua.toUpperCase();          endEl.dispatchEvent(new Event('input')); }
     if (cidEl && d.localidade) { cidEl.value = d.localidade.toUpperCase(); cidEl.dispatchEvent(new Event('input')); }
     if (ufEl  && d.uf)         { ufEl.value  = d.uf;                       ufEl.dispatchEvent(new Event('change')); }
-    inp.style.borderColor = '#137333';
-    inp.style.background  = '#f0fdf4';
+    inp.style.borderColor = _isDarkTheme() ? '#4ade80' : '#137333';
+    inp.style.background  = _isDarkTheme() ? 'rgba(34,197,94,.15)' : '#f0fdf4';
     notify('Endereço preenchido via ViaCEP ✓', 'ok');
   } catch {
     notify('Erro ao consultar CEP', 'err');
@@ -8351,7 +8355,7 @@ function _ncliSetMode(isEdit) {
   const label  = document.getElementById('ncli-save-label');
   if (isEdit) {
     if (icon)  { icon.textContent = 'edit'; icon.style.color = '#d97706'; }
-    if (wrap)  wrap.style.background = '#fef3c7';
+    if (wrap)  wrap.style.background = _isDarkTheme() ? 'rgba(245,158,11,.18)' : '#fef3c7';
     if (title) title.textContent = 'Editar Cliente';
     if (sub)   sub.textContent = 'Atualize os dados do cadastro';
     if (label) label.innerHTML = '<span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:\'FILL\' 1">save</span> SALVAR ALTERAÇÕES';
@@ -8359,7 +8363,7 @@ function _ncliSetMode(isEdit) {
     document.getElementById('ncli-save-btn').style.boxShadow  = '0 2px 8px rgba(217,119,6,.3)';
   } else {
     if (icon)  { icon.textContent = 'person_add'; icon.style.color = '#16a34a'; }
-    if (wrap)  wrap.style.background = '#dcfce7';
+    if (wrap)  wrap.style.background = _isDarkTheme() ? 'rgba(34,197,94,.18)' : '#dcfce7';
     if (title) title.textContent = 'Cadastrar Novo Cliente';
     if (sub)   sub.textContent = 'Digite o CNPJ para preenchimento automático via Receita Federal';
     if (label) label.innerHTML = '<span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:\'FILL\' 1">person_add</span> CADASTRAR';
