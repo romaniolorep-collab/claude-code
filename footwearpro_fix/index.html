@@ -4323,7 +4323,7 @@ function renderBrooksCatalog() {
 
       return '<div class="bg-surface-card border border-border-c rounded-xl overflow-hidden hover:border-[#1A6FD8]/40 transition-all" id="brkcard-'+sid+'">'
         + '<div class="flex items-start gap-3 px-3 pt-3 pb-2">'
-        +   '<div onclick="brkZoomOpen(\''+sid+'\',\''+p.n.replace(/'/g,"\\'")+' · '+p.c+'\')" title="Clique para ampliar" style="flex-shrink:0;width:64px;height:64px;border-radius:10px;overflow:hidden;border:1px solid #e5e7eb;background:#f8f9fb;cursor:zoom-in;display:block" id="brkimgwrap-'+sid+'">'+imgTag+'</div>'
+        +   '<div onclick="brkZoomOpen(\''+sid+'\',\''+p.n.replace(/'/g,"\\'")+' · '+p.c+'\')" title="Clique para ampliar" style="flex-shrink:0;width:112px;height:112px;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;background:#f8f9fb;cursor:zoom-in;display:block" id="brkimgwrap-'+sid+'">'+imgTag+'</div>'
         +   '<div class="flex-1 min-w-0">'
         +     '<div class="flex items-center gap-2 mb-0.5 flex-wrap"><span class="font-semibold text-sm text-on-surface">'+p.n+'</span>'+badge+'</div>'
         +     '<div class="font-mono text-[10px] text-on-dim">'+p.r+' &middot; '+p.c+'</div>'
@@ -4370,7 +4370,7 @@ function renderBrooksCatalog() {
 
     return '<div class="bg-surface-card border border-border-c rounded-xl overflow-hidden hover:border-[#1A6FD8]/30 transition-all">'
       + '<div class="flex items-start gap-3 px-3 pt-3 pb-2">'
-      +   '<div onclick="brkZoomOpen(\''+sid+'\',\''+p.n.replace(/'/g,"\\'")+' · '+(p.c||'')+'\')" title="Clique para ampliar" style="flex-shrink:0;width:60px;height:60px;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.06);background:#f8f9fb;cursor:zoom-in;display:block"><div id="brkimgc-'+sid+'" style="width:100%;height:100%"></div></div>'
+      +   '<div onclick="brkZoomOpen(\''+sid+'\',\''+p.n.replace(/'/g,"\\'")+' · '+(p.c||'')+'\')" title="Clique para ampliar" style="flex-shrink:0;width:104px;height:104px;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06);background:#f8f9fb;cursor:zoom-in;display:block"><div id="brkimgc-'+sid+'" style="width:100%;height:100%"></div></div>'
       +   '<div class="flex-1 min-w-0">'
       +     '<div class="flex items-center gap-2 mb-0.5 flex-wrap"><span class="font-semibold text-sm text-on-surface">'+p.n+'</span>'+badge+'</div>'
       +     '<div class="font-mono text-[10px] text-on-dim">'+p.r+(p.c?' &middot; '+p.c:'')+'</div>'
@@ -4402,7 +4402,7 @@ function renderBrooksCatalog() {
       container.dataset.loaded = '1';
       const modelN = (p.n||'').split(' ').slice(0,3).join(' ');
       const colorN = (p.c||'').split('/')[0].trim().slice(0,14);
-      _loadBrkImg(container, p.r, modelN, colorN, 180);
+      _loadBrkImg(container, p.r, modelN, colorN, 224);
     }
   });
 }
@@ -5364,7 +5364,7 @@ function showRefSuggest(id, query) {
     return `<div onclick="fillFromSuggest(${id},'${safeRef}','${safeName}',${p.p},'${safeCor}','${safeGrade}')"
       style="display:flex;align-items:center;gap:8px;padding:6px 10px;cursor:pointer;border-bottom:1px solid #f0f2f7;transition:background .12s"
       onmouseenter="this.style.background='${isBrkSuggest?'#f0f5ff':'#f5f7ff'}'" onmouseleave="this.style.background=''">
-      <div id="drpimg-${_sfSid}" style="width:52px;height:52px;flex-shrink:0;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.06)"></div>
+      <div id="drpimg-${_sfSid}" style="width:64px;height:64px;flex-shrink:0;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.06)"></div>
       <div style="flex:1;min-width:0">
         <div style="font-size:12.5px;font-weight:700;color:#131b2e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.n}</div>
         <div style="font-size:10px;color:#76777d;font-family:monospace;margin-top:1px">${p.r}${p.c ? ' · '+p.c : ''}</div>
@@ -5385,7 +5385,7 @@ function showRefSuggest(id, query) {
       matches.forEach((p, _mi) => {
         const sid = p.r.replace(/[^A-Za-z0-9]/g,'_') + '_' + _mi;
         const el  = document.getElementById('drpimg-'+sid);
-        if (el) _applyBrkImg(el, p.r, p.n, p.c, 52);
+        if (el) _applyBrkImg(el, p.r, p.n, p.c, 64);
       });
     }, 0);
   } else {
