@@ -1,0 +1,49 @@
+{
+  "imagens": {
+    "1104421D048": {
+      "status": 200,
+      "sha_ok": true
+    },
+    "1104421D090": {
+      "status": 200,
+      "sha_ok": true
+    },
+    "1204311B443": {
+      "status": 200,
+      "sha_ok": true
+    },
+    "1104541D033": {
+      "status": 200,
+      "sha_ok": true
+    },
+    "1204431B184": {
+      "status": 200,
+      "sha_ok": true
+    },
+    "1104791D091": {
+      "status": 200,
+      "sha_ok": true
+    },
+    "1204461B711": {
+      "status": 200,
+      "sha_ok": true
+    },
+    "280417430": {
+      "status": 200,
+      "sha_ok": true
+    },
+    "280495006": {
+      "status": 200,
+      "sha_ok": true
+    },
+    "1104671D182": {
+      "status": 200,
+      "sha_ok": true
+    }
+  },
+  "index_status": 200,
+  "index_has_prodImgSrc": true,
+  "index_ghost_849": true,
+  "index_sem_jpg_hardcoded": true,
+  "tudo_ok": true
+}
