@@ -2471,7 +2471,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem('fp_theme')||'da
       </div>
       <div>
         <div class="font-semibold text-sm text-on-surface">Catálogo Pronta Entrega — Brooks</div>
-        <div class="font-mono text-[9px] text-on-dim uppercase tracking-wider"><span id="brk-cat-date">25.05.26</span> · <span id="brk-cat-count">0</span> produtos</div>
+        <div class="font-mono text-[9px] text-on-dim uppercase tracking-wider"><span id="brk-cat-date">22.06.26</span> · <span id="brk-cat-count">0</span> produtos</div>
       </div>
     </div>
     <!-- Search -->
@@ -3637,6 +3637,14 @@ const GRADES_KIPLING_PE = { ..._GRADES_KIPLING_PE_BUILTIN };
     const raw = localStorage.getItem('catalog_brooks_pe_custom');
     if (raw) {
       const saved = JSON.parse(raw);
+      // Planilha 22.06.2026 embutida: importações anteriores a ela estão
+      // desatualizadas (refs/cores/grades) e são descartadas automaticamente
+      const BUILTIN_TS = 1782097200000; // 2026-06-22T00:00:00-03:00
+      if (!saved.ts || saved.ts < BUILTIN_TS) {
+        console.warn('[Brooks PE] Importação anterior à planilha embutida 22.06.2026 — usando built-in');
+        localStorage.removeItem('catalog_brooks_pe_custom');
+        return;
+      }
       // VALIDAÇÃO: rejeita dados corrompidos com refs Reebok (padrão 100xxxxxx)
       const _isRbkRef = r => /^100\d{6,}/.test(String(r||''));
       if (saved.catalog && saved.catalog.length) {
@@ -3806,12 +3814,12 @@ function updateBrooksCatStatus() {
       el.innerHTML = `<span style="color:#15803d;font-weight:600">✓ Sincronizado</span> — ${count} produtos · ${gradeCount} grades · ${fmt}${src?' · '+src:''}`;
     } catch(e) { el.textContent = 'Importado'; }
   } else {
-    el.innerHTML = `<span style="color:#64748b">Padrão embutido — ${_CATALOG_BROOKS_PE_BUILTIN.length} produtos (25.05.26)</span>`;
+    el.innerHTML = `<span style="color:#64748b">Padrão embutido — ${_CATALOG_BROOKS_PE_BUILTIN.length} produtos (22.06.26)</span>`;
   }
 }
 
 function restoreBrooksBuiltin() {
-  if (!confirm('Restaurar catálogo Brooks padrão (planilha 25.05.26)? O catálogo importado será removido.')) return;
+  if (!confirm('Restaurar catálogo Brooks padrão (planilha 22.06.2026)? O catálogo importado será removido.')) return;
   localStorage.removeItem('catalog_brooks_pe_custom');
   CATALOG_BROOKS_PE_DATA = _CATALOG_BROOKS_PE_BUILTIN.slice();
   GRADES_BROOKS_PE = { ..._GRADES_BROOKS_PE_BUILTIN }; Object.assign(GRADES, GRADES_BROOKS_PE);
@@ -4193,7 +4201,7 @@ function openBrooksCatalog() {
       const { src, ts } = JSON.parse(raw);
       if (dateEl) dateEl.textContent = src || new Date(ts).toLocaleDateString('pt-BR');
     } else {
-      if (dateEl) dateEl.textContent = '25.05.26';
+      if (dateEl) dateEl.textContent = '22.06.26';
     }
   } catch(e) {}
 
