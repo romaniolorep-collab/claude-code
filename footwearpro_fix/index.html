@@ -8441,6 +8441,15 @@ function showClientSuggest(query, anchorId) {
   const q = query.trim().toLowerCase();
   if (q.length < 2) return;
   const all = JSON.parse(localStorage.getItem('clients') || '{}');
+  if (!Object.keys(all).length) {
+    // Base local vazia (1º uso no dispositivo): busca a base na nuvem
+    if (!window._cliAutoSyncTried) {
+      window._cliAutoSyncTried = true;
+      notify('Sincronizando base de clientes…', 'ok');
+      sbSyncClientes().catch(() => {});
+    }
+    return;
+  }
   const qDigits = q.replace(/\D/g, '');
   const matches = Object.values(all).filter(c => {
     const r  = (c.razao || '').toLowerCase();
@@ -9202,6 +9211,23 @@ async function sbSyncClientes() {
     _syncingClientes = false;
   }
 }
+
+/* Auto-sync de clientes no carregamento — essencial no celular, onde a aba
+   Clientes raramente é aberta. Base vazia sincroniza na hora; senão, throttle
+   de 10 min. Roda em segundo plano sem bloquear a UI. */
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    try {
+      if (!navigator.onLine) return;
+      const last  = parseInt(localStorage.getItem('clients_last_autosync') || '0', 10);
+      const vazia = Object.keys(JSON.parse(localStorage.getItem('clients') || '{}')).length === 0;
+      if (vazia || Date.now() - last > 10 * 60 * 1000) {
+        localStorage.setItem('clients_last_autosync', String(Date.now()));
+        sbSyncClientes().catch(() => {});
+      }
+    } catch (e) {}
+  }, 2500);
+});
 
 /* ─── CLIENTES VIEW ─── */
 let activeSegFilter = 'TODOS';
