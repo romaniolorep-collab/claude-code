@@ -1,0 +1,53 @@
+// Cliente da API do painel de gestao. Reaproveita exatamente os mesmos
+// endpoints do app mobile — o backend nao sabe (nem precisa saber) quem chama.
+const BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
+function authHeaders() {
+  const token = localStorage.getItem('token');
+  return token ? { authorization: `Bearer ${token}` } : {};
+}
+
+async function req(path, options = {}) {
+  const res = await fetch(`${BASE}${path}`, {
+    ...options,
+    headers: {
+      'content-type': 'application/json',
+      ...authHeaders(),
+      ...(options.headers || {}),
+    },
+  });
+  if (res.status === 401) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    throw new Error('Sessao expirada.');
+  }
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.error || `Erro ${res.status}`);
+  }
+  return res.json();
+}
+
+export const api = {
+  async login(email, password) {
+    const data = await req('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user));
+    return data.user;
+  },
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  },
+  currentUser() {
+    const s = localStorage.getItem('user');
+    return s ? JSON.parse(s) : null;
+  },
+  orders: () => req('/orders'),
+  order: (id) => req(`/orders/${id}`),
+  products: () => req('/products'),
+  customers: () => req('/customers'),
+};
