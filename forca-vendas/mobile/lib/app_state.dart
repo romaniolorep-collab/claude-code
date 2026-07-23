@@ -1,35 +1,52 @@
 // Orquestrador central do app (offline-first).
 // Regras importantes:
-//  - Toda operacao funciona a partir do cache local; a rede e um "bonus".
+//  - Toda operacao funciona a partir do banco local (SQLite/drift).
 //  - Pedidos vao para uma fila local e sao empurrados quando ha conexao.
 //  - O preco mostrado offline e uma PREVIA; o valor oficial vem do servidor.
 import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 import 'api.dart';
 import 'store.dart';
+import 'db/database.dart';
 import 'models.dart';
 
 class AppState extends ChangeNotifier {
   final ApiClient api;
   final LocalStore store;
+  final AppDatabase db;
   final _uuid = const Uuid();
 
-  AppState(this.api, this.store);
+  AppState(this.api, this.store, this.db);
+
+  // Caches em memoria, carregados do SQLite — mantem a UI sincrona.
+  List<Product> _products = [];
+  List<Customer> _customers = [];
+  List<PriceRule> _rules = [];
+  List<PendingOrder> _queue = [];
+
+  List<Product> get products => _products;
+  List<Customer> get customers => _customers;
+  List<PendingOrder> get queue => _queue;
+  int get pendingCount =>
+      _queue.where((o) => o.status == 'pending' || o.status == 'error').length;
 
   bool get isLoggedIn => store.token != null;
   String get repName => store.user?['name'] ?? 'Representante';
   double get maxDiscount => (store.user?['max_discount'] as num?)?.toDouble() ?? 0;
-
-  List<Product> get products => store.products;
-  List<Customer> get customers => store.customers;
-  List<PendingOrder> get queue => store.queue;
-  int get pendingCount => store.queue.where((o) => o.status == 'pending' || o.status == 'error').length;
 
   bool syncing = false;
   String? lastMessage;
 
   Future<void> boot() async {
     if (store.token != null) api.setToken(store.token);
+    await _reloadFromDb();
+  }
+
+  Future<void> _reloadFromDb() async {
+    _products = await db.getProducts();
+    _customers = await db.getCustomers();
+    _rules = await db.getRules();
+    _queue = await db.getQueue();
     notifyListeners();
   }
 
@@ -49,19 +66,20 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Baixa catalogo/clientes e empurra a fila de pedidos.
+  // Baixa catalogo/clientes para o SQLite e empurra a fila de pedidos.
   Future<void> sync() async {
     syncing = true;
     lastMessage = null;
     notifyListeners();
     try {
       final data = await api.pull(since: store.since);
-      await store.saveCatalog(
+      await db.saveCatalog(
         products: (data['products'] as List).map((e) => Product.fromJson(e)).toList(),
         customers: (data['customers'] as List).map((e) => Customer.fromJson(e)).toList(),
         rules: (data['price_rules'] as List).map((e) => PriceRule.fromJson(e)).toList(),
       );
       await store.setSince(data['server_time']);
+      await _reloadFromDb();
       await flushQueue();
       lastMessage = 'Sincronizado com sucesso.';
     } catch (e) {
@@ -74,26 +92,25 @@ class AppState extends ChangeNotifier {
 
   // Envia os pedidos pendentes e concilia o resultado por client_uuid.
   Future<void> flushQueue() async {
-    final q = store.queue;
-    final toSend = q.where((o) => o.status == 'pending' || o.status == 'error').toList();
+    final toSend =
+        _queue.where((o) => o.status == 'pending' || o.status == 'error').toList();
     if (toSend.isEmpty) return;
 
     final results = await api.push(toSend.map((o) => o.toWire()).toList());
     for (final r in results) {
-      final order = q.firstWhere((o) => o.clientUuid == r['client_uuid']);
       final status = r['status'];
-      order.status = (status == 'created' || status == 'duplicate') ? 'sent' : 'error';
+      final newStatus = (status == 'created' || status == 'duplicate') ? 'sent' : 'error';
+      await db.setOrderStatus(r['client_uuid'], newStatus);
     }
-    await store.saveQueue(q);
+    _queue = await db.getQueue();
     notifyListeners();
   }
 
   // Previa de preco offline (nao substitui o calculo do servidor).
   double previewUnitPrice(Customer customer, Product p, int qty) {
-    final rules = store.rules.where((r) =>
+    final rules = _rules.where((r) =>
         r.productId == p.id && r.priceTableId == customer.priceTableId && r.minQty <= qty);
     if (rules.isEmpty) return p.basePrice;
-    rules.toList().sort((a, b) => b.minQty.compareTo(a.minQty));
     return rules.reduce((a, b) => a.minQty >= b.minQty ? a : b).price;
   }
 
@@ -123,8 +140,8 @@ class AppState extends ChangeNotifier {
       note: note,
     );
 
-    final q = store.queue..add(order);
-    await store.saveQueue(q);
+    await db.enqueue(order);
+    _queue = await db.getQueue();
     notifyListeners();
 
     // Tenta enviar na hora; se falhar, fica na fila para o proximo sync.

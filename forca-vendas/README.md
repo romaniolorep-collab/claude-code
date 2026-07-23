@@ -76,9 +76,20 @@ Estrutura:
 | Arquivo | Papel |
 |---|---|
 | `lib/api.dart` | Cliente HTTP fino |
-| `lib/store.dart` | Persistência local (cache + fila de pedidos) |
+| `lib/db/database.dart` | **SQLite (drift)** — catálogo e fila de pedidos offline |
+| `lib/store.dart` | Sessão e cursor de sync (shared_preferences) |
 | `lib/app_state.dart` | Orquestração offline-first (sync, fila, prévia de preço) |
 | `lib/screens/` | Login, catálogo, carrinho, fila de pedidos |
+
+O `lib/db/database.g.dart` é **gerado pelo drift**. Se você mudar o schema em
+`database.dart`, regenere com:
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
+Testes (`flutter test`) cobrem a prévia de preço e a persistência da fila
+offline no SQLite em memória.
 
 ## 3. Painel web de gestão (React)
 
@@ -99,9 +110,8 @@ congelados. Exige o backend no ar.
 
 ## Como isto vira produto (próximos passos)
 
-- **Banco local**: trocar `shared_preferences` por **SQLite (drift/sqflite)** —
-  catálogos reais têm milhares de itens.
-- **Preço**: cobrir o motor de preços com testes (campanhas, faixas, alçadas).
+- **Banco local**: ✅ feito — catálogo e fila em **SQLite (drift)**.
+- **Preço**: ✅ motor coberto por testes; ampliar para campanhas e faixas.
 - **Sync**: deltas por entidade, resolução de conflito e reenvio com backoff.
 - **Painel web** (React) reaproveitando os mesmos endpoints.
 - **Integração ERP** para o pedido fluir ao faturamento.
