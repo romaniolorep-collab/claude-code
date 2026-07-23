@@ -50,4 +50,8 @@ export const api = {
   order: (id) => req(`/orders/${id}`),
   products: () => req('/products'),
   customers: () => req('/customers'),
+  createProduct: (body) => req('/products', { method: 'POST', body: JSON.stringify(body) }),
+  updateProduct: (id, body) => req(`/products/${id}`, { method: 'PUT', body: JSON.stringify(body) }),
+  createCustomer: (body) => req('/customers', { method: 'POST', body: JSON.stringify(body) }),
+  updateCustomer: (id, body) => req(`/customers/${id}`, { method: 'PUT', body: JSON.stringify(body) }),
 };

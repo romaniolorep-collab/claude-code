@@ -77,7 +77,15 @@ input:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
 
 /* ---- Table ---- */
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-.panel-head { padding: 14px 18px; border-bottom: 1px solid var(--line); font-weight: 700; }
+.panel-head { padding: 14px 18px; border-bottom: 1px solid var(--line); font-weight: 700; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.btn-add { background: var(--accent); color: #fff; border: none; border-radius: 7px; padding: 7px 13px; font-size: .82rem; font-weight: 600; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field-full { grid-column: 1 / -1; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+.btn-ghost { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 9px 16px; color: var(--ink-soft); font-weight: 600; }
+.btn-primary { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-weight: 600; }
+.btn-primary:disabled, .btn-ghost:disabled { opacity: .6; }
+input:disabled { opacity: .55; cursor: not-allowed; }
 .table-scroll { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; font-size: .9rem; }
 th, td { text-align: left; padding: 11px 18px; border-bottom: 1px solid var(--line); white-space: nowrap; }

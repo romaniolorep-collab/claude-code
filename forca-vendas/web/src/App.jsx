@@ -173,18 +173,23 @@ function OrderModal({ id, onClose }) {
 }
 
 function ProductsView() {
-  const { loading, data: products, error } = useAsync(() => api.products());
+  const [reload, setReload] = useState(0);
+  const { loading, data: products, error } = useAsync(() => api.products(), [reload]);
+  const [editing, setEditing] = useState(null); // null | 'new' | product
   if (loading) return <div className="loading">Carregando produtos…</div>;
   if (error) return <div className="loading">{error}</div>;
   return (
     <div className="panel">
-      <div className="panel-head">Catálogo · {products.length} produtos</div>
+      <div className="panel-head">
+        <span>Catálogo · {products.length} produtos</span>
+        <button className="btn-add" onClick={() => setEditing('new')}>+ Novo produto</button>
+      </div>
       <div className="table-scroll">
         <table>
           <thead><tr><th>SKU</th><th>Produto</th><th>Categoria</th><th className="num">Preço base</th><th className="num">Estoque</th></tr></thead>
           <tbody>
             {products.map((p) => (
-              <tr key={p.id}>
+              <tr key={p.id} className="row-link" onClick={() => setEditing(p)}>
                 <td className="muted">{p.sku}</td>
                 <td>{p.name}</td>
                 <td className="muted">{p.category || '—'}</td>
@@ -195,23 +200,79 @@ function ProductsView() {
           </tbody>
         </table>
       </div>
+      {editing && (
+        <ProductForm
+          item={editing === 'new' ? null : editing}
+          onClose={() => setEditing(null)}
+          onSaved={() => { setEditing(null); setReload((x) => x + 1); }}
+        />
+      )}
     </div>
   );
 }
 
+function ProductForm({ item, onClose, onSaved }) {
+  const [f, setF] = useState({
+    sku: item?.sku || '', name: item?.name || '', unit: item?.unit || 'UN',
+    category: item?.category || '', base_price: item?.base_price ?? '', stock: item?.stock ?? '',
+  });
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
+  const set = (k) => (e) => setF({ ...f, [k]: e.target.value });
+
+  async function save() {
+    setSaving(true); setError(null);
+    try {
+      const body = { ...f, base_price: Number(f.base_price) || 0, stock: Number(f.stock) || 0 };
+      if (item) await api.updateProduct(item.id, body);
+      else await api.createProduct(body);
+      onSaved();
+    } catch (e) { setError(e.message); setSaving(false); }
+  }
+
+  return (
+    <FormModal title={item ? `Editar ${item.sku}` : 'Novo produto'} onClose={onClose}>
+      <div className="form-grid">
+        <div className="field-full">
+          <label>SKU</label>
+          <input value={f.sku} onChange={set('sku')} disabled={!!item} placeholder="CAM-001" />
+        </div>
+        <div className="field-full">
+          <label>Nome</label>
+          <input value={f.name} onChange={set('name')} />
+        </div>
+        <div><label>Unidade</label><input value={f.unit} onChange={set('unit')} /></div>
+        <div><label>Categoria</label><input value={f.category} onChange={set('category')} /></div>
+        <div><label>Preço base (R$)</label><input type="number" step="0.01" value={f.base_price} onChange={set('base_price')} /></div>
+        <div><label>Estoque</label><input type="number" value={f.stock} onChange={set('stock')} /></div>
+      </div>
+      {error && <div className="err">{error}</div>}
+      <div className="form-actions">
+        <button className="btn-ghost" onClick={onClose}>Cancelar</button>
+        <button className="btn-primary" onClick={save} disabled={saving}>{saving ? 'Salvando…' : 'Salvar'}</button>
+      </div>
+    </FormModal>
+  );
+}
+
 function CustomersView() {
-  const { loading, data: customers, error } = useAsync(() => api.customers());
+  const [reload, setReload] = useState(0);
+  const { loading, data: customers, error } = useAsync(() => api.customers(), [reload]);
+  const [editing, setEditing] = useState(null);
   if (loading) return <div className="loading">Carregando clientes…</div>;
   if (error) return <div className="loading">{error}</div>;
   return (
     <div className="panel">
-      <div className="panel-head">Carteira · {customers.length} clientes</div>
+      <div className="panel-head">
+        <span>Carteira · {customers.length} clientes</span>
+        <button className="btn-add" onClick={() => setEditing('new')}>+ Novo cliente</button>
+      </div>
       <div className="table-scroll">
         <table>
           <thead><tr><th>Cliente</th><th>Cidade</th><th className="num">Limite de crédito</th></tr></thead>
           <tbody>
             {customers.map((c) => (
-              <tr key={c.id}>
+              <tr key={c.id} className="row-link" onClick={() => setEditing(c)}>
                 <td>{c.name}<div className="muted">{c.doc || ''}</div></td>
                 <td className="muted">{c.city || '—'}</td>
                 <td className="num">{brl(c.credit_limit)}</td>
@@ -219,6 +280,63 @@ function CustomersView() {
             ))}
           </tbody>
         </table>
+      </div>
+      {editing && (
+        <CustomerForm
+          item={editing === 'new' ? null : editing}
+          onClose={() => setEditing(null)}
+          onSaved={() => { setEditing(null); setReload((x) => x + 1); }}
+        />
+      )}
+    </div>
+  );
+}
+
+function CustomerForm({ item, onClose, onSaved }) {
+  const [f, setF] = useState({
+    name: item?.name || '', doc: item?.doc || '', city: item?.city || '',
+    credit_limit: item?.credit_limit ?? '',
+  });
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
+  const set = (k) => (e) => setF({ ...f, [k]: e.target.value });
+
+  async function save() {
+    setSaving(true); setError(null);
+    try {
+      const body = { ...f, credit_limit: Number(f.credit_limit) || 0 };
+      if (item) await api.updateCustomer(item.id, body);
+      else await api.createCustomer(body);
+      onSaved();
+    } catch (e) { setError(e.message); setSaving(false); }
+  }
+
+  return (
+    <FormModal title={item ? `Editar ${item.name}` : 'Novo cliente'} onClose={onClose}>
+      <div className="form-grid">
+        <div className="field-full"><label>Nome / Razão social</label><input value={f.name} onChange={set('name')} /></div>
+        <div><label>CNPJ / CPF</label><input value={f.doc} onChange={set('doc')} /></div>
+        <div><label>Cidade</label><input value={f.city} onChange={set('city')} /></div>
+        <div className="field-full"><label>Limite de crédito (R$)</label><input type="number" step="0.01" value={f.credit_limit} onChange={set('credit_limit')} /></div>
+      </div>
+      {error && <div className="err">{error}</div>}
+      <div className="form-actions">
+        <button className="btn-ghost" onClick={onClose}>Cancelar</button>
+        <button className="btn-primary" onClick={save} disabled={saving}>{saving ? 'Salvando…' : 'Salvar'}</button>
+      </div>
+    </FormModal>
+  );
+}
+
+function FormModal({ title, children, onClose }) {
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-head">
+          <h2>{title}</h2>
+          <button className="link-btn" onClick={onClose}>Fechar</button>
+        </div>
+        <div className="modal-body">{children}</div>
       </div>
     </div>
   );
