@@ -44,7 +44,7 @@ db.prepare(
 ).run(tenant, rep, 'Loja Parceira Demo', '00.000.000/0001-00', 'Curitiba', 50000, table);
 
 const insP = db.prepare(
-  'INSERT INTO products (tenant_id, sku, name, unit, category, image_url, base_price, stock) VALUES (?,?,?,?,?,?,?,?)'
+  'INSERT INTO products (tenant_id, sku, name, unit, category, brand, image_url, base_price, stock) VALUES (?,?,?,?,?,?,?,?,?)'
 );
 const insRule = db.prepare('INSERT INTO price_rules (price_table_id, product_id, min_qty, price) VALUES (?,?,?,?)');
 const insVar = db.prepare('INSERT INTO variants (tenant_id, product_id, label, stock) VALUES (?,?,?,?)');
@@ -60,7 +60,7 @@ const run = db.transaction(() => {
       : `assets/products/${p.ref}.jpg`;
     const sizes = p.sizes || {};
     const stock = Object.values(sizes).reduce((s, q) => s + q, 0);
-    const pid = insP.run(tenant, p.ref, name, unit, p.brand, img, p.price || 0, stock).lastInsertRowid;
+    const pid = insP.run(tenant, p.ref, name, unit, cat0, p.brand, img, p.price || 0, stock).lastInsertRowid;
     insRule.run(table, pid, 1, p.price || 0);
     for (const [size, q] of Object.entries(sizes)) { insVar.run(tenant, pid, size, q); nvar++; }
     nprod++;
@@ -68,7 +68,7 @@ const run = db.transaction(() => {
 });
 run();
 
-const byBrand = db.prepare('SELECT category AS brand, COUNT(*) n FROM products WHERE tenant_id=? GROUP BY category')
+const byBrand = db.prepare('SELECT brand, COUNT(*) n FROM products WHERE tenant_id=? GROUP BY brand')
   .all(tenant);
 console.log(`Importados: ${nprod} produtos, ${nvar} variantes de grade`);
 console.log('Por marca:', byBrand.map((b) => `${b.brand}=${b.n}`).join(', '));

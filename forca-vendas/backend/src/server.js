@@ -6,6 +6,7 @@ import { db, migrate, seed } from './db.js';
 import { login, authGuard } from './auth.js';
 import { priceOrder } from './pricing.js';
 import { salesSummary, goalsProgress, currentPeriod } from './reports.js';
+import * as analytics from './analytics.js';
 
 migrate();
 seed(); // idempotente: so popula se o banco estiver vazio
@@ -205,6 +206,39 @@ app.register(async (r) => {
       DO UPDATE SET target_amount = excluded.target_amount, commission_pct = excluded.commission_pct
     `).run(req.user.tenant_id, rep_id, period, Number(target_amount) || 0, Number(commission_pct) || 0);
     return { ok: true };
+  });
+
+  // ---- Análise de gestão (apenas gestor/admin) ----
+  r.get('/analytics/overview', { preHandler: requireManager }, async (req) =>
+    analytics.overview(req.user.tenant_id, req.query.period || analytics.currentPeriod()));
+  r.get('/analytics/by-brand', { preHandler: requireManager }, async (req) =>
+    analytics.byBrand(req.user.tenant_id, req.query.period || analytics.currentPeriod()));
+  r.get('/analytics/by-store', { preHandler: requireManager }, async (req) =>
+    analytics.byStore(req.user.tenant_id, req.query.period || analytics.currentPeriod()));
+  r.get('/analytics/funnel', { preHandler: requireManager }, async (req) =>
+    analytics.funnel(req.user.tenant_id));
+
+  // ---- Funil de novos lojistas (leads) ----
+  r.get('/leads', { preHandler: requireManager }, async (req) =>
+    db.prepare('SELECT * FROM leads WHERE tenant_id = ? ORDER BY updated_at DESC').all(req.user.tenant_id));
+
+  r.post('/leads', { preHandler: requireManager }, async (req, reply) => {
+    const { store_name, city, brand, value_est, note } = req.body || {};
+    if (!store_name) return reply.code(422).send({ error: 'store_name é obrigatório.' });
+    const id = db.prepare(
+      'INSERT INTO leads (tenant_id, store_name, city, brand, value_est, note) VALUES (?,?,?,?,?,?)'
+    ).run(req.user.tenant_id, store_name, city || null, brand || null, Number(value_est) || 0, note || null).lastInsertRowid;
+    return db.prepare('SELECT * FROM leads WHERE id = ?').get(id);
+  });
+
+  r.put('/leads/:id', { preHandler: requireManager }, async (req, reply) => {
+    const cur = db.prepare('SELECT * FROM leads WHERE id = ? AND tenant_id = ?').get(req.params.id, req.user.tenant_id);
+    if (!cur) return reply.code(404).send({ error: 'Lead não encontrado.' });
+    const b = req.body || {};
+    db.prepare(`
+      UPDATE leads SET stage=?, value_est=?, note=?, updated_at=datetime('now') WHERE id=?
+    `).run(b.stage ?? cur.stage, b.value_est ?? cur.value_est, b.note ?? cur.note, cur.id);
+    return db.prepare('SELECT * FROM leads WHERE id = ?').get(cur.id);
   });
 
   // ---- CRM de campo: visitas ----

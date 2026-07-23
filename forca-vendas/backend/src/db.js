@@ -41,6 +41,7 @@ export function migrate() {
       name        TEXT NOT NULL,
       unit        TEXT NOT NULL DEFAULT 'UN',
       category    TEXT,
+      brand       TEXT,                            -- marca (HOKA, Brooks, Reebok...)
       image_url   TEXT,
       base_price  REAL NOT NULL DEFAULT 0,
       stock       INTEGER NOT NULL DEFAULT 0,
@@ -125,6 +126,20 @@ export function migrate() {
       UNIQUE(tenant_id, rep_id, period)
     );
 
+    -- Funil de novos lojistas (prospeccao / pipeline).
+    CREATE TABLE IF NOT EXISTS leads (
+      id           INTEGER PRIMARY KEY,
+      tenant_id    INTEGER NOT NULL REFERENCES tenants(id),
+      store_name   TEXT NOT NULL,
+      city         TEXT,
+      brand        TEXT,                            -- marca de interesse
+      stage        TEXT NOT NULL DEFAULT 'lead',    -- lead | contato | primeira_compra | ativo | perdido
+      value_est    REAL NOT NULL DEFAULT 0,         -- potencial estimado (R$/mes)
+      note         TEXT,
+      created_at   TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at   TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
     -- Visitas do CRM de campo.
     CREATE TABLE IF NOT EXISTS visits (
       id            INTEGER PRIMARY KEY,
@@ -143,8 +158,9 @@ export function migrate() {
     CREATE INDEX IF NOT EXISTS idx_visits_tenant    ON visits(tenant_id, updated_at);
     CREATE INDEX IF NOT EXISTS idx_variants_product ON variants(tenant_id, product_id);
   `);
-  // Coluna 'variant' pode faltar em bancos criados antes da grade.
+  // Colunas que podem faltar em bancos criados antes destas features.
   try { db.exec('ALTER TABLE order_items ADD COLUMN variant TEXT'); } catch { /* ja existe */ }
+  try { db.exec('ALTER TABLE products ADD COLUMN brand TEXT'); } catch { /* ja existe */ }
 }
 
 export function seed() {
