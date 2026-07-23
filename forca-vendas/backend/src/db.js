@@ -103,9 +103,33 @@ export function migrate() {
       line_total  REAL NOT NULL
     );
 
+    -- Metas e comissao por representante, por mes (YYYY-MM).
+    CREATE TABLE IF NOT EXISTS goals (
+      id             INTEGER PRIMARY KEY,
+      tenant_id      INTEGER NOT NULL REFERENCES tenants(id),
+      rep_id         INTEGER NOT NULL REFERENCES users(id),
+      period         TEXT NOT NULL,                 -- 'YYYY-MM'
+      target_amount  REAL NOT NULL DEFAULT 0,
+      commission_pct REAL NOT NULL DEFAULT 0,
+      UNIQUE(tenant_id, rep_id, period)
+    );
+
+    -- Visitas do CRM de campo.
+    CREATE TABLE IF NOT EXISTS visits (
+      id            INTEGER PRIMARY KEY,
+      tenant_id     INTEGER NOT NULL REFERENCES tenants(id),
+      customer_id   INTEGER NOT NULL REFERENCES customers(id),
+      rep_id        INTEGER NOT NULL REFERENCES users(id),
+      scheduled_at  TEXT NOT NULL,                  -- data/hora planejada (ISO)
+      status        TEXT NOT NULL DEFAULT 'planned', -- planned | done | canceled
+      note          TEXT,
+      updated_at    TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
     CREATE INDEX IF NOT EXISTS idx_products_tenant  ON products(tenant_id, updated_at);
     CREATE INDEX IF NOT EXISTS idx_customers_tenant ON customers(tenant_id, updated_at);
     CREATE INDEX IF NOT EXISTS idx_orders_tenant    ON orders(tenant_id, created_at);
+    CREATE INDEX IF NOT EXISTS idx_visits_tenant    ON visits(tenant_id, updated_at);
   `);
 }
 
@@ -149,12 +173,26 @@ export function seed() {
     insRule.run(tabela, pid, 12, +(price * 0.9).toFixed(2)); // quebra: -10% a partir de 12 un
   }
 
-  db.prepare(
+  const cli1 = db.prepare(
     "INSERT INTO customers (tenant_id, rep_id, name, doc, city, credit_limit, price_table_id) VALUES (?,?,?,?,?,?,?)"
-  ).run(tenant, rep, 'Loja Central Ltda', '12.345.678/0001-90', 'Londrina', 15000, tabela);
-  db.prepare(
+  ).run(tenant, rep, 'Loja Central Ltda', '12.345.678/0001-90', 'Londrina', 15000, tabela).lastInsertRowid;
+  const cli2 = db.prepare(
     "INSERT INTO customers (tenant_id, rep_id, name, doc, city, credit_limit, price_table_id) VALUES (?,?,?,?,?,?,?)"
-  ).run(tenant, rep, 'Esporte & Cia', '98.765.432/0001-10', 'Maringa', 8000, tabela);
+  ).run(tenant, rep, 'Esporte & Cia', '98.765.432/0001-10', 'Maringa', 8000, tabela).lastInsertRowid;
+
+  // Meta do mes corrente para a representante (com comissao de 3%).
+  const period = new Date().toISOString().slice(0, 7); // YYYY-MM
+  db.prepare(
+    "INSERT INTO goals (tenant_id, rep_id, period, target_amount, commission_pct) VALUES (?,?,?,?,?)"
+  ).run(tenant, rep, period, 5000, 3);
+
+  // Agenda de visitas do CRM.
+  db.prepare(
+    "INSERT INTO visits (tenant_id, customer_id, rep_id, scheduled_at, status, note) VALUES (?,?,?,?,?,?)"
+  ).run(tenant, cli1, rep, new Date().toISOString(), 'planned', 'Apresentar coleção nova');
+  db.prepare(
+    "INSERT INTO visits (tenant_id, customer_id, rep_id, scheduled_at, status, note) VALUES (?,?,?,?,?,?)"
+  ).run(tenant, cli2, rep, new Date(Date.now() + 86400000).toISOString(), 'planned', 'Repor estoque de meias');
 
   console.log('Seed concluido. Login: ana@modelo.com / 123456');
 }

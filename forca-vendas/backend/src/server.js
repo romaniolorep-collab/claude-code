@@ -5,6 +5,7 @@ import cors from '@fastify/cors';
 import { db, migrate, seed } from './db.js';
 import { login, authGuard } from './auth.js';
 import { priceOrder } from './pricing.js';
+import { salesSummary, goalsProgress, currentPeriod } from './reports.js';
 
 migrate();
 seed(); // idempotente: so popula se o banco estiver vazio
@@ -175,6 +176,77 @@ app.register(async (r) => {
     `).run(b.name ?? cur.name, b.doc ?? cur.doc, b.city ?? cur.city,
            b.credit_limit ?? cur.credit_limit, cur.id);
     return db.prepare('SELECT * FROM customers WHERE id = ?').get(cur.id);
+  });
+
+  // ---- Relatorios, metas e comissao (apenas gestor/admin) ----
+  r.get('/reports/summary', { preHandler: requireManager }, async (req) =>
+    salesSummary(req.user.tenant_id, req.query.period || currentPeriod()));
+
+  r.get('/reports/goals', { preHandler: requireManager }, async (req) =>
+    goalsProgress(req.user.tenant_id, req.query.period || currentPeriod()));
+
+  r.post('/goals', { preHandler: requireManager }, async (req, reply) => {
+    const { rep_id, period, target_amount, commission_pct } = req.body || {};
+    if (!rep_id || !period) return reply.code(422).send({ error: 'rep_id e period sao obrigatorios.' });
+    db.prepare(`
+      INSERT INTO goals (tenant_id, rep_id, period, target_amount, commission_pct)
+      VALUES (?,?,?,?,?)
+      ON CONFLICT(tenant_id, rep_id, period)
+      DO UPDATE SET target_amount = excluded.target_amount, commission_pct = excluded.commission_pct
+    `).run(req.user.tenant_id, rep_id, period, Number(target_amount) || 0, Number(commission_pct) || 0);
+    return { ok: true };
+  });
+
+  // ---- CRM de campo: visitas ----
+  // Representante ve as proprias; gestor ve todas.
+  r.get('/visits', async (req) => {
+    const isManager = req.user.role === 'manager' || req.user.role === 'admin';
+    const sql = `
+      SELECT v.*, c.name AS customer_name, c.city, u.name AS rep_name
+      FROM visits v
+      JOIN customers c ON c.id = v.customer_id
+      JOIN users u ON u.id = v.rep_id
+      WHERE v.tenant_id = ? ${isManager ? '' : 'AND v.rep_id = ?'}
+      ORDER BY v.scheduled_at`;
+    return isManager
+      ? db.prepare(sql).all(req.user.tenant_id)
+      : db.prepare(sql).all(req.user.tenant_id, req.user.id);
+  });
+
+  r.post('/visits', async (req, reply) => {
+    const { customer_id, scheduled_at, note } = req.body || {};
+    if (!customer_id || !scheduled_at) {
+      return reply.code(422).send({ error: 'customer_id e scheduled_at sao obrigatorios.' });
+    }
+    const id = db.prepare(
+      'INSERT INTO visits (tenant_id, customer_id, rep_id, scheduled_at, note) VALUES (?,?,?,?,?)'
+    ).run(req.user.tenant_id, customer_id, req.user.id, scheduled_at, note || null).lastInsertRowid;
+    return db.prepare('SELECT * FROM visits WHERE id = ?').get(id);
+  });
+
+  r.put('/visits/:id', async (req, reply) => {
+    const cur = db.prepare('SELECT * FROM visits WHERE id = ? AND tenant_id = ?')
+      .get(req.params.id, req.user.tenant_id);
+    if (!cur) return reply.code(404).send({ error: 'Visita nao encontrada.' });
+    const b = req.body || {};
+    db.prepare(`
+      UPDATE visits SET status=?, note=?, scheduled_at=?, updated_at=datetime('now') WHERE id=?
+    `).run(b.status ?? cur.status, b.note ?? cur.note, b.scheduled_at ?? cur.scheduled_at, cur.id);
+    return db.prepare('SELECT * FROM visits WHERE id = ?').get(cur.id);
+  });
+
+  // Historico do cliente: pedidos + visitas (usado no CRM).
+  r.get('/customers/:id/history', async (req, reply) => {
+    const c = db.prepare('SELECT * FROM customers WHERE id = ? AND tenant_id = ?')
+      .get(req.params.id, req.user.tenant_id);
+    if (!c) return reply.code(404).send({ error: 'Cliente nao encontrado.' });
+    const orders = db.prepare(
+      'SELECT id, status, total, created_at FROM orders WHERE tenant_id = ? AND customer_id = ? ORDER BY created_at DESC LIMIT 20'
+    ).all(req.user.tenant_id, c.id);
+    const visits = db.prepare(
+      'SELECT id, scheduled_at, status, note FROM visits WHERE tenant_id = ? AND customer_id = ? ORDER BY scheduled_at DESC LIMIT 20'
+    ).all(req.user.tenant_id, c.id);
+    return { customer: c, orders, visits };
   });
 
   r.get('/orders', async (req) => {
