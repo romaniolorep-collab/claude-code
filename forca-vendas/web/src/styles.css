@@ -107,3 +107,15 @@ tbody tr:hover { background: var(--surface-2); }
 .modal-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--line); }
 .modal-body { padding: 18px 22px; }
 .total-row { display: flex; justify-content: space-between; padding-top: 12px; margin-top: 8px; border-top: 2px solid var(--line); font-weight: 700; font-size: 1.1rem; }
+
+/* ---- Relatórios ---- */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+.bar-row { display: grid; grid-template-columns: 120px 1fr auto; align-items: center; gap: 10px; margin-bottom: 10px; }
+.bar-label { font-size: .82rem; color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { height: 9px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--accent); border-radius: 999px; }
+.bar-right { font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+.goal { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+.goal:last-child { border-bottom: none; }
+.goal-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }

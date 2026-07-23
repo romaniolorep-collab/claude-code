@@ -54,4 +54,7 @@ export const api = {
   updateProduct: (id, body) => req(`/products/${id}`, { method: 'PUT', body: JSON.stringify(body) }),
   createCustomer: (body) => req('/customers', { method: 'POST', body: JSON.stringify(body) }),
   updateCustomer: (id, body) => req(`/customers/${id}`, { method: 'PUT', body: JSON.stringify(body) }),
+  reportSummary: (period) => req(`/reports/summary${period ? `?period=${period}` : ''}`),
+  reportGoals: (period) => req(`/reports/goals${period ? `?period=${period}` : ''}`),
+  visits: () => req('/visits'),
 };

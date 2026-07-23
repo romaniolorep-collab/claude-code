@@ -67,11 +67,15 @@ function Dashboard({ user, onLogout }) {
       </header>
       <nav className="tabs">
         <button className={`tab ${tab === 'orders' ? 'active' : ''}`} onClick={() => setTab('orders')}>Pedidos</button>
+        <button className={`tab ${tab === 'reports' ? 'active' : ''}`} onClick={() => setTab('reports')}>Relatórios</button>
+        <button className={`tab ${tab === 'visits' ? 'active' : ''}`} onClick={() => setTab('visits')}>Visitas</button>
         <button className={`tab ${tab === 'products' ? 'active' : ''}`} onClick={() => setTab('products')}>Produtos</button>
         <button className={`tab ${tab === 'customers' ? 'active' : ''}`} onClick={() => setTab('customers')}>Clientes</button>
       </nav>
       <main className="content">
         {tab === 'orders' && <OrdersView />}
+        {tab === 'reports' && <ReportsView />}
+        {tab === 'visits' && <VisitsView />}
         {tab === 'products' && <ProductsView />}
         {tab === 'customers' && <CustomersView />}
       </main>
@@ -167,6 +171,100 @@ function OrderModal({ id, onClose }) {
             </>
           )}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function Bar({ value, max, label, right }) {
+  const pct = max > 0 ? Math.min(100, (value / max) * 100) : 0;
+  return (
+    <div className="bar-row">
+      <div className="bar-label">{label}</div>
+      <div className="bar-track"><div className="bar-fill" style={{ width: `${pct}%` }} /></div>
+      <div className="bar-right">{right}</div>
+    </div>
+  );
+}
+
+function ReportsView() {
+  const { loading, data, error } = useAsync(() => Promise.all([api.reportSummary(), api.reportGoals()]));
+  if (loading) return <div className="loading">Carregando relatórios…</div>;
+  if (error) return <div className="loading">{error}</div>;
+  const [summary, goals] = data;
+  const maxRep = Math.max(1, ...summary.by_rep.map((r) => r.revenue));
+  const maxProd = Math.max(1, ...summary.by_product.map((p) => p.revenue));
+
+  return (
+    <>
+      <div className="kpis">
+        <div className="kpi"><div className="k-label">Faturamento ({summary.period})</div><div className="k-value accent">{brl(summary.totals.revenue)}</div></div>
+        <div className="kpi"><div className="k-label">Pedidos</div><div className="k-value">{summary.totals.orders}</div></div>
+        <div className="kpi"><div className="k-label">Comissão total</div><div className="k-value">{brl(goals.reduce((s, g) => s + g.commission, 0))}</div></div>
+      </div>
+
+      <div className="panel" style={{ marginBottom: 18 }}>
+        <div className="panel-head"><span>Metas e comissão · {summary.period}</span></div>
+        <div style={{ padding: '14px 18px' }}>
+          {goals.length === 0 && <div className="muted">Nenhuma meta definida para o período.</div>}
+          {goals.map((g) => (
+            <div key={g.rep_id} className="goal">
+              <div className="goal-top">
+                <b>{g.rep_name}</b>
+                <span className="muted">{brl(g.achieved)} / {brl(g.target_amount)} · <span className="pill sent">comissão {brl(g.commission)}</span></span>
+              </div>
+              <div className="bar-track"><div className="bar-fill" style={{ width: `${Math.min(100, g.progress_pct)}%` }} /></div>
+              <div className="sub">{g.progress_pct}% da meta · comissão {g.commission_pct}%</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid-2">
+        <div className="panel">
+          <div className="panel-head"><span>Vendas por representante</span></div>
+          <div style={{ padding: '14px 18px' }}>
+            {summary.by_rep.map((r) => <Bar key={r.rep} label={r.rep} value={r.revenue} max={maxRep} right={brl(r.revenue)} />)}
+          </div>
+        </div>
+        <div className="panel">
+          <div className="panel-head"><span>Top produtos</span></div>
+          <div style={{ padding: '14px 18px' }}>
+            {summary.by_product.map((p) => <Bar key={p.sku} label={p.name} value={p.revenue} max={maxProd} right={brl(p.revenue)} />)}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function VisitsView() {
+  const { loading, data: visits, error } = useAsync(() => api.visits());
+  if (loading) return <div className="loading">Carregando visitas…</div>;
+  if (error) return <div className="loading">{error}</div>;
+  const fmt = (s) => new Date(s).toLocaleDateString('pt-BR');
+  const statusPill = { planned: 'draft', done: 'sent', canceled: 'draft' };
+  const statusLabel = { planned: 'planejada', done: 'realizada', canceled: 'cancelada' };
+  return (
+    <div className="panel">
+      <div className="panel-head"><span>Agenda de visitas · {visits.length}</span></div>
+      <div className="tscroll">
+        <table>
+          <thead><tr><th>Data</th><th>Cliente</th><th>Cidade</th><th>Representante</th><th>Status</th><th>Observação</th></tr></thead>
+          <tbody>
+            {visits.map((v) => (
+              <tr key={v.id}>
+                <td>{fmt(v.scheduled_at)}</td>
+                <td>{v.customer_name}</td>
+                <td className="muted">{v.city || '—'}</td>
+                <td className="muted">{v.rep_name}</td>
+                <td><span className={`pill ${statusPill[v.status]}`}>{statusLabel[v.status]}</span></td>
+                <td className="muted">{v.note || '—'}</td>
+              </tr>
+            ))}
+            {visits.length === 0 && <tr><td colSpan="6" className="loading">Nenhuma visita agendada.</td></tr>}
+          </tbody>
+        </table>
       </div>
     </div>
   );
