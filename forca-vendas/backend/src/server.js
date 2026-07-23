@@ -43,7 +43,10 @@ app.register(async (r) => {
       JOIN price_tables pt ON pt.id = pr.price_table_id
       WHERE pt.tenant_id = ?
     `).all(tenant);
-    return { server_time: new Date().toISOString(), products, customers, price_rules: priceRules };
+    const variants = db.prepare(
+      'SELECT id, product_id, label, stock FROM variants WHERE tenant_id = ? ORDER BY product_id, id'
+    ).all(tenant);
+    return { server_time: new Date().toISOString(), products, customers, price_rules: priceRules, variants };
   });
 
   // SYNC PUSH: recebe pedidos criados offline no dispositivo.
@@ -83,11 +86,11 @@ app.register(async (r) => {
       `).run(tenant, order.client_uuid, customer.id, req.user.id, 'sent',
              priced.discountPct, priced.total, order.note || null).lastInsertRowid;
       const insItem = db.prepare(`
-        INSERT INTO order_items (order_id, product_id, sku, name, qty, unit_price, line_total)
-        VALUES (?,?,?,?,?,?,?)
+        INSERT INTO order_items (order_id, product_id, sku, name, variant, qty, unit_price, line_total)
+        VALUES (?,?,?,?,?,?,?,?)
       `);
       for (const it of priced.items) {
-        insItem.run(orderId, it.product_id, it.sku, it.name, it.qty, it.unit_price, it.line_total);
+        insItem.run(orderId, it.product_id, it.sku, it.name, it.variant, it.qty, it.unit_price, it.line_total);
       }
       return { client_uuid: order.client_uuid, status: 'created', order_id: orderId, total: priced.total };
     });
@@ -103,9 +106,16 @@ app.register(async (r) => {
   });
 
   // Listagens de apoio (usadas tambem pelo painel web de gestao).
-  r.get('/products', async (req) =>
-    db.prepare('SELECT * FROM products WHERE tenant_id = ? AND active = 1 ORDER BY name')
-      .all(req.user.tenant_id));
+  r.get('/products', async (req) => {
+    const products = db.prepare(
+      'SELECT * FROM products WHERE tenant_id = ? AND active = 1 ORDER BY name'
+    ).all(req.user.tenant_id);
+    const vars = db.prepare('SELECT product_id, label, stock FROM variants WHERE tenant_id = ? ORDER BY id')
+      .all(req.user.tenant_id);
+    const byProduct = {};
+    for (const v of vars) (byProduct[v.product_id] ||= []).push(v);
+    return products.map((p) => ({ ...p, variants: byProduct[p.id] || [] }));
+  });
 
   r.get('/customers', async (req) =>
     db.prepare('SELECT * FROM customers WHERE tenant_id = ? ORDER BY name')

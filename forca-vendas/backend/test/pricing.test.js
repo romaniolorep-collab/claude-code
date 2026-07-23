@@ -68,3 +68,12 @@ test('priceOrder rejeita produto inexistente', () => {
     /inexistente/i,
   );
 });
+
+test('priceOrder preserva a variante (grade) no item', () => {
+  const r = priceOrder({
+    tenantId: 1, customer, rep,
+    items: [{ product_id: ten.id, qty: 2, variant: '39' }],
+  });
+  assert.equal(r.items[0].variant, '39');
+  assert.equal(r.items[0].line_total, 399.80); // 2 * 199.90
+});

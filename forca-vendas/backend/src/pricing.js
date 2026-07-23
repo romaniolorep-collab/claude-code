@@ -54,7 +54,10 @@ export function priceOrder({ tenantId, customer, rep, items, discountPct = 0 }) 
     });
     const lineTotal = +(unit * qty).toFixed(2);
     subtotal += lineTotal;
-    priced.push({ product_id: p.id, sku: p.sku, name: p.name, qty, unit_price: unit, line_total: lineTotal });
+    priced.push({
+      product_id: p.id, sku: p.sku, name: p.name,
+      variant: item.variant ?? null, qty, unit_price: unit, line_total: lineTotal,
+    });
   }
 
   const total = +(subtotal * (1 - discountPct / 100)).toFixed(2);

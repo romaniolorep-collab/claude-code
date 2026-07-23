@@ -98,9 +98,20 @@ export function migrate() {
       product_id  INTEGER NOT NULL REFERENCES products(id),
       sku         TEXT NOT NULL,
       name        TEXT NOT NULL,
+      variant     TEXT,                           -- grade: tamanho/cor (ex: '39', 'M')
       qty         INTEGER NOT NULL,
       unit_price  REAL NOT NULL,                  -- preco CONGELADO no momento do pedido
       line_total  REAL NOT NULL
+    );
+
+    -- Grade do produto: tamanhos/cores com estoque proprio.
+    CREATE TABLE IF NOT EXISTS variants (
+      id          INTEGER PRIMARY KEY,
+      tenant_id   INTEGER NOT NULL REFERENCES tenants(id),
+      product_id  INTEGER NOT NULL REFERENCES products(id),
+      label       TEXT NOT NULL,                  -- '39', 'M', 'Preto-42'
+      stock       INTEGER NOT NULL DEFAULT 0,
+      updated_at  TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
     -- Metas e comissao por representante, por mes (YYYY-MM).
@@ -130,7 +141,10 @@ export function migrate() {
     CREATE INDEX IF NOT EXISTS idx_customers_tenant ON customers(tenant_id, updated_at);
     CREATE INDEX IF NOT EXISTS idx_orders_tenant    ON orders(tenant_id, created_at);
     CREATE INDEX IF NOT EXISTS idx_visits_tenant    ON visits(tenant_id, updated_at);
+    CREATE INDEX IF NOT EXISTS idx_variants_product ON variants(tenant_id, product_id);
   `);
+  // Coluna 'variant' pode faltar em bancos criados antes da grade.
+  try { db.exec('ALTER TABLE order_items ADD COLUMN variant TEXT'); } catch { /* ja existe */ }
 }
 
 export function seed() {
@@ -167,11 +181,21 @@ export function seed() {
   const insRule = db.prepare(
     "INSERT INTO price_rules (price_table_id, product_id, min_qty, price) VALUES (?,?,?,?)"
   );
+  const pidBySku = {};
   for (const [sku, name, unit, cat, price, stock] of prods) {
     const pid = insProd.run(tenant, sku, name, unit, cat, price, stock).lastInsertRowid;
+    pidBySku[sku] = pid;
     insRule.run(tabela, pid, 1, price);          // preco base
     insRule.run(tabela, pid, 12, +(price * 0.9).toFixed(2)); // quebra: -10% a partir de 12 un
   }
+
+  // Grade (tamanhos) para os produtos que precisam.
+  const insVar = db.prepare(
+    'INSERT INTO variants (tenant_id, product_id, label, stock) VALUES (?,?,?,?)'
+  );
+  for (let n = 37; n <= 42; n++) insVar.run(tenant, pidBySku['TEN-010'], String(n), 20); // tenis
+  for (const t of ['P', 'M', 'G', 'GG']) insVar.run(tenant, pidBySku['CAM-001'], t, 120); // camiseta
+  for (const t of ['P', 'M', 'G']) insVar.run(tenant, pidBySku['CAM-002'], t, 80);         // regata
 
   const cli1 = db.prepare(
     "INSERT INTO customers (tenant_id, rep_id, name, doc, city, credit_limit, price_table_id) VALUES (?,?,?,?,?,?,?)"
