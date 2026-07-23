@@ -108,12 +108,19 @@ Telas: dashboard com KPIs (pedidos, faturamento, representantes), e abas de
 Pedidos, Produtos e Clientes — com detalhe do pedido mostrando os preços
 congelados. Exige o backend no ar.
 
-## Como isto vira produto (próximos passos)
+## Módulos já implementados
 
-- **Banco local**: ✅ feito — catálogo e fila em **SQLite (drift)**.
-- **Preço**: ✅ motor coberto por testes; ampliar para campanhas e faixas.
-- **Sync**: deltas por entidade, resolução de conflito e reenvio com backoff.
-- **Painel web** (React) reaproveitando os mesmos endpoints.
-- **Integração ERP** para o pedido fluir ao faturamento.
+- **Núcleo**: catálogo, pedido offline, motor de preços, sincronização idempotente
+- **Banco local**: ✅ catálogo e fila em **SQLite (drift)**
+- **Painel web** (React) reaproveitando os mesmos endpoints
+- **Relatórios, metas e comissão**: `/reports/summary`, `/reports/goals`, aba Relatórios no painel
+- **CRM de campo**: visitas (`/visits`, `/customers/:id/history`), aba Visitas no painel e no app
+
+## Próximos passos
+
+- **Sync**: deltas por entidade, resolução de conflito e reenvio com backoff
+- **Tabelas de preço** por campanha/vigência e condições de pagamento
+- **Aprovações e crédito**: alçada de aprovação do gestor + bloqueio por limite
+- **Integração ERP** para o pedido fluir ao faturamento
 
 Ver o blueprint completo (funcionalidades, stack, roadmap) para o mapa geral.
