@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../app_state.dart';
 import 'catalog_screen.dart';
 import 'orders_screen.dart';
+import 'visits_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final app = context.watch<AppState>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(_tab == 0 ? 'Catalogo' : 'Meus Pedidos'),
+        title: Text(switch (_tab) { 0 => 'Catalogo', 1 => 'Visitas', _ => 'Meus Pedidos' }),
         actions: [
           IconButton(
             tooltip: 'Sincronizar',
@@ -45,7 +46,11 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
               child: Text(app.lastMessage!, style: Theme.of(context).textTheme.bodySmall),
             ),
-          Expanded(child: _tab == 0 ? const CatalogScreen() : const OrdersScreen()),
+          Expanded(child: switch (_tab) {
+            0 => const CatalogScreen(),
+            1 => const VisitsScreen(),
+            _ => const OrdersScreen(),
+          }),
         ],
       ),
       bottomNavigationBar: NavigationBar(
@@ -53,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onDestinationSelected: (i) => setState(() => _tab = i),
         destinations: [
           const NavigationDestination(icon: Icon(Icons.grid_view), label: 'Catalogo'),
+          const NavigationDestination(icon: Icon(Icons.event_note), label: 'Visitas'),
           NavigationDestination(
             icon: Badge(
               isLabelVisible: app.pendingCount > 0,

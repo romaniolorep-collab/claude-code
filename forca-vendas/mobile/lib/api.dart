@@ -49,6 +49,22 @@ class ApiClient {
     return jsonDecode(res.body) as Map<String, dynamic>;
   }
 
+  // CRM: agenda de visitas do representante.
+  Future<List<Map<String, dynamic>>> visits() async {
+    final res = await http.get(Uri.parse('$baseUrl/visits'), headers: _headers);
+    if (res.statusCode != 200) throw ApiException('Falha ao carregar visitas', res.statusCode);
+    return (jsonDecode(res.body) as List).cast<Map<String, dynamic>>();
+  }
+
+  Future<void> updateVisit(int id, String status) async {
+    final res = await http.put(
+      Uri.parse('$baseUrl/visits/$id'),
+      headers: _headers,
+      body: jsonEncode({'status': status}),
+    );
+    if (res.statusCode != 200) throw ApiException('Falha ao atualizar visita', res.statusCode);
+  }
+
   // Envia a fila de pedidos. Idempotente por client_uuid no servidor.
   Future<List<Map<String, dynamic>>> push(List<Map<String, dynamic>> orders) async {
     final res = await http.post(
