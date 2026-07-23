@@ -11,7 +11,8 @@ calculado no servidor e sincronização idempotente.
 ```
 forca-vendas/
 ├── backend/   API Node.js (Fastify + SQLite) — RODA e foi testada
-└── mobile/    App Flutter (offline-first) — código pronto p/ `flutter run`
+├── mobile/    App Flutter (offline-first) — analisado e testado (3/3)
+└── web/       Painel de gestão React (Vite) — RODA contra o backend
 ```
 
 ## Arquitetura em uma frase
@@ -78,6 +79,23 @@ Estrutura:
 | `lib/store.dart` | Persistência local (cache + fila de pedidos) |
 | `lib/app_state.dart` | Orquestração offline-first (sync, fila, prévia de preço) |
 | `lib/screens/` | Login, catálogo, carrinho, fila de pedidos |
+
+## 3. Painel web de gestão (React)
+
+Para o gestor/fornecedor. Reaproveita os mesmos endpoints do app mobile.
+
+```bash
+cd web
+npm install
+npm run dev          # abre em http://localhost:5173
+```
+
+Login de teste: **gestor@modelo.com / 123456** (perfil `manager`).
+Aponte para outro backend com `VITE_API_URL=http://SEU_IP:3000 npm run dev`.
+
+Telas: dashboard com KPIs (pedidos, faturamento, representantes), e abas de
+Pedidos, Produtos e Clientes — com detalhe do pedido mostrando os preços
+congelados. Exige o backend no ar.
 
 ## Como isto vira produto (próximos passos)
 
