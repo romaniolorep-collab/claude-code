@@ -1,0 +1,281 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Robô de Prospecção</title>
+<style>
+  :root{--ground:#EEF0F3;--surface:#fff;--surface-2:#F7F8FA;--ink:#171B21;--ink-soft:#59636E;--ink-faint:#8B949E;--line:#E4E7EC;--nav:#12283A;--accent:#0E7C86;--accent-soft:#E1F1F2;--good:#2E8B57;--good-soft:#E4F0E8;--star:#E0A500;--mine:#8a6d0f;--mine-soft:#F3ECD6;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,Menlo,monospace;}
+  @media (prefers-color-scheme:dark){:root{--ground:#0E141A;--surface:#161D25;--surface-2:#1B242D;--ink:#E7ECF1;--ink-soft:#A4AEB8;--ink-faint:#6E7A85;--line:#26313B;--nav:#0B1720;--accent:#2AA7B0;--accent-soft:#123033;--good:#57B682;--good-soft:#16241C;--star:#E7B93a;--mine:#d6b34b;--mine-soft:#241f12;}}
+  *{box-sizing:border-box;}body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;}
+  .nav{background:var(--nav);color:#fff;padding:13px 20px;display:flex;align-items:center;gap:10px;}
+  .nav b{background:var(--accent);width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:1rem;}
+  .nav h1{margin:0;font-size:1.05rem;font-weight:800;}
+  .nav .tag{margin-left:auto;font-size:.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:4px 9px;border-radius:999px;}
+  .nav .tag.demo{background:#7a5a12;color:#ffe9b0;}
+  .nav .tag.real{background:var(--good-soft);color:var(--good);}
+  .nav .gear{margin-left:8px;background:rgba(255,255,255,.14);border:none;color:#fff;width:32px;height:32px;border-radius:8px;font-size:1rem;cursor:pointer;}
+  .wrap{max-width:740px;margin:0 auto;padding:18px;}
+  .search{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;gap:10px;flex-wrap:wrap;box-shadow:0 6px 20px rgba(18,40,58,.08);}
+  .fld{flex:1;min-width:150px;display:flex;flex-direction:column;gap:4px;}
+  .fld label{font-size:.66rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);}
+  .fld input,.fld select{border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:.94rem;background:var(--surface-2);color:var(--ink);}
+  .fld input:focus,.fld select:focus{outline:2px solid var(--accent);}
+  .go{align-self:flex-end;background:var(--accent);color:#fff;border:none;border-radius:9px;padding:11px 20px;font-weight:800;font-size:.95rem;cursor:pointer;}
+  .filters{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 2px 4px;font-size:.84rem;color:var(--ink-soft);}
+  .filters select{border:1px solid var(--line);border-radius:8px;padding:5px 8px;background:var(--surface);color:var(--ink);font-size:.83rem;}
+  .filters label{display:inline-flex;gap:5px;align-items:center;cursor:pointer;}
+  .bar{display:flex;align-items:center;justify-content:space-between;margin:12px 2px 8px;gap:10px;flex-wrap:wrap;}
+  .bar .c{font-size:.85rem;color:var(--ink-soft);}
+  .bar .c b{color:var(--ink);}
+  .rota{background:var(--nav);color:#fff;border:none;border-radius:9px;padding:9px 15px;font-weight:700;font-size:.83rem;cursor:pointer;}
+  .rota:disabled{opacity:.4;cursor:default;}
+  .cityhdr{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin:16px 2px 8px;font-weight:700;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:13px 15px;margin-bottom:10px;}
+  .card.mine{opacity:.7;}
+  .top{display:flex;align-items:flex-start;gap:12px;}
+  .chk{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--accent);}
+  .nm{font-weight:700;font-size:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .badge{font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--mine-soft);color:var(--mine);border:1px dashed currentColor;}
+  .badge.new{background:var(--good-soft);color:var(--good);border:none;}
+  .addr{color:var(--ink-faint);font-size:.82rem;margin-top:2px;}
+  .meta{display:flex;gap:12px;align-items:center;margin-top:7px;font-size:.82rem;flex-wrap:wrap;}
+  .star{color:var(--star);font-weight:700;}
+  .open{color:var(--good);font-weight:600;}.closed{color:#b3541e;font-weight:600;}
+  .sp{flex:1;}
+  .det{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-size:.85rem;display:none;}
+  .det.on{display:block;}
+  .det .row{display:flex;gap:8px;margin-bottom:4px;}.det .k{color:var(--ink-faint);width:70px;flex:none;}
+  .acts{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap;}
+  .b{border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);border-radius:8px;padding:7px 12px;font-size:.8rem;font-weight:600;cursor:pointer;}
+  .b.wa{background:#25D366;color:#0a3d1f;border:none;}
+  .b.p{background:var(--accent);color:#fff;border:none;}
+  .empty{text-align:center;color:var(--ink-faint);padding:30px;}
+  .loading{text-align:center;color:var(--ink-faint);padding:20px;}
+  /* painel de configuração da chave */
+  .sheet{position:fixed;inset:0;background:rgba(6,14,20,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;}
+  .sheet.on{display:flex;}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;max-width:460px;width:100%;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+  .panel h2{margin:0 0 4px;font-size:1.05rem;}
+  .panel p{margin:0 0 14px;color:var(--ink-soft);font-size:.86rem;line-height:1.5;}
+  .panel input{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font-size:.92rem;font-family:var(--mono);background:var(--surface-2);color:var(--ink);}
+  .panel .prow{display:flex;gap:8px;margin-top:14px;}
+  .panel .save{flex:1;background:var(--accent);color:#fff;border:none;border-radius:9px;padding:11px;font-weight:800;cursor:pointer;}
+  .panel .ghost{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line);border-radius:9px;padding:11px 14px;font-weight:600;cursor:pointer;}
+  .panel a{color:var(--accent);}
+  .panel .lil{font-size:.76rem;color:var(--ink-faint);margin-top:12px;line-height:1.5;}
+  .banner{background:var(--accent-soft);border:1px solid var(--accent);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:.85rem;margin:0 2px 12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .banner button{margin-left:auto;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 13px;font-weight:700;font-size:.82rem;cursor:pointer;}
+</style></head><body>
+<div class="nav"><b>🤖</b><h1>Robô de Prospecção</h1><span class="tag demo" id="tag">demo</span><button class="gear" title="Configurar chave do Google" onclick="abrirConfig()">⚙️</button></div>
+<div class="wrap">
+  <div class="banner" id="banner" style="display:none">
+    <span>🔑 Modo demonstração (lojas fictícias). Adicione sua <b>chave do Google</b> para buscar lojas reais.</span>
+    <button onclick="abrirConfig()">Adicionar chave</button>
+  </div>
+
+  <div class="search">
+    <div class="fld"><label>Tipo de loja</label><input id="tipo" value="lojas de calçado" placeholder="lojas de calçado esportivo"></div>
+    <div class="fld"><label>Local (várias cidades: separe por vírgula)</label><input id="local" value="Maringá, Cianorte" placeholder="Maringá, Cianorte, Umuarama"></div>
+    <button class="go" onclick="buscar()">🔎 Buscar</button>
+  </div>
+
+  <div class="filters" id="filters" style="display:none">
+    <span>Filtrar:</span>
+    <label>Nota mín. <select id="fNota" onchange="render()"><option value="0">qualquer</option><option value="3.5">3,5+</option><option value="4">4,0+</option><option value="4.5">4,5+</option></select></label>
+    <label><input type="checkbox" id="fAberta" onchange="render()"> só abertas</label>
+    <label><input type="checkbox" id="fMine" checked onchange="render()"> esconder as que já são minhas</label>
+    <label>Ordem <select id="fOrd" onchange="render()"><option value="nota">melhor nota</option><option value="aval">mais avaliações</option></select></label>
+  </div>
+
+  <div class="bar">
+    <div class="c" id="cont">Informe tipo e local (pode ser várias cidades) e clique em Buscar.</div>
+    <button class="rota" id="rotaBtn" disabled onclick="rota()">🗺️ Rota (0)</button>
+  </div>
+  <div id="list"></div>
+</div>
+
+<!-- painel de configuração -->
+<div class="sheet" id="sheet" onclick="if(event.target===this)fecharConfig()">
+  <div class="panel">
+    <h2>🔑 Chave do Google Places</h2>
+    <p>Cole aqui sua chave (começa com <code>AIza…</code>). Ela fica salva <b>só neste aparelho</b> (no navegador) — não é enviada pra ninguém além do Google na hora da busca.</p>
+    <input id="keyInput" placeholder="AIzaSy..." autocomplete="off" spellcheck="false">
+    <div class="prow">
+      <button class="save" onclick="salvarChave()">Salvar</button>
+      <button class="ghost" onclick="removerChave()">Remover</button>
+      <button class="ghost" onclick="fecharConfig()">Fechar</button>
+    </div>
+    <div class="lil">
+      Não tem chave? <a href="https://console.cloud.google.com" target="_blank" rel="noopener">console.cloud.google.com</a> → criar projeto → ativar <b>Places API</b> + <b>Maps JavaScript API</b> → Credenciais → criar chave. Restrinja por <b>referenciador HTTP</b> (o endereço deste site) pra segurança.
+    </div>
+  </div>
+</div>
+
+<script>
+// ------- dados de demonstração (sem chave) -------
+const MOCK=[
+ {cidade:'Maringá',nome:'Calçados Passo Firme',endereco:'Av. Brasil, 1200 - Centro, Maringá - PR',nota:4.6,avaliacoes:214,telefone:'(44) 3025-1180',site:'passofirme.com.br',horario:'Seg–Sex 09–18 · Sáb 09–13',aberto:true,mine:false,place_id:'d1'},
+ {cidade:'Maringá',nome:'Sport Center Calçados',endereco:'Av. Colombo, 5000 - Zona 7, Maringá - PR',nota:4.2,avaliacoes:98,telefone:'(44) 3226-4477',site:'',horario:'Seg–Sáb 09–19',aberto:true,mine:false,place_id:'d2'},
+ {cidade:'Maringá',nome:'Loja do Tênis Maringá',endereco:'R. Néo Alves Martins, 3100 - Centro, Maringá - PR',nota:4.8,avaliacoes:402,telefone:'(44) 3222-9010',site:'lojadotenis.com',horario:'Seg–Sex 09–18',aberto:false,mine:false,place_id:'d3'},
+ {cidade:'Maringá',nome:'Corrida & Cia',endereco:'Av. Cerro Azul, 850 - Zona 2, Maringá - PR',nota:4.1,avaliacoes:63,telefone:'(44) 99988-2211',site:'',horario:'Seg–Sáb 10–19',aberto:true,mine:false,place_id:'d4'},
+ {cidade:'Maringá',nome:'Dyup Art. Esportivos',endereco:'Av. Mandacaru, 1600 - Maringá - PR',nota:4.3,avaliacoes:127,telefone:'(44) 3011-5566',site:'',horario:'Seg–Sáb 09–19',aberto:true,mine:true,place_id:'d5'},
+ {cidade:'Cianorte',nome:'Newpace Sports',endereco:'Av. Brasil, 800 - Centro, Cianorte - PR',nota:4.5,avaliacoes:150,telefone:'(44) 98459-2225',site:'',horario:'Seg–Sáb 09–19',aberto:true,mine:true,place_id:'d6'},
+ {cidade:'Cianorte',nome:'Amorim Calçados',endereco:'R. Piquiri, 200 - Cianorte - PR',nota:4.0,avaliacoes:55,telefone:'',site:'',horario:'Seg–Sex 09–18',aberto:true,mine:true,place_id:'d7'},
+ {cidade:'Cianorte',nome:'Cianorte Sport Calçados',endereco:'Av. América, 1500 - Cianorte - PR',nota:4.4,avaliacoes:88,telefone:'(44) 3629-1122',site:'',horario:'Seg–Sáb 09–19',aberto:true,mine:false,place_id:'d8'},
+ {cidade:'Cianorte',nome:'Tênis & Moda Cianorte',endereco:'R. Guaporé, 340 - Cianorte - PR',nota:3.7,avaliacoes:29,telefone:'',site:'',horario:'Seg–Sex 09–18',aberto:false,mine:false,place_id:'d9'},
+];
+
+// ------- "carteira" (lojas que já são suas) — edite/ligue ao Footwear Pro depois -------
+const MINHAS = ['dyup art. esportivos','newpace sports','amorim calcados'];
+const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim();
+const ehMinha = nome => MINHAS.includes(norm(nome));
+
+// ------- estado -------
+let leads=[]; const carteira=new Set(); let gsvc=null;
+const getKey = () => localStorage.getItem('gpk') || '';
+
+function atualizarTag(){
+  const tag=document.getElementById('tag');
+  const tem=!!getKey();
+  tag.textContent = tem ? 'real' : 'demo';
+  tag.className = 'tag '+(tem?'real':'demo');
+  document.getElementById('banner').style.display = tem ? 'none' : 'flex';
+}
+
+// ------- config da chave -------
+function abrirConfig(){ document.getElementById('keyInput').value=getKey(); document.getElementById('sheet').classList.add('on'); }
+function fecharConfig(){ document.getElementById('sheet').classList.remove('on'); }
+function salvarChave(){
+  const k=document.getElementById('keyInput').value.trim();
+  if(k) localStorage.setItem('gpk',k); else localStorage.removeItem('gpk');
+  gsvc=null; window.__gmapsLoaded=false; atualizarTag(); fecharConfig();
+}
+function removerChave(){ localStorage.removeItem('gpk'); gsvc=null; window.__gmapsLoaded=false; document.getElementById('keyInput').value=''; atualizarTag(); }
+
+// ------- Google Maps JS (carrega sob demanda, roda no navegador) -------
+function carregarGoogle(key){
+  return new Promise((res,rej)=>{
+    if(window.google?.maps?.places) return res();
+    const s=document.createElement('script');
+    s.src=`https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&libraries=places&language=pt-BR&region=BR&loading=async`;
+    s.async=true;
+    s.onload=()=> (window.google?.maps?.places ? res() : rej(new Error('Places não carregou (ative a Maps JavaScript API + Places API)')));
+    s.onerror=()=>rej(new Error('Não consegui carregar o Google (verifique a chave e a conexão)'));
+    document.head.appendChild(s);
+  });
+}
+async function svc(){
+  const key=getKey();
+  await carregarGoogle(key);
+  if(!gsvc) gsvc=new google.maps.places.PlacesService(document.createElement('div'));
+  return gsvc;
+}
+function textSearch(s,query){
+  return new Promise(res=>{ s.textSearch({query,region:'br'},(r,st)=>res(st==='OK'?(r||[]):[])); });
+}
+function getDetails(s,placeId){
+  return new Promise(res=>{ s.getDetails({placeId,fields:['formatted_phone_number','website','opening_hours','url']},(d,st)=>{
+    if(st!=='OK'||!d) return res({telefone:'',site:'',horario:''});
+    res({telefone:d.formatted_phone_number||'', site:(d.website||'').replace(/^https?:\/\//,'').replace(/\/$/,''), horario:(d.opening_hours?.weekday_text||[]).join(' · ')});
+  }); });
+}
+
+// ------- busca -------
+async function buscar(){
+  document.getElementById('list').innerHTML='<div class="loading">🤖 buscando…</div>';
+  const tipo=document.getElementById('tipo').value.trim();
+  const local=document.getElementById('local').value.trim();
+  const cidades=local.split(',').map(x=>x.trim()).filter(Boolean);
+  try{
+    if(!getKey()){                                   // sem chave → demonstração
+      await new Promise(r=>setTimeout(r,400));
+      leads=MOCK.map(x=>({...x}));
+    }else{                                            // com chave → Google real
+      const s=await svc();
+      const lotes=await Promise.all((cidades.length?cidades:['']).map(async cid=>{
+        const r=await textSearch(s,`${tipo} em ${cid}`);
+        return r.map(p=>({
+          cidade:cid,
+          nome:p.name,
+          endereco:p.formatted_address||'',
+          nota:p.rating??null,
+          avaliacoes:p.user_ratings_total??0,
+          aberto:(typeof p.opening_hours?.isOpen==='function'?p.opening_hours.isOpen():(p.opening_hours?.open_now??null)),
+          mine:ehMinha(p.name),
+          place_id:p.place_id,
+          telefone:'',site:'',horario:'',
+        }));
+      }));
+      leads=lotes.flat();
+    }
+    carteira.clear(); document.getElementById('filters').style.display='flex'; render();
+  }catch(e){ document.getElementById('list').innerHTML='<div class="empty">Erro: '+e.message+'</div>'; }
+}
+
+async function detalhes(id){
+  const box=document.getElementById('det_'+id);
+  if(box.classList.contains('on')){ box.classList.remove('on'); return; }
+  box.classList.add('on');
+  const l=leads.find(x=>x.place_id===id);
+  let d={telefone:l.telefone,site:l.site,horario:l.horario};
+  if(getKey() && !l.telefone){ box.innerHTML='carregando…'; d=await getDetails(await svc(), id); Object.assign(l,d); }
+  box.innerHTML=`
+    <div class="row"><span class="k">📞 Fone</span><span>${d.telefone||'— (sem contato)'}</span></div>
+    <div class="row"><span class="k">🌐 Site</span><span>${d.site||'—'}</span></div>
+    <div class="row"><span class="k">🕐 Horário</span><span>${d.horario||'—'}</span></div>
+    <div class="acts">
+      ${d.telefone?`<button class="b wa" onclick="zap('${id}')">📲 WhatsApp</button>`:''}
+      <button class="b p" onclick="salvar('${id}')">➕ Salvar na carteira</button>
+    </div>`;
+}
+function zap(id){ const l=leads.find(x=>x.place_id===id); const t=(l.telefone||'').replace(/\D/g,''); window.open('https://wa.me/'+(t.length<=11?'55'+t:t),'_blank'); }
+function salvar(id){ carteira.add(id); render(); document.getElementById('det_'+id)?.classList.add('on'); }
+function rota(){
+  const paradas=[...carteira].map(id=>leads.find(x=>x.place_id===id)?.endereco).filter(Boolean);
+  if(paradas.length) window.open('https://www.google.com/maps/dir/'+paradas.map(encodeURIComponent).join('/'),'_blank');
+}
+
+function filtrados(){
+  const nota=+document.getElementById('fNota').value;
+  const soAberta=document.getElementById('fAberta').checked;
+  const escMine=document.getElementById('fMine').checked;
+  const ord=document.getElementById('fOrd').value;
+  let a=leads.filter(l=>(l.nota||0)>=nota && (!soAberta || l.aberto!==false) && (!escMine || !l.mine));
+  a.sort((x,y)=> ord==='aval' ? (y.avaliacoes||0)-(x.avaliacoes||0) : (y.nota||0)-(x.nota||0));
+  return a;
+}
+function render(){
+  const rb=document.getElementById('rotaBtn'); rb.textContent=`🗺️ Rota (${carteira.size})`; rb.disabled=carteira.size===0;
+  const novas=leads.filter(l=>!l.mine).length, minhas=leads.filter(l=>l.mine).length, semTel=leads.filter(l=>!l.telefone).length;
+  const demo=!getKey();
+  document.getElementById('cont').innerHTML= leads.length
+    ? `<b>${novas}</b> novas · ${minhas} já suas · ${semTel} sem telefone${demo?' · <i>(exemplo fictício)</i>':''}`
+    : 'Nenhuma loja encontrada.';
+  const arr=filtrados();
+  const cidades=[...new Set(arr.map(l=>l.cidade).filter(Boolean))];
+  const multi=cidades.length>1;
+  let html='';
+  const grupos = multi ? cidades.map(c=>[c, arr.filter(l=>l.cidade===c)]) : [[null, arr]];
+  for(const [cid, items] of grupos){
+    if(cid) html+=`<div class="cityhdr">📍 ${cid} · ${items.length}</div>`;
+    html+=items.map(l=>{
+      const id=l.place_id;
+      return `<div class="card ${l.mine?'mine':''}">
+        <div class="top">
+          <input type="checkbox" class="chk" ${carteira.has(id)?'checked':''} onchange="this.checked?carteira.add('${id}'):carteira.delete('${id}');render()">
+          <div style="flex:1">
+            <div class="nm">${l.nome} ${l.mine?'<span class="badge">já é seu cliente</span>':'<span class="badge new">nova</span>'}</div>
+            <div class="addr">${l.endereco||''}</div>
+            <div class="meta">
+              ${l.nota?`<span class="star">★ ${String(l.nota).replace('.',',')}</span><span style="color:var(--ink-faint)">(${l.avaliacoes})</span>`:''}
+              ${l.aberto===true?'<span class="open">● aberto</span>':l.aberto===false?'<span class="closed">● fechado</span>':''}
+              <span class="sp"></span>
+              <button class="b" onclick="detalhes('${id}')">Detalhes ▾</button>
+            </div>
+            <div class="det" id="det_${id}"></div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('list').innerHTML= arr.length? html : '<div class="empty">Nenhuma loja passa nos filtros. Afrouxe os filtros acima.</div>';
+}
+
+atualizarTag();
+</script></body></html>
