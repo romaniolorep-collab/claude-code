@@ -1,0 +1,8033 @@
+{
+ "products": [
+  {
+   "ref": "1104541D033",
+   "name": "ADRENALINE GTS 25",
+   "price": 1299.9,
+   "category": "calcado-masc",
+   "colorway": "OYSTER/GREEN GECKO/BLUE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4541D033"
+   ],
+   "sizes": {
+    "39": 7,
+    "40": 17,
+    "41": 16,
+    "42": 16,
+    "43": 5,
+    "45": 1
+   }
+  },
+  {
+   "ref": "1104541D055",
+   "name": "ADRENALINE GTS 25",
+   "price": 1299.9,
+   "category": "calcado-masc",
+   "colorway": "BLACK/IPANEMA/ MINT",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4541D055"
+   ],
+   "sizes": {
+    "39": 10,
+    "40": 11,
+    "41": 8,
+    "42": 6,
+    "43": 1
+   }
+  },
+  {
+   "ref": "1104541D184",
+   "name": "ADRENALINE GTS 25",
+   "price": 1299.9,
+   "category": "calcado-masc",
+   "colorway": "SILVER ANNIVERSARY EDITION",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4541D184"
+   ],
+   "sizes": {
+    "39": 3,
+    "40": 6,
+    "41": 5,
+    "42": 4,
+    "43": 7,
+    "44": 3
+   }
+  },
+  {
+   "ref": "1204431B053",
+   "name": "ADRENALINE GTS 25",
+   "price": 1299.9,
+   "category": "calcado-fem",
+   "colorway": "OYSTER/PINK/GREEN",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4431B053"
+   ],
+   "sizes": {
+    "35": 3,
+    "36": 8,
+    "37": 5,
+    "38": 7,
+    "39": 1
+   }
+  },
+  {
+   "ref": "1204431B064",
+   "name": "ADRENALINE GTS 25",
+   "price": 1299.9,
+   "category": "calcado-fem",
+   "colorway": "BLACK/CYBER PINK/ICED AQUA",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4431B064"
+   ],
+   "sizes": {
+    "35": 6,
+    "36": 8,
+    "37": 13,
+    "38": 9,
+    "39": 7
+   }
+  },
+  {
+   "ref": "1204431B184",
+   "name": "ADRENALINE GTS 25",
+   "price": 1299.9,
+   "category": "calcado-fem",
+   "colorway": "SILVER ANNIVERSARY EDITION",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4431B184"
+   ],
+   "sizes": {
+    "34": 4,
+    "35": 10,
+    "36": 8,
+    "37": 5,
+    "38": 5,
+    "39": 2
+   }
+  },
+  {
+   "ref": "1104421D048",
+   "name": "GHOST 17",
+   "price": 849.9,
+   "category": "calcado-masc",
+   "colorway": "OYSTER MUSHROOM/ORANGE/EBONY",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4421D048"
+   ],
+   "sizes": {
+    "40": 7,
+    "40.5": 26,
+    "41": 7,
+    "41.5": 33,
+    "42": 1,
+    "42.5": 10
+   }
+  },
+  {
+   "ref": "1104421D090",
+   "name": "GHOST 17",
+   "price": 849.9,
+   "category": "calcado-masc",
+   "colorway": "BLACK/GREY/WHITE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4421D090"
+   ],
+   "sizes": {
+    "39.5": 4,
+    "40": 6,
+    "40.5": 8,
+    "41": 12,
+    "41.5": 15,
+    "42": 2,
+    "45": 3
+   }
+  },
+  {
+   "ref": "1104421D112",
+   "name": "GHOST 17",
+   "price": 849.9,
+   "category": "calcado-masc",
+   "colorway": "WHITE/PINK CLAY/GECKO",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4421D112"
+   ],
+   "sizes": {
+    "38": 4,
+    "40.5": 29,
+    "41.5": 32,
+    "42.5": 19,
+    "45": 4
+   }
+  },
+  {
+   "ref": "1204311B070",
+   "name": "GHOST 17",
+   "price": 849.9,
+   "category": "calcado-fem",
+   "colorway": "OYSTER/APRICOT/PINK",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4311B070"
+   ],
+   "sizes": {
+    "36": 10,
+    "37": 2,
+    "37.5": 4
+   }
+  },
+  {
+   "ref": "1204311B080",
+   "name": "GHOST 17",
+   "price": 849.9,
+   "category": "calcado-fem",
+   "colorway": "BLACK/PURPLE/CORAL",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4311B080"
+   ],
+   "sizes": {
+    "34": 8,
+    "35": 1,
+    "36": 8,
+    "37": 17,
+    "38": 9,
+    "39": 4,
+    "40": 4
+   }
+  },
+  {
+   "ref": "1204311B090",
+   "name": "GHOST 17",
+   "price": 849.9,
+   "category": "calcado-fem",
+   "colorway": "BLACK/GREY/WHITE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4311B090"
+   ],
+   "sizes": {
+    "34": 2,
+    "35": 3,
+    "36": 16,
+    "37": 3,
+    "37.5": 10,
+    "39": 1,
+    "39.5": 3,
+    "40": 1
+   }
+  },
+  {
+   "ref": "1204311B412",
+   "name": "GHOST 17",
+   "price": 999.99,
+   "category": "calcado-fem",
+   "colorway": "BURGUNDY/PINK/GREEN",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4311B412"
+   ],
+   "sizes": {
+    "37": 3,
+    "38": 5
+   }
+  },
+  {
+   "ref": "1204311B443",
+   "name": "GHOST 17",
+   "price": 849.9,
+   "category": "calcado-fem",
+   "colorway": "BLUE HERON/WHITE/ORANGE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4311B443"
+   ],
+   "sizes": {
+    "34": 9,
+    "35": 14,
+    "36": 17,
+    "37": 5,
+    "37.5": 25,
+    "38": 3,
+    "39": 2,
+    "39.5": 2
+   }
+  },
+  {
+   "ref": "1104641D162",
+   "name": "GHOST MAX 3",
+   "price": 1199.9,
+   "category": "calcado-masc",
+   "colorway": "BRIGHT WHITE/ TEA/BLACK",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4641D162"
+   ],
+   "sizes": {
+    "38": 11,
+    "39": 13,
+    "40": 16,
+    "41": 14,
+    "41.5": 3,
+    "42": 14,
+    "43": 11,
+    "44": 2
+   }
+  },
+  {
+   "ref": "1204571B151",
+   "name": "GHOST MAX 3",
+   "price": 1199.9,
+   "category": "calcado-fem",
+   "colorway": "COCONUT/BLUE HERON/ORANGE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4571B151"
+   ],
+   "sizes": {
+    "34": 11,
+    "35": 7,
+    "36": 5,
+    "37": 10,
+    "38": 13,
+    "39": 6
+   }
+  },
+  {
+   "ref": "1104451D063",
+   "name": "GLYCERIN 22",
+   "price": 1399.9,
+   "category": "calcado-masc",
+   "colorway": "BLACK/ATOMIZER/BLAZING ORANGE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4451D063"
+   ],
+   "sizes": {
+    "38": 8,
+    "39": 19,
+    "40": 36,
+    "40.5": 4,
+    "41": 27,
+    "41.5": 4,
+    "42": 30,
+    "42.5": 4,
+    "43": 20,
+    "44": 13
+   }
+  },
+  {
+   "ref": "1104451D078",
+   "name": "GLYCERIN 22",
+   "price": 1399.9,
+   "category": "calcado-masc",
+   "colorway": "PRIMER GRAY/EBONY/BLUEWASH",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4451D078"
+   ],
+   "sizes": {
+    "40": 4,
+    "41": 6,
+    "42": 3
+   }
+  },
+  {
+   "ref": "1104451D135",
+   "name": "GLYCERIN 22",
+   "price": 1399.9,
+   "category": "calcado-masc",
+   "colorway": "WHITE/GREY/BLACK",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4451D135"
+   ],
+   "sizes": {
+    "39": 21,
+    "40": 20,
+    "40.5": 3,
+    "41": 25,
+    "41.5": 3,
+    "42": 20,
+    "42.5": 4,
+    "43": 22,
+    "44": 13
+   }
+  },
+  {
+   "ref": "1104451D175",
+   "name": "GLYCERIN 22",
+   "price": 1099.9,
+   "category": "calcado-masc",
+   "colorway": "BRIGHT WHITE/WINTER SKY/BLACK",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4451D175"
+   ],
+   "sizes": {
+    "39": 6,
+    "40": 11,
+    "41": 7,
+    "42": 10
+   }
+  },
+  {
+   "ref": "1104451D415",
+   "name": "GLYCERIN 22",
+   "price": 1399.9,
+   "category": "calcado-masc",
+   "colorway": "SMOKE/STORMY/ ORANGE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4451D415"
+   ],
+   "sizes": {
+    "39": 7,
+    "40": 9,
+    "41": 14,
+    "42": 14,
+    "43": 5,
+    "44": 2
+   }
+  },
+  {
+   "ref": "1104451D821",
+   "name": "GLYCERIN 22",
+   "price": 1399.9,
+   "category": "calcado-masc",
+   "colorway": "ORANGE/NIGHTLIFE/ WHITE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4451D821"
+   ],
+   "sizes": {
+    "39": 1,
+    "40": 9,
+    "41": 14,
+    "42": 9,
+    "43": 4,
+    "44": 2
+   }
+  },
+  {
+   "ref": "1204341B088",
+   "name": "GLYCERIN 22",
+   "price": 1399.9,
+   "category": "calcado-fem",
+   "colorway": "BLACK/BLUE HERON/ORANGE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4341B088"
+   ],
+   "sizes": {
+    "34": 18,
+    "35": 41,
+    "36": 39,
+    "37": 39,
+    "38": 53,
+    "39": 21,
+    "40": 3
+   }
+  },
+  {
+   "ref": "1204341B090",
+   "name": "GLYCERIN 22",
+   "price": 1099.9,
+   "category": "calcado-fem",
+   "colorway": "BLACK/GREY/WHITE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4341B090"
+   ],
+   "sizes": {
+    "37": 1,
+    "37.5": 3,
+    "38": 2,
+    "39": 1,
+    "39.5": 1
+   }
+  },
+  {
+   "ref": "1204341B137",
+   "name": "GLYCERIN 22",
+   "price": 1399.9,
+   "category": "calcado-fem",
+   "colorway": "WHITE/BLUE HERON/APRICOT",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4341B137"
+   ],
+   "sizes": {
+    "35": 3,
+    "36": 11,
+    "37": 17,
+    "38": 5,
+    "39": 9
+   }
+  },
+  {
+   "ref": "1204341B897",
+   "name": "GLYCERIN 22",
+   "price": 1399.9,
+   "category": "calcado-fem",
+   "colorway": "SHERBERT/APRICOT/ PINK",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4341B897"
+   ],
+   "sizes": {
+    "34": 4,
+    "35": 4,
+    "36": 3,
+    "37": 3,
+    "38": 4,
+    "39": 6
+   }
+  },
+  {
+   "ref": "1104461D002",
+   "name": "GLYCERIN GTS 22",
+   "price": 999.9,
+   "category": "calcado-masc",
+   "colorway": "BLACK/COBALT/NEO YELLOW",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4461D002"
+   ],
+   "sizes": {
+    "38": 3,
+    "39": 6,
+    "40": 9,
+    "41": 6,
+    "42": 4,
+    "43": 1
+   }
+  },
+  {
+   "ref": "1104461D063",
+   "name": "GLYCERIN GTS 22",
+   "price": 1399.9,
+   "category": "calcado-masc",
+   "colorway": "BLACK/ATOMIZER/BLAZING ORANGE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4461D063"
+   ],
+   "sizes": {
+    "38": 8,
+    "39": 9,
+    "40": 14,
+    "41": 10,
+    "42": 12,
+    "43": 9,
+    "44": 5,
+    "45": 1
+   }
+  },
+  {
+   "ref": "1104461D135",
+   "name": "GLYCERIN GTS 22",
+   "price": 1399.9,
+   "category": "calcado-masc",
+   "colorway": "BLACK/ATOMIZER/BLAZING ORANGE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4461D135"
+   ],
+   "sizes": {
+    "39": 8,
+    "40": 16,
+    "41": 16,
+    "42": 16,
+    "43": 6,
+    "44": 2
+   }
+  },
+  {
+   "ref": "1204351B088",
+   "name": "GLYCERIN GTS 22",
+   "price": 1399.9,
+   "category": "calcado-fem",
+   "colorway": "BLACK/BLUE HERON/ORANGE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4351B088"
+   ],
+   "sizes": {
+    "34": 3,
+    "35": 7,
+    "36": 9,
+    "37": 14,
+    "38": 9,
+    "39": 6
+   }
+  },
+  {
+   "ref": "1204351B137",
+   "name": "GLYCERIN GTS 22",
+   "price": 1399.9,
+   "category": "calcado-fem",
+   "colorway": "WHITE/BLUE HERON/APRICOT",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4351B137"
+   ],
+   "sizes": {
+    "35": 8,
+    "36": 15,
+    "37": 14,
+    "38": 16,
+    "39": 8
+   }
+  },
+  {
+   "ref": "1104791D091",
+   "name": "GLYCERIN MAX  2",
+   "price": 1799.9,
+   "category": "calcado-masc",
+   "colorway": "PHANTON/WHITE/GREEN GECKO",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4791D091"
+   ],
+   "sizes": {
+    "38": 2,
+    "39": 20,
+    "40": 8,
+    "41": 11,
+    "42": 20,
+    "43": 14,
+    "44": 14,
+    "45": 2,
+    "47": 3
+   }
+  },
+  {
+   "ref": "1104791D811",
+   "name": "GLYCERIN MAX  2",
+   "price": 1799.9,
+   "category": "calcado-masc",
+   "colorway": "ORANGE/BEACON BLUE/NIGHTLIFE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4791D811"
+   ],
+   "sizes": {
+    "39": 4,
+    "40": 6,
+    "41": 19,
+    "42": 18,
+    "43": 12,
+    "44": 6
+   }
+  },
+  {
+   "ref": "1204681B048",
+   "name": "GLYCERIN MAX  2",
+   "price": 1799.9,
+   "category": "calcado-fem",
+   "colorway": "OYSTER/ARGILE/CYBER PINK",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4681B048"
+   ],
+   "sizes": {
+    "34": 2,
+    "35": 10,
+    "36": 12,
+    "37": 18,
+    "38": 14,
+    "39": 15,
+    "40": 8
+   }
+  },
+  {
+   "ref": "1204681B110",
+   "name": "GLYCERIN MAX  2",
+   "price": 1799.9,
+   "category": "calcado-fem",
+   "colorway": "COCONUT/STARFISH/WHITE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4681B110"
+   ],
+   "sizes": {
+    "34": 1,
+    "35": 2,
+    "36": 2,
+    "37": 2,
+    "38": 2,
+    "39": 2,
+    "40": 1
+   }
+  },
+  {
+   "ref": "1104651D179",
+   "name": "HYPERION 3",
+   "price": 999.9,
+   "category": "calcado-masc",
+   "colorway": "BLUEWASH/GREEN/BLACK",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4651D179"
+   ],
+   "sizes": {
+    "39": 13,
+    "40": 20,
+    "41": 23,
+    "42": 25,
+    "43": 14,
+    "44": 11
+   }
+  },
+  {
+   "ref": "1204531B102",
+   "name": "HYPERION 3",
+   "price": 999.9,
+   "category": "calcado-fem",
+   "colorway": "BLUEWASH/BLAZING BELL/GREEN",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4531B102"
+   ],
+   "sizes": {
+    "35": 8,
+    "36": 10,
+    "37": 14,
+    "38": 10,
+    "39": 9,
+    "40": 4
+   }
+  },
+  {
+   "ref": "1000491D681",
+   "name": "HYPERION ELITE 5",
+   "price": 2399.9,
+   "category": "calcado-masc",
+   "colorway": "PINK CLAY/ATOMIZER BLUE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_0491D681"
+   ],
+   "sizes": {
+    "35": 2,
+    "36": 10,
+    "37": 5,
+    "38": 9,
+    "40": 7,
+    "41": 3,
+    "42": 4,
+    "43": 2
+   }
+  },
+  {
+   "ref": "1104671D164",
+   "name": "HYPERION MAX 3",
+   "price": 1799.9,
+   "category": "calcado-masc",
+   "colorway": "WHITE/GRAY MIST/GREEN",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4671D164"
+   ],
+   "sizes": {
+    "39": 76,
+    "40": 81,
+    "41": 84,
+    "42": 87,
+    "43": 77,
+    "44": 78
+   }
+  },
+  {
+   "ref": "1104671D182",
+   "name": "HYPERION MAX 3",
+   "price": 1799.9,
+   "category": "calcado-fem",
+   "colorway": "COCONUT/ GREEN GECKO/ PINK CLAY",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4671D182F"
+   ],
+   "sizes": {
+    "34": 5,
+    "35": 14,
+    "36": 23,
+    "37": 26,
+    "37.5": 1,
+    "38": 6,
+    "39": 8,
+    "40": 2
+   }
+  },
+  {
+   "ref": "1104671D670",
+   "name": "HYPERION MAX 3",
+   "price": 1399.9,
+   "category": "calcado-masc",
+   "colorway": "FIERY CORAL/BLACK/ATOMIZER",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4671D670"
+   ],
+   "sizes": {
+    "38": 2,
+    "39": 5,
+    "40": 12,
+    "40.5": 5,
+    "41": 8,
+    "41.5": 2,
+    "42": 13,
+    "42.5": 3,
+    "43": 3,
+    "44": 1
+   }
+  },
+  {
+   "ref": "1204551B659",
+   "name": "HYPERION MAX 3",
+   "price": 1299.9,
+   "category": "calcado-fem",
+   "colorway": "COCONUT/FIERY CORAL/ATOMIZER",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4551B659"
+   ],
+   "sizes": {
+    "34": 7,
+    "35": 18,
+    "36": 14,
+    "37": 1,
+    "38": 4,
+    "39": 1
+   }
+  },
+  {
+   "ref": "1105201D163",
+   "name": "PYNRS X HYPERION MAX 3",
+   "price": 1799.9,
+   "category": "calcado-masc",
+   "colorway": "BLANC/ACID LIME/BLUE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_5201D163"
+   ],
+   "sizes": {
+    "39": 21,
+    "40": 18,
+    "41": 15,
+    "42": 13,
+    "43": 13,
+    "44": 17
+   }
+  },
+  {
+   "ref": "1205091B163",
+   "name": "PYNRS X HYPERION MAX 3",
+   "price": 1799.9,
+   "category": "calcado-fem",
+   "colorway": "BLANC/ACID LIME/BLUE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_5091B163"
+   ],
+   "sizes": {
+    "35": 32,
+    "36": 33,
+    "37": 33,
+    "38": 26,
+    "39": 5
+   }
+  },
+  {
+   "ref": "1104401D314",
+   "name": "CALDERA 8",
+   "price": 1449.9,
+   "category": "calcado-masc",
+   "colorway": "DUSTY OLIVE/LIME/OYSTER",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4401D314"
+   ],
+   "sizes": {
+    "38": 9,
+    "39": 11,
+    "40": 8,
+    "41": 9,
+    "41.5": 1,
+    "42": 14,
+    "43": 8,
+    "44": 7
+   }
+  },
+  {
+   "ref": "1104401D403",
+   "name": "CALDERA 8",
+   "price": 1449.9,
+   "category": "calcado-masc",
+   "colorway": "REGATTA/EBONY/NIGHTLIFE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4401D403"
+   ],
+   "sizes": {
+    "38": 7,
+    "42": 1
+   }
+  },
+  {
+   "ref": "1204291B031",
+   "name": "CALDERA 8",
+   "price": 1449.9,
+   "category": "calcado-fem",
+   "colorway": "GREY/BLACK/LIME",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4291B031"
+   ],
+   "sizes": {
+    "34": 9,
+    "35": 2,
+    "38": 1
+   }
+  },
+  {
+   "ref": "1104571D722",
+   "name": "CASCADIA 19",
+   "price": 1399.9,
+   "category": "calcado-masc",
+   "colorway": "SUNNY LIME/BLACK/BLUE",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4571D722"
+   ],
+   "sizes": {
+    "38": 6,
+    "39": 9,
+    "40": 11,
+    "41": 7,
+    "41.5": 1,
+    "42": 8,
+    "43": 6,
+    "44": 2
+   }
+  },
+  {
+   "ref": "1204461B711",
+   "name": "CASCADIA 19",
+   "price": 1399.9,
+   "category": "calcado-fem",
+   "colorway": "SUNNY LIME/BLACK/MAGENTA",
+   "brand": "Brooks",
+   "grade_codes": [
+    "bpe_4461B711"
+   ],
+   "sizes": {
+    "34": 10,
+    "35": 4,
+    "36": 5,
+    "37": 4,
+    "38": 2,
+    "39": 2
+   }
+  },
+  {
+   "ref": "280495006",
+   "name": "MEIA GHOST CREW UNISSEX",
+   "price": 149.9,
+   "category": "acessorio",
+   "colorway": "BLACK/BROOKS",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280495006"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280495189",
+   "name": "MEIA GHOST CREW UNISSEX",
+   "price": 149.9,
+   "category": "acessorio",
+   "colorway": "WHITE/BROOKS",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280495189"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280495462",
+   "name": "MEIA GHOST CREW UNISSEX",
+   "price": 149.9,
+   "category": "acessorio",
+   "colorway": "STEEL BLUE/BROOKS",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280495462"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280538006",
+   "name": "MEIA RUN-IN CREW 3 PARES UNISSEX",
+   "price": 179.9,
+   "category": "acessorio",
+   "colorway": "BLACK/BROOKS",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280538006"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280538189",
+   "name": "MEIA RUN-IN CREW 3 PARES UNISSEX",
+   "price": 179.9,
+   "category": "acessorio",
+   "colorway": "WHITE/BROOKS",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280538189"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280542189",
+   "name": "MEIA RUN-IN CANO MEDIO 3 PARES UNISSEX",
+   "price": 169.9,
+   "category": "acessorio",
+   "colorway": "WHITE/BROOKS",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280542189"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280542006",
+   "name": "MEIA RUN-IN CANO MEDIO 3 PARES UNISSEX",
+   "price": 169.9,
+   "category": "acessorio",
+   "colorway": "BLACK/BROOKS",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280542006"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280493001",
+   "name": "MEIA RUN-IN INVISIVEIS 3 PARES UNISSEX",
+   "price": 159.9,
+   "category": "acessorio",
+   "colorway": "BLACK",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280493001"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280493100",
+   "name": "MEIA RUN-IN INVISIVEIS 3 PARES UNISSEX",
+   "price": 159.9,
+   "category": "acessorio",
+   "colorway": "WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280493100"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280493938",
+   "name": "MEIA RUN-IN INVISIVEIS 3 PARES UNISSEX",
+   "price": 159.9,
+   "category": "acessorio",
+   "colorway": "NEO CAYENNE/WHITE/NIGHTLIFE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280493938"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280530066",
+   "name": "BONE JOURNEY UNISSEX",
+   "price": 279.9,
+   "category": "acessorio",
+   "colorway": "BLACK/BLACK",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280530066"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280530412",
+   "name": "BONE JOURNEY UNISSEX",
+   "price": 279.9,
+   "category": "acessorio",
+   "colorway": "EUPHORYC HALOGEN",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280530412"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280530615",
+   "name": "BONE JOURNEY UNISSEX",
+   "price": 279.9,
+   "category": "acessorio",
+   "colorway": "COSMIC CRISP",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280530615"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280531001",
+   "name": "VISEIRA JOURNEY UNISSEX",
+   "price": 199.9,
+   "category": "acessorio",
+   "colorway": "BLACK",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280531001"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280531100",
+   "name": "VISEIRA JOURNEY UNISSEX",
+   "price": 199.9,
+   "category": "acessorio",
+   "colorway": "WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280531100"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280529100",
+   "name": "BONE PROPEL MESH 2.0 UNISSEX",
+   "price": 299.9,
+   "category": "acessorio",
+   "colorway": "WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280529100"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280529604",
+   "name": "BONE PROPEL MESH 2.0 UNISSEX",
+   "price": 299.9,
+   "category": "acessorio",
+   "colorway": "COSMIC CRISP/BURGUNDY/LUMINARY",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280529604"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280529754",
+   "name": "BONE PROPEL MESH 2.0 UNISSEX",
+   "price": 299.9,
+   "category": "acessorio",
+   "colorway": "LUMINARY",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280529754"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280417033",
+   "name": "BONE HERITAGE RUN UNISSEX",
+   "price": 199.9,
+   "category": "acessorio",
+   "colorway": "BLACK/WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280417033"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "280417430",
+   "name": "BONE HERITAGE RUN UNISSEX",
+   "price": 199.9,
+   "category": "acessorio",
+   "colorway": "ABYSS BLUE/IVORY",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bacc_280417430"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "120006JP",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_120006JP"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "150003DZ",
+   "name": "BÚZIOS",
+   "price": 119.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_150003DZ"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "150005PZ",
+   "name": "BÚZIOS",
+   "price": 119.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_150005PZ"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "150006FB",
+   "name": "BÚZIOS",
+   "price": 119.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_150006FB"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "150007DG",
+   "name": "BÚZIOS",
+   "price": 119.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_150007DG"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "1500085V",
+   "name": "BÚZIOS",
+   "price": 119.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_1500085V"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "15000900",
+   "name": "BÚZIOS",
+   "price": 119.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_15000900"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "15000CA5",
+   "name": "BÚZIOS",
+   "price": 119.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_15000CA5"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "604901KD",
+   "name": "TÊNIS SOPHI",
+   "price": 299.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_604901KD"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "604905PZ",
+   "name": "TÊNIS SOPHI",
+   "price": 299.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_604905PZ"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60490900",
+   "name": "TÊNIS SOPHI",
+   "price": 299.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60490900"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60490MR1",
+   "name": "TÊNIS SOPHI",
+   "price": 299.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60490MR1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60490PRA",
+   "name": "TÊNIS SOPHI",
+   "price": 299.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60490PRA"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60490X46",
+   "name": "TÊNIS SOPHI",
+   "price": 299.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60490X46"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606733QA",
+   "name": "TÊNIS NICE",
+   "price": 459.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_606733QA"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606735FW",
+   "name": "TÊNIS NICE",
+   "price": 429.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_606735FW"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "6067385V",
+   "name": "TÊNIS NICE",
+   "price": 459.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_6067385V"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60673900",
+   "name": "TÊNIS NICE",
+   "price": 459.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60673900"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60673MR1",
+   "name": "TÊNIS NICE",
+   "price": 429.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60673MR1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60673X46",
+   "name": "TÊNIS NICE",
+   "price": 429.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60673X46"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606796FB",
+   "name": "SOPHI EVA",
+   "price": 399.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_606796FB"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60679900",
+   "name": "SOPHI EVA",
+   "price": 399.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60679900"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60679CM1",
+   "name": "TÊNIS SOPHI EVA",
+   "price": 399.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60679CM1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60679PRA",
+   "name": "SOPHI EVA",
+   "price": 399.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60679PRA"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60679W59",
+   "name": "TÊNIS SOPHI EVA",
+   "price": 399.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60679W59"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60679W81",
+   "name": "TÊNIS SOPHI EVA",
+   "price": 399.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60679W81"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60682000",
+   "name": "TÊNIS CLARA",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_60682000"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606821HX",
+   "name": "TÊNIS CLARA",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_606821HX"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606821KD",
+   "name": "TÊNIS CLARA",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_606821KD"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606825FW",
+   "name": "CLARA MONKEY",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_606825FW"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606826FB",
+   "name": "TÊNIS CLARA",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_606826FB"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606826JP",
+   "name": "TÊNIS CLARA",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_606826JP"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606828CM",
+   "name": "CLARA MONKEY",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_606828CM"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60682999",
+   "name": "CLARA MONKEY",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_60682999"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60682PRA",
+   "name": "CLARA MONKEY",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_60682PRA"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60682W81",
+   "name": "TÊNIS CLARA MONKEY",
+   "price": 479.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Kipling",
+   "grade_codes": [
+    "kpe_60682W81"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606844PW",
+   "name": "TÊNIS KALI",
+   "price": 299.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_606844PW"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606845PZ",
+   "name": "TÊNIS KALI",
+   "price": 299.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_606845PZ"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606851KD",
+   "name": "TÊNIS DREY",
+   "price": 399.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_606851KD"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606858HB",
+   "name": "TÊNIS DREY",
+   "price": 399.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_606858HB"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60685900",
+   "name": "TÊNIS DREY",
+   "price": 399.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60685900"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60686000",
+   "name": "TÊNIS KORA",
+   "price": 449.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60686000"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "6068685V",
+   "name": "TÊNIS KORA",
+   "price": 449.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_6068685V"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606871KD",
+   "name": "TÊNIS CAROL",
+   "price": 349.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_606871KD"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60687800",
+   "name": "TÊNIS CAROL",
+   "price": 349.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60687800"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60687900",
+   "name": "TÊNIS CAROL",
+   "price": 349.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60687900"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "606881KD",
+   "name": "TÊNIS MAI",
+   "price": 449.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_606881KD"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60688800",
+   "name": "TÊNIS MAI",
+   "price": 449.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60688800"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60688900",
+   "name": "TÊNIS MAI",
+   "price": 449.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60688900"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "60692900",
+   "name": "BOTA MOON BOOT",
+   "price": 549.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_60692900"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "900002TE",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_900002TE"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "900002TT",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_900002TT"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "900005PZ",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_900005PZ"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "900005TA",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_900005TA"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "900007DG",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_900007DG"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "90000900",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_90000900"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "90000CA5",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_90000CA5"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "90000MR1",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_90000MR1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "90000OFF",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_90000OFF"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "90000OU5",
+   "name": "FLAT KIPLING",
+   "price": 199.9,
+   "category": "calcado-fem",
+   "colorway": "",
+   "brand": "Reebok",
+   "grade_codes": [
+    "kpe_90000OU5"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100000015WCLCBC",
+   "name": "CLUB C 85",
+   "price": 549.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100000154UCLCBC",
+   "name": "CLUB C 85",
+   "price": 649.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rw1",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100000317UCLCOF",
+   "name": "CLUB C 85 VINTAGE",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2",
+    "rm3",
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100007794UCLCBC",
+   "name": "CLUB C 85 VINTAGE",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rw1",
+    "rm1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100007875UCLCBC",
+   "name": "CLUB C 85",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2",
+    "ru1",
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100009277UCLNBC",
+   "name": "CL NYLON",
+   "price": 599.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100010473USMEBC",
+   "name": "SMASH EDGE",
+   "price": 499.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100032889MNFXCZ",
+   "name": "NFX TRAINER",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074116MNANPT",
+   "name": "NANO UNKNWN",
+   "price": 799.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074166MCLCAZ",
+   "name": "CLUB C 85",
+   "price": 549.99,
+   "category": "calcado-masc",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074168MCLCBG",
+   "name": "CLUB C 85",
+   "price": 549.99,
+   "category": "calcado-masc",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074236WCLCRS",
+   "name": "CLUB C 85",
+   "price": 549.99,
+   "category": "calcado-fem",
+   "colorway": "ROSE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074286MCLRBC",
+   "name": "CLASSIC LEATHER WINTER",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074329WCLNRS",
+   "name": "CL NYLON",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "ROSE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074354MCLRCZ",
+   "name": "CLASSIC LEATHER",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074361WCLRRS",
+   "name": "CLASSIC LEATHER",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "ROSE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074449MCLCPT",
+   "name": "CLUB C 85",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074450MCLCCZ",
+   "name": "CLUB C 85",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm3",
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074601MCLRAZ",
+   "name": "CLASSIC LEATHER",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074627WCLCBC",
+   "name": "CLUB C REVENGE",
+   "price": 649.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074643WCLCAZ",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "ec9"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074674MZIGMR",
+   "name": "ZIG KINETICA 2.5 ADVENTURE",
+   "price": 1099.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074693MIPFCO",
+   "name": "INSTAPUMP FURY 95",
+   "price": 1099.99,
+   "category": "calcado-masc",
+   "colorway": "CORAL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074846MCLCMR",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100074872MIPFCO",
+   "name": "INSTAPUMP FURY 95",
+   "price": 1099.99,
+   "category": "calcado-masc",
+   "colorway": "CORAL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100075032MCLCVD",
+   "name": "CLUB C REVENGE",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100075291WCLRRS",
+   "name": "CLASSIC LEATHER",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "ROSE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100075292WCLRAZ",
+   "name": "CLASSIC LEATHER",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100200462UATRBC",
+   "name": "ATR CHILL",
+   "price": 649.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100200466WATRPT",
+   "name": "ATR CHILL",
+   "price": 649.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "ec9"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100200469MATRPT",
+   "name": "ATR CHILL",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm3",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100200793MATRBC",
+   "name": "ATR MID",
+   "price": 799.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201039MCLRCZ",
+   "name": "CLASSIC LEATHER 2400",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201049MCLRMR",
+   "name": "CLASSIC LEATHER WINTER",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201096MCLCBC",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201105MCLRMR",
+   "name": "CL LEATHER HEXALITE +",
+   "price": 799.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201110MCLRCZ",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201122MCLRCZ",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201137MCLRPT",
+   "name": "CLASSIC LEATHER 2400",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201178MCLCVD",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201195MCLCBG",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201232MCLCMA",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201236MGL1AM",
+   "name": "GL1100",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "AMARELO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201303WCLCBC",
+   "name": "CLUB C 85",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201401WCLCRS",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "ROSE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201431WROYRS",
+   "name": "ROYAL ULTRA FLASH",
+   "price": 499.99,
+   "category": "calcado-fem",
+   "colorway": "ROSE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201492MGL1PT",
+   "name": "GL1100",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100201727UZIGBC",
+   "name": "FLOATZIG X1",
+   "price": 1499.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm3",
+    "ru1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100202092WCLCBC",
+   "name": "CLUB C 85",
+   "price": 549.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100202316UCLCBC",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm3",
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100202317UCLCPT",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100202334WCOAVD",
+   "name": "COURT ADVANCE SURGE",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100202599UCOAMR",
+   "name": "COURT ADVANCE CNVS",
+   "price": 599.99,
+   "category": "calcado-uni",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100202648WCOABC",
+   "name": "COURT ADVANCE SURGE",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100202795MPRECO",
+   "name": "PRE-SEASON 94",
+   "price": 849.99,
+   "category": "calcado-masc",
+   "colorway": "CORAL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100203728MIPFBC",
+   "name": "INSTAPUMP FURY 94",
+   "price": 1299.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100204579WCLCBC",
+   "name": "CLUB C REVENGE",
+   "price": 649.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100204819MBB4CO",
+   "name": "BB 4500 DMX",
+   "price": 799.99,
+   "category": "calcado-masc",
+   "colorway": "CORAL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm3",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100204828METPPT",
+   "name": "ENERGEN TECH PLUS 2",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "ec2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100204901MCLCVN",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "VINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100204920UZIGAZ",
+   "name": "FLOATZIG X1",
+   "price": 1499.99,
+   "category": "calcado-uni",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1",
+    "rm3",
+    "ru1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100205110MCLNVN",
+   "name": "CL NYLON",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "VINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100205111MCLNCZ",
+   "name": "CL NYLON",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100205112MCLNBG",
+   "name": "CL NYLON",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100206728MZIGBC",
+   "name": "FLOATZIG 1",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100206737MZIGAZ",
+   "name": "FLOATZIG SYMMETROS",
+   "price": 1099.99,
+   "category": "calcado-masc",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100206739MZIGBC",
+   "name": "FLOATZIG SYMMETROS",
+   "price": 1099.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100206740WZIGBC",
+   "name": "FLOATZIG SYMMETROS",
+   "price": 1099.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100207043UCLRNA",
+   "name": "CLASSIC LEATHER HEXALITE X NASA",
+   "price": 899.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100207946WCLRBC",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208169MZIGPT",
+   "name": "FLOATZIG ADVENTURE",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208245MSMEBC",
+   "name": "SMASH EDGE",
+   "price": 499.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2",
+    "rm2",
+    "ru1",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208246USMEPT",
+   "name": "SMASH EDGE",
+   "price": 499.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "ec2",
+    "rm2",
+    "rw1",
+    "rw2",
+    "ru1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208288MCLCMR",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208590WCOABC",
+   "name": "COURT ADVANCE SURGE",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208650MIPFPT",
+   "name": "INSTAPUMP FURY 94 (ARIES)",
+   "price": 1799.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208830WCLABC",
+   "name": "CLASSIC AZ",
+   "price": 549.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208831WCLAPT",
+   "name": "CLASSIC AZ",
+   "price": 549.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208957UATRBG",
+   "name": "ATR CHILL 96",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "ru1",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208969WCLCMR",
+   "name": "CLUB C 85",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208970WCLCBC",
+   "name": "CLUB C 85",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208971WCLCBC",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208972WCLCBC",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100208995MCLCBC",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209025UCLCBC",
+   "name": "CLUB C 85 VINTAGE",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rw1",
+    "rm1",
+    "ec2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209030UCLCBC",
+   "name": "CLUB C 85 VINTAGE",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209036MCLCPT",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209038UCLCVD",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-uni",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209053UHAMPT",
+   "name": "HAMMER STREET",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209064WCLCBC",
+   "name": "CLUB C REVENGE VINTAGE",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209075MER4PT",
+   "name": "ENERGEN RUN 4",
+   "price": 549.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209105UPREBG",
+   "name": "PRE-SEASON 94",
+   "price": 849.99,
+   "category": "calcado-uni",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209133MBB4BC",
+   "name": "BB 4500 DMX",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209480MCLRBC",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209484MCLRPT",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209517MCLRVD",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209522UCLRBG",
+   "name": "CLASSIC LEATHER 2400",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209525UCLRPT",
+   "name": "CLASSIC LEATHER 2400",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209527UCLRCO",
+   "name": "CLASSIC LEATHER 2400",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "CORAL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209529MERSCZ",
+   "name": "ERS 4000",
+   "price": 799.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209531MERSMR",
+   "name": "ERS 4000",
+   "price": 799.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209547MERSMR",
+   "name": "ERS WORLD",
+   "price": 949.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209548MERSPT",
+   "name": "ERS WORLD",
+   "price": 949.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209549MCLNCZ",
+   "name": "CLASSIC NYLON",
+   "price": 549.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209552MCLNMA",
+   "name": "CLASSIC NYLON",
+   "price": 549.99,
+   "category": "calcado-masc",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "ec2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209557WCLRBC",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209562WCLRBG",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209689WCLNVD",
+   "name": "CLASSIC NYLON",
+   "price": 549.99,
+   "category": "calcado-fem",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209916WZIGVD",
+   "name": "FLOATZIG SYMMETROS",
+   "price": 999.99,
+   "category": "calcado-fem",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209959MCRAPT",
+   "name": "AT CRAZE 3",
+   "price": 549.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100209968MLT2VD",
+   "name": "LAVANTE TRAIL 2",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210022UGL1PT",
+   "name": "GL1100",
+   "price": 599.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210023UGL1CZ",
+   "name": "GL1100",
+   "price": 599.99,
+   "category": "calcado-uni",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210029MROYPT",
+   "name": "ROYAL ULTRA FLASH",
+   "price": 499.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210030MROYBG",
+   "name": "ROYAL ULTRA FLASH",
+   "price": 499.99,
+   "category": "calcado-masc",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210033WROYRS",
+   "name": "ROYAL ULTRA FLASH",
+   "price": 499.99,
+   "category": "calcado-fem",
+   "colorway": "ROSE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210034WROYAZ",
+   "name": "ROYAL ULTRA FLASH",
+   "price": 499.99,
+   "category": "calcado-fem",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210082WDMXCZ",
+   "name": "DMX COMFORT + 2.0",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210159UZIGMA",
+   "name": "FLOATZIG X1",
+   "price": 1499.99,
+   "category": "calcado-uni",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210247MZIGPT",
+   "name": "FLOATZIG SYMMETROS",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm3",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210253MDMXBC",
+   "name": "DMX COMFORT + 2.0",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210254MDMXPT",
+   "name": "DMX COMFORT + 2.0",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100210258WDMXAZ",
+   "name": "DMX COMFORT + 2.0",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100212123UHAMBC",
+   "name": "HAMMER STREET",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "ru1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100212275WNANAZ",
+   "name": "NANO GYM",
+   "price": 799.99,
+   "category": "calcado-fem",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100218465MENGLA",
+   "name": "ENGINE A",
+   "price": 1099.99,
+   "category": "calcado-masc",
+   "colorway": "LARANJA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100220809WCLCBG",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100220815WCLCRS",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "ROSE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100221096UBB4BC",
+   "name": "BB 4000 II",
+   "price": 799.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100221101UBB4CZ",
+   "name": "BB 4000 II",
+   "price": 799.99,
+   "category": "calcado-uni",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100221513MBB4PT",
+   "name": "BB 4000 II MID",
+   "price": 749.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225408MLT2BG",
+   "name": "LAVANTE TRAIL 2",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225410WLT2OF",
+   "name": "LAVANTE TRAIL 2",
+   "price": 649.99,
+   "category": "calcado-fem",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225445MNANCZ",
+   "name": "NANO X5",
+   "price": 1099.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225490MZD6PT",
+   "name": "ZIG DYNAMICA 6",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rl1",
+    "rm1",
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225493WZD6VM",
+   "name": "ZIG DYNAMICA 6",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "VERMELHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225495WZD6PT",
+   "name": "ZIG DYNAMICA 6",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225499MZIGCO",
+   "name": "FLOATZIG 2",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "CORAL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225500MZIGBC",
+   "name": "FLOATZIG 2",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225503MZIGPT",
+   "name": "FLOATZIG 2",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100225509WZIGCZ",
+   "name": "FLOATZIG 2",
+   "price": 999.99,
+   "category": "calcado-fem",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100227009MKTDPT",
+   "name": "KITARI DMX",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100227353MER4BC",
+   "name": "ENERGEN RUN 4",
+   "price": 549.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100227354MER4CZ",
+   "name": "ENERGEN RUN 4",
+   "price": 549.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100227355MER4PT",
+   "name": "ENERGEN RUN 4",
+   "price": 549.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100227791WZIGPT",
+   "name": "FLOATZIG SYMMETROS",
+   "price": 1099.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228108UCLCCZ",
+   "name": "CLUB C VINTAGE",
+   "price": 799.99,
+   "category": "calcado-uni",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228109UCLCPT",
+   "name": "CLUB C VINTAGE",
+   "price": 799.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228113MCLCBC",
+   "name": "CLUB C 85",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228138UCLCPT",
+   "name": "CLUB C GROUNDS UK",
+   "price": 649.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228143MCLCMR",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228471METPPT",
+   "name": "ENERGEN TECH PLUS 2",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228472METPAZ",
+   "name": "ENERGEN TECH PLUS 2",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228474METPPT",
+   "name": "ENERGEN TECH PLUS 2",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228710USMEBC",
+   "name": "SMASH EDGE",
+   "price": 499.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228713MZIGAM",
+   "name": "ZIGNITION",
+   "price": 749.99,
+   "category": "calcado-masc",
+   "colorway": "AMARELO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228723USMEAZ",
+   "name": "SMASH EDGE",
+   "price": 499.99,
+   "category": "calcado-uni",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2",
+    "ec2",
+    "ru1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228759MZIGBC",
+   "name": "ZIGNITION",
+   "price": 749.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100228764WZIGBC",
+   "name": "ZIGNITION",
+   "price": 749.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229524WCLCVD",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229543WCLCCZ",
+   "name": "CLUB C GROUNDS UK",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229547WCLCVD",
+   "name": "CLUB C 85",
+   "price": 649.99,
+   "category": "calcado-fem",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229831MCLCCZ",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229832MCLCMR",
+   "name": "CLUB C REVENGE",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229839UCLCBC",
+   "name": "CLUB C 85",
+   "price": 649.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm3",
+    "rw2",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229856WCLCVM",
+   "name": "CLUB C 85",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "VERMELHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229877WCASVM",
+   "name": "COURT ADVANCE SURGE",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "VERMELHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229901UFNLAM",
+   "name": "FINALE",
+   "price": 499.99,
+   "category": "calcado-uni",
+   "colorway": "AMARELO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100229957UPMSPT",
+   "name": "PRIME SET",
+   "price": 399.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2",
+    "ru1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100230435UPMSOF",
+   "name": "PRIME SET",
+   "price": 399.99,
+   "category": "calcado-uni",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100230436UPMSBC",
+   "name": "PRIME SET",
+   "price": 399.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100230439UCMGMR",
+   "name": "CAMARGUE",
+   "price": 899.99,
+   "category": "calcado-uni",
+   "colorway": "MARROM",
+   "brand": "Kipling",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100230593UATRAZ",
+   "name": "ATR CHILL",
+   "price": 649.99,
+   "category": "calcado-uni",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100230599UATRCZ",
+   "name": "ATR CHILL 96",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100230600UATRCZ",
+   "name": "ATR CHILL 96",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100230640UBB4BC",
+   "name": "BB 4500 DMX",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100230672UENGAZ",
+   "name": "ENGINE A",
+   "price": 1099.99,
+   "category": "calcado-uni",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100230800WCLNMR",
+   "name": "CL NYLON",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233799MZIGMA",
+   "name": "ZIGNITION",
+   "price": 749.99,
+   "category": "calcado-masc",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233834WZIGAM",
+   "name": "ZIGNITION",
+   "price": 749.99,
+   "category": "calcado-fem",
+   "colorway": "AMARELO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233940UR400PT",
+   "name": "R400",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233941UR400BC",
+   "name": "R400",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233954UCLCOF",
+   "name": "CLUB C VINTAGE",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233955WCLCOF",
+   "name": "CLUB C 85 VINTAGE",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "ru1",
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233957WCLCOF",
+   "name": "CLUB C REVENGE VINTAGE",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233958WCLCOF",
+   "name": "CLUB C REVENGE VINTAGE",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233963UCLCOF",
+   "name": "CLUB C REVENGE VINTAGE",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm3",
+    "ru1",
+    "rw1",
+    "rm2",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100233964UCLCOF",
+   "name": "CLUB C REVENGE VINTAGE",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239214WCASBC",
+   "name": "COURT ADVANCE SURGE",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239442MZIGPT",
+   "name": "FLOATZIG 2",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239692UPMGBC",
+   "name": "PRIME GROUNDS",
+   "price": 349.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239693UPMGBC",
+   "name": "PRIME GROUNDS",
+   "price": 349.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239694UPMGBC",
+   "name": "PRIME GROUNDS",
+   "price": 349.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239695UPMGPT",
+   "name": "PRIME GROUNDS",
+   "price": 349.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239728UPMGPT",
+   "name": "PRIME GROUNDS SUEDE",
+   "price": 369.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239729UPMGAZ",
+   "name": "PRIME GROUNDS SUEDE",
+   "price": 369.99,
+   "category": "calcado-uni",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239757UPMSBC",
+   "name": "PRIME SERVE",
+   "price": 349.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239758UPMSBC",
+   "name": "PRIME SERVE",
+   "price": 349.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239759UPMSBC",
+   "name": "PRIME SERVE",
+   "price": 349.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100239763UPMSPT",
+   "name": "PRIME SERVE SUEDE",
+   "price": 369.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100241104URPRPT",
+   "name": "REEBOK ROYAL PRIME RUN",
+   "price": 379.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244383MNANPT",
+   "name": "NANOFLEX TR 3",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rl1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244384MNANMA",
+   "name": "NANOFLEX TR 3",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244425UNANPT",
+   "name": "NANO X5 EDGE",
+   "price": 1099.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244483WZIGBC",
+   "name": "FLOATZIG 2",
+   "price": 999.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244492MZIGMA",
+   "name": "FLOATZIG 2",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244495MZIGCZ",
+   "name": "FLOATZIG 2",
+   "price": 999.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244512WZD6CZ",
+   "name": "ZIG DYNAMICA 6",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244513WZD6OF",
+   "name": "ZIG DYNAMICA 6",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244516MZD6CZ",
+   "name": "ZIG DYNAMICA 6",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244517MZD6AZ",
+   "name": "ZIG DYNAMICA 6",
+   "price": 599.99,
+   "category": "calcado-masc",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244531METPPT",
+   "name": "ENERGEN TECH PLUS 2",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244532METPAZ",
+   "name": "ENERGEN TECH PLUS 2",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244588UDMXPT",
+   "name": "DMX RECOVERY MULE",
+   "price": 349.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rs2",
+    "rs5",
+    "rs3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244590UDMXBC",
+   "name": "DMX RECOVERY MULE",
+   "price": 349.99,
+   "category": "calcado-uni",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rs2",
+    "rs4",
+    "rs5",
+    "rs3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244690WNANBC",
+   "name": "NANO GYM",
+   "price": 799.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244696MNANBC",
+   "name": "NANO GYM",
+   "price": 799.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244700MNANPT",
+   "name": "NANO GYM",
+   "price": 799.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100244988UWKTVD",
+   "name": "WORKOUT PLUS",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100245037UCLRCZ",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-uni",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100245080UCLAMR",
+   "name": "CLASSIC AZ",
+   "price": 549.99,
+   "category": "calcado-uni",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "ru1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100245082UCLACZ",
+   "name": "CLASSIC AZ",
+   "price": 549.99,
+   "category": "calcado-uni",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100245393WZIGBG",
+   "name": "FLOATZIG 2",
+   "price": 999.99,
+   "category": "calcado-fem",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100245689WCLACZ",
+   "name": "CLASSIC AZ",
+   "price": 549.99,
+   "category": "calcado-fem",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100246826UEGLPT",
+   "name": "ENGINE LT",
+   "price": 799.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100246827UEGLCZ",
+   "name": "ENGINE LT",
+   "price": 799.99,
+   "category": "calcado-uni",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm3",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100246832URBPPT",
+   "name": "REEBOK PRESS",
+   "price": 599.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100247416URBPPT",
+   "name": "REEBOK PRESS",
+   "price": 599.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1",
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100249412UNANCO",
+   "name": "NANO X5 EDGE",
+   "price": 1099.99,
+   "category": "calcado-uni",
+   "colorway": "CORAL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100249414UNANPT",
+   "name": "NANO X5 EDGE",
+   "price": 1099.99,
+   "category": "calcado-uni",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100249415UNANCZ",
+   "name": "NANO X5 EDGE",
+   "price": 1099.99,
+   "category": "calcado-uni",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100249416WNANPT",
+   "name": "NANO X5 EDGE",
+   "price": 1099.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100249418WNANCO",
+   "name": "NANO X5 EDGE",
+   "price": 1099.99,
+   "category": "calcado-fem",
+   "colorway": "CORAL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100255926WUTLVD",
+   "name": "ULTRA LO",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100256037WFSLBC",
+   "name": "F/S LO",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2",
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100256186UENGCO",
+   "name": "ENGINE A 26 SE",
+   "price": 899.99,
+   "category": "calcado-uni",
+   "colorway": "CORAL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rl2",
+    "rm3"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100256994MAGRCZ",
+   "name": "ANGEL REESE 1",
+   "price": 1199.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rl2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100258947WFSHBC",
+   "name": "F/S HI",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262034MCLCOF",
+   "name": "CLUB C 85",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262149MCLRPT",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2",
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262151WCLRCZ",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2",
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262152WCLRAZ",
+   "name": "CLASSIC LEATHER",
+   "price": 699.99,
+   "category": "calcado-fem",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2",
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262302MCLCMR",
+   "name": "CLUB C 85",
+   "price": 649.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262665WZIGVD",
+   "name": "ZIGNITION",
+   "price": 749.99,
+   "category": "calcado-fem",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262682MZIGPT",
+   "name": "ZIGNITION",
+   "price": 749.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262685MZIGBC",
+   "name": "ZIGNITION",
+   "price": 749.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262831MAGRCZ",
+   "name": "ANGEL REESE 1",
+   "price": 1199.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100271510MRRPPT",
+   "name": "REEBOK ROYAL PRIME 2.0",
+   "price": 299.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rk6"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100271511MRRPBC",
+   "name": "REEBOK ROYAL PRIME 2.0",
+   "price": 299.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rk6"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100271552MVRSPT",
+   "name": "VERSE",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100271555MVRSAZ",
+   "name": "VERSE",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100271561WVRSPT",
+   "name": "VERSE",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0033NMBL99",
+   "name": "M BIG LOGO LINEAR CREW",
+   "price": 319.99,
+   "category": "vestuario",
+   "colorway": "BLUE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0043NWBL99",
+   "name": "W BIG LOGO LINEAR CREW",
+   "price": 269.99,
+   "category": "vestuario",
+   "colorway": "BLUE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0048NWPN99",
+   "name": "W LOGO PANTS",
+   "price": 319.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0067NWPN77",
+   "name": "W LOGO PANTS",
+   "price": 279.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0075NMBL77",
+   "name": "M BIG LOGO LINEAR HOODED",
+   "price": 299.99,
+   "category": "vestuario",
+   "colorway": "BLUE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0078NWBL77",
+   "name": "W BIG LOGO LINEAR HOODED",
+   "price": 279.99,
+   "category": "vestuario",
+   "colorway": "BLUE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0105NMTS6A9",
+   "name": "CAMISETA REEBOK BASIC LOGO MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "NAVY",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0105NMTS8A3",
+   "name": "CAMISETA REEBOK BASIC LOGO MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "VINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0105NMTS9A0A",
+   "name": "CAMISETA REEBOK BASIC LOGO MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0105NMTS9A3",
+   "name": "CAMISETA REEBOK BASIC LOGO MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS00",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS00B",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS0A4",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS7A2C",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS8A3A",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS8A5A",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS99A",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS9A0F",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS9A1A",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0106NMTS9A1B",
+   "name": "CAMISETA REEBOK BASIC LINEAR MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0121NMTS10A",
+   "name": "CAMISETA REEBOK BASIC STAR CREST MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0121NMTS16AA",
+   "name": "CAMISETA REEBOK BASIC STAR CREST MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0121NMTS9A0F",
+   "name": "CAMISETA REEBOK BASIC STAR CREST MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0121NMTS9A1",
+   "name": "CAMISETA REEBOK BASIC STAR CREST MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0121NMTS9A1A",
+   "name": "CAMISETA REEBOK BASIC STAR CREST MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0121NMTS9A3",
+   "name": "CAMISETA REEBOK BASIC STAR CREST MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0124NMTS7A2",
+   "name": "CAMISETA REEBOK SMALL STAR CREST MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "CINZA ESCURO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0137NMTS78",
+   "name": "CAMISETA REEBOK BASIC STACKED MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0137NMTS99",
+   "name": "CAMISETA REEBOK BASIC STACKED MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0137NMTS9A1",
+   "name": "CAMISETA REEBOK BASIC STACKED MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0138NWTS00",
+   "name": "CAMISETA REEBOK BASIC STACKED FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0138NWTS8A5",
+   "name": "CAMISETA REEBOK BASIC STACKED FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "VINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0138NWTS96A",
+   "name": "CAMISETA REEBOK BASIC STACKED FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "NAVY",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0138NWTS99",
+   "name": "CAMISETA REEBOK BASIC STACKED FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0138NWTS9A3",
+   "name": "CAMISETA REEBOK BASIC STACKED FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0139NWTS06",
+   "name": "CAMISETA REEBOK BASIC RBK FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0139NWTS7B1",
+   "name": "CAMISETA REEBOK BASIC RBK FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0139NWTS8A3",
+   "name": "CAMISETA REEBOK BASIC RBK FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "VINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0139NWTS99",
+   "name": "CAMISETA REEBOK BASIC RBK FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0140NWTS06",
+   "name": "CAMISETA REEBOK BASIC OVER FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0140NWTS8A5",
+   "name": "CAMISETA REEBOK BASIC OVER FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "VINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "CL0140NWTS99",
+   "name": "CAMISETA REEBOK BASIC OVER FEMININA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10001WACEBC",
+   "name": "Ace",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10001WACEPT",
+   "name": "Ace",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10002MACEBC",
+   "name": "Ace",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10002MACEMR",
+   "name": "Ace",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10002MACEPT",
+   "name": "Ace",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10003WSPRBC",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10003WSPRMR",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10003WSPRPT",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10003WSPRVN",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "VINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10004MSPRBC",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10004MSPRMR",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10004MSPRPT",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10004MSPRVN",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "VINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10005WVULOF",
+   "name": "Vulca",
+   "price": 349.99,
+   "category": "calcado-fem",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10005WVULPT",
+   "name": "Vulca",
+   "price": 349.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10006MVULCZ",
+   "name": "Vulca",
+   "price": 349.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10006MVULOF",
+   "name": "Vulca",
+   "price": 349.99,
+   "category": "calcado-masc",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10006MVULPT",
+   "name": "Vulca",
+   "price": 349.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10006MVULVD",
+   "name": "Vulca",
+   "price": 349.99,
+   "category": "calcado-masc",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB11001MSMRAZ",
+   "name": "SMART",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB11001MSMRBC",
+   "name": "SMART",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB11001MSMRBG",
+   "name": "SMART",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB11001MSMRPT",
+   "name": "SMART",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB11001WSMRAZ",
+   "name": "SMART",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB11001WSMRBC",
+   "name": "SMART",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB11001WSMRBG",
+   "name": "SMART",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "BEGE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB11001WSMRPT",
+   "name": "SMART",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RMBT3B0433BZ92",
+   "name": "MOCHILA JERI",
+   "price": 289.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RMS5C2777BZ91",
+   "name": "BOLSA REEBOK TRANSVERSAL WEBSTER UNISSEX",
+   "price": 209.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RMS5C2777BZ99",
+   "name": "BOLSA REEBOK TRANSVERSAL WEBSTER UNISSEX",
+   "price": 209.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0002NMTS00",
+   "name": "M IMPACT SS TEE",
+   "price": 179.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0002NMTS7A2",
+   "name": "M IMPACT SS TEE",
+   "price": 179.99,
+   "category": "vestuario",
+   "colorway": "CINZA ESCURO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0002NMTS99",
+   "name": "M IMPACT SS TEE",
+   "price": 179.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0025NMTS99",
+   "name": "M AGILE RAGLAN SS TEE",
+   "price": 169.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0036NWTS5A1",
+   "name": "W AGILE RAGLAN SS TEE",
+   "price": 159.99,
+   "category": "vestuario",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0053NWTS54",
+   "name": "W RACE SS TEE",
+   "price": 169.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0077NMSH99",
+   "name": "M DYNAMIC 9 SHORTS",
+   "price": 199.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0089NMLG99",
+   "name": "M UTILITY TIGHT",
+   "price": 199.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0096NWTS03",
+   "name": "W UTILITY LS TEE",
+   "price": 129.99,
+   "category": "vestuario",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0152NMTS66",
+   "name": "CAMISETA REEBOK BASIC PA MASCULINA",
+   "price": 109.99,
+   "category": "vestuario",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0152NMTS99",
+   "name": "CAMISETA REEBOK BASIC PA MASCULINA",
+   "price": 109.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0153NMTK66",
+   "name": "REGATA REEBOK BASIC PA MASCULINA",
+   "price": 99.99,
+   "category": "vestuario",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0153NMTK99",
+   "name": "REGATA REEBOK BASIC PA MASCULINA",
+   "price": 99.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0154NWTS4A2",
+   "name": "CAMISETA REEBOK BASIC PA FEMININA",
+   "price": 109.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0154NWTS94",
+   "name": "CAMISETA REEBOK BASIC PA FEMININA",
+   "price": 109.99,
+   "category": "vestuario",
+   "colorway": "CINZA MESCLA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0154NWTS99",
+   "name": "CAMISETA REEBOK BASIC PA FEMININA",
+   "price": 109.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0155NWTK99",
+   "name": "REGATA REEBOK BASIC PA FEMININA",
+   "price": 99.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0156NMTS00",
+   "name": "CAMISETA REEBOK BASIC RN MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0156NMTS6A3",
+   "name": "CAMISETA REEBOK BASIC RN MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "NAVY",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0156NMTS7B3",
+   "name": "CAMISETA REEBOK BASIC RN MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0156NMTS7BB",
+   "name": "CAMISETA REEBOK BASIC RN MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0156NMTS94",
+   "name": "CAMISETA REEBOK BASIC RN MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "CINZA MESCLA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0156NMTS99",
+   "name": "CAMISETA REEBOK BASIC RN MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0157NMTK6A3",
+   "name": "REGATA REEBOK BASIC RN MASCULINA",
+   "price": 99.99,
+   "category": "vestuario",
+   "colorway": "NAVY",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0157NMTK99",
+   "name": "REGATA REEBOK BASIC RN MASCULINA",
+   "price": 99.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0158NWTS00",
+   "name": "CAMISETA REEBOK BASIC RN FEMININA",
+   "price": 109.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0158NWTS48",
+   "name": "CAMISETA REEBOK BASIC RN FEMININA",
+   "price": 109.99,
+   "category": "vestuario",
+   "colorway": "AZUL",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0158NWTS4A4",
+   "name": "CAMISETA REEBOK BASIC RN FEMININA",
+   "price": 109.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0158NWTS99",
+   "name": "CAMISETA REEBOK BASIC RN FEMININA",
+   "price": 109.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0159NWTK99",
+   "name": "REGATA REEBOK BASIC RN FEMININA",
+   "price": 99.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0164NMSH73",
+   "name": "SHORT REEBOK 9 DYNAMIC MASCULINO",
+   "price": 169.99,
+   "category": "vestuario",
+   "colorway": "CINZA ESCURO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0164NMSH99",
+   "name": "SHORT REEBOK 9 DYNAMIC MASCULINO",
+   "price": 169.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0165NMSH99",
+   "name": "SHORT REEBOK 7 DYNAMIC MASCULINO",
+   "price": 169.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0166NMSH99",
+   "name": "SHORT REEBOK 5 DYNAMIC MASCULINO",
+   "price": 159.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RN0169NMSH66",
+   "name": "SHORT REEBOK 5 IMPACT MASCULINO",
+   "price": 189.99,
+   "category": "vestuario",
+   "colorway": "MARINHO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RUBT3B0305BZB4",
+   "name": "MOCHILA SANTA FE",
+   "price": 299.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUF5D3333BZ6A8",
+   "name": "BOLSA REEBOK PERTH II UNISSEX",
+   "price": 189.99,
+   "category": "acessorio",
+   "colorway": "NAVY",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUF5D3333BZ91",
+   "name": "BOLSA REEBOK PERTH II UNISSEX",
+   "price": 189.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUF5D3333BZ99",
+   "name": "BOLSA REEBOK PERTH II UNISSEX",
+   "price": 189.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUH4B0380BZ18",
+   "name": "MOCHILA REEBOK ELEMENT I UNISSEX",
+   "price": 189.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUH4B0380BZ52",
+   "name": "MOCHILA REEBOK ELEMENT I UNISSEX",
+   "price": 189.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUH4B0380BZ66",
+   "name": "MOCHILA REEBOK ELEMENT I UNISSEX",
+   "price": 189.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUH4B0380BZB4",
+   "name": "MOCHILA REEBOK ELEMENT I UNISSEX",
+   "price": 189.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUH4D333891",
+   "name": "BOLSA REEBOK COLBIE UNISSEX",
+   "price": 249.99,
+   "category": "acessorio",
+   "colorway": "MARROM",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUS5B0606BZ1A1",
+   "name": "MOCHILA REEBOK NATHALIE UNISSEX",
+   "price": 249.99,
+   "category": "acessorio",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUS5B0606BZ52",
+   "name": "MOCHILA REEBOK NATHALIE UNISSEX",
+   "price": 249.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUS5B0606BZ6A8",
+   "name": "MOCHILA REEBOK NATHALIE UNISSEX",
+   "price": 249.99,
+   "category": "acessorio",
+   "colorway": "NAVY",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUS5B0606BZ99",
+   "name": "MOCHILA REEBOK NATHALIE UNISSEX",
+   "price": 249.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUS5D3357BZ1A1",
+   "name": "BOLSA REEBOK DENVER UNISSEX",
+   "price": 209.99,
+   "category": "acessorio",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUS5D3357BZ66",
+   "name": "BOLSA REEBOK DENVER UNISSEX",
+   "price": 209.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RUS5D3357BZ99",
+   "name": "BOLSA REEBOK DENVER UNISSEX",
+   "price": 209.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RWS5C2631BZ1A1",
+   "name": "BOLSA REEBOK TRANSVERSAL THEA UNISSEX",
+   "price": 179.99,
+   "category": "acessorio",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RWS5C2631BZ53",
+   "name": "BOLSA REEBOK TRANSVERSAL THEA UNISSEX",
+   "price": 179.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RWS5C2631BZ6A3",
+   "name": "BOLSA REEBOK TRANSVERSAL THEA UNISSEX",
+   "price": 179.99,
+   "category": "acessorio",
+   "colorway": "NAVY",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RWS5C2631BZ99",
+   "name": "BOLSA REEBOK TRANSVERSAL THEA UNISSEX",
+   "price": 179.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RWS5C2667BZ1A1",
+   "name": "BOLSA REEBOK TRANSVERSAL DOVE UNISSEX",
+   "price": 229.99,
+   "category": "acessorio",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "RWS5C2667BZ99",
+   "name": "BOLSA REEBOK TRANSVERSAL DOVE UNISSEX",
+   "price": 229.99,
+   "category": "acessorio",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0028NWTS7A2",
+   "name": "W ACTIVE SS TEE",
+   "price": 169.99,
+   "category": "vestuario",
+   "colorway": "CINZA ESCURO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0028NWTS97",
+   "name": "W ACTIVE SS TEE",
+   "price": 169.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0103NMTS00",
+   "name": "M ENERGY PRINT SS TEE",
+   "price": 199.99,
+   "category": "vestuario",
+   "colorway": "PRETO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0103NMTS57",
+   "name": "M ENERGY PRINT SS TEE",
+   "price": 199.99,
+   "category": "vestuario",
+   "colorway": "PETRÓLEO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0149NMTK91",
+   "name": "REGATA REEBOK TRAIN II MASCULINA",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0150NWTP4A4",
+   "name": "TOP REEBOK NADADOR OPPORTUNITY FEMININO",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0150NWTP57",
+   "name": "TOP REEBOK NADADOR OPPORTUNITY FEMININO",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PETRÓLEO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0150NWTP99",
+   "name": "TOP REEBOK NADADOR OPPORTUNITY FEMININO",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0151NWTP4A4",
+   "name": "TOP REEBOK BASICO OPPORTUNITY FEMININO",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0151NWTP57",
+   "name": "TOP REEBOK BASICO OPPORTUNITY FEMININO",
+   "price": 119.99,
+   "category": "vestuario",
+   "colorway": "PETRÓLEO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0152NWTP4A4",
+   "name": "TOP REEBOK AL�A OPPORTUNITY FEMININO",
+   "price": 99.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0152NWTP57",
+   "name": "TOP REEBOK AL�A OPPORTUNITY FEMININO",
+   "price": 99.99,
+   "category": "vestuario",
+   "colorway": "PETRÓLEO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0152NWTP99",
+   "name": "TOP REEBOK AL�A OPPORTUNITY FEMININO",
+   "price": 99.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0153NWSH4A4",
+   "name": "SHORT CURTO REEBOK COMPRESS�O OPPORTUNITY FEMININA",
+   "price": 129.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0153NWSH57",
+   "name": "SHORT CURTO REEBOK COMPRESS�O OPPORTUNITY FEMININA",
+   "price": 129.99,
+   "category": "vestuario",
+   "colorway": "PETRÓLEO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0154NWBM4A4",
+   "name": "BERMUDA REEBOK COMPRESS�O OPPORTUNITY FEMININA",
+   "price": 139.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0154NWBM57",
+   "name": "BERMUDA REEBOK COMPRESS�O OPPORTUNITY FEMININA",
+   "price": 139.99,
+   "category": "vestuario",
+   "colorway": "PETRÓLEO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0154NWBM99",
+   "name": "BERMUDA REEBOK COMPRESS�O OPPORTUNITY FEMININA",
+   "price": 139.99,
+   "category": "vestuario",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1",
+    "rau2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0155NWLG4A4",
+   "name": "LEGGING REEBOK LONGA OPPORTUNITY FEMININA",
+   "price": 179.99,
+   "category": "vestuario",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "TN0155NWLG57",
+   "name": "LEGGING REEBOK LONGA OPPORTUNITY FEMININA",
+   "price": 179.99,
+   "category": "vestuario",
+   "colorway": "PETRÓLEO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rau1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "UCLCBW1BRLOF",
+   "name": "CLUB C REVENGE BAW",
+   "price": 799.99,
+   "category": "calcado-masc",
+   "colorway": "OFF WHITE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "UCNV002BRLVD",
+   "name": "REEBOK STREETRIDE",
+   "price": 199.99,
+   "category": "calcado-masc",
+   "colorway": "VERDE",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "UCNV004BRLCZ",
+   "name": "REEBOK STREETRIDE",
+   "price": 199.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rw2",
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10004MSPRCZ",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "CINZA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10003WSPRAM",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "CARAMELO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10003WSPRRS",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10004MSPRAM",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-masc",
+   "colorway": "CARAMELO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bm1",
+    "bm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "RBFB10003WSPRBR",
+   "name": "Sprint",
+   "price": 399.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "bw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100256059WFSLBC",
+   "name": "F/S LO",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100256063WFSLBC",
+   "name": "F/S LO",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "BRANCO",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100261521WFSLRS",
+   "name": "F/S LO",
+   "price": 599.99,
+   "category": "calcado-fem",
+   "colorway": "ROSA",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262372",
+   "name": "Charge Run",
+   "price": 449.99,
+   "category": "calcado-fem",
+   "colorway": "BLACK/VINTAGE CHALK/NEW TITANIUM",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100264258",
+   "name": "Charge Run",
+   "price": 449.99,
+   "category": "calcado-fem",
+   "colorway": "FTWRWHITE/CHALK/VINTAGECHALK",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100284328",
+   "name": "Charge Run",
+   "price": 449.99,
+   "category": "calcado-fem",
+   "colorway": "PUTTY/LINEN/CHALK",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100278284",
+   "name": "Charge Run",
+   "price": 449.99,
+   "category": "calcado-fem",
+   "colorway": "SOOTHE/LINEN/CHALK",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rw1",
+    "rw2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262370",
+   "name": "Charge Run",
+   "price": 449.99,
+   "category": "calcado-masc",
+   "colorway": "PURE GREY 6/PURE GREY 5/BLACK",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100262368",
+   "name": "Charge Run",
+   "price": 449.99,
+   "category": "calcado-masc",
+   "colorway": "PURE GREY 3/PURE GREY 2/PURE GREY 5/BLACK",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100278286",
+   "name": "Charge Run",
+   "price": 449.99,
+   "category": "calcado-masc",
+   "colorway": "SOOTHE/CHALK/GREY 4",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100284325",
+   "name": "Charge Run",
+   "price": 449.99,
+   "category": "calcado-masc",
+   "colorway": "FTWRWHITE/GREY 3/GREY 5",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  },
+  {
+   "ref": "100284323",
+   "name": "Charge Run",
+   "price": 449.99,
+   "category": "calcado-masc",
+   "colorway": "TREKGREY/PUTTY/CHALK",
+   "brand": "Reebok",
+   "grade_codes": [
+    "rm1",
+    "rm2"
+   ],
+   "sizes": {}
+  }
+ ],
+ "grades": {
+  "bpe_4541D033": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    45
+   ],
+   "q": {
+    "39": 7,
+    "40": 17,
+    "41": 16,
+    "42": 16,
+    "43": 5,
+    "45": 1
+   }
+  },
+  "bpe_4541D055": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43
+   ],
+   "q": {
+    "39": 10,
+    "40": 11,
+    "41": 8,
+    "42": 6,
+    "43": 1
+   }
+  },
+  "bpe_4541D184": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "39": 3,
+    "40": 6,
+    "41": 5,
+    "42": 4,
+    "43": 7,
+    "44": 3
+   }
+  },
+  "bpe_4431B053": {
+   "l": "BW FEM",
+   "s": [
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "35": 3,
+    "36": 8,
+    "37": 5,
+    "38": 7,
+    "39": 1
+   }
+  },
+  "bpe_4431B064": {
+   "l": "BW FEM",
+   "s": [
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "35": 6,
+    "36": 8,
+    "37": 13,
+    "38": 9,
+    "39": 7
+   }
+  },
+  "bpe_4431B184": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "34": 4,
+    "35": 10,
+    "36": 8,
+    "37": 5,
+    "38": 5,
+    "39": 2
+   }
+  },
+  "bpe_4421D048": {
+   "l": "BM MASC",
+   "s": [
+    40,
+    40.5,
+    41,
+    41.5,
+    42,
+    42.5
+   ],
+   "q": {
+    "40": 7,
+    "40.5": 26,
+    "41": 7,
+    "41.5": 33,
+    "42": 1,
+    "42.5": 10
+   }
+  },
+  "bpe_4421D090": {
+   "l": "BM MASC",
+   "s": [
+    39.5,
+    40,
+    40.5,
+    41,
+    41.5,
+    42,
+    45
+   ],
+   "q": {
+    "39.5": 4,
+    "40": 6,
+    "40.5": 8,
+    "41": 12,
+    "41.5": 15,
+    "42": 2,
+    "45": 3
+   }
+  },
+  "bpe_4421D112": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    40.5,
+    41.5,
+    42.5,
+    45
+   ],
+   "q": {
+    "38": 4,
+    "40.5": 29,
+    "41.5": 32,
+    "42.5": 19,
+    "45": 4
+   }
+  },
+  "bpe_4311B070": {
+   "l": "BW FEM",
+   "s": [
+    36,
+    37,
+    37.5
+   ],
+   "q": {
+    "36": 10,
+    "37": 2,
+    "37.5": 4
+   }
+  },
+  "bpe_4311B080": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+   ],
+   "q": {
+    "34": 8,
+    "35": 1,
+    "36": 8,
+    "37": 17,
+    "38": 9,
+    "39": 4,
+    "40": 4
+   }
+  },
+  "bpe_4311B090": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    37.5,
+    39,
+    39.5,
+    40
+   ],
+   "q": {
+    "34": 2,
+    "35": 3,
+    "36": 16,
+    "37": 3,
+    "37.5": 10,
+    "39": 1,
+    "39.5": 3,
+    "40": 1
+   }
+  },
+  "bpe_4311B412": {
+   "l": "BW FEM",
+   "s": [
+    37,
+    38
+   ],
+   "q": {
+    "37": 3,
+    "38": 5
+   }
+  },
+  "bpe_4311B443": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    37.5,
+    38,
+    39,
+    39.5
+   ],
+   "q": {
+    "34": 9,
+    "35": 14,
+    "36": 17,
+    "37": 5,
+    "37.5": 25,
+    "38": 3,
+    "39": 2,
+    "39.5": 2
+   }
+  },
+  "bpe_4641D162": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    39,
+    40,
+    41,
+    41.5,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "38": 11,
+    "39": 13,
+    "40": 16,
+    "41": 14,
+    "41.5": 3,
+    "42": 14,
+    "43": 11,
+    "44": 2
+   }
+  },
+  "bpe_4571B151": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "34": 11,
+    "35": 7,
+    "36": 5,
+    "37": 10,
+    "38": 13,
+    "39": 6
+   }
+  },
+  "bpe_4451D063": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    39,
+    40,
+    40.5,
+    41,
+    41.5,
+    42,
+    42.5,
+    43,
+    44
+   ],
+   "q": {
+    "38": 8,
+    "39": 19,
+    "40": 36,
+    "40.5": 4,
+    "41": 27,
+    "41.5": 4,
+    "42": 30,
+    "42.5": 4,
+    "43": 20,
+    "44": 13
+   }
+  },
+  "bpe_4451D078": {
+   "l": "BM MASC",
+   "s": [
+    40,
+    41,
+    42
+   ],
+   "q": {
+    "40": 4,
+    "41": 6,
+    "42": 3
+   }
+  },
+  "bpe_4451D135": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    40.5,
+    41,
+    41.5,
+    42,
+    42.5,
+    43,
+    44
+   ],
+   "q": {
+    "39": 21,
+    "40": 20,
+    "40.5": 3,
+    "41": 25,
+    "41.5": 3,
+    "42": 20,
+    "42.5": 4,
+    "43": 22,
+    "44": 13
+   }
+  },
+  "bpe_4451D175": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42
+   ],
+   "q": {
+    "39": 6,
+    "40": 11,
+    "41": 7,
+    "42": 10
+   }
+  },
+  "bpe_4451D415": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "39": 7,
+    "40": 9,
+    "41": 14,
+    "42": 14,
+    "43": 5,
+    "44": 2
+   }
+  },
+  "bpe_4451D821": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "39": 1,
+    "40": 9,
+    "41": 14,
+    "42": 9,
+    "43": 4,
+    "44": 2
+   }
+  },
+  "bpe_4341B088": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+   ],
+   "q": {
+    "34": 18,
+    "35": 41,
+    "36": 39,
+    "37": 39,
+    "38": 53,
+    "39": 21,
+    "40": 3
+   }
+  },
+  "bpe_4341B090": {
+   "l": "BW FEM",
+   "s": [
+    37,
+    37.5,
+    38,
+    39,
+    39.5
+   ],
+   "q": {
+    "37": 1,
+    "37.5": 3,
+    "38": 2,
+    "39": 1,
+    "39.5": 1
+   }
+  },
+  "bpe_4341B137": {
+   "l": "BW FEM",
+   "s": [
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "35": 3,
+    "36": 11,
+    "37": 17,
+    "38": 5,
+    "39": 9
+   }
+  },
+  "bpe_4341B897": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "34": 4,
+    "35": 4,
+    "36": 3,
+    "37": 3,
+    "38": 4,
+    "39": 6
+   }
+  },
+  "bpe_4461D002": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43
+   ],
+   "q": {
+    "38": 3,
+    "39": 6,
+    "40": 9,
+    "41": 6,
+    "42": 4,
+    "43": 1
+   }
+  },
+  "bpe_4461D063": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45
+   ],
+   "q": {
+    "38": 8,
+    "39": 9,
+    "40": 14,
+    "41": 10,
+    "42": 12,
+    "43": 9,
+    "44": 5,
+    "45": 1
+   }
+  },
+  "bpe_4461D135": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "39": 8,
+    "40": 16,
+    "41": 16,
+    "42": 16,
+    "43": 6,
+    "44": 2
+   }
+  },
+  "bpe_4351B088": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "34": 3,
+    "35": 7,
+    "36": 9,
+    "37": 14,
+    "38": 9,
+    "39": 6
+   }
+  },
+  "bpe_4351B137": {
+   "l": "BW FEM",
+   "s": [
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "35": 8,
+    "36": 15,
+    "37": 14,
+    "38": 16,
+    "39": 8
+   }
+  },
+  "bpe_4791D091": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    47
+   ],
+   "q": {
+    "38": 2,
+    "39": 20,
+    "40": 8,
+    "41": 11,
+    "42": 20,
+    "43": 14,
+    "44": 14,
+    "45": 2,
+    "47": 3
+   }
+  },
+  "bpe_4791D811": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "39": 4,
+    "40": 6,
+    "41": 19,
+    "42": 18,
+    "43": 12,
+    "44": 6
+   }
+  },
+  "bpe_4681B048": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+   ],
+   "q": {
+    "34": 2,
+    "35": 10,
+    "36": 12,
+    "37": 18,
+    "38": 14,
+    "39": 15,
+    "40": 8
+   }
+  },
+  "bpe_4681B110": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+   ],
+   "q": {
+    "34": 1,
+    "35": 2,
+    "36": 2,
+    "37": 2,
+    "38": 2,
+    "39": 2,
+    "40": 1
+   }
+  },
+  "bpe_4651D179": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "39": 13,
+    "40": 20,
+    "41": 23,
+    "42": 25,
+    "43": 14,
+    "44": 11
+   }
+  },
+  "bpe_4531B102": {
+   "l": "BW FEM",
+   "s": [
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+   ],
+   "q": {
+    "35": 8,
+    "36": 10,
+    "37": 14,
+    "38": 10,
+    "39": 9,
+    "40": 4
+   }
+  },
+  "bpe_0491D681": {
+   "l": "BM MASC",
+   "s": [
+    35,
+    36,
+    37,
+    38,
+    40,
+    41,
+    42,
+    43
+   ],
+   "q": {
+    "35": 2,
+    "36": 10,
+    "37": 5,
+    "38": 9,
+    "40": 7,
+    "41": 3,
+    "42": 4,
+    "43": 2
+   }
+  },
+  "bpe_4671D164": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "39": 76,
+    "40": 81,
+    "41": 84,
+    "42": 87,
+    "43": 77,
+    "44": 78
+   }
+  },
+  "bpe_4671D182": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    45
+   ],
+   "q": {
+    "38": 2,
+    "39": 7,
+    "40": 21,
+    "41": 16,
+    "42": 2,
+    "45": 1
+   }
+  },
+  "bpe_4671D670": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    39,
+    40,
+    40.5,
+    41,
+    41.5,
+    42,
+    42.5,
+    43,
+    44
+   ],
+   "q": {
+    "38": 2,
+    "39": 5,
+    "40": 12,
+    "40.5": 5,
+    "41": 8,
+    "41.5": 2,
+    "42": 13,
+    "42.5": 3,
+    "43": 3,
+    "44": 1
+   }
+  },
+  "bpe_4671D182F": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    37.5,
+    38,
+    39,
+    40
+   ],
+   "q": {
+    "34": 5,
+    "35": 14,
+    "36": 23,
+    "37": 26,
+    "37.5": 1,
+    "38": 6,
+    "39": 8,
+    "40": 2
+   }
+  },
+  "bpe_4551B659": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "34": 7,
+    "35": 18,
+    "36": 14,
+    "37": 1,
+    "38": 4,
+    "39": 1
+   }
+  },
+  "bpe_5201D163": {
+   "l": "BM MASC",
+   "s": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "39": 21,
+    "40": 18,
+    "41": 15,
+    "42": 13,
+    "43": 13,
+    "44": 17
+   }
+  },
+  "bpe_5091B163": {
+   "l": "BW FEM",
+   "s": [
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "35": 32,
+    "36": 33,
+    "37": 33,
+    "38": 26,
+    "39": 5
+   }
+  },
+  "bpe_4401D314": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    39,
+    40,
+    41,
+    41.5,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "38": 9,
+    "39": 11,
+    "40": 8,
+    "41": 9,
+    "41.5": 1,
+    "42": 14,
+    "43": 8,
+    "44": 7
+   }
+  },
+  "bpe_4401D403": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    42
+   ],
+   "q": {
+    "38": 7,
+    "42": 1
+   }
+  },
+  "bpe_4291B031": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    38
+   ],
+   "q": {
+    "34": 9,
+    "35": 2,
+    "38": 1
+   }
+  },
+  "bpe_4571D722": {
+   "l": "BM MASC",
+   "s": [
+    38,
+    39,
+    40,
+    41,
+    41.5,
+    42,
+    43,
+    44
+   ],
+   "q": {
+    "38": 6,
+    "39": 9,
+    "40": 11,
+    "41": 7,
+    "41.5": 1,
+    "42": 8,
+    "43": 6,
+    "44": 2
+   }
+  },
+  "bpe_4461B711": {
+   "l": "BW FEM",
+   "s": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+   ],
+   "q": {
+    "34": 10,
+    "35": 4,
+    "36": 5,
+    "37": 4,
+    "38": 2,
+    "39": 2
+   }
+  }
+ }
+}
