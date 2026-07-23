@@ -110,6 +110,73 @@ app.register(async (r) => {
     db.prepare('SELECT * FROM customers WHERE tenant_id = ? ORDER BY name')
       .all(req.user.tenant_id));
 
+  // ---- Escrita (apenas gestor/admin) ----
+  // Usada pelo painel web. Toda alteracao mexe em updated_at, entao a
+  // proxima sincronizacao do app ja baixa a mudanca.
+  const requireManager = (req, reply, done) => {
+    if (req.user.role !== 'manager' && req.user.role !== 'admin') {
+      reply.code(403).send({ error: 'Apenas gestores podem alterar cadastros.' });
+      return;
+    }
+    done();
+  };
+
+  r.post('/products', { preHandler: requireManager }, async (req, reply) => {
+    const { sku, name, unit, category, base_price, stock } = req.body || {};
+    if (!sku || !name) return reply.code(422).send({ error: 'SKU e nome sao obrigatorios.' });
+    try {
+      const id = db.prepare(`
+        INSERT INTO products (tenant_id, sku, name, unit, category, base_price, stock)
+        VALUES (?,?,?,?,?,?,?)
+      `).run(req.user.tenant_id, sku, name, unit || 'UN', category || null,
+             Number(base_price) || 0, Number(stock) || 0).lastInsertRowid;
+      return db.prepare('SELECT * FROM products WHERE id = ?').get(id);
+    } catch (e) {
+      return reply.code(422).send({ error: 'SKU ja existe para este fornecedor.' });
+    }
+  });
+
+  r.put('/products/:id', { preHandler: requireManager }, async (req, reply) => {
+    const cur = db.prepare('SELECT * FROM products WHERE id = ? AND tenant_id = ?')
+      .get(req.params.id, req.user.tenant_id);
+    if (!cur) return reply.code(404).send({ error: 'Produto nao encontrado.' });
+    const b = req.body || {};
+    db.prepare(`
+      UPDATE products SET name=?, unit=?, category=?, base_price=?, stock=?, active=?,
+        updated_at=datetime('now') WHERE id=?
+    `).run(b.name ?? cur.name, b.unit ?? cur.unit, b.category ?? cur.category,
+           b.base_price ?? cur.base_price, b.stock ?? cur.stock,
+           b.active ?? cur.active, cur.id);
+    return db.prepare('SELECT * FROM products WHERE id = ?').get(cur.id);
+  });
+
+  r.post('/customers', { preHandler: requireManager }, async (req, reply) => {
+    const { name, doc, city, credit_limit, price_table_id } = req.body || {};
+    if (!name) return reply.code(422).send({ error: 'Nome e obrigatorio.' });
+    const table = price_table_id ||
+      db.prepare('SELECT id FROM price_tables WHERE tenant_id = ? AND active = 1 LIMIT 1')
+        .get(req.user.tenant_id)?.id;
+    const id = db.prepare(`
+      INSERT INTO customers (tenant_id, name, doc, city, credit_limit, price_table_id)
+      VALUES (?,?,?,?,?,?)
+    `).run(req.user.tenant_id, name, doc || null, city || null,
+           Number(credit_limit) || 0, table).lastInsertRowid;
+    return db.prepare('SELECT * FROM customers WHERE id = ?').get(id);
+  });
+
+  r.put('/customers/:id', { preHandler: requireManager }, async (req, reply) => {
+    const cur = db.prepare('SELECT * FROM customers WHERE id = ? AND tenant_id = ?')
+      .get(req.params.id, req.user.tenant_id);
+    if (!cur) return reply.code(404).send({ error: 'Cliente nao encontrado.' });
+    const b = req.body || {};
+    db.prepare(`
+      UPDATE customers SET name=?, doc=?, city=?, credit_limit=?,
+        updated_at=datetime('now') WHERE id=?
+    `).run(b.name ?? cur.name, b.doc ?? cur.doc, b.city ?? cur.city,
+           b.credit_limit ?? cur.credit_limit, cur.id);
+    return db.prepare('SELECT * FROM customers WHERE id = ?').get(cur.id);
+  });
+
   r.get('/orders', async (req) => {
     const rows = db.prepare(`
       SELECT o.id, o.client_uuid, o.status, o.total, o.discount_pct, o.created_at,
