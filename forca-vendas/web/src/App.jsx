@@ -159,7 +159,7 @@ function OrderModal({ id, onClose }) {
                 <tbody>
                   {order.items.map((it) => (
                     <tr key={it.id}>
-                      <td>{it.name}<div className="muted">{it.sku}</div></td>
+                      <td>{it.name}{it.variant ? <span className="pill draft" style={{ marginLeft: 8 }}>tam {it.variant}</span> : null}<div className="muted">{it.sku}</div></td>
                       <td className="num">{it.qty}</td>
                       <td className="num">{brl(it.unit_price)}</td>
                       <td className="num">{brl(it.line_total)}</td>
@@ -284,13 +284,14 @@ function ProductsView() {
       </div>
       <div className="table-scroll">
         <table>
-          <thead><tr><th>SKU</th><th>Produto</th><th>Categoria</th><th className="num">Preço base</th><th className="num">Estoque</th></tr></thead>
+          <thead><tr><th>SKU</th><th>Produto</th><th>Categoria</th><th>Grade</th><th className="num">Preço base</th><th className="num">Estoque</th></tr></thead>
           <tbody>
             {products.map((p) => (
               <tr key={p.id} className="row-link" onClick={() => setEditing(p)}>
                 <td className="muted">{p.sku}</td>
                 <td>{p.name}</td>
                 <td className="muted">{p.category || '—'}</td>
+                <td className="muted">{p.variants && p.variants.length ? p.variants.map((v) => v.label).join(' · ') : '—'}</td>
                 <td className="num">{brl(p.base_price)}</td>
                 <td className="num">{p.stock} {p.unit}</td>
               </tr>

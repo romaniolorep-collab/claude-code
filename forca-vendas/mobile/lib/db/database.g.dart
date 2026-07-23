@@ -940,6 +940,256 @@ class PriceRuleRowsCompanion extends UpdateCompanion<PriceRuleRow> {
   }
 }
 
+class $VariantRowsTable extends VariantRows
+    with TableInfo<$VariantRowsTable, VariantRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VariantRowsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _productIdMeta =
+      const VerificationMeta('productId');
+  @override
+  late final GeneratedColumn<int> productId = GeneratedColumn<int>(
+      'product_id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _labelMeta = const VerificationMeta('label');
+  @override
+  late final GeneratedColumn<String> label = GeneratedColumn<String>(
+      'label', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _stockMeta = const VerificationMeta('stock');
+  @override
+  late final GeneratedColumn<int> stock = GeneratedColumn<int>(
+      'stock', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(0));
+  @override
+  List<GeneratedColumn> get $columns => [id, productId, label, stock];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'variant_rows';
+  @override
+  VerificationContext validateIntegrity(Insertable<VariantRow> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(_productIdMeta,
+          productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta));
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('label')) {
+      context.handle(
+          _labelMeta, label.isAcceptableOrUnknown(data['label']!, _labelMeta));
+    } else if (isInserting) {
+      context.missing(_labelMeta);
+    }
+    if (data.containsKey('stock')) {
+      context.handle(
+          _stockMeta, stock.isAcceptableOrUnknown(data['stock']!, _stockMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  VariantRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VariantRow(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      productId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}product_id'])!,
+      label: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}label'])!,
+      stock: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}stock'])!,
+    );
+  }
+
+  @override
+  $VariantRowsTable createAlias(String alias) {
+    return $VariantRowsTable(attachedDatabase, alias);
+  }
+}
+
+class VariantRow extends DataClass implements Insertable<VariantRow> {
+  final int id;
+  final int productId;
+  final String label;
+  final int stock;
+  const VariantRow(
+      {required this.id,
+      required this.productId,
+      required this.label,
+      required this.stock});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['product_id'] = Variable<int>(productId);
+    map['label'] = Variable<String>(label);
+    map['stock'] = Variable<int>(stock);
+    return map;
+  }
+
+  VariantRowsCompanion toCompanion(bool nullToAbsent) {
+    return VariantRowsCompanion(
+      id: Value(id),
+      productId: Value(productId),
+      label: Value(label),
+      stock: Value(stock),
+    );
+  }
+
+  factory VariantRow.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return VariantRow(
+      id: serializer.fromJson<int>(json['id']),
+      productId: serializer.fromJson<int>(json['productId']),
+      label: serializer.fromJson<String>(json['label']),
+      stock: serializer.fromJson<int>(json['stock']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'productId': serializer.toJson<int>(productId),
+      'label': serializer.toJson<String>(label),
+      'stock': serializer.toJson<int>(stock),
+    };
+  }
+
+  VariantRow copyWith({int? id, int? productId, String? label, int? stock}) =>
+      VariantRow(
+        id: id ?? this.id,
+        productId: productId ?? this.productId,
+        label: label ?? this.label,
+        stock: stock ?? this.stock,
+      );
+  VariantRow copyWithCompanion(VariantRowsCompanion data) {
+    return VariantRow(
+      id: data.id.present ? data.id.value : this.id,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      label: data.label.present ? data.label.value : this.label,
+      stock: data.stock.present ? data.stock.value : this.stock,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VariantRow(')
+          ..write('id: $id, ')
+          ..write('productId: $productId, ')
+          ..write('label: $label, ')
+          ..write('stock: $stock')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, productId, label, stock);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is VariantRow &&
+          other.id == this.id &&
+          other.productId == this.productId &&
+          other.label == this.label &&
+          other.stock == this.stock);
+}
+
+class VariantRowsCompanion extends UpdateCompanion<VariantRow> {
+  final Value<int> id;
+  final Value<int> productId;
+  final Value<String> label;
+  final Value<int> stock;
+  const VariantRowsCompanion({
+    this.id = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.label = const Value.absent(),
+    this.stock = const Value.absent(),
+  });
+  VariantRowsCompanion.insert({
+    this.id = const Value.absent(),
+    required int productId,
+    required String label,
+    this.stock = const Value.absent(),
+  })  : productId = Value(productId),
+        label = Value(label);
+  static Insertable<VariantRow> custom({
+    Expression<int>? id,
+    Expression<int>? productId,
+    Expression<String>? label,
+    Expression<int>? stock,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (productId != null) 'product_id': productId,
+      if (label != null) 'label': label,
+      if (stock != null) 'stock': stock,
+    });
+  }
+
+  VariantRowsCompanion copyWith(
+      {Value<int>? id,
+      Value<int>? productId,
+      Value<String>? label,
+      Value<int>? stock}) {
+    return VariantRowsCompanion(
+      id: id ?? this.id,
+      productId: productId ?? this.productId,
+      label: label ?? this.label,
+      stock: stock ?? this.stock,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<int>(productId.value);
+    }
+    if (label.present) {
+      map['label'] = Variable<String>(label.value);
+    }
+    if (stock.present) {
+      map['stock'] = Variable<int>(stock.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VariantRowsCompanion(')
+          ..write('id: $id, ')
+          ..write('productId: $productId, ')
+          ..write('label: $label, ')
+          ..write('stock: $stock')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $OrderQueueRowsTable extends OrderQueueRows
     with TableInfo<$OrderQueueRowsTable, OrderQueueRow> {
   @override
@@ -1389,13 +1639,14 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $ProductRowsTable productRows = $ProductRowsTable(this);
   late final $CustomerRowsTable customerRows = $CustomerRowsTable(this);
   late final $PriceRuleRowsTable priceRuleRows = $PriceRuleRowsTable(this);
+  late final $VariantRowsTable variantRows = $VariantRowsTable(this);
   late final $OrderQueueRowsTable orderQueueRows = $OrderQueueRowsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [productRows, customerRows, priceRuleRows, orderQueueRows];
+      [productRows, customerRows, priceRuleRows, variantRows, orderQueueRows];
 }
 
 typedef $$ProductRowsTableCreateCompanionBuilder = ProductRowsCompanion
@@ -1852,6 +2103,130 @@ typedef $$PriceRuleRowsTableProcessedTableManager = ProcessedTableManager<
     ),
     PriceRuleRow,
     PrefetchHooks Function()>;
+typedef $$VariantRowsTableCreateCompanionBuilder = VariantRowsCompanion
+    Function({
+  Value<int> id,
+  required int productId,
+  required String label,
+  Value<int> stock,
+});
+typedef $$VariantRowsTableUpdateCompanionBuilder = VariantRowsCompanion
+    Function({
+  Value<int> id,
+  Value<int> productId,
+  Value<String> label,
+  Value<int> stock,
+});
+
+class $$VariantRowsTableFilterComposer
+    extends FilterComposer<_$AppDatabase, $VariantRowsTable> {
+  $$VariantRowsTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get productId => $state.composableBuilder(
+      column: $state.table.productId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get label => $state.composableBuilder(
+      column: $state.table.label,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get stock => $state.composableBuilder(
+      column: $state.table.stock,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$VariantRowsTableOrderingComposer
+    extends OrderingComposer<_$AppDatabase, $VariantRowsTable> {
+  $$VariantRowsTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get productId => $state.composableBuilder(
+      column: $state.table.productId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get label => $state.composableBuilder(
+      column: $state.table.label,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get stock => $state.composableBuilder(
+      column: $state.table.stock,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $$VariantRowsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $VariantRowsTable,
+    VariantRow,
+    $$VariantRowsTableFilterComposer,
+    $$VariantRowsTableOrderingComposer,
+    $$VariantRowsTableCreateCompanionBuilder,
+    $$VariantRowsTableUpdateCompanionBuilder,
+    (VariantRow, BaseReferences<_$AppDatabase, $VariantRowsTable, VariantRow>),
+    VariantRow,
+    PrefetchHooks Function()> {
+  $$VariantRowsTableTableManager(_$AppDatabase db, $VariantRowsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$VariantRowsTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$VariantRowsTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int> productId = const Value.absent(),
+            Value<String> label = const Value.absent(),
+            Value<int> stock = const Value.absent(),
+          }) =>
+              VariantRowsCompanion(
+            id: id,
+            productId: productId,
+            label: label,
+            stock: stock,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required int productId,
+            required String label,
+            Value<int> stock = const Value.absent(),
+          }) =>
+              VariantRowsCompanion.insert(
+            id: id,
+            productId: productId,
+            label: label,
+            stock: stock,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$VariantRowsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $VariantRowsTable,
+    VariantRow,
+    $$VariantRowsTableFilterComposer,
+    $$VariantRowsTableOrderingComposer,
+    $$VariantRowsTableCreateCompanionBuilder,
+    $$VariantRowsTableUpdateCompanionBuilder,
+    (VariantRow, BaseReferences<_$AppDatabase, $VariantRowsTable, VariantRow>),
+    VariantRow,
+    PrefetchHooks Function()>;
 typedef $$OrderQueueRowsTableCreateCompanionBuilder = OrderQueueRowsCompanion
     Function({
   required String clientUuid,
@@ -2063,6 +2438,8 @@ class $AppDatabaseManager {
       $$CustomerRowsTableTableManager(_db, _db.customerRows);
   $$PriceRuleRowsTableTableManager get priceRuleRows =>
       $$PriceRuleRowsTableTableManager(_db, _db.priceRuleRows);
+  $$VariantRowsTableTableManager get variantRows =>
+      $$VariantRowsTableTableManager(_db, _db.variantRows);
   $$OrderQueueRowsTableTableManager get orderQueueRows =>
       $$OrderQueueRowsTableTableManager(_db, _db.orderQueueRows);
 }

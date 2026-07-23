@@ -30,6 +30,10 @@ void main() {
         PriceRule(priceTableId: 1, productId: 1, minQty: 1, price: 39.90),
         PriceRule(priceTableId: 1, productId: 1, minQty: 12, price: 35.91),
       ],
+      variants: [
+        Variant(id: 1, productId: 1, label: 'P', stock: 100),
+        Variant(id: 2, productId: 1, label: 'M', stock: 100),
+      ],
     );
 
     app = AppState(ApiClient(baseUrl: 'http://127.0.0.1:1'), store, db); // porta morta = offline
@@ -68,5 +72,20 @@ void main() {
     final persisted = await db.getQueue();
     expect(persisted.length, 1);
     expect(persisted.first.clientUuid, app.queue.first.clientUuid);
+  });
+
+  test('grade: variantes carregam e o tamanho vai no item do pedido', () async {
+    final p = app.products.first;
+    expect(app.variantsOf(p.id).map((v) => v.label), ['P', 'M']);
+
+    await app.placeOrder(customer: app.customers.first, lines: [
+      CartLine(p, 3, variant: 'P'),
+      CartLine(p, 2, variant: 'M'),
+    ]);
+
+    final items = app.queue.first.items;
+    expect(items.length, 2);
+    expect(items.firstWhere((i) => i['variant'] == 'P')['qty'], 3);
+    expect(items.firstWhere((i) => i['variant'] == 'M')['qty'], 2);
   });
 }

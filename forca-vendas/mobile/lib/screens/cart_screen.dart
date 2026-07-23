@@ -42,7 +42,7 @@ class _CartScreenState extends State<CartScreen> {
             return ListTile(
               dense: true,
               contentPadding: EdgeInsets.zero,
-              title: Text(l.product.name),
+              title: Text(l.variant != null ? '${l.product.name} · Tam ${l.variant}' : l.product.name),
               subtitle: Text('${l.qty} × R\$ ${unit.toStringAsFixed(2)}'),
               trailing: Text('R\$ ${(unit * l.qty).toStringAsFixed(2)}'),
             );

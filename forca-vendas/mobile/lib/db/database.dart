@@ -43,6 +43,15 @@ class PriceRuleRows extends Table {
   RealColumn get price => real()();
 }
 
+class VariantRows extends Table {
+  IntColumn get id => integer()();
+  IntColumn get productId => integer()();
+  TextColumn get label => text()();
+  IntColumn get stock => integer().withDefault(const Constant(0))();
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
 class OrderQueueRows extends Table {
   TextColumn get clientUuid => text()();
   IntColumn get customerId => integer()();
@@ -56,13 +65,21 @@ class OrderQueueRows extends Table {
   Set<Column> get primaryKey => {clientUuid};
 }
 
-@DriftDatabase(tables: [ProductRows, CustomerRows, PriceRuleRows, OrderQueueRows])
+@DriftDatabase(tables: [ProductRows, CustomerRows, PriceRuleRows, VariantRows, OrderQueueRows])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_open());
   AppDatabase.forTesting(super.executor);
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
+
+  @override
+  MigrationStrategy get migration => MigrationStrategy(
+        onCreate: (m) => m.createAll(),
+        onUpgrade: (m, from, to) async {
+          if (from < 2) await m.createTable(variantRows);
+        },
+      );
 
   // ---- Catalogo ----
   // Produtos/clientes vem como delta (por updated_at): upsert por id.
@@ -71,6 +88,7 @@ class AppDatabase extends _$AppDatabase {
     required List<m.Product> products,
     required List<m.Customer> customers,
     required List<m.PriceRule> rules,
+    List<m.Variant> variants = const [],
   }) async {
     await batch((b) {
       b.insertAllOnConflictUpdate(
@@ -108,6 +126,24 @@ class AppDatabase extends _$AppDatabase {
             )),
       );
     });
+    await batch((b) {
+      b.insertAllOnConflictUpdate(
+        variantRows,
+        variants.map((x) => VariantRowsCompanion.insert(
+              id: Value(x.id),
+              productId: x.productId,
+              label: x.label,
+              stock: Value(x.stock),
+            )),
+      );
+    });
+  }
+
+  Future<List<m.Variant>> getVariants() async {
+    final rows = await select(variantRows).get();
+    return rows
+        .map((r) => m.Variant(id: r.id, productId: r.productId, label: r.label, stock: r.stock))
+        .toList();
   }
 
   Future<List<m.Product>> getProducts() async {

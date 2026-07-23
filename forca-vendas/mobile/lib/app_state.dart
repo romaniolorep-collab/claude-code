@@ -22,11 +22,16 @@ class AppState extends ChangeNotifier {
   List<Product> _products = [];
   List<Customer> _customers = [];
   List<PriceRule> _rules = [];
+  List<Variant> _variants = [];
   List<PendingOrder> _queue = [];
 
   List<Product> get products => _products;
   List<Customer> get customers => _customers;
   List<PendingOrder> get queue => _queue;
+
+  // Grade (tamanhos) de um produto, ordenada.
+  List<Variant> variantsOf(int productId) =>
+      _variants.where((v) => v.productId == productId).toList();
   int get pendingCount =>
       _queue.where((o) => o.status == 'pending' || o.status == 'error').length;
 
@@ -46,6 +51,7 @@ class AppState extends ChangeNotifier {
     _products = await db.getProducts();
     _customers = await db.getCustomers();
     _rules = await db.getRules();
+    _variants = await db.getVariants();
     _queue = await db.getQueue();
     notifyListeners();
   }
@@ -77,6 +83,7 @@ class AppState extends ChangeNotifier {
         products: (data['products'] as List).map((e) => Product.fromJson(e)).toList(),
         customers: (data['customers'] as List).map((e) => Customer.fromJson(e)).toList(),
         rules: (data['price_rules'] as List).map((e) => PriceRule.fromJson(e)).toList(),
+        variants: ((data['variants'] as List?) ?? []).map((e) => Variant.fromJson(e)).toList(),
       );
       await store.setSince(data['server_time']);
       await _reloadFromDb();
@@ -126,7 +133,7 @@ class AppState extends ChangeNotifier {
     for (final l in lines) {
       final unit = previewUnitPrice(customer, l.product, l.qty);
       subtotal += unit * l.qty;
-      items.add({'product_id': l.product.id, 'qty': l.qty});
+      items.add({'product_id': l.product.id, 'qty': l.qty, if (l.variant != null) 'variant': l.variant});
     }
     final total = subtotal * (1 - discountPct / 100);
 

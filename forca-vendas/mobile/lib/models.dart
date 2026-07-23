@@ -72,6 +72,26 @@ class Customer {
       };
 }
 
+// Grade do produto (tamanho/cor) com estoque proprio.
+class Variant {
+  final int id;
+  final int productId;
+  final String label;
+  final int stock;
+
+  Variant({required this.id, required this.productId, required this.label, required this.stock});
+
+  factory Variant.fromJson(Map<String, dynamic> j) => Variant(
+        id: j['id'],
+        productId: j['product_id'],
+        label: j['label'],
+        stock: j['stock'] ?? 0,
+      );
+
+  Map<String, dynamic> toJson() =>
+      {'id': id, 'product_id': productId, 'label': label, 'stock': stock};
+}
+
 // Regra de preco baixada na sincronizacao. Usada para MOSTRAR uma previa
 // de preco offline — mas o valor oficial e sempre o que o servidor devolve.
 class PriceRule {
@@ -102,11 +122,12 @@ class PriceRule {
       };
 }
 
-// Item do carrinho em edicao.
+// Item do carrinho em edicao. `variant` e o tamanho/cor (grade), quando houver.
 class CartLine {
   final Product product;
   int qty;
-  CartLine(this.product, this.qty);
+  final String? variant;
+  CartLine(this.product, this.qty, {this.variant});
 }
 
 // Pedido pendente na fila de sincronizacao (criado offline).
