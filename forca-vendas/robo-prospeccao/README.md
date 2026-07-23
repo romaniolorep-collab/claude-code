@@ -5,6 +5,18 @@ novas** por tipo + local, com endereço, telefone, site, nota e horário —
 e monta a **rota** de visita. É a ferramenta que ataca o gargalo real do
 representante: **volume** (mais loja pra vender).
 
+## Melhorias sobre o robô original
+
+- **Não te mostra quem já é seu.** Cruza o resultado com sua carteira e
+  esconde (por padrão) as lojas que você já atende — sobra só o que é
+  prospecção de verdade. Marque/desmarque em "esconder as que já são minhas".
+- **Várias cidades de uma vez.** Busca `Maringá, Cianorte, Umuarama` numa
+  tacada e agrupa por cidade — dá pra montar o roteiro da semana inteira.
+- **Filtros que importam pro rep:** nota mínima, só abertas agora, e ordenar
+  por nota ou por nº de avaliações (loja avaliada = loja com movimento).
+- **Resumo direto:** "X novas · Y já suas · Z sem telefone" — você já sabe
+  quantos contatos aproveitáveis a busca trouxe.
+
 ## Rodar
 
 Node 18+ (não precisa instalar dependência nenhuma).
@@ -51,8 +63,9 @@ função `buscarGoogle()`.
 | Faz | Não faz |
 |---|---|
 | Acha lojas novas por tipo + local | Catálogo / grade / pedido |
-| Traz contato, nota, horário (Google) | Comissão / gestão de venda |
-| Salva na carteira + monta rota (Maps) | (isso é o Footwear Pro) |
+| Esconde quem já é seu cliente | Comissão / gestão de venda |
+| Traz contato, nota, horário (Google) | (isso é o Footwear Pro) |
+| Salva na carteira + monta rota (Maps) | |
 
 **Use solto primeiro.** Se ele te trouxer loja que vira venda, aí sim vale
 pensar em integrar com o Footwear Pro (pra não recadastrar a loja duas vezes).

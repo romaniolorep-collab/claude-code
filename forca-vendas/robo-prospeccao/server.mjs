@@ -23,19 +23,37 @@ const KEY = process.env.GOOGLE_PLACES_KEY || '';
 const PORT = process.env.PORT || 4000;
 const DEMO = !KEY;
 
+// ---- "carteira" do rep (no real, viria dos clientes do Footwear Pro) ----
+// Nomes normalizados das lojas que já são suas; usado pra marcar mine=true
+// e o robô esconder quem você já atende. No demo, alguns nomes de exemplo.
+const MINHAS = ['dyup art. esportivos', 'newpace sports', 'amorim calcados'];
+const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+const ehMinha = (nome) => MINHAS.includes(norm(nome));
+
 // ---- dados fictícios (modo demo, sem chave) ----
 const MOCK = [
-  { nome: 'Calçados Passo Firme', endereco: 'Av. Brasil, 1200 - Centro, Maringá - PR', nota: 4.6, avaliacoes: 214, telefone: '(44) 3025-1180', site: 'passofirme.com.br', horario: 'Seg–Sex 09–18, Sáb 09–13', aberto: true, place_id: 'demo1' },
-  { nome: 'Sport Center Calçados', endereco: 'Av. Colombo, 5000 - Zona 7, Maringá - PR', nota: 4.2, avaliacoes: 98, telefone: '(44) 3226-4477', site: '', horario: 'Seg–Sáb 09–19', aberto: true, place_id: 'demo2' },
-  { nome: 'Loja do Tênis Maringá', endereco: 'R. Néo Alves Martins, 3100 - Centro, Maringá - PR', nota: 4.8, avaliacoes: 402, telefone: '(44) 3222-9010', site: 'lojadotenis.com', horario: 'Seg–Sex 09–18', aberto: false, place_id: 'demo3' },
-  { nome: 'Corrida & Cia', endereco: 'Av. Cerro Azul, 850 - Zona 2, Maringá - PR', nota: 4.1, avaliacoes: 63, telefone: '(44) 99988-2211', site: '', horario: 'Seg–Sáb 10–19', aberto: true, place_id: 'demo4' },
-  { nome: 'Pisada Certa Calçados', endereco: 'Av. Tuiuti, 420 - Zona 3, Maringá - PR', nota: 3.9, avaliacoes: 41, telefone: '(44) 3028-7788', site: '', horario: 'Seg–Sex 09–18, Sáb 09–12', aberto: true, place_id: 'demo5' },
-  { nome: 'RunStore Esportes', endereco: 'Av. Mandacaru, 1600 - Maringá - PR', nota: 4.4, avaliacoes: 127, telefone: '(44) 3011-5566', site: 'runstore.com.br', horario: 'Seg–Sáb 09–19', aberto: true, place_id: 'demo6' },
+  { cidade: 'Maringá', nome: 'Calçados Passo Firme', endereco: 'Av. Brasil, 1200 - Centro, Maringá - PR', nota: 4.6, avaliacoes: 214, telefone: '(44) 3025-1180', site: 'passofirme.com.br', horario: 'Seg–Sex 09–18 · Sáb 09–13', aberto: true, mine: false, place_id: 'demo1' },
+  { cidade: 'Maringá', nome: 'Sport Center Calçados', endereco: 'Av. Colombo, 5000 - Zona 7, Maringá - PR', nota: 4.2, avaliacoes: 98, telefone: '(44) 3226-4477', site: '', horario: 'Seg–Sáb 09–19', aberto: true, mine: false, place_id: 'demo2' },
+  { cidade: 'Maringá', nome: 'Loja do Tênis Maringá', endereco: 'R. Néo Alves Martins, 3100 - Centro, Maringá - PR', nota: 4.8, avaliacoes: 402, telefone: '(44) 3222-9010', site: 'lojadotenis.com', horario: 'Seg–Sex 09–18', aberto: false, mine: false, place_id: 'demo3' },
+  { cidade: 'Maringá', nome: 'Corrida & Cia', endereco: 'Av. Cerro Azul, 850 - Zona 2, Maringá - PR', nota: 4.1, avaliacoes: 63, telefone: '(44) 99988-2211', site: '', horario: 'Seg–Sáb 10–19', aberto: true, mine: false, place_id: 'demo4' },
+  { cidade: 'Maringá', nome: 'Dyup Art. Esportivos', endereco: 'Av. Mandacaru, 1600 - Maringá - PR', nota: 4.3, avaliacoes: 127, telefone: '(44) 3011-5566', site: '', horario: 'Seg–Sáb 09–19', aberto: true, mine: true, place_id: 'demo5' },
+  { cidade: 'Cianorte', nome: 'Newpace Sports', endereco: 'Av. Brasil, 800 - Centro, Cianorte - PR', nota: 4.5, avaliacoes: 150, telefone: '(44) 98459-2225', site: '', horario: 'Seg–Sáb 09–19', aberto: true, mine: true, place_id: 'demo6' },
+  { cidade: 'Cianorte', nome: 'Amorim Calçados', endereco: 'R. Piquiri, 200 - Cianorte - PR', nota: 4.0, avaliacoes: 55, telefone: '', site: '', horario: 'Seg–Sex 09–18', aberto: true, mine: true, place_id: 'demo7' },
+  { cidade: 'Cianorte', nome: 'Cianorte Sport Calçados', endereco: 'Av. América, 1500 - Cianorte - PR', nota: 4.4, avaliacoes: 88, telefone: '(44) 3629-1122', site: '', horario: 'Seg–Sáb 09–19', aberto: true, mine: false, place_id: 'demo8' },
+  { cidade: 'Cianorte', nome: 'Tênis & Moda Cianorte', endereco: 'R. Guaporé, 340 - Cianorte - PR', nota: 3.7, avaliacoes: 29, telefone: '', site: '', horario: 'Seg–Sex 09–18', aberto: false, mine: false, place_id: 'demo9' },
 ];
 
 // ---- Google Places (modo real) ----
+// Uma busca por cidade (local pode vir "Maringá, Cianorte, Umuarama").
 async function buscarGoogle(tipo, local) {
-  const q = encodeURIComponent(`${tipo} em ${local}`);
+  const cidades = local.split(',').map((s) => s.trim()).filter(Boolean);
+  if (!cidades.length) cidades.push('');
+  const lotes = await Promise.all(cidades.map((cid) => buscarCidade(tipo, cid)));
+  return lotes.flat();
+}
+
+async function buscarCidade(tipo, cidade) {
+  const q = encodeURIComponent(`${tipo} em ${cidade}`);
   const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${q}&language=pt-BR&region=br&key=${KEY}`;
   const r = await fetch(url);
   const j = await r.json();
@@ -43,11 +61,13 @@ async function buscarGoogle(tipo, local) {
     throw new Error(j.error_message || j.status);
   }
   return (j.results || []).map((p) => ({
+    cidade,
     nome: p.name,
     endereco: p.formatted_address,
     nota: p.rating ?? null,
     avaliacoes: p.user_ratings_total ?? 0,
     aberto: p.opening_hours?.open_now ?? null,
+    mine: ehMinha(p.name),
     place_id: p.place_id,
     telefone: '', site: '', horario: '', // vêm em /detalhes (economiza cota)
   }));

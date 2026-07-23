@@ -1,27 +1,36 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Robô de Prospecção</title>
 <style>
-  :root{--ground:#EEF0F3;--surface:#fff;--surface-2:#F7F8FA;--ink:#171B21;--ink-soft:#59636E;--ink-faint:#8B949E;--line:#E4E7EC;--nav:#12283A;--accent:#0E7C86;--accent-soft:#E1F1F2;--good:#2E8B57;--good-soft:#E4F0E8;--star:#E0A500;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,Menlo,monospace;}
-  @media (prefers-color-scheme:dark){:root{--ground:#0E141A;--surface:#161D25;--surface-2:#1B242D;--ink:#E7ECF1;--ink-soft:#A4AEB8;--ink-faint:#6E7A85;--line:#26313B;--nav:#0B1720;--accent:#2AA7B0;--accent-soft:#123033;--good:#57B682;--good-soft:#16241C;--star:#E7B93a;}}
+  :root{--ground:#EEF0F3;--surface:#fff;--surface-2:#F7F8FA;--ink:#171B21;--ink-soft:#59636E;--ink-faint:#8B949E;--line:#E4E7EC;--nav:#12283A;--accent:#0E7C86;--accent-soft:#E1F1F2;--good:#2E8B57;--good-soft:#E4F0E8;--star:#E0A500;--mine:#8a6d0f;--mine-soft:#F3ECD6;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,Menlo,monospace;}
+  @media (prefers-color-scheme:dark){:root{--ground:#0E141A;--surface:#161D25;--surface-2:#1B242D;--ink:#E7ECF1;--ink-soft:#A4AEB8;--ink-faint:#6E7A85;--line:#26313B;--nav:#0B1720;--accent:#2AA7B0;--accent-soft:#123033;--good:#57B682;--good-soft:#16241C;--star:#E7B93a;--mine:#d6b34b;--mine-soft:#241f12;}}
   *{box-sizing:border-box;}body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;}
   .nav{background:var(--nav);color:#fff;padding:13px 20px;display:flex;align-items:center;gap:10px;}
   .nav b{background:var(--accent);width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:1rem;}
   .nav h1{margin:0;font-size:1.05rem;font-weight:800;}
   .nav .demo{margin-left:auto;font-size:.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;background:#7a5a12;color:#ffe9b0;padding:4px 9px;border-radius:999px;}
-  .wrap{max-width:720px;margin:0 auto;padding:18px;}
+  .wrap{max-width:740px;margin:0 auto;padding:18px;}
   .search{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;gap:10px;flex-wrap:wrap;box-shadow:0 6px 20px rgba(18,40,58,.08);}
   .fld{flex:1;min-width:150px;display:flex;flex-direction:column;gap:4px;}
-  .fld label{font-size:.68rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);}
-  .fld input{border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:.95rem;background:var(--surface-2);color:var(--ink);}
-  .fld input:focus{outline:2px solid var(--accent);}
+  .fld label{font-size:.66rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);}
+  .fld input,.fld select{border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:.94rem;background:var(--surface-2);color:var(--ink);}
+  .fld input:focus,.fld select:focus{outline:2px solid var(--accent);}
+  .hint{font-size:.68rem;color:var(--ink-faint);}
   .go{align-self:flex-end;background:var(--accent);color:#fff;border:none;border-radius:9px;padding:11px 20px;font-weight:800;font-size:.95rem;cursor:pointer;}
-  .bar{display:flex;align-items:center;justify-content:space-between;margin:16px 2px 8px;}
+  .filters{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 2px 4px;font-size:.84rem;color:var(--ink-soft);}
+  .filters select{border:1px solid var(--line);border-radius:8px;padding:5px 8px;background:var(--surface);color:var(--ink);font-size:.83rem;}
+  .filters label{display:inline-flex;gap:5px;align-items:center;cursor:pointer;}
+  .bar{display:flex;align-items:center;justify-content:space-between;margin:12px 2px 8px;gap:10px;flex-wrap:wrap;}
   .bar .c{font-size:.85rem;color:var(--ink-soft);}
+  .bar .c b{color:var(--ink);}
   .rota{background:var(--nav);color:#fff;border:none;border-radius:9px;padding:9px 15px;font-weight:700;font-size:.83rem;cursor:pointer;}
   .rota:disabled{opacity:.4;cursor:default;}
+  .cityhdr{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin:16px 2px 8px;font-weight:700;}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:13px 15px;margin-bottom:10px;}
+  .card.mine{opacity:.7;}
   .top{display:flex;align-items:flex-start;gap:12px;}
   .chk{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--accent);}
-  .nm{font-weight:700;font-size:1rem;}
+  .nm{font-weight:700;font-size:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .badge{font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--mine-soft);color:var(--mine);border:1px dashed currentColor;}
+  .badge.new{background:var(--good-soft);color:var(--good);border:none;}
   .addr{color:var(--ink-faint);font-size:.82rem;margin-top:2px;}
   .meta{display:flex;gap:12px;align-items:center;margin-top:7px;font-size:.82rem;flex-wrap:wrap;}
   .star{color:var(--star);font-weight:700;}
@@ -41,11 +50,20 @@
 <div class="wrap">
   <div class="search">
     <div class="fld"><label>Tipo de loja</label><input id="tipo" value="lojas de calçado" placeholder="lojas de calçado esportivo"></div>
-    <div class="fld"><label>Local</label><input id="local" value="Maringá PR" placeholder="cidade, bairro"></div>
+    <div class="fld"><label>Local (várias cidades: separe por vírgula)</label><input id="local" value="Maringá, Cianorte" placeholder="Maringá, Cianorte, Umuarama"></div>
     <button class="go" onclick="buscar()">🔎 Buscar</button>
   </div>
+
+  <div class="filters" id="filters" style="display:none">
+    <span>Filtrar:</span>
+    <label>Nota mín. <select id="fNota" onchange="render()"><option value="0">qualquer</option><option value="3.5">3,5+</option><option value="4">4,0+</option><option value="4.5">4,5+</option></select></label>
+    <label><input type="checkbox" id="fAberta" onchange="render()"> só abertas</label>
+    <label><input type="checkbox" id="fMine" checked onchange="render()"> esconder as que já são minhas</label>
+    <label>Ordem <select id="fOrd" onchange="render()"><option value="nota">melhor nota</option><option value="aval">mais avaliações</option></select></label>
+  </div>
+
   <div class="bar">
-    <div class="c" id="cont">Informe o tipo e o local e clique em Buscar.</div>
+    <div class="c" id="cont">Informe tipo e local (pode ser várias cidades) e clique em Buscar.</div>
     <button class="rota" id="rotaBtn" disabled onclick="rota()">🗺️ Rota (0)</button>
   </div>
   <div id="list"></div>
@@ -53,64 +71,100 @@
 <script>
 const DEMO = __DEMO__;
 document.getElementById('demoTag').style.display = DEMO ? '' : 'none';
+// Base de "já clientes" (no demo, alguns nomes reais seus). No modo real,
+// o servidor marcaria comparando com os clientes do Footwear Pro.
+const MOCK=[
+ {cidade:'Maringá',nome:'Calçados Passo Firme',endereco:'Av. Brasil, 1200 - Centro, Maringá - PR',nota:4.6,avaliacoes:214,telefone:'(44) 3025-1180',site:'passofirme.com.br',horario:'Seg–Sex 09–18 · Sáb 09–13',aberto:true,mine:false,place_id:'d1'},
+ {cidade:'Maringá',nome:'Sport Center Calçados',endereco:'Av. Colombo, 5000 - Zona 7, Maringá - PR',nota:4.2,avaliacoes:98,telefone:'(44) 3226-4477',site:'',horario:'Seg–Sáb 09–19',aberto:true,mine:false,place_id:'d2'},
+ {cidade:'Maringá',nome:'Loja do Tênis Maringá',endereco:'R. Néo Alves Martins, 3100 - Centro, Maringá - PR',nota:4.8,avaliacoes:402,telefone:'(44) 3222-9010',site:'lojadotenis.com',horario:'Seg–Sex 09–18',aberto:false,mine:false,place_id:'d3'},
+ {cidade:'Maringá',nome:'Corrida & Cia',endereco:'Av. Cerro Azul, 850 - Zona 2, Maringá - PR',nota:4.1,avaliacoes:63,telefone:'(44) 99988-2211',site:'',horario:'Seg–Sáb 10–19',aberto:true,mine:false,place_id:'d4'},
+ {cidade:'Maringá',nome:'Dyup Art. Esportivos',endereco:'Av. Mandacaru, 1600 - Maringá - PR',nota:4.3,avaliacoes:127,telefone:'(44) 3011-5566',site:'',horario:'Seg–Sáb 09–19',aberto:true,mine:true,place_id:'d5'},
+ {cidade:'Cianorte',nome:'Newpace Sports',endereco:'Av. Brasil, 800 - Centro, Cianorte - PR',nota:4.5,avaliacoes:150,telefone:'(44) 98459-2225',site:'',horario:'Seg–Sáb 09–19',aberto:true,mine:true,place_id:'d6'},
+ {cidade:'Cianorte',nome:'Amorim Calçados',endereco:'R. Piquiri, 200 - Cianorte - PR',nota:4.0,avaliacoes:55,telefone:'',site:'',horario:'Seg–Sex 09–18',aberto:true,mine:true,place_id:'d7'},
+ {cidade:'Cianorte',nome:'Cianorte Sport Calçados',endereco:'Av. América, 1500 - Cianorte - PR',nota:4.4,avaliacoes:88,telefone:'(44) 3629-1122',site:'',horario:'Seg–Sáb 09–19',aberto:true,mine:false,place_id:'d8'},
+ {cidade:'Cianorte',nome:'Tênis & Moda Cianorte',endereco:'R. Guaporé, 340 - Cianorte - PR',nota:3.7,avaliacoes:29,telefone:'',site:'',horario:'Seg–Sex 09–18',aberto:false,mine:false,place_id:'d9'},
+];
 let leads=[]; const carteira=new Set();
 
 async function buscar(){
+  document.getElementById('list').innerHTML='<div class="loading">🤖 buscando…</div>';
   const tipo=document.getElementById('tipo').value.trim();
   const local=document.getElementById('local').value.trim();
-  document.getElementById('list').innerHTML='<div class="loading">🤖 buscando…</div>';
   try{
-    const r=await fetch(`/api/buscar?tipo=${encodeURIComponent(tipo)}&local=${encodeURIComponent(local)}`);
-    const j=await r.json();
-    if(j.erro) throw new Error(j.erro);
-    leads=j.leads; carteira.clear(); render();
+    if(DEMO){ await new Promise(r=>setTimeout(r,450)); leads=MOCK.map(x=>({...x})); }
+    else{
+      const r=await fetch(`/api/buscar?tipo=${encodeURIComponent(tipo)}&local=${encodeURIComponent(local)}`);
+      const j=await r.json(); if(j.erro) throw new Error(j.erro); leads=j.leads;
+    }
+    carteira.clear(); document.getElementById('filters').style.display='flex'; render();
   }catch(e){ document.getElementById('list').innerHTML='<div class="empty">Erro: '+e.message+'</div>'; }
 }
 
-async function detalhes(i){
-  const box=document.getElementById('det'+i);
+async function detalhes(id){
+  const box=document.getElementById('det_'+id);
   if(box.classList.contains('on')){ box.classList.remove('on'); return; }
-  box.classList.add('on'); box.innerHTML='carregando…';
-  const l=leads[i];
-  const r=await fetch(`/api/detalhes?place_id=${encodeURIComponent(l.place_id)}`);
-  const d=await r.json();
-  Object.assign(l,d);
+  box.classList.add('on');
+  const l=leads.find(x=>x.place_id===id);
+  let d={telefone:l.telefone,site:l.site,horario:l.horario};
+  if(!DEMO && !l.telefone){ box.innerHTML='carregando…'; d=await (await fetch(`/api/detalhes?place_id=${encodeURIComponent(id)}`)).json(); Object.assign(l,d); }
   box.innerHTML=`
-    <div class="row"><span class="k">📞 Fone</span><span>${d.telefone||'—'}</span></div>
+    <div class="row"><span class="k">📞 Fone</span><span>${d.telefone||'— (sem contato)'}</span></div>
     <div class="row"><span class="k">🌐 Site</span><span>${d.site||'—'}</span></div>
     <div class="row"><span class="k">🕐 Horário</span><span>${d.horario||'—'}</span></div>
     <div class="acts">
-      ${d.telefone?`<button class="b wa" onclick="zap(${i})">📲 WhatsApp</button>`:''}
-      <button class="b p" onclick="salvar(${i})">➕ Salvar na carteira</button>
+      ${d.telefone?`<button class="b wa" onclick="zap('${id}')">📲 WhatsApp</button>`:''}
+      <button class="b p" onclick="salvar('${id}')">➕ Salvar na carteira</button>
     </div>`;
 }
-function zap(i){ const t=(leads[i].telefone||'').replace(/\D/g,''); const n=t.length<=11?'55'+t:t; window.open('https://wa.me/'+n,'_blank'); }
-function salvar(i){ carteira.add(i); render(); document.getElementById('det'+i)?.classList.add('on'); }
+function zap(id){ const l=leads.find(x=>x.place_id===id); const t=(l.telefone||'').replace(/\D/g,''); window.open('https://wa.me/'+(t.length<=11?'55'+t:t),'_blank'); }
+function salvar(id){ carteira.add(id); render(); document.getElementById('det_'+id)?.classList.add('on'); }
 function rota(){
-  const paradas=[...carteira].map(i=>leads[i].endereco).filter(Boolean);
-  if(!paradas.length) return;
-  window.open('https://www.google.com/maps/dir/'+paradas.map(encodeURIComponent).join('/'),'_blank');
+  const paradas=[...carteira].map(id=>leads.find(x=>x.place_id===id)?.endereco).filter(Boolean);
+  if(paradas.length) window.open('https://www.google.com/maps/dir/'+paradas.map(encodeURIComponent).join('/'),'_blank');
+}
+
+function filtrados(){
+  const nota=+document.getElementById('fNota').value;
+  const soAberta=document.getElementById('fAberta').checked;
+  const escMine=document.getElementById('fMine').checked;
+  const ord=document.getElementById('fOrd').value;
+  let a=leads.filter(l=>(l.nota||0)>=nota && (!soAberta || l.aberto!==false) && (!escMine || !l.mine));
+  a.sort((x,y)=> ord==='aval' ? (y.avaliacoes||0)-(x.avaliacoes||0) : (y.nota||0)-(x.nota||0));
+  return a;
 }
 function render(){
-  const rb=document.getElementById('rotaBtn');
-  rb.textContent=`🗺️ Rota (${carteira.size})`; rb.disabled=carteira.size===0;
-  document.getElementById('cont').textContent=leads.length?`${leads.length} lojas encontradas${DEMO?' (exemplo fictício)':''}`:'Nenhuma loja encontrada.';
-  document.getElementById('list').innerHTML=leads.map((l,i)=>`
-    <div class="card">
-      <div class="top">
-        <input type="checkbox" class="chk" ${carteira.has(i)?'checked':''} onchange="${carteira.has(i)?`carteira.delete(${i})`:`carteira.add(${i})`};render()">
-        <div style="flex:1">
-          <div class="nm">${l.nome}</div>
-          <div class="addr">${l.endereco||''}</div>
-          <div class="meta">
-            ${l.nota?`<span class="star">★ ${l.nota}</span><span class="muted" style="color:var(--ink-faint)">(${l.avaliacoes})</span>`:''}
-            ${l.aberto===true?'<span class="open">● aberto</span>':l.aberto===false?'<span class="closed">● fechado</span>':''}
-            <span class="sp"></span>
-            <button class="b" onclick="detalhes(${i})">Detalhes ▾</button>
+  const rb=document.getElementById('rotaBtn'); rb.textContent=`🗺️ Rota (${carteira.size})`; rb.disabled=carteira.size===0;
+  const novas=leads.filter(l=>!l.mine).length, minhas=leads.filter(l=>l.mine).length, semTel=leads.filter(l=>!l.telefone).length;
+  document.getElementById('cont').innerHTML= leads.length
+    ? `<b>${novas}</b> novas · ${minhas} já suas · ${semTel} sem telefone${DEMO?' · <i>(exemplo fictício)</i>':''}`
+    : 'Nenhuma loja encontrada.';
+  const arr=filtrados();
+  const cidades=[...new Set(arr.map(l=>l.cidade).filter(Boolean))];
+  const multi=cidades.length>1;
+  let html='';
+  const grupos = multi ? cidades.map(c=>[c, arr.filter(l=>l.cidade===c)]) : [[null, arr]];
+  for(const [cid, items] of grupos){
+    if(cid) html+=`<div class="cityhdr">📍 ${cid} · ${items.length}</div>`;
+    html+=items.map(l=>{
+      const id=l.place_id;
+      return `<div class="card ${l.mine?'mine':''}">
+        <div class="top">
+          <input type="checkbox" class="chk" ${carteira.has(id)?'checked':''} onchange="this.checked?carteira.add('${id}'):carteira.delete('${id}');render()">
+          <div style="flex:1">
+            <div class="nm">${l.nome} ${l.mine?'<span class="badge">já é seu cliente</span>':'<span class="badge new">nova</span>'}</div>
+            <div class="addr">${l.endereco||''}</div>
+            <div class="meta">
+              ${l.nota?`<span class="star">★ ${String(l.nota).replace('.',',')}</span><span style="color:var(--ink-faint)">(${l.avaliacoes})</span>`:''}
+              ${l.aberto===true?'<span class="open">● aberto</span>':l.aberto===false?'<span class="closed">● fechado</span>':''}
+              <span class="sp"></span>
+              <button class="b" onclick="detalhes('${id}')">Detalhes ▾</button>
+            </div>
+            <div class="det" id="det_${id}"></div>
           </div>
-          <div class="det" id="det${i}"></div>
         </div>
-      </div>
-    </div>`).join('') || '<div class="empty">Sem resultados.</div>';
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('list').innerHTML= arr.length? html : '<div class="empty">Nenhuma loja passa nos filtros. Afrouxe os filtros acima.</div>';
 }
 </script></body></html>
