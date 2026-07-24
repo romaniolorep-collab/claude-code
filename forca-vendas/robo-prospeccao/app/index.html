@@ -378,8 +378,17 @@ const tipoLabel = (p) => p.primaryTypeDisplayName?.text || TIPOS[p.primaryType] 
 // SÓ passam estes tipos (whitelist) — qualquer outro (shopping, cosmético,
 // farmácia, mercado…) é descartado automaticamente. "store"/"" ficam porque
 // muita loja de calçado/roupa legítima usa o tipo genérico.
-const RELEVANTES = new Set(['shoe_store','sporting_goods_store','sportswear_store','clothing_store','womens_clothing_store','mens_clothing_store','childrens_clothing_store','clothing_wholesaler','fashion_accessories_store','bag_shop','luggage_store','shopping_bag_store','department_store','wholesaler','store','']);
-const ehRelevante = p => RELEVANTES.has(p.primaryType || '');
+// tipos FORTES: o Google já classificou como calçado/esporte/moda -> passa sempre
+const FORTES = new Set(['shoe_store','sporting_goods_store','sportswear_store','clothing_store','womens_clothing_store','mens_clothing_store','childrens_clothing_store','clothing_wholesaler','fashion_accessories_store','bag_shop','luggage_store','shopping_bag_store']);
+// tipos GENÉRICOS: só passam se o NOME tiver relação com o ramo (senão vem lixo tipo "produtos orientais")
+const FRACOS = new Set(['store','wholesaler','department_store','']);
+const NOME_FOCO = /calcad|sapat|tenis|sport|esport|moda|shoes|sneaker|boot|chinel|sandal|mocassim|fashion|boutique|confec|malha|jeans|roupa|vestu|bolsa|mochila|couro/;
+const ehRelevante = p => {
+  const t=p.primaryType||'';
+  if(FORTES.has(t)) return true;
+  if(FRACOS.has(t)) return NOME_FOCO.test(norm(p.displayName?.text||''));
+  return false;
+};
 
 let leads=[]; const carteira=new Set(); let ultimoAviso=''; let foraCount=0;
 let vista='lista', map=null, capa=null;
