@@ -1,5 +1,7 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Robô de Prospecção</title>
 <link id="fav" rel="icon" type="image/svg+xml">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
 
@@ -179,6 +181,20 @@
   #splash .bar i{display:block;height:100%;background:var(--signal);border-radius:3px;width:8%;animation:load 1.3s ease forwards;}
   @keyframes load{to{width:100%;}}
 
+  /* ---------- seletor lista/mapa + mapa ---------- */
+  .viewseg{display:none;gap:4px;background:var(--sunken);border:1px solid var(--line);border-radius:11px;padding:3px;margin:2px 1px 12px;width:max-content;}
+  .viewseg button{border:none;background:transparent;color:var(--ink-soft);font-family:var(--display);font-weight:700;font-size:.82rem;padding:7px 15px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:7px;}
+  .viewseg button.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow);}
+  #map{display:none;height:62vh;min-height:360px;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 1px;background:var(--surface-2);}
+  .mapnote{height:100%;display:grid;place-items:center;text-align:center;color:var(--ink-faint);padding:30px;line-height:1.6;font-size:.9rem;}
+  .leaflet-container{font-family:var(--body);background:var(--surface-2);}
+  .leaflet-popup-content-wrapper{border-radius:12px;}
+  .pop b{font-family:var(--display);font-size:.95rem;}
+  .pop .pa{color:var(--ink-soft);font-size:.8rem;display:block;margin-top:2px;}
+  .pop .popb{display:flex;gap:6px;margin-top:9px;}
+  .pop .popb button{border:1px solid var(--line);background:var(--surface-2);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:var(--body);}
+  .pop .popb button.pri{background:var(--signal);color:var(--on-signal);border:none;}
+
   :focus-visible{outline:2.5px solid var(--signal);outline-offset:2px;border-radius:4px;}
   @media(max-width:520px){ .grid{grid-template-columns:1fr;} }
 </style></head><body>
@@ -266,7 +282,14 @@
   </div>
 
   <div class="summary" id="summary" style="display:none"></div>
+
+  <div class="viewseg" id="viewseg">
+    <button data-v="lista" class="on" onclick="setVista('lista')"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg> Lista</button>
+    <button data-v="mapa" onclick="setVista('mapa')"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg> Mapa</button>
+  </div>
+
   <div id="list"></div>
+  <div id="map"></div>
 </div>
 
 <!-- DOCK DE ROTA (assinatura) -->
@@ -334,6 +357,7 @@ const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').
 const ehMinha = nome => MINHAS.includes(norm(nome));
 
 let leads=[]; const carteira=new Set(); let ultimoAviso='';
+let vista='lista', map=null, capa=null;
 const getKey = () => localStorage.getItem('gpk') || '';
 const temChave = () => !!getKey();
 
@@ -432,7 +456,42 @@ async function buscar(){
   carteira.clear(); mostrar();
 }
 function scanBox(txt){ return `<div class="loading"><div class="radar"></div>🤖 ${txt}…<br><span style="font-size:.8rem;color:var(--ink-faint)">buscando e paginando — alguns segundos</span></div>`; }
-function mostrar(){ document.getElementById('filters').style.display='flex'; document.getElementById('summary').style.display='flex'; render(); }
+function mostrar(){ document.getElementById('filters').style.display='flex'; document.getElementById('summary').style.display='flex'; document.getElementById('viewseg').style.display='flex'; setVista('lista'); }
+
+// ---------- lista x mapa ----------
+function setVista(v){
+  vista=v;
+  document.querySelectorAll('.viewseg button').forEach(b=>b.classList.toggle('on', b.dataset.v===v));
+  document.getElementById('list').style.display = v==='lista'?'block':'none';
+  document.getElementById('map').style.display  = v==='mapa'?'block':'none';
+  render();
+}
+function renderMapa(){
+  const box=document.getElementById('map');
+  if(typeof L==='undefined'){ box.innerHTML='<div class="mapnote">🗺️ O mapa aparece no app publicado (usa OpenStreetMap, grátis). Aqui no preview ele não carrega — suba no Netlify pra ver os pinos.</div>'; return; }
+  if(!map){
+    map=L.map(box,{zoomControl:true,attributionControl:true}).setView([-23.42,-51.93],11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+    capa=L.layerGroup().addTo(map);
+  }
+  capa.clearLayers();
+  const arr=filtrados().filter(l=>l.lat&&l.lon);
+  const pts=[];
+  arr.forEach(l=>{
+    const on=carteira.has(l.place_id);
+    const cor = l.mine ? '#8695A6' : '#FF4A28';
+    const mk=L.circleMarker([l.lat,l.lon],{radius:on?9:7,color:on?'#0D1622':'#fff',weight:on?3:1.5,fillColor:cor,fillOpacity:.95});
+    mk.bindPopup(popupHtml(l));
+    mk.addTo(capa); pts.push([l.lat,l.lon]);
+  });
+  if(pts.length) map.fitBounds(pts,{padding:[34,34],maxZoom:14});
+  setTimeout(()=>map.invalidateSize(),60);
+}
+function popupHtml(l){
+  const id=l.place_id, on=carteira.has(id);
+  return `<div class="pop"><b>${l.nome}</b>${l.nota?` · ★${String(l.nota).replace('.',',')}`:''}${l.mine?' · <i>já é seu</i>':''}<span class="pa">${l.endereco||''}</span>`
+    +`<div class="popb"><button class="pri" onclick="toggleRota('${id}')">${on?'✓ na rota':'+ rota'}</button><button onclick="verMapa('${id}')">Abrir no Maps</button></div></div>`;
+}
 
 // ---------- ações ----------
 async function detalhes(id){
@@ -510,6 +569,7 @@ function render(){
     }).join('');
   }
   document.getElementById('list').innerHTML= arr.length? html : '<div class="empty">Nenhuma loja passa nos filtros. Afrouxe os filtros acima.</div>';
+  if(vista==='mapa') renderMapa();
 }
 
 // favicon: o mascote num badge coral
