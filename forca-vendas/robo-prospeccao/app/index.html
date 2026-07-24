@@ -65,6 +65,11 @@
   .field input,.field select{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;font-family:var(--body);font-size:.96rem;background:var(--surface-2);color:var(--ink);appearance:none;}
   .field input:focus,.field select:focus{outline:none;border-color:var(--signal);background:var(--surface);}
   .field.sel{position:relative;}
+  .field.cidades{position:relative;}
+  .field.cidades input{padding-right:38px;}
+  .clearfld{position:absolute;right:9px;bottom:9px;width:24px;height:24px;border:none;border-radius:50%;background:var(--sunken);color:var(--ink-soft);font-size:.72rem;cursor:pointer;display:none;align-items:center;justify-content:center;line-height:1;}
+  .clearfld:hover{background:var(--signal);color:var(--on-signal);}
+  .clearfld.on{display:flex;}
   .field.sel::after{content:'▾';position:absolute;right:13px;bottom:12px;color:var(--ink-faint);pointer-events:none;font-size:.7rem;}
   .search-btn{margin-top:12px;width:100%;background:var(--signal);color:var(--on-signal);border:none;border-radius:12px;padding:14px;font-family:var(--display);font-weight:800;font-size:1rem;letter-spacing:.01em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .08s,background .15s;}
   .search-btn:hover{background:var(--signal-press);}
@@ -273,8 +278,9 @@
           <option value="all">Tudo (calçado, esporte, moda)</option>
         </select>
       </div>
-      <div class="field"><label>Cidades (separe por vírgula)</label>
-        <input id="local" value="Maringá, Cianorte" placeholder="Maringá, Cianorte, Umuarama">
+      <div class="field cidades"><label>Cidades (separe por vírgula)</label>
+        <input id="local" value="Maringá, Cianorte" placeholder="Maringá, Cianorte, Umuarama" oninput="toggleClear()">
+        <button type="button" class="clearfld" id="clearLocal" title="Limpar cidades" aria-label="Limpar cidades" onclick="limparCampo()">✕</button>
       </div>
     </div>
     <button class="search-btn" onclick="buscar()"><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Buscar lojas</button>
@@ -651,6 +657,11 @@ function render(){
   const t=setTimeout(some,1600);
   sp.addEventListener('click',()=>{ clearTimeout(t); some(); });
 })();
+
+// ✕ pra limpar só o campo de cidades
+function toggleClear(){ document.getElementById('clearLocal').classList.toggle('on', !!document.getElementById('local').value); }
+function limparCampo(){ const el=document.getElementById('local'); el.value=''; toggleClear(); el.focus(); }
+toggleClear();
 
 atualizarTag();
 </script></body></html>
