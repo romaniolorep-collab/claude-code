@@ -182,7 +182,10 @@
   @keyframes load{to{width:100%;}}
 
   /* ---------- seletor lista/mapa + mapa ---------- */
-  .viewseg{display:none;gap:4px;background:var(--sunken);border:1px solid var(--line);border-radius:11px;padding:3px;margin:2px 1px 12px;width:max-content;}
+  .resbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 1px 12px;flex-wrap:wrap;}
+  .limpar{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);color:var(--ink-soft);border-radius:10px;padding:8px 13px;font-family:var(--body);font-weight:600;font-size:.82rem;cursor:pointer;}
+  .limpar:hover{border-color:var(--signal);color:var(--signal);}
+  .viewseg{display:flex;gap:4px;background:var(--sunken);border:1px solid var(--line);border-radius:11px;padding:3px;width:max-content;}
   .viewseg button{border:none;background:transparent;color:var(--ink-soft);font-family:var(--display);font-weight:700;font-size:.82rem;padding:7px 15px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:7px;}
   .viewseg button.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow);}
   #map{display:none;height:62vh;min-height:360px;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 1px;background:var(--surface-2);}
@@ -283,9 +286,12 @@
 
   <div class="summary" id="summary" style="display:none"></div>
 
-  <div class="viewseg" id="viewseg">
-    <button data-v="lista" class="on" onclick="setVista('lista')"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg> Lista</button>
-    <button data-v="mapa" onclick="setVista('mapa')"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg> Mapa</button>
+  <div class="resbar" id="resbar" style="display:none">
+    <div class="viewseg" id="viewseg">
+      <button data-v="lista" class="on" onclick="setVista('lista')"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg> Lista</button>
+      <button data-v="mapa" onclick="setVista('mapa')"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg> Mapa</button>
+    </div>
+    <button class="limpar" onclick="limparBusca()"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Limpar</button>
   </div>
 
   <div id="list"></div>
@@ -456,7 +462,18 @@ async function buscar(){
   carteira.clear(); mostrar();
 }
 function scanBox(txt){ return `<div class="loading"><div class="radar"></div>🤖 ${txt}…<br><span style="font-size:.8rem;color:var(--ink-faint)">buscando e paginando — alguns segundos</span></div>`; }
-function mostrar(){ document.getElementById('filters').style.display='flex'; document.getElementById('summary').style.display='flex'; document.getElementById('viewseg').style.display='flex'; setVista('lista'); }
+function mostrar(){ document.getElementById('filters').style.display='flex'; document.getElementById('summary').style.display='flex'; document.getElementById('resbar').style.display='flex'; setVista('lista'); }
+
+// limpa a pesquisa: volta ao estado inicial (resultados, filtros, rota e cidades)
+function limparBusca(){
+  leads=[]; carteira.clear(); ultimoAviso='';
+  ['filters','summary','resbar','map'].forEach(id=>document.getElementById(id).style.display='none');
+  const lst=document.getElementById('list'); lst.style.display='block'; lst.innerHTML='';
+  document.getElementById('local').value='';
+  atualizarDock();
+  document.getElementById('local').focus();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
 // ---------- lista x mapa ----------
 function setVista(v){
