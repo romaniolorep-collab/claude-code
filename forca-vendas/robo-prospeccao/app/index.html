@@ -383,6 +383,9 @@ const ehRelevante = p => RELEVANTES.has(p.primaryType || '');
 let leads=[]; const carteira=new Set(); let ultimoAviso=''; let foraCount=0;
 let vista='lista', map=null, capa=null;
 const getKey = () => localStorage.getItem('gpk') || '';
+// chave "limpa": só os caracteres válidos de uma API key (tira espaço/caractere
+// invisível que cola junto ao copiar — senão o header HTTP quebra)
+const keyLimpa = () => getKey().replace(/[^A-Za-z0-9_-]/g,'');
 const temChave = () => !!getKey();
 
 function atualizarTag(){
@@ -394,7 +397,7 @@ function atualizarTag(){
 
 function abrirConfig(){ document.getElementById('keyInput').value=getKey(); document.getElementById('sheet').classList.add('on'); }
 function fecharConfig(){ document.getElementById('sheet').classList.remove('on'); }
-function salvarChave(){ const k=document.getElementById('keyInput').value.trim(); if(k) localStorage.setItem('gpk',k); else localStorage.removeItem('gpk'); atualizarTag(); fecharConfig(); }
+function salvarChave(){ const k=document.getElementById('keyInput').value.replace(/[^A-Za-z0-9_-]/g,''); if(k) localStorage.setItem('gpk',k); else localStorage.removeItem('gpk'); atualizarTag(); fecharConfig(); }
 function removerChave(){ localStorage.removeItem('gpk'); document.getElementById('keyInput').value=''; atualizarTag(); }
 
 // ---------- Places API (New) ----------
@@ -413,7 +416,7 @@ async function placesSearch(textQuery, pageToken){
   if(pageToken) body.pageToken=pageToken;
   const r=await fetch('https://places.googleapis.com/v1/places:searchText',{
     method:'POST',
-    headers:{ 'Content-Type':'application/json','X-Goog-Api-Key':getKey(),'X-Goog-FieldMask':SEARCH_MASK },
+    headers:{ 'Content-Type':'application/json','X-Goog-Api-Key':keyLimpa(),'X-Goog-FieldMask':SEARCH_MASK },
     body:JSON.stringify(body),
   });
   const j=await r.json();
@@ -448,7 +451,7 @@ async function buscarCidade(cidade){
 async function getDetails(placeId){
   try{
     const mask='nationalPhoneNumber,internationalPhoneNumber,websiteUri,regularOpeningHours.weekdayDescriptions';
-    const r=await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`,{headers:{'X-Goog-Api-Key':getKey(),'X-Goog-FieldMask':mask}});
+    const r=await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`,{headers:{'X-Goog-Api-Key':keyLimpa(),'X-Goog-FieldMask':mask}});
     const j=await r.json();
     if(j.error) return {telefone:'',site:'',horario:''};
     return { telefone:j.nationalPhoneNumber||j.internationalPhoneNumber||'', site:(j.websiteUri||'').replace(/^https?:\/\//,'').replace(/\/$/,''), horario:(j.regularOpeningHours?.weekdayDescriptions||[]).join(' · ') };
