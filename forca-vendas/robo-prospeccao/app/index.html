@@ -104,6 +104,8 @@
   .tag{font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;}
   .tag.new{background:var(--signal);color:var(--on-signal);}
   .tag.mine{background:var(--client-soft);color:var(--client);border:1px solid currentColor;}
+  .tag.rede{background:transparent;color:var(--ink-faint);border:1px solid var(--line);}
+  .flag.tipo{background:var(--sunken);border:1px solid var(--line);color:var(--ink-soft);padding:2px 8px;border-radius:6px;font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.04em;}
   .addr{color:var(--ink-faint);font-size:.82rem;margin-top:3px;}
   .flags{display:flex;gap:8px;align-items:center;margin-top:8px;font-size:.76rem;flex-wrap:wrap;}
   .flag{display:inline-flex;align-items:center;gap:5px;}
@@ -280,6 +282,7 @@
   <div class="filters" id="filters" style="display:none">
     <span class="chip"><select id="fNota" onchange="render()"><option value="0">nota: qualquer</option><option value="3.5">nota 3,5+</option><option value="4">nota 4,0+</option><option value="4.5">nota 4,5+</option></select></span>
     <label class="chip"><input type="checkbox" id="fAberta" onchange="render()"> abertas agora</label>
+    <label class="chip act"><input type="checkbox" id="fRede" checked onchange="render()"> esconder redes grandes</label>
     <label class="chip act"><input type="checkbox" id="fMine" checked onchange="render()"> esconder já-clientes</label>
     <span class="chip"><select id="fOrd" onchange="render()"><option value="nota">ordem: melhor nota</option><option value="aval">mais avaliações</option><option value="nome">nome A–Z</option></select></span>
   </div>
@@ -350,17 +353,25 @@ const IC = {
 };
 
 const MOCK=[
- {cidade:'Maringá',nome:'Calçados Passo Firme',endereco:'Av. Brasil, 1200 - Centro, Maringá - PR',nota:4.6,avaliacoes:214,telefone:'(44) 3025-1180',site:'passofirme.com.br',horario:'Seg–Sex 09–18',aberto:true,mine:false,lat:-23.4205,lon:-51.9331,place_id:'ex1'},
- {cidade:'Maringá',nome:'Sport Center Calçados',endereco:'Av. Colombo, 5000 - Zona 7, Maringá - PR',nota:4.2,avaliacoes:98,telefone:'',site:'',horario:'',aberto:true,mine:false,lat:-23.410,lon:-51.951,place_id:'ex2'},
- {cidade:'Maringá',nome:'Loja do Tênis Maringá',endereco:'R. Néo Alves Martins, 3100 - Centro, Maringá - PR',nota:4.8,avaliacoes:402,telefone:'(44) 3222-9010',site:'lojadotenis.com',horario:'Seg–Sex 09–18',aberto:false,mine:false,lat:-23.425,lon:-51.938,place_id:'ex3'},
- {cidade:'Maringá',nome:'Dyup Art. Esportivos',endereco:'Av. Mandacaru, 1600 - Maringá - PR',nota:4.3,avaliacoes:127,telefone:'(44) 3011-5566',site:'',horario:'',aberto:true,mine:true,lat:-23.401,lon:-51.921,place_id:'ex4'},
- {cidade:'Cianorte',nome:'Newpace Sports',endereco:'Av. Brasil, 800 - Centro, Cianorte - PR',nota:4.5,avaliacoes:150,telefone:'(44) 98459-2225',site:'',horario:'',aberto:true,mine:true,lat:-23.663,lon:-52.605,place_id:'ex5'},
- {cidade:'Cianorte',nome:'Cianorte Sport Calçados',endereco:'Av. América, 1500 - Cianorte - PR',nota:4.4,avaliacoes:88,telefone:'(44) 3629-1122',site:'',horario:'',aberto:true,mine:false,lat:-23.671,lon:-52.611,place_id:'ex6'},
+ {cidade:'Maringá',nome:'Calçados Passo Firme',endereco:'Av. Brasil, 1200 - Centro, Maringá - PR',nota:4.6,avaliacoes:214,telefone:'(44) 3025-1180',site:'passofirme.com.br',horario:'Seg–Sex 09–18',aberto:true,tipo:'Calçados',rede:false,mine:false,lat:-23.4205,lon:-51.9331,place_id:'ex1'},
+ {cidade:'Maringá',nome:'Land View Artigos Esportivos',endereco:'Av. Colombo, 5000 - Zona 7, Maringá - PR',nota:4.6,avaliacoes:115,telefone:'',site:'',horario:'',aberto:true,tipo:'Esporte',rede:false,mine:false,lat:-23.410,lon:-51.951,place_id:'ex2'},
+ {cidade:'Maringá',nome:'Decathlon Maringá',endereco:'Av. Colombo, 9999 - Maringá - PR',nota:4.6,avaliacoes:2796,telefone:'(44) 3142-2305',site:'decathlon.com.br',horario:'Seg–Sáb 10–22',aberto:true,tipo:'Esporte',rede:true,mine:false,lat:-23.415,lon:-51.945,place_id:'ex3'},
+ {cidade:'Maringá',nome:'Ponto do Tenista',endereco:'R. Néo Alves Martins, 3100 - Centro, Maringá - PR',nota:4.9,avaliacoes:108,telefone:'(44) 3305-4282',site:'',horario:'Seg–Sex 09–18',aberto:false,tipo:'Esporte',rede:false,mine:false,lat:-23.425,lon:-51.938,place_id:'ex4'},
+ {cidade:'Maringá',nome:'Dyup Art. Esportivos',endereco:'Av. Mandacaru, 1600 - Maringá - PR',nota:4.3,avaliacoes:127,telefone:'(44) 3011-5566',site:'',horario:'',aberto:true,tipo:'Esporte',rede:false,mine:true,lat:-23.401,lon:-51.921,place_id:'ex5'},
+ {cidade:'Cianorte',nome:'Serallê Calçados Cianorte',endereco:'Av. Brasil, 800 - Centro, Cianorte - PR',nota:4.4,avaliacoes:196,telefone:'(44) 98459-2225',site:'',horario:'',aberto:true,tipo:'Calçados',rede:false,mine:false,lat:-23.663,lon:-52.605,place_id:'ex6'},
+ {cidade:'Cianorte',nome:'Newpace Sports',endereco:'Av. América, 1500 - Cianorte - PR',nota:4.5,avaliacoes:150,telefone:'(44) 3629-1122',site:'',horario:'',aberto:true,tipo:'Esporte',rede:false,mine:true,lat:-23.671,lon:-52.611,place_id:'ex7'},
 ];
 
 const MINHAS = ['dyup art. esportivos','newpace sports','amorim calcados'];
 const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim();
 const ehMinha = nome => MINHAS.includes(norm(nome));
+
+// redes grandes que compram direto da marca (não são prospecção do rep)
+const REDES = ['decathlon','centauro','netshoes','nike ','adidas ','renner','riachuelo','c&a','marisa','track & field','track field','havaianas','lojas americanas','magazine','magalu','fast shop'];
+const ehRede = nome => { const n=norm(nome); return REDES.some(r=>n.includes(r)); };
+// rótulo amigável do tipo do Google
+const TIPOS = {shoe_store:'Calçados', sporting_goods_store:'Esporte', clothing_store:'Moda', bag_shop:'Bolsas', wholesaler:'Atacado', department_store:'Departamento', store:'Loja'};
+const tipoLabel = (p) => p.primaryTypeDisplayName?.text || TIPOS[p.primaryType] || '';
 
 let leads=[]; const carteira=new Set(); let ultimoAviso='';
 let vista='lista', map=null, capa=null;
@@ -389,7 +400,7 @@ function traduzErro(err){
   if(s==='RESOURCE_EXHAUSTED') return 'cota do Google estourada por agora';
   return m || s || 'erro do Google';
 }
-const SEARCH_MASK='places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.location,places.businessStatus,places.currentOpeningHours.openNow,nextPageToken';
+const SEARCH_MASK='places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.location,places.businessStatus,places.primaryType,places.primaryTypeDisplayName,places.currentOpeningHours.openNow,nextPageToken';
 async function placesSearch(textQuery, pageToken){
   const body={ textQuery, languageCode:'pt-BR', regionCode:'BR', pageSize:20 };
   if(pageToken) body.pageToken=pageToken;
@@ -412,14 +423,19 @@ async function buscarCidade(cidade){
     if(token && acc.length<60){ await sleep(1600); }
     guard++;
   } while(token && acc.length<60 && guard<3);
-  return acc.map(p=>({
-    cidade, nome:p.displayName?.text||'(sem nome)', endereco:p.formattedAddress||'',
-    nota:p.rating??null, avaliacoes:p.userRatingCount??0,
-    aberto:(p.currentOpeningHours?.openNow ?? null),
-    mine:ehMinha(p.displayName?.text||''),
-    lat:p.location?.latitude??null, lon:p.location?.longitude??null,
-    telefone:'', site:'', horario:'', place_id:p.id,
-  }));
+  return acc
+    .filter(p=>p.businessStatus!=='CLOSED_PERMANENTLY')          // tira fechadas de vez
+    .map(p=>{
+      const nome=p.displayName?.text||'(sem nome)';
+      return {
+        cidade, nome, endereco:p.formattedAddress||'',
+        nota:p.rating??null, avaliacoes:p.userRatingCount??0,
+        aberto:(p.currentOpeningHours?.openNow ?? null),
+        tipo:tipoLabel(p), rede:ehRede(nome), mine:ehMinha(nome),
+        lat:p.location?.latitude??null, lon:p.location?.longitude??null,
+        telefone:'', site:'', horario:'', place_id:p.id,
+      };
+    });
 }
 async function getDetails(placeId){
   try{
@@ -485,7 +501,7 @@ function setVista(v){
 }
 function renderMapa(){
   const box=document.getElementById('map');
-  if(typeof L==='undefined'){ box.innerHTML='<div class="mapnote">🗺️ O mapa aparece no app publicado (usa OpenStreetMap, grátis). Aqui no preview ele não carrega — suba no Netlify pra ver os pinos.</div>'; return; }
+  if(typeof L==='undefined'){ const n=filtrados().filter(l=>l.lat&&l.lon).length; box.innerHTML=`<div class="mapnote"><div style="font-size:2rem;margin-bottom:8px">🗺️</div><b style="color:var(--ink)">${n} lojas prontas pro mapa</b><br>O mapa interativo (OpenStreetMap, grátis) aparece no <b>app publicado</b>. Aqui na pré-visualização ele fica desligado — abra pelo seu link do Netlify pra ver os pinos.</div>`; return; }
   if(!map){
     map=L.map(box,{zoomControl:true,attributionControl:true}).setView([-23.42,-51.93],11);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
@@ -537,9 +553,10 @@ function filtrados(){
   const nota=+document.getElementById('fNota').value;
   const soAberta=document.getElementById('fAberta').checked;
   const escMine=document.getElementById('fMine').checked;
+  const escRede=document.getElementById('fRede').checked;
   const ord=document.getElementById('fOrd').value;
   document.querySelectorAll('.filters .chip').forEach(c=>{ const i=c.querySelector('input'); if(i) c.classList.toggle('act',i.checked); });
-  let a=leads.filter(l=>(nota===0||(l.nota||0)>=nota)&&(!soAberta||l.aberto!==false)&&(!escMine||!l.mine));
+  let a=leads.filter(l=>(nota===0||(l.nota||0)>=nota)&&(!soAberta||l.aberto!==false)&&(!escMine||!l.mine)&&(!escRede||!l.rede));
   a.sort((x,y)=> ord==='nome'?(x.nome||'').localeCompare(y.nome||'','pt'): ord==='aval'?(y.avaliacoes||0)-(x.avaliacoes||0):(y.nota||0)-(x.nota||0));
   return a;
 }
@@ -550,10 +567,10 @@ function atualizarDock(){
 }
 function render(){
   atualizarDock();
-  const novas=leads.filter(l=>!l.mine).length, minhas=leads.filter(l=>l.mine).length, comTel=leads.filter(l=>l.telefone).length;
+  const novas=leads.filter(l=>!l.mine&&!l.rede).length, minhas=leads.filter(l=>l.mine).length, redes=leads.filter(l=>l.rede).length;
   const via=temChave()?'via Google':'exemplo fictício';
   document.getElementById('summary').innerHTML = leads.length
-    ? `<span class="big">${novas}</span><span>novas · ${minhas} já suas · ${comTel} com telefone</span><span class="via">${via}</span>`
+    ? `<span class="big">${novas}</span><span>prospects · ${minhas} já suas${redes?` · ${redes} redes`:''}</span><span class="via">${via}</span>`
     : '';
   const arr=filtrados();
   const cidades=[...new Set(arr.map(l=>l.cidade).filter(Boolean))];
@@ -571,9 +588,10 @@ function render(){
         <div class="lead-top">
           <div class="rate">${rate}</div>
           <div class="lead-body">
-            <div class="lead-name">${l.nome} ${l.mine?'<span class="tag mine">já é seu</span>':'<span class="tag new">nova</span>'}</div>
+            <div class="lead-name">${l.nome} ${l.mine?'<span class="tag mine">já é seu</span>':l.rede?'<span class="tag rede">rede grande</span>':'<span class="tag new">nova</span>'}</div>
             <div class="addr">${l.endereco||''}</div>
             <div class="flags">
+              ${l.tipo?`<span class="flag tipo">${l.tipo}</span>`:''}
               ${l.aberto===true?'<span class="flag open">● aberto</span>':l.aberto===false?'<span class="flag closed">● fechado</span>':''}
               ${l.telefone?'<span class="flag tel">✓ tem telefone</span>':'<span class="flag notel">sem telefone</span>'}
             </div>
