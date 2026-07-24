@@ -1,4 +1,5 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Robô de Prospecção</title>
+<link id="fav" rel="icon" type="image/svg+xml">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
 
@@ -151,15 +152,37 @@
   .panel a{color:var(--signal);font-weight:600;}
   .panel .lil{font-size:.76rem;color:var(--ink-faint);margin-top:13px;line-height:1.6;}
 
+  /* ---------- mascote + ícones ---------- */
+  .mark svg{width:27px;height:27px;display:block;}
+  .scout .eyes{transform-origin:20px 21px;animation:blink 6s infinite;}
+  @keyframes blink{0%,92%,100%{transform:scaleY(1);}95%{transform:scaleY(.12);}}
+  .scout .ping{transform-origin:20px 6px;animation:ping 3.2s ease-out infinite;}
+  @keyframes ping{0%{transform:scale(.5);opacity:.9;}70%,100%{transform:scale(1.5);opacity:0;}}
+  .ic{width:1.05em;height:1.05em;flex:none;vertical-align:-.16em;}
+  .ic-lg{width:1.15em;height:1.15em;}
+  .gear .ic{width:17px;height:17px;vertical-align:middle;}
+
   :focus-visible{outline:2.5px solid var(--signal);outline-offset:2px;border-radius:4px;}
   @media(max-width:520px){ .grid{grid-template-columns:1fr;} }
 </style></head><body>
 <header class="appbar">
   <div class="row">
-    <div class="mark">🤖</div>
+    <div class="mark" aria-hidden="true">
+      <svg class="scout" viewBox="0 0 40 40" fill="none">
+        <circle class="ping" cx="20" cy="6" r="3.6" stroke="#fff" stroke-width="1"/>
+        <line x1="20" y1="8" x2="20" y2="12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="20" cy="6" r="2.1" fill="#fff"/>
+        <rect x="5.4" y="20" width="3.2" height="7.5" rx="1.6" fill="#fff"/>
+        <rect x="31.4" y="20" width="3.2" height="7.5" rx="1.6" fill="#fff"/>
+        <rect x="9" y="12" width="22" height="20.5" rx="7" fill="#fff"/>
+        <rect x="12" y="16" width="16" height="10" rx="5" fill="#0D1622"/>
+        <g class="eyes"><circle cx="17" cy="21" r="2.1" fill="#FF4A28"/><circle cx="23" cy="21" r="2.1" fill="#FF4A28"/><circle cx="17.7" cy="20.3" r=".55" fill="#fff"/><circle cx="23.7" cy="20.3" r=".55" fill="#fff"/></g>
+        <path d="M17 29.2q3 2 6 0" stroke="#0D1622" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
     <div class="brand"><span class="kk">Prospecção de campo · PR</span><h1>Robô de Prospecção</h1></div>
     <span class="src" id="src"><span class="dot"></span><span id="srcTxt">demo</span></span>
-    <button class="gear" title="Configurar chave" onclick="abrirConfig()">⚙️</button>
+    <button class="gear" title="Configurar chave" aria-label="Configurar chave" onclick="abrirConfig()"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="15.5" r="4"/><path d="M11.3 12.7 20 4"/><path d="m16.5 7.5 3 3"/></svg></button>
   </div>
   <div class="scan"></div>
 </header>
@@ -187,7 +210,7 @@
         <input id="local" value="Maringá, Cianorte" placeholder="Maringá, Cianorte, Umuarama">
       </div>
     </div>
-    <button class="search-btn" onclick="buscar()">🔎 Buscar lojas</button>
+    <button class="search-btn" onclick="buscar()"><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Buscar lojas</button>
   </section>
 
   <div class="filters" id="filters" style="display:none">
@@ -206,7 +229,7 @@
   <div class="dock-inner">
     <div class="cnt"><b id="dockN">0 paradas</b><small>roteiro do dia</small></div>
     <button class="clear" onclick="limparRota()">limpar</button>
-    <button class="make" onclick="rota()">🗺️ Montar rota</button>
+    <button class="make" onclick="rota()"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 21 3l-8 18-2-8-8-2z"/></svg> Montar rota</button>
   </div>
 </div>
 
@@ -241,6 +264,16 @@ const CATS = {
   fashion:'lojas de roupa e moda', all:'lojas de calçado, esporte e moda',
 };
 const gq = () => CATS[document.getElementById('cat').value] || CATS.shoes_sports;
+
+// ---- conjunto de ícones (monoline) ----
+const svg = d => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const IC = {
+  plus:  svg('<path d="M12 5v14M5 12h14"/>'),
+  check: svg('<path d="M20 6 9 17l-5-5"/>'),
+  chev:  svg('<path d="m6 9 6 6 6-6"/>'),
+  pin:   svg('<path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/>'),
+  wa:    svg('<path d="M21 11.4a8.4 8.4 0 0 1-12.4 7.4L3.5 20l1.3-4.9A8.4 8.4 0 1 1 21 11.4z"/><path d="M9 9.2c-.2 1.8 1 3.6 2 4.5 1.2 1.1 2.9 2 4.5 1.8.5-.1.9-.6.8-1.1l-.3-1c-.1-.4-.6-.6-1-.4l-.9.4c-.8-.4-1.4-1-1.8-1.8l.4-.9c.2-.4 0-.9-.4-1l-1-.3c-.5-.1-1 .2-1.1.8z"/>'),
+};
 
 const MOCK=[
  {cidade:'Maringá',nome:'Calçados Passo Firme',endereco:'Av. Brasil, 1200 - Centro, Maringá - PR',nota:4.6,avaliacoes:214,telefone:'(44) 3025-1180',site:'passofirme.com.br',horario:'Seg–Sex 09–18',aberto:true,mine:false,lat:-23.4205,lon:-51.9331,place_id:'ex1'},
@@ -369,8 +402,8 @@ async function detalhes(id){
     <div class="r"><span class="k">Site</span><span>${l.site||'—'}</span></div>
     <div class="r"><span class="k">Horário</span><span>${l.horario||'—'}</span></div>
     <div class="lead-foot">
-      ${l.telefone?`<button class="act wa" onclick="zap('${id}')">📲 WhatsApp</button>`:''}
-      <button class="act map" onclick="verMapa('${id}')">📍 Ver no mapa</button>
+      ${l.telefone?`<button class="act wa" onclick="zap('${id}')">${IC.wa} WhatsApp</button>`:''}
+      <button class="act map" onclick="verMapa('${id}')">${IC.pin} Ver no mapa</button>
     </div>`;
 }
 function zap(id){ const l=leads.find(x=>x.place_id===id); const t=(l.telefone||'').replace(/\D/g,''); window.open('https://wa.me/'+(t.length<=11?'55'+t:t),'_blank'); }
@@ -424,15 +457,21 @@ function render(){
               ${l.telefone?'<span class="flag tel">✓ tem telefone</span>':'<span class="flag notel">sem telefone</span>'}
             </div>
           </div>
-          <button class="rtoggle ${on?'on':''}" onclick="toggleRota('${id}')">${on?'✓ na rota':'+ rota'}</button>
+          <button class="rtoggle ${on?'on':''}" onclick="toggleRota('${id}')">${on?IC.check+' na rota':IC.plus+' rota'}</button>
         </div>
-        <div class="lead-foot"><button class="act" onclick="detalhes('${id}')">Detalhes ▾</button></div>
+        <div class="lead-foot"><button class="act" onclick="detalhes('${id}')">Detalhes ${IC.chev}</button></div>
         <div class="det" id="det_${id}"></div>
       </article>`;
     }).join('');
   }
   document.getElementById('list').innerHTML= arr.length? html : '<div class="empty">Nenhuma loja passa nos filtros. Afrouxe os filtros acima.</div>';
 }
+
+// favicon: o mascote num badge coral
+(function(){
+  const s=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='10' fill='#FF4A28'/><line x1='20' y1='8' x2='20' y2='12' stroke='#fff' stroke-width='2' stroke-linecap='round'/><circle cx='20' cy='6' r='2.1' fill='#fff'/><rect x='5.4' y='20' width='3.2' height='7.5' rx='1.6' fill='#fff'/><rect x='31.4' y='20' width='3.2' height='7.5' rx='1.6' fill='#fff'/><rect x='9' y='12' width='22' height='20.5' rx='7' fill='#fff'/><rect x='12' y='16' width='16' height='10' rx='5' fill='#0D1622'/><circle cx='17' cy='21' r='2.1' fill='#FF4A28'/><circle cx='23' cy='21' r='2.1' fill='#FF4A28'/><path d='M17 29.2q3 2 6 0' stroke='#0D1622' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>`;
+  document.getElementById('fav').href='data:image/svg+xml,'+encodeURIComponent(s);
+})();
 
 atualizarTag();
 </script></body></html>
