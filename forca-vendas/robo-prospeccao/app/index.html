@@ -374,10 +374,13 @@ const ehRede = nome => { const n=norm(nome); return REDES.some(r=>n.includes(r))
 // rótulo amigável do tipo do Google
 const TIPOS = {shoe_store:'Calçados', sporting_goods_store:'Esporte', clothing_store:'Moda', bag_shop:'Bolsas', wholesaler:'Atacado', department_store:'Departamento', store:'Loja'};
 const tipoLabel = (p) => p.primaryTypeDisplayName?.text || TIPOS[p.primaryType] || '';
-// tipos fora do foco (o Google às vezes traz): descarta cosmético, farmácia, mercado, etc.
-const FORA = new Set(['shopping_mall','flea_market','market','tourist_attraction','cosmetics_store','beauty_salon','hair_salon','hair_care','nail_salon','spa','pharmacy','drugstore','supermarket','grocery_store','grocery_or_supermarket','convenience_store','liquor_store','restaurant','cafe','bakery','bar','meal_takeaway','meal_delivery','furniture_store','home_goods_store','hardware_store','electronics_store','cell_phone_store','book_store','jewelry_store','pet_store','pet_supply_store','florist','gift_shop','gym','fitness_center','optician','veterinary_care','bank','lodging','gas_station','car_repair','car_dealer','real_estate_agency']);
+// SÓ passam estes tipos (whitelist) — qualquer outro (shopping, cosmético,
+// farmácia, mercado…) é descartado automaticamente. "store"/"" ficam porque
+// muita loja de calçado/roupa legítima usa o tipo genérico.
+const RELEVANTES = new Set(['shoe_store','sporting_goods_store','sportswear_store','clothing_store','womens_clothing_store','mens_clothing_store','childrens_clothing_store','clothing_wholesaler','fashion_accessories_store','bag_shop','luggage_store','shopping_bag_store','department_store','wholesaler','store','']);
+const ehRelevante = p => RELEVANTES.has(p.primaryType || '');
 
-let leads=[]; const carteira=new Set(); let ultimoAviso='';
+let leads=[]; const carteira=new Set(); let ultimoAviso=''; let foraCount=0;
 let vista='lista', map=null, capa=null;
 const getKey = () => localStorage.getItem('gpk') || '';
 const temChave = () => !!getKey();
@@ -427,8 +430,9 @@ async function buscarCidade(cidade){
     if(token && acc.length<60){ await sleep(1600); }
     guard++;
   } while(token && acc.length<60 && guard<3);
-  return acc
-    .filter(p=>p.businessStatus!=='CLOSED_PERMANENTLY' && !FORA.has(p.primaryType))   // tira fechadas + tipos fora do foco
+  const relevantes = acc.filter(p=>p.businessStatus!=='CLOSED_PERMANENTLY' && ehRelevante(p));
+  foraCount += (acc.length - relevantes.length);                     // quantos caíram (fora do foco / fechadas)
+  return relevantes
     .map(p=>{
       const nome=p.displayName?.text||'(sem nome)';
       return {
@@ -456,7 +460,7 @@ function dedupe(arr){ const seen=new Set(),out=[]; for(const l of arr){ const k=
 async function buscar(){
   const alvo=document.getElementById('local').value.split(',').map(x=>x.trim()).filter(Boolean);
   const cidades=alvo.length?alvo:[''];
-  ultimoAviso='';
+  ultimoAviso=''; foraCount=0;
   document.getElementById('summary').style.display='none';
   document.body.classList.add('busy');
   if(!temChave()){
@@ -478,7 +482,7 @@ async function buscar(){
     document.getElementById('filters').style.display='none';
     document.getElementById('list').innerHTML=`<div class="empty">Nenhuma loja de <b>${document.getElementById('cat').selectedOptions[0].text}</b> em <b>${cidades.join(', ')}</b>.<br>Tente a categoria <i>Tudo</i> ou outra cidade.</div>`; return;
   }
-  const av=[]; if(falharam.length)av.push('falhou em: '+falharam.join(', ')); if(vazias.length)av.push('sem resultado em: '+vazias.join(', ')); ultimoAviso=av.join(' · ');
+  const av=[]; if(foraCount)av.push(`${foraCount} fora do foco ocultas`); if(falharam.length)av.push('falhou em: '+falharam.join(', ')); if(vazias.length)av.push('sem resultado em: '+vazias.join(', ')); ultimoAviso=av.join(' · ');
   carteira.clear(); mostrar();
 }
 function scanBox(txt){ return `<div class="loading"><div class="radar"></div>🤖 ${txt}…<br><span style="font-size:.8rem;color:var(--ink-faint)">buscando e paginando — alguns segundos</span></div>`; }
