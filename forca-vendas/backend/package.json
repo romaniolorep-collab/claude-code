@@ -1,0 +1,20 @@
+{
+  "name": "forca-vendas-backend",
+  "version": "0.1.0",
+  "description": "Backend do app de forca de vendas (representantes comerciais)",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "seed": "node src/db.js --seed",
+    "test": "node --test"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/cors": "^10.0.1",
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.8.1",
+    "fastify": "^5.2.1",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

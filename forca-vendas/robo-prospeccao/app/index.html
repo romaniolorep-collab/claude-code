@@ -1,0 +1,667 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Robô de Prospecção</title>
+<link id="fav" rel="icon" type="image/svg+xml">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+  :root{
+    --canvas:#E9ECF1; --surface:#FFFFFF; --surface-2:#F4F6F9; --sunken:#EDF0F4;
+    --ink:#111820; --ink-soft:#5B6675; --ink-faint:#93A0B0; --line:#E2E7EE;
+    --signal:#FF4A28; --signal-press:#E63C1C; --signal-soft:#FFEDE7; --on-signal:#FFFFFF;
+    --client:#6B7686; --client-soft:#EEF1F5; --open:#12805C; --open-soft:#E1F1EA;
+    --star:#F0A400; --field:#0D1622;
+    --display:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    --shadow:0 1px 2px rgba(16,24,32,.04),0 8px 24px rgba(16,24,32,.06);
+    --shadow-lg:0 12px 40px rgba(13,22,34,.16);
+    --r:16px;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --canvas:#0A0F15; --surface:#121A22; --surface-2:#0E161D; --sunken:#0B1219;
+    --ink:#EAF0F6; --ink-soft:#9DAAB8; --ink-faint:#63707E; --line:#22303B;
+    --signal:#FF5E3D; --signal-press:#FF7355; --signal-soft:#2A140E; --on-signal:#0A0F15;
+    --client:#8695A6; --client-soft:#18222C; --open:#3FBE8E; --open-soft:#0F241D;
+    --star:#F0B23A; --field:#05090D;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+    --shadow-lg:0 16px 50px rgba(0,0,0,.6);
+  }}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--canvas);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;padding-bottom:96px;}
+
+  /* ---------- app bar ---------- */
+  .appbar{position:sticky;top:0;z-index:30;background:var(--field);color:#fff;padding:14px 18px 15px;overflow:hidden;}
+  .appbar .row{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+  .mark{width:34px;height:34px;border-radius:10px;background:var(--signal);display:grid;place-items:center;font-size:1.05rem;flex:none;box-shadow:0 3px 12px rgba(255,74,40,.4);}
+  .brand{display:flex;flex-direction:column;line-height:1;}
+  .brand .kk{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#7d8ea0;margin-bottom:3px;}
+  .brand h1{margin:0;font-family:var(--display);font-weight:800;font-size:1.12rem;letter-spacing:-.01em;}
+  .src{margin-left:auto;display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:#cdd7e2;}
+  .src .dot{width:7px;height:7px;border-radius:50%;background:#f0b23a;}
+  .src.on .dot{background:var(--open);box-shadow:0 0 0 3px rgba(63,190,142,.25);}
+  .gear{margin-left:9px;width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:1rem;cursor:pointer;flex:none;}
+  .gear:hover{background:rgba(255,255,255,.18);}
+  .scan{position:absolute;left:0;bottom:0;height:2px;width:100%;background:transparent;}
+  body.busy .scan{background:linear-gradient(90deg,transparent,var(--signal),transparent);background-size:40% 100%;background-repeat:no-repeat;animation:sweep 1s linear infinite;}
+  @keyframes sweep{from{background-position:-40% 0;}to{background-position:140% 0;}}
+
+  .wrap{max-width:760px;margin:0 auto;padding:18px;}
+
+  /* ---------- banner ---------- */
+  .banner{background:var(--signal-soft);border:1px solid var(--signal);border-radius:14px;padding:13px 15px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+  .banner span{font-size:.87rem;flex:1;min-width:180px;}
+  .banner button{background:var(--signal);color:var(--on-signal);border:none;border-radius:10px;padding:9px 15px;font-family:var(--display);font-weight:700;font-size:.84rem;cursor:pointer;}
+
+  /* ---------- console (hero de busca) ---------- */
+  .console{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:16px;}
+  .console .eyebrow{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;}
+  .grid{display:grid;grid-template-columns:minmax(150px,190px) 1fr;gap:11px;}
+  .field{display:flex;flex-direction:column;gap:5px;}
+  .field label{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+  .field input,.field select{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;font-family:var(--body);font-size:.96rem;background:var(--surface-2);color:var(--ink);appearance:none;}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--signal);background:var(--surface);}
+  .field.sel{position:relative;}
+  .field.cidades{position:relative;}
+  .field.cidades input{padding-right:38px;}
+  .clearfld{position:absolute;right:9px;bottom:9px;width:24px;height:24px;border:none;border-radius:50%;background:var(--sunken);color:var(--ink-soft);font-size:.72rem;cursor:pointer;display:none;align-items:center;justify-content:center;line-height:1;}
+  .clearfld:hover{background:var(--signal);color:var(--on-signal);}
+  .clearfld.on{display:flex;}
+  .field.sel::after{content:'▾';position:absolute;right:13px;bottom:12px;color:var(--ink-faint);pointer-events:none;font-size:.7rem;}
+  .search-btn{margin-top:12px;width:100%;background:var(--signal);color:var(--on-signal);border:none;border-radius:12px;padding:14px;font-family:var(--display);font-weight:800;font-size:1rem;letter-spacing:.01em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .08s,background .15s;}
+  .search-btn:hover{background:var(--signal-press);}
+  .search-btn:active{transform:translateY(1px);}
+
+  /* ---------- filtros ---------- */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 1px 4px;}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:.8rem;color:var(--ink-soft);cursor:pointer;user-select:none;}
+  .chip select{border:none;background:transparent;color:var(--ink);font-family:var(--body);font-size:.8rem;font-weight:600;cursor:pointer;outline:none;}
+  .chip input{accent-color:var(--signal);width:15px;height:15px;}
+  .chip.act{border-color:var(--signal);color:var(--ink);background:var(--signal-soft);}
+
+  /* ---------- resumo ---------- */
+  .summary{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:16px 2px 10px;font-size:.86rem;color:var(--ink-soft);}
+  .summary .big{font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--ink);line-height:1;letter-spacing:-.02em;}
+  .summary .via{margin-left:auto;font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--signal);border-radius:10px;padding:10px 13px;font-size:.8rem;color:var(--ink-soft);margin:0 1px 12px;}
+
+  /* ---------- grupo de cidade ---------- */
+  .cityhdr{display:flex;align-items:center;gap:10px;margin:22px 2px 10px;}
+  .cityhdr .nm{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.01em;}
+  .cityhdr .ct{font-family:var(--mono);font-size:.64rem;color:var(--ink-faint);background:var(--sunken);border:1px solid var(--line);padding:3px 8px;border-radius:999px;}
+  .cityhdr .ln{flex:1;height:1px;background:var(--line);}
+
+  /* ---------- card ---------- */
+  .lead{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:11px;box-shadow:var(--shadow);animation:rise .4s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:none;}}
+  .lead.is-mine{background:var(--surface-2);opacity:.82;}
+  .lead-top{display:flex;gap:13px;align-items:flex-start;}
+  .rate{flex:none;width:52px;text-align:center;}
+  .rate .n{font-family:var(--display);font-weight:800;font-size:1.35rem;line-height:1;letter-spacing:-.02em;}
+  .rate .s{color:var(--star);font-size:.72rem;letter-spacing:-1px;margin-top:3px;}
+  .rate .c{font-family:var(--mono);font-size:.6rem;color:var(--ink-faint);margin-top:3px;}
+  .rate .na{font-family:var(--display);font-weight:800;font-size:1.1rem;color:var(--ink-faint);}
+  .lead-body{flex:1;min-width:0;}
+  .lead-name{font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .tag{font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;}
+  .tag.new{background:var(--signal);color:var(--on-signal);}
+  .tag.mine{background:var(--client-soft);color:var(--client);border:1px solid currentColor;}
+  .tag.rede{background:transparent;color:var(--ink-faint);border:1px solid var(--line);}
+  .flag.tipo{background:var(--sunken);border:1px solid var(--line);color:var(--ink-soft);padding:2px 8px;border-radius:6px;font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.04em;}
+  .addr{color:var(--ink-faint);font-size:.82rem;margin-top:3px;}
+  .flags{display:flex;gap:8px;align-items:center;margin-top:8px;font-size:.76rem;flex-wrap:wrap;}
+  .flag{display:inline-flex;align-items:center;gap:5px;}
+  .flag.open{color:var(--open);font-weight:600;}.flag.closed{color:#C1502A;font-weight:600;}
+  .flag.tel{color:var(--open);font-weight:600;}.flag.notel{color:var(--ink-faint);}
+  .rtoggle{flex:none;border:1.5px solid var(--line);background:var(--surface);color:var(--ink-soft);border-radius:10px;padding:8px 11px;font-family:var(--display);font-weight:700;font-size:.78rem;cursor:pointer;white-space:nowrap;transition:.12s;}
+  .rtoggle:hover{border-color:var(--signal);color:var(--ink);}
+  .rtoggle.on{background:var(--signal);border-color:var(--signal);color:var(--on-signal);}
+  .lead-foot{display:flex;gap:8px;margin-top:11px;flex-wrap:wrap;}
+  .act{border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);border-radius:9px;padding:8px 13px;font-size:.79rem;font-weight:600;cursor:pointer;font-family:var(--body);}
+  .act:hover{color:var(--ink);}
+  .act.wa{background:#25D366;color:#08331a;border:none;}
+  .act.map{background:var(--field);color:#fff;border:none;}
+  .det{display:none;margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);}
+  .det.on{display:block;}
+  .det .r{display:flex;gap:9px;margin-bottom:5px;font-size:.84rem;}
+  .det .k{font-family:var(--mono);font-size:.66rem;color:var(--ink-faint);width:64px;flex:none;padding-top:2px;text-transform:uppercase;letter-spacing:.05em;}
+
+  .empty{text-align:center;color:var(--ink-faint);padding:36px 20px;line-height:1.7;font-size:.9rem;}
+  .loading{text-align:center;padding:34px 20px;color:var(--ink-soft);}
+  .radar{width:56px;height:56px;margin:0 auto 14px;border-radius:50%;border:2px solid var(--line);position:relative;overflow:hidden;}
+  .radar::before{content:'';position:absolute;inset:0;background:conic-gradient(from 0deg,transparent 0deg,var(--signal) 55deg,transparent 90deg);animation:spin 1s linear infinite;}
+  .radar::after{content:'';position:absolute;inset:22px;border-radius:50%;background:var(--surface);}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ---------- dock de rota (assinatura) ---------- */
+  .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;transform:translateY(130%);transition:transform .28s cubic-bezier(.2,.8,.2,1);padding:0 12px 12px;pointer-events:none;}
+  .dock.up{transform:none;}
+  .dock-inner{max-width:736px;margin:0 auto;background:var(--field);color:#fff;border-radius:16px;box-shadow:var(--shadow-lg);padding:12px 12px 12px 16px;display:flex;align-items:center;gap:12px;pointer-events:auto;}
+  .dock .cnt{display:flex;flex-direction:column;line-height:1.1;}
+  .dock .cnt b{font-family:var(--display);font-weight:800;font-size:1.15rem;}
+  .dock .cnt small{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#8ea0b2;}
+  .dock .clear{margin-left:auto;background:transparent;border:none;color:#8ea0b2;font-size:.78rem;cursor:pointer;font-family:var(--body);text-decoration:underline;}
+  .dock .make{background:var(--signal);color:var(--on-signal);border:none;border-radius:11px;padding:12px 18px;font-family:var(--display);font-weight:800;font-size:.92rem;cursor:pointer;display:flex;align-items:center;gap:8px;}
+  .dock .make:hover{background:var(--signal-press);}
+
+  /* ---------- sheet config ---------- */
+  .sheet{position:fixed;inset:0;background:rgba(8,14,20,.6);backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;padding:44px 16px;z-index:60;}
+  .sheet.on{display:flex;}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;max-width:460px;width:100%;padding:22px;box-shadow:var(--shadow-lg);}
+  .panel h2{margin:0 0 4px;font-family:var(--display);font-weight:800;font-size:1.15rem;}
+  .panel p{margin:0 0 12px;color:var(--ink-soft);font-size:.86rem;}
+  .panel ol{margin:6px 0 0;padding-left:18px;font-size:.82rem;color:var(--ink-soft);line-height:1.7;}
+  .panel input{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;font-size:.9rem;font-family:var(--mono);background:var(--surface-2);color:var(--ink);}
+  .panel .prow{display:flex;gap:8px;margin-top:14px;}
+  .panel .save{flex:1;background:var(--signal);color:var(--on-signal);border:none;border-radius:11px;padding:12px;font-family:var(--display);font-weight:800;cursor:pointer;}
+  .panel .ghost{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line);border-radius:11px;padding:12px 15px;font-weight:600;cursor:pointer;font-family:var(--body);}
+  .panel a{color:var(--signal);font-weight:600;}
+  .panel .lil{font-size:.76rem;color:var(--ink-faint);margin-top:13px;line-height:1.6;}
+
+  /* ---------- mascote + ícones ---------- */
+  .mark svg{width:28px;height:28px;display:block;overflow:visible;}
+  .scout .eyes{transform-origin:18px 19px;animation:blink 6s infinite;}
+  @keyframes blink{0%,92%,100%{transform:scaleY(1);}95%{transform:scaleY(.12);}}
+  .scout .pineye{transform-origin:32px 10.6px;animation:pineye 2.6s ease-in-out infinite;}
+  @keyframes pineye{0%,100%{opacity:1;}50%{opacity:.35;}}
+  .ic{width:1.05em;height:1.05em;flex:none;vertical-align:-.16em;}
+  .ic-lg{width:1.15em;height:1.15em;}
+  .gear .ic{width:17px;height:17px;vertical-align:middle;}
+
+  /* ---------- tela de abertura ---------- */
+  #splash{position:fixed;inset:0;z-index:100;background:var(--field);display:grid;place-items:center;transition:opacity .5s ease,visibility .5s;}
+  #splash.gone{opacity:0;visibility:hidden;}
+  #splash .box{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:24px;}
+  #splash .hero{width:min(60vw,250px);height:auto;overflow:visible;}
+  #splash .runner{animation:bob .55s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+  #splash .trail{stroke-dasharray:2 6;animation:dash .6s linear infinite;}
+  @keyframes dash{to{stroke-dashoffset:-8;}}
+  #splash .pin{animation:pinbob 1.1s ease-in-out infinite;transform-origin:center;}
+  @keyframes pinbob{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+  #splash .wm{font-family:var(--display);font-weight:900;font-size:1.5rem;color:#fff;letter-spacing:-.02em;}
+  #splash .tg{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#7d8ea0;margin-top:-12px;}
+  #splash .bar{width:120px;height:3px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden;margin-top:4px;}
+  #splash .bar i{display:block;height:100%;background:var(--signal);border-radius:3px;width:8%;animation:load 1.3s ease forwards;}
+  @keyframes load{to{width:100%;}}
+
+  /* ---------- seletor lista/mapa + mapa ---------- */
+  .resbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 1px 12px;flex-wrap:wrap;}
+  .limpar{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);color:var(--ink-soft);border-radius:10px;padding:8px 13px;font-family:var(--body);font-weight:600;font-size:.82rem;cursor:pointer;}
+  .limpar:hover{border-color:var(--signal);color:var(--signal);}
+  .viewseg{display:flex;gap:4px;background:var(--sunken);border:1px solid var(--line);border-radius:11px;padding:3px;width:max-content;}
+  .viewseg button{border:none;background:transparent;color:var(--ink-soft);font-family:var(--display);font-weight:700;font-size:.82rem;padding:7px 15px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:7px;}
+  .viewseg button.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow);}
+  #map{display:none;height:62vh;min-height:360px;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 1px;background:var(--surface-2);}
+  .mapnote{height:100%;display:grid;place-items:center;text-align:center;color:var(--ink-faint);padding:30px;line-height:1.6;font-size:.9rem;}
+  .leaflet-container{font-family:var(--body);background:var(--surface-2);}
+  .leaflet-popup-content-wrapper{border-radius:12px;}
+  .pop b{font-family:var(--display);font-size:.95rem;}
+  .pop .pa{color:var(--ink-soft);font-size:.8rem;display:block;margin-top:2px;}
+  .pop .popb{display:flex;gap:6px;margin-top:9px;}
+  .pop .popb button{border:1px solid var(--line);background:var(--surface-2);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:var(--body);}
+  .pop .popb button.pri{background:var(--signal);color:var(--on-signal);border:none;}
+
+  :focus-visible{outline:2.5px solid var(--signal);outline-offset:2px;border-radius:4px;}
+  @media(max-width:520px){ .grid{grid-template-columns:1fr;} }
+</style></head><body>
+<div id="splash" aria-hidden="true">
+  <div class="box">
+    <svg class="hero" viewBox="0 0 76 64" fill="none">
+      <path class="trail" d="M6 46 Q28 42 48 34" stroke="#FF4A28" stroke-width="2.6" stroke-linecap="round" opacity=".8"/>
+      <g class="runner">
+        <g transform="translate(-4 0) rotate(-7 32 32)">
+          <path d="M32 40 L26 49 L31 55" stroke="#FF4A28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="23" y="54" width="15" height="4.6" rx="2.3" fill="#fff"/>
+          <path d="M36 40 L45 46 L44 53" stroke="#FF4A28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="40" y="52.5" width="15" height="4.6" rx="2.3" fill="#fff"/>
+          <path d="M31 31 L23 33 L25 39" stroke="#FF4A28" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M41 31 L50 30 L52 24" stroke="#FF4A28" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="29" y="27" width="14" height="16" rx="6" fill="#FF4A28"/>
+          <line x1="35" y1="5.5" x2="35" y2="10" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="35" cy="4" r="2" fill="#fff"/>
+          <rect x="26" y="10" width="20" height="18" rx="6.5" fill="#fff"/>
+          <rect x="29.5" y="14" width="15" height="9" rx="4.5" fill="#0D1622"/>
+          <circle cx="36" cy="18.5" r="2" fill="#FF4A28"/><circle cx="41" cy="18.5" r="2" fill="#FF4A28"/>
+          <path d="M34 25.4 q3 1.6 5 0" stroke="#0D1622" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+      <g transform="translate(52 12)"><g class="pin"><path d="M8 22 C8 15 15 12 15 6 A7 7 0 1 0 1 6 C1 12 8 15 8 22 Z" fill="#fff"/><circle cx="8" cy="6.5" r="3" fill="#FF4A28"/></g></g>
+    </svg>
+    <div class="wm">Robô de Prospecção</div>
+    <div class="tg">caçando loja nova</div>
+    <div class="bar"><i></i></div>
+  </div>
+</div>
+
+<header class="appbar">
+  <div class="row">
+    <div class="mark" aria-hidden="true">
+      <svg class="scout" viewBox="0 0 40 40" fill="none">
+        <circle cx="4.5" cy="26" r="1.3" fill="#fff" opacity=".7"/><circle cx="8.5" cy="29" r="1.1" fill="#fff" opacity=".5"/>
+        <g transform="rotate(-6 18 20)">
+          <line x1="18" y1="6.5" x2="18" y2="10.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="5" r="1.9" fill="#fff"/>
+          <rect x="8" y="11" width="20" height="17" rx="6.2" fill="#fff"/>
+          <rect x="11" y="15" width="14" height="8.5" rx="4.2" fill="#0D1622"/>
+          <g class="eyes"><circle cx="16" cy="19" r="1.9" fill="#FF4A28"/><circle cx="21" cy="19" r="1.9" fill="#FF4A28"/></g>
+          <path d="M15 26 q3 1.6 5 0" stroke="#0D1622" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(27 6)"><path d="M5 13 C5 9 8.5 8 8.5 4.5 A3.5 3.5 0 1 0 1.5 4.5 C1.5 8 5 9 5 13 Z" fill="#fff"/><circle class="pineye" cx="5" cy="4.6" r="1.7" fill="#FF4A28"/></g>
+      </svg>
+    </div>
+    <div class="brand"><span class="kk">Prospecção de campo · PR</span><h1>Robô de Prospecção</h1></div>
+    <span class="src" id="src"><span class="dot"></span><span id="srcTxt">demo</span></span>
+    <button class="gear" title="Configurar chave" aria-label="Configurar chave" onclick="abrirConfig()"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="15.5" r="4"/><path d="M11.3 12.7 20 4"/><path d="m16.5 7.5 3 3"/></svg></button>
+  </div>
+  <div class="scan"></div>
+</header>
+
+<div class="wrap">
+  <div class="banner" id="banner" style="display:none">
+    <span>Modo demonstração com lojas de exemplo. Configure sua <b>chave do Google</b> para buscar lojas reais.</span>
+    <button onclick="abrirConfig()">Configurar chave</button>
+  </div>
+
+  <section class="console">
+    <div class="eyebrow">Achar lojas novas para vender</div>
+    <div class="grid">
+      <div class="field sel"><label>Categoria</label>
+        <select id="cat">
+          <option value="shoes_sports" selected>Calçado + Esporte</option>
+          <option value="shoes">Calçados</option>
+          <option value="sports">Esporte / corrida</option>
+          <option value="bag">Bolsas / mochilas</option>
+          <option value="fashion">Roupa / moda</option>
+          <option value="boutique">Boutiques (roupa + calçado)</option>
+          <option value="all">Tudo (calçado, esporte, moda)</option>
+        </select>
+      </div>
+      <div class="field cidades"><label>Cidades (separe por vírgula)</label>
+        <input id="local" value="Maringá, Cianorte" placeholder="Maringá, Cianorte, Umuarama" oninput="toggleClear()">
+        <button type="button" class="clearfld" id="clearLocal" title="Limpar cidades" aria-label="Limpar cidades" onclick="limparCampo()">✕</button>
+      </div>
+    </div>
+    <button class="search-btn" onclick="buscar()"><svg class="ic ic-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Buscar lojas</button>
+  </section>
+
+  <div class="filters" id="filters" style="display:none">
+    <span class="chip"><select id="fNota" onchange="render()"><option value="0">nota: qualquer</option><option value="3.5">nota 3,5+</option><option value="4">nota 4,0+</option><option value="4.5">nota 4,5+</option></select></span>
+    <label class="chip"><input type="checkbox" id="fAberta" onchange="render()"> abertas agora</label>
+    <label class="chip act"><input type="checkbox" id="fRede" checked onchange="render()"> esconder redes grandes</label>
+    <label class="chip act"><input type="checkbox" id="fMine" checked onchange="render()"> esconder já-clientes</label>
+    <span class="chip"><select id="fOrd" onchange="render()"><option value="nota">ordem: melhor nota</option><option value="aval">mais avaliações</option><option value="nome">nome A–Z</option></select></span>
+  </div>
+
+  <div class="summary" id="summary" style="display:none"></div>
+
+  <div class="resbar" id="resbar" style="display:none">
+    <div class="viewseg" id="viewseg">
+      <button data-v="lista" class="on" onclick="setVista('lista')"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg> Lista</button>
+      <button data-v="mapa" onclick="setVista('mapa')"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg> Mapa</button>
+    </div>
+    <button class="limpar" onclick="limparBusca()"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Limpar</button>
+  </div>
+
+  <div id="list"></div>
+  <div id="map"></div>
+</div>
+
+<!-- DOCK DE ROTA (assinatura) -->
+<div class="dock" id="dock">
+  <div class="dock-inner">
+    <div class="cnt"><b id="dockN">0 paradas</b><small>roteiro do dia</small></div>
+    <button class="clear" onclick="limparRota()">limpar</button>
+    <button class="make" onclick="rota()"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 21 3l-8 18-2-8-8-2z"/></svg> Montar rota</button>
+  </div>
+</div>
+
+<!-- CONFIG -->
+<div class="sheet" id="sheet" onclick="if(event.target===this)fecharConfig()">
+  <div class="panel">
+    <h2>Chave do Google</h2>
+    <p>Cole sua chave (<code>AIza…</code>). Fica salva só neste aparelho. No Google Cloud precisa de:</p>
+    <ol>
+      <li>Ativar <b>Places API (New)</b></li>
+      <li>Restringir a chave por <b>Referenciador HTTP</b> ao endereço deste site</li>
+    </ol>
+    <div style="height:12px"></div>
+    <input id="keyInput" placeholder="AIzaSy..." autocomplete="off" spellcheck="false" oninput="keyDica()">
+    <div class="lil" id="keyHint" style="margin-top:6px"></div>
+    <div class="prow">
+      <button class="save" onclick="salvarChave()">Salvar</button>
+      <button class="ghost" onclick="removerChave()">Remover</button>
+      <button class="ghost" onclick="fecharConfig()">Fechar</button>
+    </div>
+    <div class="lil"><a href="https://console.cloud.google.com/apis/library/places.googleapis.com" target="_blank" rel="noopener">Ativar a Places API (New)</a> · <a href="https://console.cloud.google.com/google/maps-apis/credentials" target="_blank" rel="noopener">Ver credenciais</a>. O Google dá ~US$ 200/mês de crédito grátis.</div>
+  </div>
+</div>
+
+<script>
+// ================================================================
+//  Robô de Prospecção — Google Places API (New) via fetch (CORS)
+//  Motor inalterado; casca visual "campo de performance".
+// ================================================================
+const CATS = {
+  shoes:'lojas e boutiques de calçado', sports:'lojas de artigos esportivos',
+  shoes_sports:'lojas de calçado, boutiques e artigos esportivos', bag:'lojas de bolsas e mochilas',
+  fashion:'lojas de roupa, moda e boutiques', boutique:'boutiques de roupas e calçados',
+  all:'lojas e boutiques de calçado, esporte e moda',
+};
+const gq = () => CATS[document.getElementById('cat').value] || CATS.shoes_sports;
+
+// ---- conjunto de ícones (monoline) ----
+const svg = d => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const IC = {
+  plus:  svg('<path d="M12 5v14M5 12h14"/>'),
+  check: svg('<path d="M20 6 9 17l-5-5"/>'),
+  chev:  svg('<path d="m6 9 6 6 6-6"/>'),
+  pin:   svg('<path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/>'),
+  wa:    svg('<path d="M21 11.4a8.4 8.4 0 0 1-12.4 7.4L3.5 20l1.3-4.9A8.4 8.4 0 1 1 21 11.4z"/><path d="M9 9.2c-.2 1.8 1 3.6 2 4.5 1.2 1.1 2.9 2 4.5 1.8.5-.1.9-.6.8-1.1l-.3-1c-.1-.4-.6-.6-1-.4l-.9.4c-.8-.4-1.4-1-1.8-1.8l.4-.9c.2-.4 0-.9-.4-1l-1-.3c-.5-.1-1 .2-1.1.8z"/>'),
+};
+
+const MOCK=[
+ {cidade:'Maringá',nome:'Calçados Passo Firme',endereco:'Av. Brasil, 1200 - Centro, Maringá - PR',nota:4.6,avaliacoes:214,telefone:'(44) 3025-1180',site:'passofirme.com.br',horario:'Seg–Sex 09–18',aberto:true,tipo:'Calçados',rede:false,mine:false,lat:-23.4205,lon:-51.9331,place_id:'ex1'},
+ {cidade:'Maringá',nome:'Land View Artigos Esportivos',endereco:'Av. Colombo, 5000 - Zona 7, Maringá - PR',nota:4.6,avaliacoes:115,telefone:'',site:'',horario:'',aberto:true,tipo:'Esporte',rede:false,mine:false,lat:-23.410,lon:-51.951,place_id:'ex2'},
+ {cidade:'Maringá',nome:'Decathlon Maringá',endereco:'Av. Colombo, 9999 - Maringá - PR',nota:4.6,avaliacoes:2796,telefone:'(44) 3142-2305',site:'decathlon.com.br',horario:'Seg–Sáb 10–22',aberto:true,tipo:'Esporte',rede:true,mine:false,lat:-23.415,lon:-51.945,place_id:'ex3'},
+ {cidade:'Maringá',nome:'Ponto do Tenista',endereco:'R. Néo Alves Martins, 3100 - Centro, Maringá - PR',nota:4.9,avaliacoes:108,telefone:'(44) 3305-4282',site:'',horario:'Seg–Sex 09–18',aberto:false,tipo:'Esporte',rede:false,mine:false,lat:-23.425,lon:-51.938,place_id:'ex4'},
+ {cidade:'Maringá',nome:'Dyup Art. Esportivos',endereco:'Av. Mandacaru, 1600 - Maringá - PR',nota:4.3,avaliacoes:127,telefone:'(44) 3011-5566',site:'',horario:'',aberto:true,tipo:'Esporte',rede:false,mine:true,lat:-23.401,lon:-51.921,place_id:'ex5'},
+ {cidade:'Cianorte',nome:'Serallê Calçados Cianorte',endereco:'Av. Brasil, 800 - Centro, Cianorte - PR',nota:4.4,avaliacoes:196,telefone:'(44) 98459-2225',site:'',horario:'',aberto:true,tipo:'Calçados',rede:false,mine:false,lat:-23.663,lon:-52.605,place_id:'ex6'},
+ {cidade:'Cianorte',nome:'Newpace Sports',endereco:'Av. América, 1500 - Cianorte - PR',nota:4.5,avaliacoes:150,telefone:'(44) 3629-1122',site:'',horario:'',aberto:true,tipo:'Esporte',rede:false,mine:true,lat:-23.671,lon:-52.611,place_id:'ex7'},
+];
+
+const MINHAS = ['dyup art. esportivos','newpace sports','amorim calcados'];
+const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim();
+const ehMinha = nome => MINHAS.includes(norm(nome));
+
+// redes grandes que compram direto da marca (não são prospecção do rep)
+const REDES = ['decathlon','centauro','netshoes','nike ','adidas ','renner','riachuelo','c&a','marisa','track & field','track field','havaianas','lojas americanas','magazine','magalu','fast shop'];
+const ehRede = nome => { const n=norm(nome); return REDES.some(r=>n.includes(r)); };
+// rótulo amigável do tipo do Google
+const TIPOS = {shoe_store:'Calçados', sporting_goods_store:'Esporte', clothing_store:'Moda', bag_shop:'Bolsas', wholesaler:'Atacado', department_store:'Departamento', store:'Loja'};
+const tipoLabel = (p) => p.primaryTypeDisplayName?.text || TIPOS[p.primaryType] || '';
+// SÓ passam estes tipos (whitelist) — qualquer outro (shopping, cosmético,
+// farmácia, mercado…) é descartado automaticamente. "store"/"" ficam porque
+// muita loja de calçado/roupa legítima usa o tipo genérico.
+// tipos FORTES: o Google já classificou como calçado/esporte/moda -> passa sempre
+const FORTES = new Set(['shoe_store','sporting_goods_store','sportswear_store','clothing_store','womens_clothing_store','mens_clothing_store','childrens_clothing_store','clothing_wholesaler','fashion_accessories_store','bag_shop','luggage_store','shopping_bag_store']);
+// tipos GENÉRICOS: só passam se o NOME tiver relação com o ramo (senão vem lixo tipo "produtos orientais")
+const FRACOS = new Set(['store','wholesaler','department_store','health_food_store','warehouse_store','point_of_interest','establishment','']);
+const NOME_FOCO = /calcad|sapat|tenis|sport|esport|atlet|moda|shoes|sneaker|\bfit|boot|chinel|sandal|mocassim|fashion|boutique|confec|malha|jeans|roupa|vestu|bolsa|mochila|couro|natural|suplement|supplement|nutri|vitamina|academia|crossfit|whey|activewear|treino|corrida|running/;
+const ehRelevante = p => {
+  const t=p.primaryType||'';
+  if(FORTES.has(t)) return true;
+  if(FRACOS.has(t)) return NOME_FOCO.test(norm(p.displayName?.text||''));
+  return false;
+};
+
+let leads=[]; const carteira=new Set(); let ultimoAviso=''; let foraCount=0;
+let vista='lista', map=null, capa=null;
+const getKey = () => localStorage.getItem('gpk') || '';
+// chave "limpa": só os caracteres válidos de uma API key (tira espaço/caractere
+// invisível que cola junto ao copiar — senão o header HTTP quebra)
+const keyLimpa = () => getKey().replace(/[^A-Za-z0-9_-]/g,'');
+const temChave = () => !!getKey();
+
+function atualizarTag(){
+  const on=temChave();
+  document.getElementById('srcTxt').textContent = on?'google · real':'demo';
+  document.getElementById('src').classList.toggle('on',on);
+  document.getElementById('banner').style.display = on?'none':'flex';
+}
+
+function abrirConfig(){ document.getElementById('keyInput').value=getKey(); keyDica(); document.getElementById('sheet').classList.add('on'); }
+function keyDica(){
+  const raw=document.getElementById('keyInput').value;
+  const c=raw.replace(/[^A-Za-z0-9_-]/g,'');
+  const el=document.getElementById('keyHint');
+  if(!raw){ el.textContent=''; return; }
+  const ok=c.length===39;
+  el.textContent = ok ? `✓ ${c.length} caracteres` : `${c.length} caracteres — a chave do Google tem 39; confira se copiou tudo (sem espaço)`;
+  el.style.color = ok ? 'var(--open)' : 'var(--signal)';
+}
+function fecharConfig(){ document.getElementById('sheet').classList.remove('on'); }
+function salvarChave(){ const k=document.getElementById('keyInput').value.replace(/[^A-Za-z0-9_-]/g,''); if(k) localStorage.setItem('gpk',k); else localStorage.removeItem('gpk'); atualizarTag(); fecharConfig(); }
+function removerChave(){ localStorage.removeItem('gpk'); document.getElementById('keyInput').value=''; atualizarTag(); }
+
+// ---------- Places API (New) ----------
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+function traduzErro(err){
+  const s=(err&&err.status)||'', m=(err&&err.message)||'';
+  if(s==='PERMISSION_DENIED' || /has not been used|is disabled/i.test(m)) return 'ative a "Places API (New)" no Google Cloud';
+  if(/API key not valid|API_KEY_INVALID/i.test(m)) return 'chave inválida — confira no ⚙️';
+  if(/referer|referrer|not authorized/i.test(m)) return 'a chave está restrita a outro site — libere o endereço do Netlify';
+  if(s==='RESOURCE_EXHAUSTED') return 'cota do Google estourada por agora';
+  return m || s || 'erro do Google';
+}
+const SEARCH_MASK='places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.location,places.businessStatus,places.primaryType,places.primaryTypeDisplayName,places.currentOpeningHours.openNow,nextPageToken';
+async function placesSearch(textQuery, pageToken){
+  const body={ textQuery, languageCode:'pt-BR', regionCode:'BR', pageSize:20 };
+  if(pageToken) body.pageToken=pageToken;
+  const r=await fetch('https://places.googleapis.com/v1/places:searchText',{
+    method:'POST',
+    headers:{ 'Content-Type':'application/json','X-Goog-Api-Key':keyLimpa(),'X-Goog-FieldMask':SEARCH_MASK },
+    body:JSON.stringify(body),
+  });
+  const j=await r.json();
+  if(j.error) throw new Error(traduzErro(j.error));
+  return j;
+}
+async function buscarCidade(cidade){
+  const q=`${gq()} em ${cidade}`;
+  let acc=[], token=null, guard=0;
+  do{
+    const j=await placesSearch(q, token);
+    if(j.places) acc.push(...j.places);
+    token=j.nextPageToken;
+    if(token && acc.length<60){ await sleep(1600); }
+    guard++;
+  } while(token && acc.length<60 && guard<3);
+  const relevantes = acc.filter(p=>p.businessStatus!=='CLOSED_PERMANENTLY' && ehRelevante(p));
+  foraCount += (acc.length - relevantes.length);                     // quantos caíram (fora do foco / fechadas)
+  return relevantes
+    .map(p=>{
+      const nome=p.displayName?.text||'(sem nome)';
+      return {
+        cidade, nome, endereco:p.formattedAddress||'',
+        nota:p.rating??null, avaliacoes:p.userRatingCount??0,
+        aberto:(p.currentOpeningHours?.openNow ?? null),
+        tipo:tipoLabel(p), rede:ehRede(nome), mine:ehMinha(nome),
+        lat:p.location?.latitude??null, lon:p.location?.longitude??null,
+        telefone:'', site:'', horario:'', place_id:p.id,
+      };
+    });
+}
+async function getDetails(placeId){
+  try{
+    const mask='nationalPhoneNumber,internationalPhoneNumber,websiteUri,regularOpeningHours.weekdayDescriptions';
+    const r=await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`,{headers:{'X-Goog-Api-Key':keyLimpa(),'X-Goog-FieldMask':mask}});
+    const j=await r.json();
+    if(j.error) return {telefone:'',site:'',horario:''};
+    return { telefone:j.nationalPhoneNumber||j.internationalPhoneNumber||'', site:(j.websiteUri||'').replace(/^https?:\/\//,'').replace(/\/$/,''), horario:(j.regularOpeningHours?.weekdayDescriptions||[]).join(' · ') };
+  }catch(e){ return {telefone:'',site:'',horario:''}; }
+}
+function dedupe(arr){ const seen=new Set(),out=[]; for(const l of arr){ const k=l.place_id||(norm(l.nome)+'@'+norm(l.cidade)); if(seen.has(k))continue; seen.add(k); out.push(l);} return out; }
+
+// ---------- busca ----------
+async function buscar(){
+  const alvo=document.getElementById('local').value.split(',').map(x=>x.trim()).filter(Boolean);
+  const cidades=alvo.length?alvo:[''];
+  ultimoAviso=''; foraCount=0;
+  document.getElementById('summary').style.display='none';
+  document.body.classList.add('busy');
+  if(!temChave()){
+    document.getElementById('list').innerHTML=scanBox('carregando exemplo');
+    await sleep(450); leads=MOCK.map(x=>({...x}));
+    carteira.clear(); document.body.classList.remove('busy'); mostrar(); return;
+  }
+  document.getElementById('list').innerHTML=scanBox(`vasculhando ${cidades.length>1?cidades.length+' cidades':cidades[0]}`);
+  const res=await Promise.allSettled(cidades.map(c=>buscarCidade(c)));
+  const ok=[],falharam=[],vazias=[]; let motivo='';
+  res.forEach((r,i)=>{ if(r.status==='fulfilled'){ r.value.length?ok.push(...r.value):vazias.push(cidades[i]); } else { falharam.push(cidades[i]); motivo=r.reason?.message||motivo; } });
+  leads=dedupe(ok);
+  document.body.classList.remove('busy');
+  if(!leads.length && falharam.length){
+    document.getElementById('filters').style.display='none';
+    document.getElementById('list').innerHTML=`<div class="empty">Não consegui buscar: <b>${motivo}</b>.<br>Confira a chave no ⚙️ (Places API New ativada e endereço do site liberado).</div>`; return;
+  }
+  if(!leads.length){
+    document.getElementById('filters').style.display='none';
+    document.getElementById('list').innerHTML=`<div class="empty">Nenhuma loja de <b>${document.getElementById('cat').selectedOptions[0].text}</b> em <b>${cidades.join(', ')}</b>.<br>Tente a categoria <i>Tudo</i> ou outra cidade.</div>`; return;
+  }
+  const av=[]; if(foraCount)av.push(`${foraCount} fora do foco ocultas`); if(falharam.length)av.push('falhou em: '+falharam.join(', ')); if(vazias.length)av.push('sem resultado em: '+vazias.join(', ')); ultimoAviso=av.join(' · ');
+  carteira.clear(); mostrar();
+}
+function scanBox(txt){ return `<div class="loading"><div class="radar"></div>🤖 ${txt}…<br><span style="font-size:.8rem;color:var(--ink-faint)">buscando e paginando — alguns segundos</span></div>`; }
+function mostrar(){ document.getElementById('filters').style.display='flex'; document.getElementById('summary').style.display='flex'; document.getElementById('resbar').style.display='flex'; setVista('lista'); }
+
+// limpa a pesquisa: volta ao estado inicial (resultados, filtros, rota e cidades)
+function limparBusca(){
+  leads=[]; carteira.clear(); ultimoAviso='';
+  ['filters','summary','resbar','map'].forEach(id=>document.getElementById(id).style.display='none');
+  const lst=document.getElementById('list'); lst.style.display='block'; lst.innerHTML='';
+  document.getElementById('local').value='';
+  atualizarDock();
+  document.getElementById('local').focus();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ---------- lista x mapa ----------
+function setVista(v){
+  vista=v;
+  document.querySelectorAll('.viewseg button').forEach(b=>b.classList.toggle('on', b.dataset.v===v));
+  document.getElementById('list').style.display = v==='lista'?'block':'none';
+  document.getElementById('map').style.display  = v==='mapa'?'block':'none';
+  render();
+}
+function renderMapa(){
+  const box=document.getElementById('map');
+  if(typeof L==='undefined'){ const n=filtrados().filter(l=>l.lat&&l.lon).length; box.innerHTML=`<div class="mapnote"><div style="font-size:2rem;margin-bottom:8px">🗺️</div><b style="color:var(--ink)">${n} lojas prontas pro mapa</b><br>O mapa interativo (OpenStreetMap, grátis) aparece no <b>app publicado</b>. Aqui na pré-visualização ele fica desligado — abra pelo seu link do Netlify pra ver os pinos.</div>`; return; }
+  if(!map){
+    map=L.map(box,{zoomControl:true,attributionControl:true}).setView([-23.42,-51.93],11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+    capa=L.layerGroup().addTo(map);
+  }
+  capa.clearLayers();
+  const arr=filtrados().filter(l=>l.lat&&l.lon);
+  const pts=[];
+  arr.forEach(l=>{
+    const on=carteira.has(l.place_id);
+    const cor = l.mine ? '#8695A6' : '#FF4A28';
+    const mk=L.circleMarker([l.lat,l.lon],{radius:on?9:7,color:on?'#0D1622':'#fff',weight:on?3:1.5,fillColor:cor,fillOpacity:.95});
+    mk.bindPopup(popupHtml(l));
+    mk.addTo(capa); pts.push([l.lat,l.lon]);
+  });
+  if(pts.length) map.fitBounds(pts,{padding:[34,34],maxZoom:14});
+  setTimeout(()=>map.invalidateSize(),60);
+}
+function popupHtml(l){
+  const id=l.place_id, on=carteira.has(id);
+  return `<div class="pop"><b>${l.nome}</b>${l.nota?` · ★${String(l.nota).replace('.',',')}`:''}${l.mine?' · <i>já é seu</i>':''}<span class="pa">${l.endereco||''}</span>`
+    +`<div class="popb"><button class="pri" onclick="toggleRota('${id}')">${on?'✓ na rota':'+ rota'}</button><button onclick="verMapa('${id}')">Abrir no Maps</button></div></div>`;
+}
+
+// ---------- ações ----------
+async function detalhes(id){
+  const box=document.getElementById('det_'+id);
+  if(box.classList.contains('on')){ box.classList.remove('on'); return; }
+  box.classList.add('on');
+  const l=leads.find(x=>x.place_id===id);
+  const real=temChave() && !String(l.place_id).startsWith('ex');
+  if(real && !l.telefone){ box.innerHTML='<div style="color:var(--ink-faint);font-size:.82rem">carregando contato…</div>'; Object.assign(l, await getDetails(id)); }
+  box.innerHTML=`
+    <div class="r"><span class="k">Fone</span><span>${l.telefone||'— sem telefone no Google'}</span></div>
+    <div class="r"><span class="k">Site</span><span>${l.site||'—'}</span></div>
+    <div class="r"><span class="k">Horário</span><span>${l.horario||'—'}</span></div>
+    <div class="lead-foot">
+      ${l.telefone?`<button class="act wa" onclick="zap('${id}')">${IC.wa} WhatsApp</button>`:''}
+      <button class="act map" onclick="verMapa('${id}')">${IC.pin} Ver no mapa</button>
+    </div>`;
+}
+function zap(id){ const l=leads.find(x=>x.place_id===id); const t=(l.telefone||'').replace(/\D/g,''); window.open('https://wa.me/'+(t.length<=11?'55'+t:t),'_blank'); }
+function verMapa(id){ const l=leads.find(x=>x.place_id===id); const alvo=(l.lat&&l.lon)?`${l.lat},${l.lon}`:l.endereco; window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(alvo),'_blank'); }
+function toggleRota(id){ carteira.has(id)?carteira.delete(id):carteira.add(id); render(); }
+function limparRota(){ carteira.clear(); render(); }
+function rota(){ const p=[...carteira].map(id=>{const l=leads.find(x=>x.place_id===id); if(!l)return null; return (l.lat&&l.lon)?`${l.lat},${l.lon}`:l.endereco;}).filter(Boolean); if(p.length) window.open('https://www.google.com/maps/dir/'+p.map(encodeURIComponent).join('/'),'_blank'); }
+
+function filtrados(){
+  const nota=+document.getElementById('fNota').value;
+  const soAberta=document.getElementById('fAberta').checked;
+  const escMine=document.getElementById('fMine').checked;
+  const escRede=document.getElementById('fRede').checked;
+  const ord=document.getElementById('fOrd').value;
+  document.querySelectorAll('.filters .chip').forEach(c=>{ const i=c.querySelector('input'); if(i) c.classList.toggle('act',i.checked); });
+  let a=leads.filter(l=>(nota===0||(l.nota||0)>=nota)&&(!soAberta||l.aberto!==false)&&(!escMine||!l.mine)&&(!escRede||!l.rede));
+  a.sort((x,y)=> ord==='nome'?(x.nome||'').localeCompare(y.nome||'','pt'): ord==='aval'?(y.avaliacoes||0)-(x.avaliacoes||0):(y.nota||0)-(x.nota||0));
+  return a;
+}
+function atualizarDock(){
+  const n=carteira.size;
+  document.getElementById('dockN').textContent = n+(n===1?' parada':' paradas');
+  document.getElementById('dock').classList.toggle('up', n>0);
+}
+function render(){
+  atualizarDock();
+  const novas=leads.filter(l=>!l.mine&&!l.rede).length, minhas=leads.filter(l=>l.mine).length, redes=leads.filter(l=>l.rede).length;
+  const via=temChave()?'via Google':'exemplo fictício';
+  document.getElementById('summary').innerHTML = leads.length
+    ? `<span class="big">${novas}</span><span>prospects · ${minhas} já suas${redes?` · ${redes} redes`:''}</span><span class="via">${via}</span>`
+    : '';
+  const arr=filtrados();
+  const cidades=[...new Set(arr.map(l=>l.cidade).filter(Boolean))];
+  const multi=cidades.length>1;
+  let html = ultimoAviso ? `<div class="note">⚠️ ${ultimoAviso}.</div>` : '';
+  const grupos = multi ? cidades.map(c=>[c, arr.filter(l=>l.cidade===c)]) : [[null, arr]];
+  for(const [cid, items] of grupos){
+    if(cid) html+=`<div class="cityhdr"><span class="nm">${cid}</span><span class="ct">${items.length}</span><span class="ln"></span></div>`;
+    html+=items.map(l=>{
+      const id=l.place_id, on=carteira.has(id);
+      const rate = l.nota
+        ? `<div class="n">${String(l.nota).replace('.',',')}</div><div class="s">${'★'.repeat(Math.round(l.nota))}</div><div class="c">${l.avaliacoes}</div>`
+        : `<div class="na">—</div><div class="c">s/ nota</div>`;
+      return `<article class="lead ${l.mine?'is-mine':''}">
+        <div class="lead-top">
+          <div class="rate">${rate}</div>
+          <div class="lead-body">
+            <div class="lead-name">${l.nome} ${l.mine?'<span class="tag mine">já é seu</span>':l.rede?'<span class="tag rede">rede grande</span>':'<span class="tag new">nova</span>'}</div>
+            <div class="addr">${l.endereco||''}</div>
+            <div class="flags">
+              ${l.tipo?`<span class="flag tipo">${l.tipo}</span>`:''}
+              ${l.aberto===true?'<span class="flag open">● aberto</span>':l.aberto===false?'<span class="flag closed">● fechado</span>':''}
+              ${l.telefone?'<span class="flag tel">✓ tem telefone</span>':'<span class="flag notel">sem telefone</span>'}
+            </div>
+          </div>
+          <button class="rtoggle ${on?'on':''}" onclick="toggleRota('${id}')">${on?IC.check+' na rota':IC.plus+' rota'}</button>
+        </div>
+        <div class="lead-foot"><button class="act" onclick="detalhes('${id}')">Detalhes ${IC.chev}</button></div>
+        <div class="det" id="det_${id}"></div>
+      </article>`;
+    }).join('');
+  }
+  document.getElementById('list').innerHTML= arr.length? html : '<div class="empty">Nenhuma loja passa nos filtros. Afrouxe os filtros acima.</div>';
+  if(vista==='mapa') renderMapa();
+}
+
+// favicon: o mascote num badge coral
+(function(){
+  const s=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='10' fill='#FF4A28'/><g transform='rotate(-6 17 21)'><line x1='17' y1='8' x2='17' y2='12' stroke='#fff' stroke-width='2' stroke-linecap='round'/><circle cx='17' cy='6.5' r='1.9' fill='#fff'/><rect x='7' y='12' width='20' height='17' rx='6.2' fill='#fff'/><rect x='10' y='16' width='14' height='8.5' rx='4.2' fill='#0D1622'/><circle cx='15' cy='20' r='1.9' fill='#FF4A28'/><circle cx='20' cy='20' r='1.9' fill='#FF4A28'/><path d='M14 27 q3 1.6 5 0' stroke='#0D1622' stroke-width='1.3' fill='none' stroke-linecap='round'/></g><g transform='translate(26 6)'><path d='M5 13 C5 9 8.5 8 8.5 4.5 A3.5 3.5 0 1 0 1.5 4.5 C1.5 8 5 9 5 13 Z' fill='#fff'/><circle cx='5' cy='4.6' r='1.7' fill='#0D1622'/></g></svg>`;
+  document.getElementById('fav').href='data:image/svg+xml,'+encodeURIComponent(s);
+})();
+
+// tela de abertura: mostra uma vez por sessão, some sozinha (ou ao toque)
+(function(){
+  const sp=document.getElementById('splash'); if(!sp) return;
+  if(sessionStorage.getItem('splashSeen')){ sp.remove(); return; }
+  const some=()=>{ sp.classList.add('gone'); sessionStorage.setItem('splashSeen','1'); setTimeout(()=>sp.remove(),550); };
+  const t=setTimeout(some,1600);
+  sp.addEventListener('click',()=>{ clearTimeout(t); some(); });
+})();
+
+// ✕ pra limpar só o campo de cidades
+function toggleClear(){ document.getElementById('clearLocal').classList.toggle('on', !!document.getElementById('local').value); }
+function limparCampo(){ const el=document.getElementById('local'); el.value=''; toggleClear(); el.focus(); }
+toggleClear();
+
+atualizarTag();
+</script></body></html>

@@ -1,0 +1,35 @@
+name: forca_vendas
+description: App de forca de vendas para representantes comerciais (offline-first).
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  shared_preferences: ^2.3.2
+  provider: ^6.1.2
+  uuid: ^4.5.1
+  intl: ^0.19.0
+  drift: 2.20.0
+  sqlite3_flutter_libs: ^0.5.24
+  path_provider: ^2.1.4
+  path: ^1.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  drift_dev: 2.20.0
+  build_runner: ^2.4.13
+
+# drift 2.20 usa a linha 2.x do sqlite3, que carrega a libsqlite3 do sistema
+# em vez de baixar um binário (o proxy do ambiente corrompe o download).
+dependency_overrides:
+  sqlite3: ^2.4.6
+
+flutter:
+  uses-material-design: true
