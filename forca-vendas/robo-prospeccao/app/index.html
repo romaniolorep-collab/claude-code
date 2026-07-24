@@ -1,110 +1,220 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Robô de Prospecção</title>
 <style>
-  :root{--ground:#EEF0F3;--surface:#fff;--surface-2:#F7F8FA;--ink:#171B21;--ink-soft:#59636E;--ink-faint:#8B949E;--line:#E4E7EC;--nav:#12283A;--accent:#0E7C86;--accent-soft:#E1F1F2;--good:#2E8B57;--good-soft:#E4F0E8;--star:#E0A500;--mine:#8a6d0f;--mine-soft:#F3ECD6;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,Menlo,monospace;}
-  @media (prefers-color-scheme:dark){:root{--ground:#0E141A;--surface:#161D25;--surface-2:#1B242D;--ink:#E7ECF1;--ink-soft:#A4AEB8;--ink-faint:#6E7A85;--line:#26313B;--nav:#0B1720;--accent:#2AA7B0;--accent-soft:#123033;--good:#57B682;--good-soft:#16241C;--star:#E7B93a;--mine:#d6b34b;--mine-soft:#241f12;}}
-  *{box-sizing:border-box;}body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;}
-  .nav{background:var(--nav);color:#fff;padding:13px 20px;display:flex;align-items:center;gap:10px;}
-  .nav b{background:var(--accent);width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:1rem;}
-  .nav h1{margin:0;font-size:1.05rem;font-weight:800;}
-  .nav .tag{margin-left:auto;font-size:.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:4px 9px;border-radius:999px;}
-  .nav .tag.demo{background:#7a5a12;color:#ffe9b0;}
-  .nav .tag.real{background:var(--good-soft);color:var(--good);}
-  .nav .gear{margin-left:8px;background:rgba(255,255,255,.14);border:none;color:#fff;width:32px;height:32px;border-radius:8px;font-size:1rem;cursor:pointer;}
-  .wrap{max-width:740px;margin:0 auto;padding:18px;}
-  .banner{background:var(--accent-soft);border:1px solid var(--accent);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:.85rem;margin:0 2px 12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-  .banner button{margin-left:auto;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 13px;font-weight:700;font-size:.82rem;cursor:pointer;}
-  .search{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;gap:10px;flex-wrap:wrap;box-shadow:0 6px 20px rgba(18,40,58,.08);}
-  .fld{flex:1;min-width:150px;display:flex;flex-direction:column;gap:4px;}
-  .fld label{font-size:.66rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);}
-  .fld input,.fld select{border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:.94rem;background:var(--surface-2);color:var(--ink);}
-  .fld input:focus,.fld select:focus{outline:2px solid var(--accent);}
-  .go{align-self:flex-end;background:var(--accent);color:#fff;border:none;border-radius:9px;padding:11px 20px;font-weight:800;font-size:.95rem;cursor:pointer;}
-  .filters{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 2px 4px;font-size:.84rem;color:var(--ink-soft);}
-  .filters select{border:1px solid var(--line);border-radius:8px;padding:5px 8px;background:var(--surface);color:var(--ink);font-size:.83rem;}
-  .filters label{display:inline-flex;gap:5px;align-items:center;cursor:pointer;}
-  .bar{display:flex;align-items:center;justify-content:space-between;margin:12px 2px 8px;gap:10px;flex-wrap:wrap;}
-  .bar .c{font-size:.85rem;color:var(--ink-soft);}
-  .bar .c b{color:var(--ink);}
-  .rota{background:var(--nav);color:#fff;border:none;border-radius:9px;padding:9px 15px;font-weight:700;font-size:.83rem;cursor:pointer;}
-  .rota:disabled{opacity:.4;cursor:default;}
-  .cityhdr{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin:16px 2px 8px;font-weight:700;}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:13px 15px;margin-bottom:10px;}
-  .card.mine{opacity:.7;}
-  .top{display:flex;align-items:flex-start;gap:12px;}
-  .chk{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--accent);}
-  .nm{font-weight:700;font-size:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-  .badge{font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--mine-soft);color:var(--mine);border:1px dashed currentColor;}
-  .badge.new{background:var(--good-soft);color:var(--good);border:none;}
-  .addr{color:var(--ink-faint);font-size:.82rem;margin-top:2px;}
-  .meta{display:flex;gap:12px;align-items:center;margin-top:7px;font-size:.82rem;flex-wrap:wrap;}
-  .star{color:var(--star);font-weight:700;}
-  .open{color:var(--good);font-weight:600;}.closed{color:#b3541e;font-weight:600;}
-  .sp{flex:1;}
-  .det{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-size:.85rem;display:none;}
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+  :root{
+    --canvas:#E9ECF1; --surface:#FFFFFF; --surface-2:#F4F6F9; --sunken:#EDF0F4;
+    --ink:#111820; --ink-soft:#5B6675; --ink-faint:#93A0B0; --line:#E2E7EE;
+    --signal:#FF4A28; --signal-press:#E63C1C; --signal-soft:#FFEDE7; --on-signal:#FFFFFF;
+    --client:#6B7686; --client-soft:#EEF1F5; --open:#12805C; --open-soft:#E1F1EA;
+    --star:#F0A400; --field:#0D1622;
+    --display:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    --shadow:0 1px 2px rgba(16,24,32,.04),0 8px 24px rgba(16,24,32,.06);
+    --shadow-lg:0 12px 40px rgba(13,22,34,.16);
+    --r:16px;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --canvas:#0A0F15; --surface:#121A22; --surface-2:#0E161D; --sunken:#0B1219;
+    --ink:#EAF0F6; --ink-soft:#9DAAB8; --ink-faint:#63707E; --line:#22303B;
+    --signal:#FF5E3D; --signal-press:#FF7355; --signal-soft:#2A140E; --on-signal:#0A0F15;
+    --client:#8695A6; --client-soft:#18222C; --open:#3FBE8E; --open-soft:#0F241D;
+    --star:#F0B23A; --field:#05090D;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+    --shadow-lg:0 16px 50px rgba(0,0,0,.6);
+  }}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--canvas);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;padding-bottom:96px;}
+
+  /* ---------- app bar ---------- */
+  .appbar{position:sticky;top:0;z-index:30;background:var(--field);color:#fff;padding:14px 18px 15px;overflow:hidden;}
+  .appbar .row{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+  .mark{width:34px;height:34px;border-radius:10px;background:var(--signal);display:grid;place-items:center;font-size:1.05rem;flex:none;box-shadow:0 3px 12px rgba(255,74,40,.4);}
+  .brand{display:flex;flex-direction:column;line-height:1;}
+  .brand .kk{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#7d8ea0;margin-bottom:3px;}
+  .brand h1{margin:0;font-family:var(--display);font-weight:800;font-size:1.12rem;letter-spacing:-.01em;}
+  .src{margin-left:auto;display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:#cdd7e2;}
+  .src .dot{width:7px;height:7px;border-radius:50%;background:#f0b23a;}
+  .src.on .dot{background:var(--open);box-shadow:0 0 0 3px rgba(63,190,142,.25);}
+  .gear{margin-left:9px;width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:1rem;cursor:pointer;flex:none;}
+  .gear:hover{background:rgba(255,255,255,.18);}
+  .scan{position:absolute;left:0;bottom:0;height:2px;width:100%;background:transparent;}
+  body.busy .scan{background:linear-gradient(90deg,transparent,var(--signal),transparent);background-size:40% 100%;background-repeat:no-repeat;animation:sweep 1s linear infinite;}
+  @keyframes sweep{from{background-position:-40% 0;}to{background-position:140% 0;}}
+
+  .wrap{max-width:760px;margin:0 auto;padding:18px;}
+
+  /* ---------- banner ---------- */
+  .banner{background:var(--signal-soft);border:1px solid var(--signal);border-radius:14px;padding:13px 15px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+  .banner span{font-size:.87rem;flex:1;min-width:180px;}
+  .banner button{background:var(--signal);color:var(--on-signal);border:none;border-radius:10px;padding:9px 15px;font-family:var(--display);font-weight:700;font-size:.84rem;cursor:pointer;}
+
+  /* ---------- console (hero de busca) ---------- */
+  .console{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:16px;}
+  .console .eyebrow{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;}
+  .grid{display:grid;grid-template-columns:minmax(150px,190px) 1fr;gap:11px;}
+  .field{display:flex;flex-direction:column;gap:5px;}
+  .field label{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+  .field input,.field select{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;font-family:var(--body);font-size:.96rem;background:var(--surface-2);color:var(--ink);appearance:none;}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--signal);background:var(--surface);}
+  .field.sel{position:relative;}
+  .field.sel::after{content:'▾';position:absolute;right:13px;bottom:12px;color:var(--ink-faint);pointer-events:none;font-size:.7rem;}
+  .search-btn{margin-top:12px;width:100%;background:var(--signal);color:var(--on-signal);border:none;border-radius:12px;padding:14px;font-family:var(--display);font-weight:800;font-size:1rem;letter-spacing:.01em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .08s,background .15s;}
+  .search-btn:hover{background:var(--signal-press);}
+  .search-btn:active{transform:translateY(1px);}
+
+  /* ---------- filtros ---------- */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 1px 4px;}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:.8rem;color:var(--ink-soft);cursor:pointer;user-select:none;}
+  .chip select{border:none;background:transparent;color:var(--ink);font-family:var(--body);font-size:.8rem;font-weight:600;cursor:pointer;outline:none;}
+  .chip input{accent-color:var(--signal);width:15px;height:15px;}
+  .chip.act{border-color:var(--signal);color:var(--ink);background:var(--signal-soft);}
+
+  /* ---------- resumo ---------- */
+  .summary{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:16px 2px 10px;font-size:.86rem;color:var(--ink-soft);}
+  .summary .big{font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--ink);line-height:1;letter-spacing:-.02em;}
+  .summary .via{margin-left:auto;font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);}
+  .note{background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--signal);border-radius:10px;padding:10px 13px;font-size:.8rem;color:var(--ink-soft);margin:0 1px 12px;}
+
+  /* ---------- grupo de cidade ---------- */
+  .cityhdr{display:flex;align-items:center;gap:10px;margin:22px 2px 10px;}
+  .cityhdr .nm{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.01em;}
+  .cityhdr .ct{font-family:var(--mono);font-size:.64rem;color:var(--ink-faint);background:var(--sunken);border:1px solid var(--line);padding:3px 8px;border-radius:999px;}
+  .cityhdr .ln{flex:1;height:1px;background:var(--line);}
+
+  /* ---------- card ---------- */
+  .lead{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:11px;box-shadow:var(--shadow);animation:rise .4s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:none;}}
+  .lead.is-mine{background:var(--surface-2);opacity:.82;}
+  .lead-top{display:flex;gap:13px;align-items:flex-start;}
+  .rate{flex:none;width:52px;text-align:center;}
+  .rate .n{font-family:var(--display);font-weight:800;font-size:1.35rem;line-height:1;letter-spacing:-.02em;}
+  .rate .s{color:var(--star);font-size:.72rem;letter-spacing:-1px;margin-top:3px;}
+  .rate .c{font-family:var(--mono);font-size:.6rem;color:var(--ink-faint);margin-top:3px;}
+  .rate .na{font-family:var(--display);font-weight:800;font-size:1.1rem;color:var(--ink-faint);}
+  .lead-body{flex:1;min-width:0;}
+  .lead-name{font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .tag{font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;}
+  .tag.new{background:var(--signal);color:var(--on-signal);}
+  .tag.mine{background:var(--client-soft);color:var(--client);border:1px solid currentColor;}
+  .addr{color:var(--ink-faint);font-size:.82rem;margin-top:3px;}
+  .flags{display:flex;gap:8px;align-items:center;margin-top:8px;font-size:.76rem;flex-wrap:wrap;}
+  .flag{display:inline-flex;align-items:center;gap:5px;}
+  .flag.open{color:var(--open);font-weight:600;}.flag.closed{color:#C1502A;font-weight:600;}
+  .flag.tel{color:var(--open);font-weight:600;}.flag.notel{color:var(--ink-faint);}
+  .rtoggle{flex:none;border:1.5px solid var(--line);background:var(--surface);color:var(--ink-soft);border-radius:10px;padding:8px 11px;font-family:var(--display);font-weight:700;font-size:.78rem;cursor:pointer;white-space:nowrap;transition:.12s;}
+  .rtoggle:hover{border-color:var(--signal);color:var(--ink);}
+  .rtoggle.on{background:var(--signal);border-color:var(--signal);color:var(--on-signal);}
+  .lead-foot{display:flex;gap:8px;margin-top:11px;flex-wrap:wrap;}
+  .act{border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);border-radius:9px;padding:8px 13px;font-size:.79rem;font-weight:600;cursor:pointer;font-family:var(--body);}
+  .act:hover{color:var(--ink);}
+  .act.wa{background:#25D366;color:#08331a;border:none;}
+  .act.map{background:var(--field);color:#fff;border:none;}
+  .det{display:none;margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);}
   .det.on{display:block;}
-  .det .row{display:flex;gap:8px;margin-bottom:4px;}.det .k{color:var(--ink-faint);width:70px;flex:none;}
-  .acts{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap;}
-  .b{border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);border-radius:8px;padding:7px 12px;font-size:.8rem;font-weight:600;cursor:pointer;}
-  .b.wa{background:#25D366;color:#0a3d1f;border:none;}
-  .b.p{background:var(--accent);color:#fff;border:none;}
-  .b.map{background:var(--nav);color:#fff;border:none;}
-  .empty{text-align:center;color:var(--ink-faint);padding:30px;line-height:1.6;}
-  .loading{text-align:center;color:var(--ink-faint);padding:20px;line-height:1.6;}
-  .note{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:.8rem;color:var(--ink-soft);margin:0 2px 10px;line-height:1.5;}
-  .sheet{position:fixed;inset:0;background:rgba(6,14,20,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;}
+  .det .r{display:flex;gap:9px;margin-bottom:5px;font-size:.84rem;}
+  .det .k{font-family:var(--mono);font-size:.66rem;color:var(--ink-faint);width:64px;flex:none;padding-top:2px;text-transform:uppercase;letter-spacing:.05em;}
+
+  .empty{text-align:center;color:var(--ink-faint);padding:36px 20px;line-height:1.7;font-size:.9rem;}
+  .loading{text-align:center;padding:34px 20px;color:var(--ink-soft);}
+  .radar{width:56px;height:56px;margin:0 auto 14px;border-radius:50%;border:2px solid var(--line);position:relative;overflow:hidden;}
+  .radar::before{content:'';position:absolute;inset:0;background:conic-gradient(from 0deg,transparent 0deg,var(--signal) 55deg,transparent 90deg);animation:spin 1s linear infinite;}
+  .radar::after{content:'';position:absolute;inset:22px;border-radius:50%;background:var(--surface);}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ---------- dock de rota (assinatura) ---------- */
+  .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;transform:translateY(130%);transition:transform .28s cubic-bezier(.2,.8,.2,1);padding:0 12px 12px;pointer-events:none;}
+  .dock.up{transform:none;}
+  .dock-inner{max-width:736px;margin:0 auto;background:var(--field);color:#fff;border-radius:16px;box-shadow:var(--shadow-lg);padding:12px 12px 12px 16px;display:flex;align-items:center;gap:12px;pointer-events:auto;}
+  .dock .cnt{display:flex;flex-direction:column;line-height:1.1;}
+  .dock .cnt b{font-family:var(--display);font-weight:800;font-size:1.15rem;}
+  .dock .cnt small{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#8ea0b2;}
+  .dock .clear{margin-left:auto;background:transparent;border:none;color:#8ea0b2;font-size:.78rem;cursor:pointer;font-family:var(--body);text-decoration:underline;}
+  .dock .make{background:var(--signal);color:var(--on-signal);border:none;border-radius:11px;padding:12px 18px;font-family:var(--display);font-weight:800;font-size:.92rem;cursor:pointer;display:flex;align-items:center;gap:8px;}
+  .dock .make:hover{background:var(--signal-press);}
+
+  /* ---------- sheet config ---------- */
+  .sheet{position:fixed;inset:0;background:rgba(8,14,20,.6);backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;padding:44px 16px;z-index:60;}
   .sheet.on{display:flex;}
-  .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;max-width:470px;width:100%;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.3);}
-  .panel h2{margin:0 0 4px;font-size:1.05rem;}
-  .panel p{margin:0 0 14px;color:var(--ink-soft);font-size:.86rem;line-height:1.5;}
-  .panel input{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font-size:.92rem;font-family:var(--mono);background:var(--surface-2);color:var(--ink);}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;max-width:460px;width:100%;padding:22px;box-shadow:var(--shadow-lg);}
+  .panel h2{margin:0 0 4px;font-family:var(--display);font-weight:800;font-size:1.15rem;}
+  .panel p{margin:0 0 12px;color:var(--ink-soft);font-size:.86rem;}
+  .panel ol{margin:6px 0 0;padding-left:18px;font-size:.82rem;color:var(--ink-soft);line-height:1.7;}
+  .panel input{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;font-size:.9rem;font-family:var(--mono);background:var(--surface-2);color:var(--ink);}
   .panel .prow{display:flex;gap:8px;margin-top:14px;}
-  .panel .save{flex:1;background:var(--accent);color:#fff;border:none;border-radius:9px;padding:11px;font-weight:800;cursor:pointer;}
-  .panel .ghost{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line);border-radius:9px;padding:11px 14px;font-weight:600;cursor:pointer;}
-  .panel a{color:var(--accent);}
-  .panel ol{margin:6px 0 0;padding-left:18px;font-size:.8rem;color:var(--ink-soft);line-height:1.7;}
-  .panel .lil{font-size:.76rem;color:var(--ink-faint);margin-top:12px;line-height:1.5;}
+  .panel .save{flex:1;background:var(--signal);color:var(--on-signal);border:none;border-radius:11px;padding:12px;font-family:var(--display);font-weight:800;cursor:pointer;}
+  .panel .ghost{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line);border-radius:11px;padding:12px 15px;font-weight:600;cursor:pointer;font-family:var(--body);}
+  .panel a{color:var(--signal);font-weight:600;}
+  .panel .lil{font-size:.76rem;color:var(--ink-faint);margin-top:13px;line-height:1.6;}
+
+  :focus-visible{outline:2.5px solid var(--signal);outline-offset:2px;border-radius:4px;}
+  @media(max-width:520px){ .grid{grid-template-columns:1fr;} }
 </style></head><body>
-<div class="nav"><b>🤖</b><h1>Robô de Prospecção</h1><span class="tag demo" id="tag">demo</span><button class="gear" title="Configurar chave do Google" onclick="abrirConfig()">⚙️</button></div>
+<header class="appbar">
+  <div class="row">
+    <div class="mark">🤖</div>
+    <div class="brand"><span class="kk">Prospecção de campo · PR</span><h1>Robô de Prospecção</h1></div>
+    <span class="src" id="src"><span class="dot"></span><span id="srcTxt">demo</span></span>
+    <button class="gear" title="Configurar chave" onclick="abrirConfig()">⚙️</button>
+  </div>
+  <div class="scan"></div>
+</header>
+
 <div class="wrap">
   <div class="banner" id="banner" style="display:none">
-    <span>🔑 Modo demonstração (lojas fictícias). Configure sua <b>chave do Google</b> para buscar lojas reais.</span>
+    <span>Modo demonstração com lojas de exemplo. Configure sua <b>chave do Google</b> para buscar lojas reais.</span>
     <button onclick="abrirConfig()">Configurar chave</button>
   </div>
 
-  <div class="search">
-    <div class="fld" style="max-width:190px"><label>Categoria</label>
-      <select id="cat">
-        <option value="shoes_sports" selected>Calçado + Esporte</option>
-        <option value="shoes">Calçados</option>
-        <option value="sports">Esporte / corrida</option>
-        <option value="bag">Bolsas / mochilas</option>
-        <option value="fashion">Roupa / moda</option>
-        <option value="all">Tudo (calçado, esporte, moda)</option>
-      </select>
+  <section class="console">
+    <div class="eyebrow">Achar lojas novas para vender</div>
+    <div class="grid">
+      <div class="field sel"><label>Categoria</label>
+        <select id="cat">
+          <option value="shoes_sports" selected>Calçado + Esporte</option>
+          <option value="shoes">Calçados</option>
+          <option value="sports">Esporte / corrida</option>
+          <option value="bag">Bolsas / mochilas</option>
+          <option value="fashion">Roupa / moda</option>
+          <option value="all">Tudo (calçado, esporte, moda)</option>
+        </select>
+      </div>
+      <div class="field"><label>Cidades (separe por vírgula)</label>
+        <input id="local" value="Maringá, Cianorte" placeholder="Maringá, Cianorte, Umuarama">
+      </div>
     </div>
-    <div class="fld"><label>Local (várias cidades: separe por vírgula)</label><input id="local" value="Maringá, Cianorte" placeholder="Maringá, Cianorte, Umuarama"></div>
-    <button class="go" onclick="buscar()">🔎 Buscar</button>
-  </div>
+    <button class="search-btn" onclick="buscar()">🔎 Buscar lojas</button>
+  </section>
 
   <div class="filters" id="filters" style="display:none">
-    <span>Filtrar:</span>
-    <label>Nota mín. <select id="fNota" onchange="render()"><option value="0">qualquer</option><option value="3.5">3,5+</option><option value="4">4,0+</option><option value="4.5">4,5+</option></select></label>
-    <label><input type="checkbox" id="fAberta" onchange="render()"> só abertas</label>
-    <label><input type="checkbox" id="fMine" checked onchange="render()"> esconder as que já são minhas</label>
-    <label>Ordem <select id="fOrd" onchange="render()"><option value="nota">melhor nota</option><option value="aval">mais avaliações</option><option value="nome">nome (A–Z)</option></select></label>
+    <span class="chip"><select id="fNota" onchange="render()"><option value="0">nota: qualquer</option><option value="3.5">nota 3,5+</option><option value="4">nota 4,0+</option><option value="4.5">nota 4,5+</option></select></span>
+    <label class="chip"><input type="checkbox" id="fAberta" onchange="render()"> abertas agora</label>
+    <label class="chip act"><input type="checkbox" id="fMine" checked onchange="render()"> esconder já-clientes</label>
+    <span class="chip"><select id="fOrd" onchange="render()"><option value="nota">ordem: melhor nota</option><option value="aval">mais avaliações</option><option value="nome">nome A–Z</option></select></span>
   </div>
 
-  <div class="bar">
-    <div class="c" id="cont">Escolha a categoria e o local e clique em Buscar.</div>
-    <button class="rota" id="rotaBtn" disabled onclick="rota()">🗺️ Rota (0)</button>
-  </div>
+  <div class="summary" id="summary" style="display:none"></div>
   <div id="list"></div>
 </div>
 
+<!-- DOCK DE ROTA (assinatura) -->
+<div class="dock" id="dock">
+  <div class="dock-inner">
+    <div class="cnt"><b id="dockN">0 paradas</b><small>roteiro do dia</small></div>
+    <button class="clear" onclick="limparRota()">limpar</button>
+    <button class="make" onclick="rota()">🗺️ Montar rota</button>
+  </div>
+</div>
+
+<!-- CONFIG -->
 <div class="sheet" id="sheet" onclick="if(event.target===this)fecharConfig()">
   <div class="panel">
-    <h2>🔑 Chave do Google Places</h2>
-    <p>Cole sua chave (<code>AIza…</code>). Fica salva <b>só neste aparelho</b>. No Google Cloud precisa só de:</p>
+    <h2>Chave do Google</h2>
+    <p>Cole sua chave (<code>AIza…</code>). Fica salva só neste aparelho. No Google Cloud precisa de:</p>
     <ol>
       <li>Ativar <b>Places API (New)</b></li>
       <li>Restringir a chave por <b>Referenciador HTTP</b> ao endereço deste site</li>
@@ -122,24 +232,16 @@
 
 <script>
 // ================================================================
-//  Robô de Prospecção — fonte única: Google Places API (New)
-//  Chamada direta por fetch (CORS), com paginação (até 60/cidade),
-//  detalhes sob demanda, carteira, rota e WhatsApp.
-//  Requer só: ativar "Places API (New)" + restringir a chave ao site.
+//  Robô de Prospecção — Google Places API (New) via fetch (CORS)
+//  Motor inalterado; casca visual "campo de performance".
 // ================================================================
-
-// categoria -> texto de busca no Google
 const CATS = {
-  shoes:        'lojas de calçado',
-  sports:       'lojas de artigos esportivos',
-  shoes_sports: 'lojas de calçado e artigos esportivos',
-  bag:          'lojas de bolsas e mochilas',
-  fashion:      'lojas de roupa e moda',
-  all:          'lojas de calçado, esporte e moda',
+  shoes:'lojas de calçado', sports:'lojas de artigos esportivos',
+  shoes_sports:'lojas de calçado e artigos esportivos', bag:'lojas de bolsas e mochilas',
+  fashion:'lojas de roupa e moda', all:'lojas de calçado, esporte e moda',
 };
 const gq = () => CATS[document.getElementById('cat').value] || CATS.shoes_sports;
 
-// dados de demonstração (sem chave) — só pra ver a interface
 const MOCK=[
  {cidade:'Maringá',nome:'Calçados Passo Firme',endereco:'Av. Brasil, 1200 - Centro, Maringá - PR',nota:4.6,avaliacoes:214,telefone:'(44) 3025-1180',site:'passofirme.com.br',horario:'Seg–Sex 09–18',aberto:true,mine:false,lat:-23.4205,lon:-51.9331,place_id:'ex1'},
  {cidade:'Maringá',nome:'Sport Center Calçados',endereco:'Av. Colombo, 5000 - Zona 7, Maringá - PR',nota:4.2,avaliacoes:98,telefone:'',site:'',horario:'',aberto:true,mine:false,lat:-23.410,lon:-51.951,place_id:'ex2'},
@@ -149,29 +251,27 @@ const MOCK=[
  {cidade:'Cianorte',nome:'Cianorte Sport Calçados',endereco:'Av. América, 1500 - Cianorte - PR',nota:4.4,avaliacoes:88,telefone:'(44) 3629-1122',site:'',horario:'',aberto:true,mine:false,lat:-23.671,lon:-52.611,place_id:'ex6'},
 ];
 
-// carteira (lojas que já são suas) — depois ligamos ao Footwear Pro
 const MINHAS = ['dyup art. esportivos','newpace sports','amorim calcados'];
 const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim();
 const ehMinha = nome => MINHAS.includes(norm(nome));
 
-let leads=[]; const carteira=new Set(); let gsvc=null; let ultimoAviso='';
+let leads=[]; const carteira=new Set(); let ultimoAviso='';
 const getKey = () => localStorage.getItem('gpk') || '';
 const temChave = () => !!getKey();
 
 function atualizarTag(){
-  const tag=document.getElementById('tag');
-  tag.textContent = temChave()?'real':'demo';
-  tag.className = 'tag '+(temChave()?'real':'demo');
-  document.getElementById('banner').style.display = temChave()?'none':'flex';
+  const on=temChave();
+  document.getElementById('srcTxt').textContent = on?'google · real':'demo';
+  document.getElementById('src').classList.toggle('on',on);
+  document.getElementById('banner').style.display = on?'none':'flex';
 }
 
-// ---------- config da chave ----------
 function abrirConfig(){ document.getElementById('keyInput').value=getKey(); document.getElementById('sheet').classList.add('on'); }
 function fecharConfig(){ document.getElementById('sheet').classList.remove('on'); }
-function salvarChave(){ const k=document.getElementById('keyInput').value.trim(); if(k) localStorage.setItem('gpk',k); else localStorage.removeItem('gpk'); gsvc=null; atualizarTag(); fecharConfig(); }
-function removerChave(){ localStorage.removeItem('gpk'); gsvc=null; document.getElementById('keyInput').value=''; atualizarTag(); }
+function salvarChave(){ const k=document.getElementById('keyInput').value.trim(); if(k) localStorage.setItem('gpk',k); else localStorage.removeItem('gpk'); atualizarTag(); fecharConfig(); }
+function removerChave(){ localStorage.removeItem('gpk'); document.getElementById('keyInput').value=''; atualizarTag(); }
 
-// ---------- Places API (New) — chamada direta por fetch (CORS) ----------
+// ---------- Places API (New) ----------
 const sleep = ms => new Promise(r=>setTimeout(r,ms));
 function traduzErro(err){
   const s=(err&&err.status)||'', m=(err&&err.message)||'';
@@ -181,13 +281,13 @@ function traduzErro(err){
   if(s==='RESOURCE_EXHAUSTED') return 'cota do Google estourada por agora';
   return m || s || 'erro do Google';
 }
-const SEARCH_MASK = 'places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.location,places.businessStatus,places.currentOpeningHours.openNow,nextPageToken';
+const SEARCH_MASK='places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.location,places.businessStatus,places.currentOpeningHours.openNow,nextPageToken';
 async function placesSearch(textQuery, pageToken){
   const body={ textQuery, languageCode:'pt-BR', regionCode:'BR', pageSize:20 };
   if(pageToken) body.pageToken=pageToken;
   const r=await fetch('https://places.googleapis.com/v1/places:searchText',{
     method:'POST',
-    headers:{ 'Content-Type':'application/json', 'X-Goog-Api-Key':getKey(), 'X-Goog-FieldMask':SEARCH_MASK },
+    headers:{ 'Content-Type':'application/json','X-Goog-Api-Key':getKey(),'X-Goog-FieldMask':SEARCH_MASK },
     body:JSON.stringify(body),
   });
   const j=await r.json();
@@ -201,154 +301,134 @@ async function buscarCidade(cidade){
     const j=await placesSearch(q, token);
     if(j.places) acc.push(...j.places);
     token=j.nextPageToken;
-    if(token && acc.length<60){ await sleep(1600); }  // o pageToken leva um instante pra valer
+    if(token && acc.length<60){ await sleep(1600); }
     guard++;
   } while(token && acc.length<60 && guard<3);
   return acc.map(p=>({
-    cidade,
-    nome: p.displayName?.text || '(sem nome)',
-    endereco: p.formattedAddress || '',
-    nota: p.rating ?? null,
-    avaliacoes: p.userRatingCount ?? 0,
-    aberto: (p.currentOpeningHours?.openNow ?? null),
-    mine: ehMinha(p.displayName?.text || ''),
-    lat: p.location?.latitude ?? null,
-    lon: p.location?.longitude ?? null,
-    telefone:'', site:'', horario:'',
-    place_id: p.id,
+    cidade, nome:p.displayName?.text||'(sem nome)', endereco:p.formattedAddress||'',
+    nota:p.rating??null, avaliacoes:p.userRatingCount??0,
+    aberto:(p.currentOpeningHours?.openNow ?? null),
+    mine:ehMinha(p.displayName?.text||''),
+    lat:p.location?.latitude??null, lon:p.location?.longitude??null,
+    telefone:'', site:'', horario:'', place_id:p.id,
   }));
 }
 async function getDetails(placeId){
   try{
     const mask='nationalPhoneNumber,internationalPhoneNumber,websiteUri,regularOpeningHours.weekdayDescriptions';
-    const r=await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`,{
-      headers:{ 'X-Goog-Api-Key':getKey(), 'X-Goog-FieldMask':mask },
-    });
+    const r=await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`,{headers:{'X-Goog-Api-Key':getKey(),'X-Goog-FieldMask':mask}});
     const j=await r.json();
     if(j.error) return {telefone:'',site:'',horario:''};
-    return {
-      telefone: j.nationalPhoneNumber || j.internationalPhoneNumber || '',
-      site: (j.websiteUri||'').replace(/^https?:\/\//,'').replace(/\/$/,''),
-      horario: (j.regularOpeningHours?.weekdayDescriptions||[]).join(' · '),
-    };
+    return { telefone:j.nationalPhoneNumber||j.internationalPhoneNumber||'', site:(j.websiteUri||'').replace(/^https?:\/\//,'').replace(/\/$/,''), horario:(j.regularOpeningHours?.weekdayDescriptions||[]).join(' · ') };
   }catch(e){ return {telefone:'',site:'',horario:''}; }
 }
-
-// ---------- de-duplicação (mesma loja em buscas vizinhas) ----------
-function dedupe(arr){
-  const seen=new Set(); const out=[];
-  for(const l of arr){ const k=l.place_id || (norm(l.nome)+'@'+norm(l.cidade)); if(seen.has(k)) continue; seen.add(k); out.push(l); }
-  return out;
-}
+function dedupe(arr){ const seen=new Set(),out=[]; for(const l of arr){ const k=l.place_id||(norm(l.nome)+'@'+norm(l.cidade)); if(seen.has(k))continue; seen.add(k); out.push(l);} return out; }
 
 // ---------- busca ----------
 async function buscar(){
-  const cidades=document.getElementById('local').value.split(',').map(x=>x.trim()).filter(Boolean);
-  const alvo = cidades.length?cidades:[''];
+  const alvo=document.getElementById('local').value.split(',').map(x=>x.trim()).filter(Boolean);
+  const cidades=alvo.length?alvo:[''];
   ultimoAviso='';
-  if(!temChave()){                                     // sem chave → demonstração
-    document.getElementById('list').innerHTML='<div class="loading">🤖 carregando exemplo…</div>';
-    await new Promise(r=>setTimeout(r,350));
-    leads=MOCK.map(x=>({...x}));
-    carteira.clear(); document.getElementById('filters').style.display='flex'; render(); return;
+  document.getElementById('summary').style.display='none';
+  document.body.classList.add('busy');
+  if(!temChave()){
+    document.getElementById('list').innerHTML=scanBox('carregando exemplo');
+    await sleep(450); leads=MOCK.map(x=>({...x}));
+    carteira.clear(); document.body.classList.remove('busy'); mostrar(); return;
   }
-  document.getElementById('list').innerHTML=`<div class="loading">🤖 buscando ${alvo.length>1?alvo.length+' cidades':alvo[0]} no Google…<br><span style="font-size:.8rem">(paginando até 60 por cidade — alguns segundos)</span></div>`;
-  const res=await Promise.allSettled(alvo.map(c=>buscarCidade(c)));
-  const ok=[]; const falharam=[]; const vazias=[]; let motivo='';
-  res.forEach((r,i)=>{
-    if(r.status==='fulfilled'){ if(r.value.length) ok.push(...r.value); else vazias.push(alvo[i]); }
-    else { falharam.push(alvo[i]); motivo=r.reason?.message||motivo; }
-  });
+  document.getElementById('list').innerHTML=scanBox(`vasculhando ${cidades.length>1?cidades.length+' cidades':cidades[0]}`);
+  const res=await Promise.allSettled(cidades.map(c=>buscarCidade(c)));
+  const ok=[],falharam=[],vazias=[]; let motivo='';
+  res.forEach((r,i)=>{ if(r.status==='fulfilled'){ r.value.length?ok.push(...r.value):vazias.push(cidades[i]); } else { falharam.push(cidades[i]); motivo=r.reason?.message||motivo; } });
   leads=dedupe(ok);
+  document.body.classList.remove('busy');
   if(!leads.length && falharam.length){
     document.getElementById('filters').style.display='none';
-    document.getElementById('cont').textContent='—';
-    document.getElementById('list').innerHTML=`<div class="empty">Não consegui buscar: <b>${motivo}</b>.<br>Confira a chave no ⚙️ (Places API ativada e endereço do site liberado).</div>`;
-    return;
+    document.getElementById('list').innerHTML=`<div class="empty">Não consegui buscar: <b>${motivo}</b>.<br>Confira a chave no ⚙️ (Places API New ativada e endereço do site liberado).</div>`; return;
   }
   if(!leads.length){
     document.getElementById('filters').style.display='none';
-    document.getElementById('cont').textContent='0 lojas.';
-    document.getElementById('list').innerHTML=`<div class="empty">Nenhuma loja de <b>${document.getElementById('cat').selectedOptions[0].text}</b> em <b>${alvo.join(', ')}</b>.<br>Tente a categoria <i>Tudo</i> ou outra cidade.</div>`;
-    return;
+    document.getElementById('list').innerHTML=`<div class="empty">Nenhuma loja de <b>${document.getElementById('cat').selectedOptions[0].text}</b> em <b>${cidades.join(', ')}</b>.<br>Tente a categoria <i>Tudo</i> ou outra cidade.</div>`; return;
   }
-  const avisos=[];
-  if(falharam.length) avisos.push('falhou em: '+falharam.join(', '));
-  if(vazias.length) avisos.push('sem resultado em: '+vazias.join(', '));
-  ultimoAviso=avisos.join(' · ');
-  carteira.clear(); document.getElementById('filters').style.display='flex'; render();
+  const av=[]; if(falharam.length)av.push('falhou em: '+falharam.join(', ')); if(vazias.length)av.push('sem resultado em: '+vazias.join(', ')); ultimoAviso=av.join(' · ');
+  carteira.clear(); mostrar();
 }
+function scanBox(txt){ return `<div class="loading"><div class="radar"></div>🤖 ${txt}…<br><span style="font-size:.8rem;color:var(--ink-faint)">buscando e paginando — alguns segundos</span></div>`; }
+function mostrar(){ document.getElementById('filters').style.display='flex'; document.getElementById('summary').style.display='flex'; render(); }
 
+// ---------- ações ----------
 async function detalhes(id){
   const box=document.getElementById('det_'+id);
   if(box.classList.contains('on')){ box.classList.remove('on'); return; }
   box.classList.add('on');
   const l=leads.find(x=>x.place_id===id);
-  const ehReal = temChave() && !String(l.place_id).startsWith('ex');
-  if(ehReal && !l.telefone){ box.innerHTML='<div style="color:var(--ink-faint)">carregando…</div>'; Object.assign(l, await getDetails(id)); }
+  const real=temChave() && !String(l.place_id).startsWith('ex');
+  if(real && !l.telefone){ box.innerHTML='<div style="color:var(--ink-faint);font-size:.82rem">carregando contato…</div>'; Object.assign(l, await getDetails(id)); }
   box.innerHTML=`
-    <div class="row"><span class="k">📞 Fone</span><span>${l.telefone||'— (sem telefone no Google)'}</span></div>
-    <div class="row"><span class="k">🌐 Site</span><span>${l.site||'—'}</span></div>
-    <div class="row"><span class="k">🕐 Horário</span><span>${l.horario||'—'}</span></div>
-    <div class="acts">
-      ${l.telefone?`<button class="b wa" onclick="zap('${id}')">📲 WhatsApp</button>`:''}
-      <button class="b map" onclick="verMapa('${id}')">📍 Ver no mapa</button>
-      <button class="b p" onclick="salvar('${id}')">➕ Salvar na carteira</button>
+    <div class="r"><span class="k">Fone</span><span>${l.telefone||'— sem telefone no Google'}</span></div>
+    <div class="r"><span class="k">Site</span><span>${l.site||'—'}</span></div>
+    <div class="r"><span class="k">Horário</span><span>${l.horario||'—'}</span></div>
+    <div class="lead-foot">
+      ${l.telefone?`<button class="act wa" onclick="zap('${id}')">📲 WhatsApp</button>`:''}
+      <button class="act map" onclick="verMapa('${id}')">📍 Ver no mapa</button>
     </div>`;
 }
 function zap(id){ const l=leads.find(x=>x.place_id===id); const t=(l.telefone||'').replace(/\D/g,''); window.open('https://wa.me/'+(t.length<=11?'55'+t:t),'_blank'); }
 function verMapa(id){ const l=leads.find(x=>x.place_id===id); const alvo=(l.lat&&l.lon)?`${l.lat},${l.lon}`:l.endereco; window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(alvo),'_blank'); }
-function salvar(id){ carteira.add(id); render(); document.getElementById('det_'+id)?.classList.add('on'); }
-function rota(){
-  const paradas=[...carteira].map(id=>{const l=leads.find(x=>x.place_id===id); if(!l)return null; return (l.lat&&l.lon)?`${l.lat},${l.lon}`:l.endereco;}).filter(Boolean);
-  if(paradas.length) window.open('https://www.google.com/maps/dir/'+paradas.map(encodeURIComponent).join('/'),'_blank');
-}
+function toggleRota(id){ carteira.has(id)?carteira.delete(id):carteira.add(id); render(); }
+function limparRota(){ carteira.clear(); render(); }
+function rota(){ const p=[...carteira].map(id=>{const l=leads.find(x=>x.place_id===id); if(!l)return null; return (l.lat&&l.lon)?`${l.lat},${l.lon}`:l.endereco;}).filter(Boolean); if(p.length) window.open('https://www.google.com/maps/dir/'+p.map(encodeURIComponent).join('/'),'_blank'); }
 
 function filtrados(){
   const nota=+document.getElementById('fNota').value;
   const soAberta=document.getElementById('fAberta').checked;
   const escMine=document.getElementById('fMine').checked;
   const ord=document.getElementById('fOrd').value;
-  let a=leads.filter(l=>(nota===0 || (l.nota||0)>=nota) && (!soAberta || l.aberto!==false) && (!escMine || !l.mine));
-  a.sort((x,y)=>{
-    if(ord==='nome') return (x.nome||'').localeCompare(y.nome||'','pt');
-    if(ord==='aval') return (y.avaliacoes||0)-(x.avaliacoes||0);
-    return (y.nota||0)-(x.nota||0);
-  });
+  document.querySelectorAll('.filters .chip').forEach(c=>{ const i=c.querySelector('input'); if(i) c.classList.toggle('act',i.checked); });
+  let a=leads.filter(l=>(nota===0||(l.nota||0)>=nota)&&(!soAberta||l.aberto!==false)&&(!escMine||!l.mine));
+  a.sort((x,y)=> ord==='nome'?(x.nome||'').localeCompare(y.nome||'','pt'): ord==='aval'?(y.avaliacoes||0)-(x.avaliacoes||0):(y.nota||0)-(x.nota||0));
   return a;
 }
+function atualizarDock(){
+  const n=carteira.size;
+  document.getElementById('dockN').textContent = n+(n===1?' parada':' paradas');
+  document.getElementById('dock').classList.toggle('up', n>0);
+}
 function render(){
-  const rb=document.getElementById('rotaBtn'); rb.textContent=`🗺️ Rota (${carteira.size})`; rb.disabled=carteira.size===0;
+  atualizarDock();
   const novas=leads.filter(l=>!l.mine).length, minhas=leads.filter(l=>l.mine).length, comTel=leads.filter(l=>l.telefone).length;
-  const demo=!temChave();
-  document.getElementById('cont').innerHTML= leads.length
-    ? `<b>${novas}</b> novas · ${minhas} já suas · ${comTel} com telefone${demo?' · <i>(exemplo fictício)</i>':''}`
-    : 'Nenhuma loja encontrada.';
+  const via=temChave()?'via Google':'exemplo fictício';
+  document.getElementById('summary').innerHTML = leads.length
+    ? `<span class="big">${novas}</span><span>novas · ${minhas} já suas · ${comTel} com telefone</span><span class="via">${via}</span>`
+    : '';
   const arr=filtrados();
   const cidades=[...new Set(arr.map(l=>l.cidade).filter(Boolean))];
   const multi=cidades.length>1;
   let html = ultimoAviso ? `<div class="note">⚠️ ${ultimoAviso}.</div>` : '';
   const grupos = multi ? cidades.map(c=>[c, arr.filter(l=>l.cidade===c)]) : [[null, arr]];
   for(const [cid, items] of grupos){
-    if(cid) html+=`<div class="cityhdr">📍 ${cid} · ${items.length}</div>`;
+    if(cid) html+=`<div class="cityhdr"><span class="nm">${cid}</span><span class="ct">${items.length}</span><span class="ln"></span></div>`;
     html+=items.map(l=>{
-      const id=l.place_id;
-      return `<div class="card ${l.mine?'mine':''}">
-        <div class="top">
-          <input type="checkbox" class="chk" ${carteira.has(id)?'checked':''} onchange="this.checked?carteira.add('${id}'):carteira.delete('${id}');render()">
-          <div style="flex:1">
-            <div class="nm">${l.nome} ${l.mine?'<span class="badge">já é seu cliente</span>':'<span class="badge new">nova</span>'}</div>
+      const id=l.place_id, on=carteira.has(id);
+      const rate = l.nota
+        ? `<div class="n">${String(l.nota).replace('.',',')}</div><div class="s">${'★'.repeat(Math.round(l.nota))}</div><div class="c">${l.avaliacoes}</div>`
+        : `<div class="na">—</div><div class="c">s/ nota</div>`;
+      return `<article class="lead ${l.mine?'is-mine':''}">
+        <div class="lead-top">
+          <div class="rate">${rate}</div>
+          <div class="lead-body">
+            <div class="lead-name">${l.nome} ${l.mine?'<span class="tag mine">já é seu</span>':'<span class="tag new">nova</span>'}</div>
             <div class="addr">${l.endereco||''}</div>
-            <div class="meta">
-              ${l.nota?`<span class="star">★ ${String(l.nota).replace('.',',')}</span><span style="color:var(--ink-faint)">(${l.avaliacoes})</span>`:''}
-              ${l.aberto===true?'<span class="open">● aberto</span>':l.aberto===false?'<span class="closed">● fechado</span>':''}
-              <span class="sp"></span>
-              <button class="b" onclick="detalhes('${id}')">Detalhes ▾</button>
+            <div class="flags">
+              ${l.aberto===true?'<span class="flag open">● aberto</span>':l.aberto===false?'<span class="flag closed">● fechado</span>':''}
+              ${l.telefone?'<span class="flag tel">✓ tem telefone</span>':'<span class="flag notel">sem telefone</span>'}
             </div>
-            <div class="det" id="det_${id}"></div>
           </div>
+          <button class="rtoggle ${on?'on':''}" onclick="toggleRota('${id}')">${on?'✓ na rota':'+ rota'}</button>
         </div>
-      </div>`;
+        <div class="lead-foot"><button class="act" onclick="detalhes('${id}')">Detalhes ▾</button></div>
+        <div class="det" id="det_${id}"></div>
+      </article>`;
     }).join('');
   }
   document.getElementById('list').innerHTML= arr.length? html : '<div class="empty">Nenhuma loja passa nos filtros. Afrouxe os filtros acima.</div>';
