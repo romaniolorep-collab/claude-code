@@ -1,0 +1,8 @@
+# Configuração do Netlify para o Robô de Prospecção.
+# Ao ligar este repositório no Netlify, ele já sabe onde está o app —
+# você só escolhe o repositório e a branch, sem digitar a pasta.
+[build]
+  # site estático, sem build
+  command = ""
+  # pasta publicada (onde está o index.html do app)
+  publish = "forca-vendas/robo-prospeccao/app"
