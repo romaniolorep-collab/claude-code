@@ -269,6 +269,7 @@
           <option value="sports">Esporte / corrida</option>
           <option value="bag">Bolsas / mochilas</option>
           <option value="fashion">Roupa / moda</option>
+          <option value="boutique">Boutiques (roupa + calçado)</option>
           <option value="all">Tudo (calçado, esporte, moda)</option>
         </select>
       </div>
@@ -336,9 +337,10 @@
 //  Motor inalterado; casca visual "campo de performance".
 // ================================================================
 const CATS = {
-  shoes:'lojas de calçado', sports:'lojas de artigos esportivos',
-  shoes_sports:'lojas de calçado e artigos esportivos', bag:'lojas de bolsas e mochilas',
-  fashion:'lojas de roupa e moda', all:'lojas de calçado, esporte e moda',
+  shoes:'lojas e boutiques de calçado', sports:'lojas de artigos esportivos',
+  shoes_sports:'lojas de calçado, boutiques e artigos esportivos', bag:'lojas de bolsas e mochilas',
+  fashion:'lojas de roupa, moda e boutiques', boutique:'boutiques de roupas e calçados',
+  all:'lojas e boutiques de calçado, esporte e moda',
 };
 const gq = () => CATS[document.getElementById('cat').value] || CATS.shoes_sports;
 
@@ -372,6 +374,8 @@ const ehRede = nome => { const n=norm(nome); return REDES.some(r=>n.includes(r))
 // rótulo amigável do tipo do Google
 const TIPOS = {shoe_store:'Calçados', sporting_goods_store:'Esporte', clothing_store:'Moda', bag_shop:'Bolsas', wholesaler:'Atacado', department_store:'Departamento', store:'Loja'};
 const tipoLabel = (p) => p.primaryTypeDisplayName?.text || TIPOS[p.primaryType] || '';
+// tipos fora do foco (o Google às vezes traz): descarta cosmético, farmácia, mercado, etc.
+const FORA = new Set(['cosmetics_store','beauty_salon','hair_salon','hair_care','nail_salon','spa','pharmacy','drugstore','supermarket','grocery_store','grocery_or_supermarket','convenience_store','liquor_store','restaurant','cafe','bakery','bar','meal_takeaway','meal_delivery','furniture_store','home_goods_store','hardware_store','electronics_store','cell_phone_store','book_store','jewelry_store','pet_store','pet_supply_store','florist','gift_shop','gym','fitness_center','optician','veterinary_care','bank','lodging','gas_station','car_repair','car_dealer','real_estate_agency']);
 
 let leads=[]; const carteira=new Set(); let ultimoAviso='';
 let vista='lista', map=null, capa=null;
@@ -424,7 +428,7 @@ async function buscarCidade(cidade){
     guard++;
   } while(token && acc.length<60 && guard<3);
   return acc
-    .filter(p=>p.businessStatus!=='CLOSED_PERMANENTLY')          // tira fechadas de vez
+    .filter(p=>p.businessStatus!=='CLOSED_PERMANENTLY' && !FORA.has(p.primaryType))   // tira fechadas + tipos fora do foco
     .map(p=>{
       const nome=p.displayName?.text||'(sem nome)';
       return {
