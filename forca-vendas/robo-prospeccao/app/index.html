@@ -104,10 +104,9 @@
 <div class="sheet" id="sheet" onclick="if(event.target===this)fecharConfig()">
   <div class="panel">
     <h2>🔑 Chave do Google Places</h2>
-    <p>Cole sua chave (<code>AIza…</code>). Fica salva <b>só neste aparelho</b>. Para funcionar, no Google Cloud precisa:</p>
+    <p>Cole sua chave (<code>AIza…</code>). Fica salva <b>só neste aparelho</b>. No Google Cloud precisa só de:</p>
     <ol>
-      <li>Ativar <b>Maps JavaScript API</b></li>
-      <li>Ativar <b>Places API</b></li>
+      <li>Ativar <b>Places API (New)</b></li>
       <li>Restringir a chave por <b>Referenciador HTTP</b> ao endereço deste site</li>
     </ol>
     <div style="height:12px"></div>
@@ -117,15 +116,16 @@
       <button class="ghost" onclick="removerChave()">Remover</button>
       <button class="ghost" onclick="fecharConfig()">Fechar</button>
     </div>
-    <div class="lil">Não tem chave? <a href="https://console.cloud.google.com/google/maps-apis/credentials" target="_blank" rel="noopener">Abrir credenciais do Google Maps</a>. O Google dá ~US$ 200/mês de crédito grátis.</div>
+    <div class="lil"><a href="https://console.cloud.google.com/apis/library/places.googleapis.com" target="_blank" rel="noopener">Ativar a Places API (New)</a> · <a href="https://console.cloud.google.com/google/maps-apis/credentials" target="_blank" rel="noopener">Ver credenciais</a>. O Google dá ~US$ 200/mês de crédito grátis.</div>
   </div>
 </div>
 
 <script>
 // ================================================================
-//  Robô de Prospecção — fonte única: Google Places (Maps JS API)
-//  Busca client-side, com paginação (até 60 lojas por cidade),
+//  Robô de Prospecção — fonte única: Google Places API (New)
+//  Chamada direta por fetch (CORS), com paginação (até 60/cidade),
 //  detalhes sob demanda, carteira, rota e WhatsApp.
+//  Requer só: ativar "Places API (New)" + restringir a chave ao site.
 // ================================================================
 
 // categoria -> texto de busca no Google
@@ -171,60 +171,67 @@ function fecharConfig(){ document.getElementById('sheet').classList.remove('on')
 function salvarChave(){ const k=document.getElementById('keyInput').value.trim(); if(k) localStorage.setItem('gpk',k); else localStorage.removeItem('gpk'); gsvc=null; atualizarTag(); fecharConfig(); }
 function removerChave(){ localStorage.removeItem('gpk'); gsvc=null; document.getElementById('keyInput').value=''; atualizarTag(); }
 
-// ---------- Google Maps JS (client-side) ----------
-function carregarGoogle(key){
-  return new Promise((res,rej)=>{
-    if(window.google?.maps?.places) return res();
-    const s=document.createElement('script');
-    s.src=`https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&libraries=places&language=pt-BR&region=BR&loading=async`;
-    s.async=true;
-    s.onload=()=> (window.google?.maps?.places ? res() : rej(new Error('Places não carregou — confira se ativou a Maps JavaScript API + Places API')));
-    s.onerror=()=>rej(new Error('Não consegui carregar o Google — confira a chave e a conexão'));
-    document.head.appendChild(s);
-  });
+// ---------- Places API (New) — chamada direta por fetch (CORS) ----------
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+function traduzErro(err){
+  const s=(err&&err.status)||'', m=(err&&err.message)||'';
+  if(s==='PERMISSION_DENIED' || /has not been used|is disabled/i.test(m)) return 'ative a "Places API (New)" no Google Cloud';
+  if(/API key not valid|API_KEY_INVALID/i.test(m)) return 'chave inválida — confira no ⚙️';
+  if(/referer|referrer|not authorized/i.test(m)) return 'a chave está restrita a outro site — libere o endereço do Netlify';
+  if(s==='RESOURCE_EXHAUSTED') return 'cota do Google estourada por agora';
+  return m || s || 'erro do Google';
 }
-async function svc(){ await carregarGoogle(getKey()); if(!gsvc) gsvc=new google.maps.places.PlacesService(document.createElement('div')); return gsvc; }
-
-// textSearch com PAGINAÇÃO (Google entrega 20 por página, até 60 no total)
-function textSearchTodas(s, query){
-  return new Promise((res,rej)=>{
-    const acc=[];
-    s.textSearch({query, region:'br'}, function cb(r, st, pag){
-      if(st!=='OK' && st!=='ZERO_RESULTS' && st!=='INVALID_REQUEST'){
-        return rej(new Error(traduzStatus(st)));
-      }
-      if(r) acc.push(...r);
-      if(pag && pag.hasNextPage && acc.length<60){ setTimeout(()=>pag.nextPage(), 1300); }
-      else res(acc);
-    });
+const SEARCH_MASK = 'places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.location,places.businessStatus,places.currentOpeningHours.openNow,nextPageToken';
+async function placesSearch(textQuery, pageToken){
+  const body={ textQuery, languageCode:'pt-BR', regionCode:'BR', pageSize:20 };
+  if(pageToken) body.pageToken=pageToken;
+  const r=await fetch('https://places.googleapis.com/v1/places:searchText',{
+    method:'POST',
+    headers:{ 'Content-Type':'application/json', 'X-Goog-Api-Key':getKey(), 'X-Goog-FieldMask':SEARCH_MASK },
+    body:JSON.stringify(body),
   });
-}
-function traduzStatus(st){
-  const m={REQUEST_DENIED:'chave recusada (ative Places API e libere o endereço do site)',
-    OVER_QUERY_LIMIT:'cota do Google estourada por agora',
-    UNKNOWN_ERROR:'erro temporário do Google — tente de novo'};
-  return m[st]||('Google: '+st);
+  const j=await r.json();
+  if(j.error) throw new Error(traduzErro(j.error));
+  return j;
 }
 async function buscarCidade(cidade){
-  const r=await textSearchTodas(await svc(), `${gq()} em ${cidade}`);
-  return r.map(p=>({
-    cidade, nome:p.name, endereco:p.formatted_address||'',
-    nota:p.rating??null, avaliacoes:p.user_ratings_total??0,
-    aberto:(typeof p.opening_hours?.isOpen==='function'?p.opening_hours.isOpen():(p.opening_hours?.open_now??null)),
-    mine:ehMinha(p.name),
-    lat:(typeof p.geometry?.location?.lat==='function'?p.geometry.location.lat():null),
-    lon:(typeof p.geometry?.location?.lng==='function'?p.geometry.location.lng():null),
-    telefone:'', site:'', horario:'', place_id:p.place_id,
+  const q=`${gq()} em ${cidade}`;
+  let acc=[], token=null, guard=0;
+  do{
+    const j=await placesSearch(q, token);
+    if(j.places) acc.push(...j.places);
+    token=j.nextPageToken;
+    if(token && acc.length<60){ await sleep(1600); }  // o pageToken leva um instante pra valer
+    guard++;
+  } while(token && acc.length<60 && guard<3);
+  return acc.map(p=>({
+    cidade,
+    nome: p.displayName?.text || '(sem nome)',
+    endereco: p.formattedAddress || '',
+    nota: p.rating ?? null,
+    avaliacoes: p.userRatingCount ?? 0,
+    aberto: (p.currentOpeningHours?.openNow ?? null),
+    mine: ehMinha(p.displayName?.text || ''),
+    lat: p.location?.latitude ?? null,
+    lon: p.location?.longitude ?? null,
+    telefone:'', site:'', horario:'',
+    place_id: p.id,
   }));
 }
-function getDetails(placeId){
-  return new Promise(async res=>{
-    const s=await svc();
-    s.getDetails({placeId,fields:['formatted_phone_number','website','opening_hours']},(d,st)=>{
-      if(st!=='OK'||!d) return res({telefone:'',site:'',horario:''});
-      res({telefone:d.formatted_phone_number||'', site:(d.website||'').replace(/^https?:\/\//,'').replace(/\/$/,''), horario:(d.opening_hours?.weekday_text||[]).join(' · ')});
+async function getDetails(placeId){
+  try{
+    const mask='nationalPhoneNumber,internationalPhoneNumber,websiteUri,regularOpeningHours.weekdayDescriptions';
+    const r=await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`,{
+      headers:{ 'X-Goog-Api-Key':getKey(), 'X-Goog-FieldMask':mask },
     });
-  });
+    const j=await r.json();
+    if(j.error) return {telefone:'',site:'',horario:''};
+    return {
+      telefone: j.nationalPhoneNumber || j.internationalPhoneNumber || '',
+      site: (j.websiteUri||'').replace(/^https?:\/\//,'').replace(/\/$/,''),
+      horario: (j.regularOpeningHours?.weekdayDescriptions||[]).join(' · '),
+    };
+  }catch(e){ return {telefone:'',site:'',horario:''}; }
 }
 
 // ---------- de-duplicação (mesma loja em buscas vizinhas) ----------
