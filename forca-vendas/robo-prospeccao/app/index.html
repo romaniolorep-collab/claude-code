@@ -321,7 +321,8 @@
       <li>Restringir a chave por <b>Referenciador HTTP</b> ao endereço deste site</li>
     </ol>
     <div style="height:12px"></div>
-    <input id="keyInput" placeholder="AIzaSy..." autocomplete="off" spellcheck="false">
+    <input id="keyInput" placeholder="AIzaSy..." autocomplete="off" spellcheck="false" oninput="keyDica()">
+    <div class="lil" id="keyHint" style="margin-top:6px"></div>
     <div class="prow">
       <button class="save" onclick="salvarChave()">Salvar</button>
       <button class="ghost" onclick="removerChave()">Remover</button>
@@ -395,7 +396,16 @@ function atualizarTag(){
   document.getElementById('banner').style.display = on?'none':'flex';
 }
 
-function abrirConfig(){ document.getElementById('keyInput').value=getKey(); document.getElementById('sheet').classList.add('on'); }
+function abrirConfig(){ document.getElementById('keyInput').value=getKey(); keyDica(); document.getElementById('sheet').classList.add('on'); }
+function keyDica(){
+  const raw=document.getElementById('keyInput').value;
+  const c=raw.replace(/[^A-Za-z0-9_-]/g,'');
+  const el=document.getElementById('keyHint');
+  if(!raw){ el.textContent=''; return; }
+  const ok=c.length===39;
+  el.textContent = ok ? `✓ ${c.length} caracteres` : `${c.length} caracteres — a chave do Google tem 39; confira se copiou tudo (sem espaço)`;
+  el.style.color = ok ? 'var(--open)' : 'var(--signal)';
+}
 function fecharConfig(){ document.getElementById('sheet').classList.remove('on'); }
 function salvarChave(){ const k=document.getElementById('keyInput').value.replace(/[^A-Za-z0-9_-]/g,''); if(k) localStorage.setItem('gpk',k); else localStorage.removeItem('gpk'); atualizarTag(); fecharConfig(); }
 function removerChave(){ localStorage.removeItem('gpk'); document.getElementById('keyInput').value=''; atualizarTag(); }
